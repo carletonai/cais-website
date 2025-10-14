@@ -8,6 +8,8 @@ import {
 } from "framer-motion";
 import { Member } from "@/types/team";
 import teamData from "@/data/team.json";
+import oldTeamsData from "@/data/old-teams.json";
+import OldTeamsRow from "./OldTeamsRow";
 import { FaLinkedin } from "react-icons/fa";
 
 interface TeamMemberCardProps {
@@ -288,7 +290,6 @@ const TeamDisplay = () => {
         <AppScrollDetector />
         <FloatingLights />
 
-        {}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -302,6 +303,8 @@ const TeamDisplay = () => {
             startIndex={0}
           />
         </div>
+
+        <OldTeamsRow teams={oldTeamsData.teams} />
       </div>
     </ScrollDirectionContext.Provider>
   );
