@@ -1,3 +1,4 @@
+<!-- redeploy -->
 <h3 align="center">
   <img src="public/transparent-club.png" style="width: 250px; height: auto">
 </h3>
