@@ -86,7 +86,7 @@ Essential Links:
 📧 Email: carletonaicontact@gmail.com
 
 Sign Up:
-📝 Join Form: https://docs.google.com/forms/d/e/1FAIpQLSe2Bvvr6NCrHmb9fdtqRxR3v-6QmGqi2E-4p112TNFDZrcX5w/viewform
+📝 Join Form: https://forms.gle/3xCK7fCbGcZXGr1d6
 
 Learning Resources:
 📘 Fast.ai: https://www.fast.ai/
@@ -988,7 +988,7 @@ const Resources = () => {
 How to Join CAIS:
 
 1. Fill out our Sign-up Form:
-   https://docs.google.com/forms/d/e/1FAIpQLSe2Bvvr6NCrHmb9fdtqRxR3v-6QmGqi2E-4p112TNFDZrcX5w/viewform
+   https://forms.gle/3xCK7fCbGcZXGr1d6
 
 2. Join our Community:
    - Discord: https://discord.gg/nsvsMJaSRJ
@@ -1013,7 +1013,7 @@ Benefits:
         output = {
           content: `
 📧 Email: carletonaicontact@gmail.com
-📝 Sign Up Form: https://docs.google.com/forms/d/e/1FAIpQLSe2Bvvr6NCrHmb9fdtqRxR3v-6QmGqi2E-4p112TNFDZrcX5w/viewform
+📝 Sign Up Form: https://forms.gle/3xCK7fCbGcZXGr1d6
 🤝 Discord: https://discord.gg/nsvsMJaSRJ
 📱 Instagram: https://www.instagram.com/carletonaisociety/
 💼 LinkedIn: https://www.linkedin.com/company/carleton-ai

@@ -3,74 +3,77 @@
 exports[`renders ContactPage correctly 1`] = `
 <DocumentFragment>
   <div
-    class="min-h-screen p-8"
+    class="min-h-screen flex items-center py-20"
   >
-    <h1
-      class="text-4xl font-bold mb-6"
+    <div
+      class="container mx-auto px-4"
     >
-      Contact Us
-    </h1>
-    <p
-      class="text-lg"
-    >
-      Get in touch with the CAIS team.
-    </p>
-    <div>
-      <a
-        class="Sing-up-forum-link"
-        href="https://docs.google.com/forms/d/e/1FAIpQLSe2Bvvr6NCrHmb9fdtqRxR3v-6QmGqi2E-4p112TNFDZrcX5w/viewform?pli=1"
-        rel="noopener noreferrer"
-        target="_blank"
+      <div
+        class="mx-auto flex max-w-3xl flex-col items-center text-center"
       >
-        Sign Up Form
-      </a>
-    </div>
-    <div>
-      SocialIcon
-      <a
-        class="Instagram-link"
-        href="https://www.instagram.com/carletonaisociety/"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        Instagram
-      </a>
-      <a>
-         
-      </a>
-      SocialIcon
-      <a
-        class="Discord-link"
-        href="https://discord.gg/nsvsMJaSRJ"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        Discord
-      </a>
-      <a>
-         
-      </a>
-      SocialIcon
-      <a
-        class="Linkedin-link"
-        href="https://www.linkedin.com/company/carleton-ai"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        Linkedin
-      </a>
-      <a>
-         
-      </a>
-      SocialIcon
-      <a
-        class="Youtube-link"
-        href="https://www.youtube.com/channel/UCWKRnTa68hlHrW6WYCgCNaw"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        YouTube
-      </a>
+        <h1
+          class="text-4xl font-bold mb-4"
+        >
+          Contact Us
+        </h1>
+        <p
+          class="text-lg text-muted-foreground"
+        >
+          Get in touch with the CAIS team.
+        </p>
+        <div
+          class="mt-6"
+        >
+          <a
+            class="inline-flex items-center rounded-md bg-primary px-10 py-5 text-lg font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+            href="https://forms.gle/3xCK7fCbGcZXGr1d6"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Become a Member
+          </a>
+        </div>
+        <div
+          class="mt-8 flex flex-wrap justify-center gap-4"
+        >
+          <a
+            class="inline-flex items-center gap-3 rounded-md border border-border bg-background/60 px-6 py-3 text-base font-semibold text-foreground shadow-sm transition-colors hover:bg-muted/70"
+            href="https://www.instagram.com/carletonaisociety/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            SocialIcon
+            Instagram
+          </a>
+          <a
+            class="inline-flex items-center gap-3 rounded-md border border-border bg-background/60 px-6 py-3 text-base font-semibold text-foreground shadow-sm transition-colors hover:bg-muted/70"
+            href="https://discord.gg/Ar3JpVZE6t"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            SocialIcon
+            Discord
+          </a>
+          <a
+            class="inline-flex items-center gap-3 rounded-md border border-border bg-background/60 px-6 py-3 text-base font-semibold text-foreground shadow-sm transition-colors hover:bg-muted/70"
+            href="https://www.linkedin.com/company/carleton-ai"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            SocialIcon
+            LinkedIn
+          </a>
+          <a
+            class="inline-flex items-center gap-3 rounded-md border border-border bg-background/60 px-6 py-3 text-base font-semibold text-foreground shadow-sm transition-colors hover:bg-muted/70"
+            href="https://www.youtube.com/channel/UCWKRnTa68hlHrW6WYCgCNaw"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            SocialIcon
+            YouTube
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </DocumentFragment>
