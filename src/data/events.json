@@ -15,7 +15,7 @@
       "id": "2",
       "title": "Club Executive Meet and Greet",
       "date": "2025-01-22",
-      "time": "5:00 PM PM - 7:00 PM",
+      "time": "5:00 PM - 7:00 PM",
       "location": "Paterson Hall 114",
       "description": "Meet the club executives and learn about the club's goals and our plans for the future",
       "type": "Social",
@@ -67,6 +67,78 @@
       "image": "/assets/events/neural-networks.jpg",
       "rsvpLink": "https://forms.google.com/...",
       "tags": ["hands-on", "technical"]
-    }
+    },
+    {
+      "id": "7",
+      "title": "CAIS Icebreaker",
+      "date": "2025-11-28",
+      "time": "3:00 PM - 4:00 PM",
+      "location": "Tory Building 342",
+      "description": "Meet the CAIS executive team, learn about the club, and connect with students interested in AI.",
+      "type": "Social",
+      "image": "/assets/events/neural-networks.jpg",
+      "rsvpLink": "https://forms.google.com/...",
+      "tags": ["beginner-friendly", "networking", "social"]
+    },
+    {
+      "id": "8",
+      "title": "Workshop #1 – Introduction to Artificial Intelligence",
+      "date": "2026-01-23",
+      "time": "6:00 PM - 7:00 PM",
+      "location": "Richcraft Hall 3110",
+      "description": "An introductory workshop covering core AI concepts and real-world applications.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.jpg",
+      "rsvpLink": "https://forms.google.com/...",
+      "tags": ["beginner-friendly", "educational"]
+    },
+    {
+      "id": "9",
+      "title": "Workshop #2 – Vibe Coding vs Prompt Engineering",
+      "date": "2026-01-27",
+      "time": "5:30 PM - 7:00 PM",
+      "location": "Richcraft Hall 3228",
+      "description": "A workshop comparing vibe coding and prompt engineering in modern AI development.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.jpg",
+      "rsvpLink": "https://forms.google.com/...",
+      "tags": ["technical", "discussion"]
+    },
+    {
+      "id": "10",
+      "title": "Workshop #3 – What Are Large Language Models?",
+      "date": "2026-01-29",
+      "time": "6:00 PM - 7:00 PM",
+      "location": "Tory Building 342",
+      "description": "An introduction to large language models and how they power modern AI systems.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.jpg",
+      "rsvpLink": "https://forms.google.com/...",
+      "tags": ["beginner-friendly", "technical"]
+    },
+    {
+      "id": "11",
+      "title": "Building an AI Chatbot!",
+      "date": "2026-02-24",
+      "time": "6:00 PM - 7:00 PM",
+      "location": "Tory Building 210",
+      "description": "Learn how AI chatbots work using RAG and semantic search in LLM applications.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.jpg",
+      "rsvpLink": "https://forms.google.com/...",
+      "tags": ["hands-on", "technical"]
+    },
+    {
+      "id": "12",
+      "title": "Training an AI Model!",
+      "date": "2026-02-26",
+      "time": "6:00 PM - 7:00 PM",
+      "location": "Tory Building 210",
+      "description": "Train your first machine learning model using Python in a hands-on session.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.jpg",
+      "rsvpLink": "https://forms.google.com/...",
+      "tags": ["hands-on", "beginner-friendly", "technical"]
+    }    
   ]
 }
