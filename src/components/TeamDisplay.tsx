@@ -280,7 +280,7 @@ const FloatingLights = () => {
 
 const TeamDisplay = () => {
   const members = teamData.members;
-  const executives = members.slice(0, 4);
+  const executives = members;
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("down");
 
   return (
