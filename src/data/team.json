@@ -2,34 +2,50 @@
   "members": [
     {
       "image": "/stockIcon.jpg",
-      "name": "Hamzah Hamad",
-      "description": "Favorite Hobby: Golf",
+      "name": "Jeremy Friesen",
+      "description": "Favorite Hobby: ",
       "title": "President",
-      "linkedinURL": "https://www.linkedin.com/in/hamzahhamad",
+      "linkedinURL": "https://www.linkedin.com/in/jeremyfriesen1/",
       "linkedin": "/linkedin.svg"
     },
     {
       "image": "/stockIcon.jpg",
-      "name": "Yuvraj Bains",
-      "description": "Favorite Hobby: Ice Hockey",
+      "name": "Marc Aoun",
+      "description": "Favorite Hobby: ",
       "title": "VP Academics",
-      "linkedinURL": "https://www.linkedin.com/in/yuvrajbains00/",
+      "linkedinURL": "https://www.linkedin.com/in/marc-aoun-263b981ab/",
       "linkedin": "/linkedin.svg"
     },
     {
       "image": "/stockIcon.jpg",
-      "name": "Sahil Kumar",
-      "description": "Favorite Hobby: Cricket",
-      "title": "VP Finance & Community",
-      "linkedinURL": "https://www.linkedin.com/in/-sahil-kumar-/",
+      "name": "Sofia Alhennawi",
+      "description": "Favorite Hobby: ",
+      "title": "VP Community",
+      "linkedinURL": "https://www.linkedin.com/in/sofia-alhennawi-b6aa19344/",
       "linkedin": "/linkedin.svg"
     },
     {
       "image": "/stockIcon.jpg",
-      "name": "Megh Ghajjar",
-      "description": "Favorite Hobby: Exploring Music",
+      "name": "Nnaya Oluigbo",
+      "description": "Favorite Hobby: ",
       "title": "VP Events",
-      "linkedinURL": "https://www.linkedin.com/in/megh-gajjar-269543308/",
+      "linkedinURL": "https://www.linkedin.com/in/chizurum-oluigbo/",
+      "linkedin": "/linkedin.svg"
+    },
+    {
+      "image": "/stockIcon.jpg",
+      "name": "Alexander James Rigas",
+      "description": "Favorite Hobby: ",
+      "title": "VP Finance",
+      "linkedinURL": "https://www.linkedin.com/in/alexanderrigas/",
+      "linkedin": "/linkedin.svg"
+    },
+    {
+      "image": "/stockIcon.jpg",
+      "name": "Abdulrahman Zrein",
+      "description": "Favorite Hobby: ",
+      "title": "VP Projects/Technology",
+      "linkedinURL": "https://www.linkedin.com/in/abdulrahmanzrein/",
       "linkedin": "/linkedin.svg"
     }
   ]
