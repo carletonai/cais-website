@@ -1,4 +1,97 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import {
+  CodeIcon,
+  PresentationIcon,
+  CalendarIcon,
+  GlobeIcon,
+  BookOpenIcon,
+  MegaphoneIcon,
+} from "lucide-react";
+
+const WAYS = [
+  {
+    icon: CodeIcon,
+    title: "Join a Project",
+    description:
+      "Work alongside other students on AI/ML projects, from computer vision to NLP.",
+    link: { label: "See Projects", to: "/projects", external: false },
+  },
+  {
+    icon: PresentationIcon,
+    title: "Run a Workshop",
+    description:
+      "Have something to share? Lead a session on any AI topic — all skill levels welcome.",
+    link: {
+      label: "Contact Us",
+      to: "/contact",
+      external: false,
+    },
+  },
+  {
+    icon: CalendarIcon,
+    title: "Organize Events",
+    description:
+      "Help plan workshops, panels, or social events that bring the community together.",
+    link: {
+      label: "Get Involved",
+      to: "https://discord.gg/Ar3JpVZE6t",
+      external: true,
+    },
+  },
+  {
+    icon: GlobeIcon,
+    title: "Contribute to the Website",
+    description:
+      "Improve this site — fix bugs, add features, or redesign pages on our GitHub.",
+    link: {
+      label: "GitHub Repo",
+      to: "https://github.com/HarshveerThind/cais-website",
+      external: true,
+    },
+  },
+  {
+    icon: BookOpenIcon,
+    title: "Share Knowledge",
+    description:
+      "Write tutorials, summarize papers, or create learning resources for the community.",
+    link: {
+      label: "Join Discord",
+      to: "https://discord.gg/Ar3JpVZE6t",
+      external: true,
+    },
+  },
+  {
+    icon: MegaphoneIcon,
+    title: "Spread the Word",
+    description:
+      "Tell your classmates about CAIS and help us grow our community across campus.",
+    link: {
+      label: "Share on LinkedIn",
+      to: "https://www.linkedin.com/company/carleton-ai",
+      external: true,
+    },
+  },
+];
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 100, damping: 15 },
+  },
+};
 
 const Contribute = () => {
   return (
