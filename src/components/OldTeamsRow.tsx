@@ -1,4 +1,5 @@
 import React from "react";
+import { publicAssetPath } from "@/lib/assets";
 
 interface OldTeamsRowProps {
   teams: Array<{
@@ -34,7 +35,7 @@ const OldTeamsRow: React.FC<OldTeamsRowProps> = ({ teams }) => {
                     className="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
                   >
                     <img
-                      src={member.image}
+                      src={publicAssetPath(member.image)}
                       alt={member.name}
                       className="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
                     />

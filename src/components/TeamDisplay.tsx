@@ -11,6 +11,7 @@ import teamData from "@/data/team.json";
 import oldTeamsData from "@/data/old-teams.json";
 import OldTeamsRow from "./OldTeamsRow";
 import { FaLinkedin } from "react-icons/fa";
+import { publicAssetPath } from "@/lib/assets";
 
 interface TeamMemberCardProps {
   image: string;
@@ -88,7 +89,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
                 <div className="relative mb-4">
                   <div className="h-48 w-48 overflow-hidden rounded-3xl border-2 border-neutral-800 transition-colors duration-300 group-hover:border-primary/50">
                     <img
-                      src={image}
+                      src={publicAssetPath(image)}
                       alt={name}
                       width={320}
                       height={320}
@@ -127,7 +128,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
                 <div className="relative mb-4">
                   <div className="h-48 w-48 overflow-hidden rounded-3xl border-2 border-neutral-800 transition-colors duration-300 group-hover:border-primary/50">
                     <img
-                      src={image}
+                      src={publicAssetPath(image)}
                       alt={name}
                       width={320}
                       height={320}

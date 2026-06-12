@@ -1,10 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { publicAssetPath } from "@/lib/assets";
 
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden w-full z-50 mt-auto">
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5" />
+      <div
+        className="absolute inset-0 bg-center opacity-5"
+        style={{ backgroundImage: `url(${publicAssetPath("/grid.svg")})` }}
+      />
 
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/95 to-background/90" />

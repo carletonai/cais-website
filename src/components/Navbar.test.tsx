@@ -13,11 +13,23 @@ const renderNavbar = () => {
 };
 
 describe("Navbar Component", () => {
+  beforeEach(() => {
+    window.history.pushState({}, "", "/");
+  });
+
   it("renders the logo", () => {
     renderNavbar();
     const logo = screen.getByAltText("CAIS Logo") as HTMLImageElement;
     expect(logo).toBeInTheDocument();
     expect(logo.src).toContain("header-club.png");
+  });
+
+  it("renders the logo from the GitHub Pages project path", () => {
+    window.history.pushState({}, "", "/cais-website/");
+    renderNavbar();
+
+    const logo = screen.getByAltText("CAIS Logo") as HTMLImageElement;
+    expect(new URL(logo.src).pathname).toBe("/cais-website/header-club.png");
   });
 
   it("renders navigation links", () => {
