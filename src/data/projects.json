@@ -1,1 +1,12 @@
-{ "projects": [] }
+{
+  "projects": [
+    {
+      "id": "cumind",
+      "title": "CuMind",
+      "status": "Previous Project",
+      "description": "A MuZero-style reinforcement learning framework built with JAX and Flax, combining a learned model with Monte Carlo Tree Search for complex decision-making environments.",
+      "link": "https://github.com/carletonai/CuMind",
+      "tags": ["JAX", "Flax", "MuZero", "MCTS", "Reinforcement Learning"]
+    }
+  ]
+}

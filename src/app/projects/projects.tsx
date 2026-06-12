@@ -4,6 +4,15 @@ import { Button } from "@/components/ui/button";
 import projectsData from "@/data/projects.json";
 import { ExternalLinkIcon } from "lucide-react";
 
+interface Project {
+  id?: string;
+  title: string;
+  status?: string;
+  description: string;
+  link?: string;
+  tags?: string[];
+}
+
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -56,18 +65,35 @@ const ProjectsPage = () => (
           viewport={{ once: true, margin: "-50px" }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
         >
-          {projectsData.projects.map((project: any) => (
+          {(projectsData.projects as Project[]).map((project) => (
             <motion.div
               key={project.id ?? project.title}
               variants={item}
               className="group bg-card/50 backdrop-blur-sm border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5 transition-all duration-200 flex flex-col"
             >
+              {project.status && (
+                <span className="w-fit mb-3 px-2.5 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
+                  {project.status}
+                </span>
+              )}
               <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
                 {project.title}
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed flex-1 mb-4">
                 {project.description}
               </p>
+              {project.tags && project.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
               {project.link && (
                 <a
                   href={project.link}
