@@ -2,34 +2,50 @@
   "members": [
     {
       "image": "/stockIcon.jpg",
-      "name": "Hamzah Hamad",
-      "description": "Favorite Hobby: Golf",
+      "name": "Jeremy Friesen",
+      "description": "Leads the club, represents CAIS to the university and external partners.",
       "title": "President",
-      "linkedinURL": "https://www.linkedin.com/in/hamzahhamad",
+      "linkedinURL": "https://www.linkedin.com/in/jeremyfriesen1/",
       "linkedin": "/linkedin.svg"
     },
     {
       "image": "/stockIcon.jpg",
-      "name": "Yuvraj Bains",
-      "description": "Favorite Hobby: Ice Hockey",
+      "name": "Marc Aoun",
+      "description": "Plans and runs educational workshops and manages academic partnerships.",
       "title": "VP Academics",
-      "linkedinURL": "https://www.linkedin.com/in/yuvrajbains00/",
+      "linkedinURL": "https://www.linkedin.com/in/marc-aoun-263b981ab/",
       "linkedin": "/linkedin.svg"
     },
     {
       "image": "/stockIcon.jpg",
-      "name": "Sahil Kumar",
-      "description": "Favorite Hobby: Cricket",
-      "title": "VP Finance & Community",
-      "linkedinURL": "https://www.linkedin.com/in/-sahil-kumar-/",
+      "name": "Sofia Alhennawi",
+      "description": "Builds and maintains the CAIS community and manages member engagement.",
+      "title": "VP Community",
+      "linkedinURL": "https://www.linkedin.com/in/sofia-alhennawi-b6aa19344/",
       "linkedin": "/linkedin.svg"
     },
     {
       "image": "/stockIcon.jpg",
-      "name": "Megh Ghajjar",
-      "description": "Favorite Hobby: Exploring Music",
+      "name": "Nnaya Oluigbo",
+      "description": "Organizes and coordinates all club events from logistics to promotion.",
       "title": "VP Events",
-      "linkedinURL": "https://www.linkedin.com/in/megh-gajjar-269543308/",
+      "linkedinURL": "",
+      "linkedin": "/linkedin.svg"
+    },
+    {
+      "image": "/stockIcon.jpg",
+      "name": "Alexander James Rigas",
+      "description": "Manages the club budget, funding applications, and financial reporting.",
+      "title": "VP Finance",
+      "linkedinURL": "",
+      "linkedin": "/linkedin.svg"
+    },
+    {
+      "image": "/stockIcon.jpg",
+      "name": "Abdulrahman Zrein",
+      "description": "Leads technical projects and manages the club's technology infrastructure.",
+      "title": "VP Projects/Technology",
+      "linkedinURL": "https://www.linkedin.com/in/abdulrahmanzrein/",
       "linkedin": "/linkedin.svg"
     }
   ]
