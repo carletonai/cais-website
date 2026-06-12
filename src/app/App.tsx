@@ -17,9 +17,15 @@ import HomePage from "./home/home";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
+const routerBasename =
+  typeof window !== "undefined" &&
+  window.location.pathname.startsWith("/cais-website")
+    ? "/cais-website"
+    : undefined;
+
 const App = () => {
   return (
-    <Router>
+    <Router basename={routerBasename}>
       <div className="min-h-screen bg-background text-foreground flex flex-col">
         <Navbar />
         <main className="pt-16 w-full flex-grow">
