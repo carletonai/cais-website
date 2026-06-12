@@ -149,7 +149,7 @@ const EventsPage = () => {
                     scale: 1.02,
                     transition: { type: "spring", stiffness: 400, damping: 10 }
                   }}
-                  className="group relative bg-card rounded-xl overflow-hidden border border-border/50 hover:border-primary/50 transition-colors"
+                  className="group relative bg-card/50 backdrop-blur-sm rounded-xl overflow-hidden border border-primary/10 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5 transition-all duration-200"
                 >
                   <div className="aspect-video relative overflow-hidden">
                     <div 
@@ -180,7 +180,7 @@ const EventsPage = () => {
                     </p>
                     
                     <div className="flex items-center justify-between">
-                      <div className="flex gap-2">
+                      <div className="flex flex-wrap gap-2">
                         {event.tags.map((tag) => (
                           <span
                             key={tag}
@@ -190,18 +190,20 @@ const EventsPage = () => {
                           </span>
                         ))}
                       </div>
-                      
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="group/btn"
-                        asChild
-                      >
-                        <a href={event.rsvpLink} target="_blank" rel="noopener noreferrer">
-                          RSVP
-                          <ArrowRightIcon className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                        </a>
-                      </Button>
+
+                      {event.rsvpLink && event.rsvpLink !== "#" && (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="group/btn"
+                          asChild
+                        >
+                          <a href={event.rsvpLink} target="_blank" rel="noopener noreferrer">
+                            RSVP
+                            <ArrowRightIcon className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                          </a>
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </motion.div>
