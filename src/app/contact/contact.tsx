@@ -96,25 +96,29 @@ const ContactPage = () => (
         animate="show"
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto"
       >
-        {SOCIAL_LINKS.map(({ label, handle, url, icon: Icon, hoverColor, iconColor }) => (
-          <motion.a
-            key={url}
-            variants={item}
-            href={url}
-            target={url.startsWith("mailto") ? undefined : "_blank"}
-            rel="noopener noreferrer"
-            className={`group relative flex items-center gap-4 p-5 rounded-xl bg-card/50 backdrop-blur-sm border border-primary/10 hover:translate-y-[-2px] hover:shadow-lg transition-all duration-200 ${hoverColor}`}
-          >
-            <div className="p-2.5 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors shrink-0">
-              <Icon className={`w-5 h-5 ${iconColor}`} />
-            </div>
-            <div className="min-w-0">
-              <p className="font-semibold text-sm">{label}</p>
-              <p className="text-xs text-muted-foreground truncate">{handle}</p>
-            </div>
-            <ArrowUpRightIcon className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity absolute top-4 right-4" />
-          </motion.a>
-        ))}
+        {SOCIAL_LINKS.map(
+          ({ label, handle, url, icon: Icon, hoverColor, iconColor }) => (
+            <motion.a
+              key={url}
+              variants={item}
+              href={url}
+              target={url.startsWith("mailto") ? undefined : "_blank"}
+              rel="noopener noreferrer"
+              className={`group relative flex items-center gap-4 p-5 rounded-xl bg-card/50 backdrop-blur-sm border border-primary/10 hover:translate-y-[-2px] hover:shadow-lg transition-all duration-200 ${hoverColor}`}
+            >
+              <div className="p-2.5 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors shrink-0">
+                <Icon className={`w-5 h-5 ${iconColor}`} />
+              </div>
+              <div className="min-w-0">
+                <p className="font-semibold text-sm">{label}</p>
+                <p className="text-xs text-muted-foreground truncate">
+                  {handle}
+                </p>
+              </div>
+              <ArrowUpRightIcon className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity absolute top-4 right-4" />
+            </motion.a>
+          ),
+        )}
       </motion.div>
 
       <motion.div

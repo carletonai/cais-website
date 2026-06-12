@@ -92,7 +92,9 @@ const Governance = () => {
               variants={item}
               className="bg-card/50 backdrop-blur-sm border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5 transition-all duration-200"
             >
-              <h3 className="text-lg font-semibold text-primary mb-3">{title}</h3>
+              <h3 className="text-lg font-semibold text-primary mb-3">
+                {title}
+              </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 {description}
               </p>

@@ -5,6 +5,8 @@ import Contribute from "./contribute";
 describe("Contribute", () => {
   it("renders contribute page", () => {
     render(<Contribute />);
-    expect(screen.getByText("Contribute")).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /Get Involved/i }),
+    ).toBeInTheDocument();
   });
 });

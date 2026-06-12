@@ -50,7 +50,7 @@
 }
 
 @property --spinner-char {
-  syntax: '<string>';
+  syntax: "<string>";
   initial-value: "⠋";
   inherits: false;
 }
@@ -63,10 +63,14 @@
 }
 
 @keyframes spinner {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .loading-spinner::before {
   content: var(--spinner-char);
-} 
+}

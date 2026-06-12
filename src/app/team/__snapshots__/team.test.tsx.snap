@@ -3,19 +3,2375 @@
 exports[`renders TeamPage correctly 1`] = `
 <DocumentFragment>
   <div
-    class="min-h-screen p-8"
+    class="min-h-screen bg-background relative overflow-hidden"
   >
-    <h1
-      class="text-4xl font-bold mb-6"
+    <div
+      class="absolute inset-0 bg-glow opacity-30"
+    />
+    <div
+      class="absolute inset-0 bg-grid opacity-20"
+    />
+    <div
+      class="fixed inset-0 bg-gradient-to-b from-black/0 via-primary/15 to-background pointer-events-none"
+    />
+    <div
+      class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_70%)] opacity-10 blur-3xl"
+    />
+    <section
+      class="relative z-10 px-6 lg:px-14 pt-20 pb-16"
     >
-      Our Team
-    </h1>
-    <p
-      class="text-lg"
+      <div
+        class="text-center max-w-4xl mx-auto"
+      >
+        <h1
+          class="text-4xl md:text-6xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/50 mb-6"
+        >
+          Meet Our Team
+        </h1>
+        <p
+          class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto"
+        >
+          The passionate individuals driving innovation and fostering AI education at Carleton University
+        </p>
+      </div>
+    </section>
+    <div
+      class="relative z-10"
     >
-      Meet the dedicated members of CAIS's.
-    </p>
-    <div />
+      <div
+        class="px-6 lg:px-14 pb-24 relative"
+      >
+        <div
+          class="absolute inset-0 pointer-events-none"
+        >
+          <div
+            class="absolute left-[20%] top-[30%] h-[40vh] w-[40vh] rounded-full bg-primary/30 blur-[100px]"
+          />
+          <div
+            class="absolute right-[10%] top-[20%] h-[30vh] w-[30vh] rounded-full bg-purple-500/20 blur-[80px]"
+          />
+        </div>
+        <div
+          class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_70%)] opacity-10 blur-3xl pointer-events-none"
+        />
+        <div
+          class="space-y-48 relative z-10"
+        >
+          <div>
+            <h2
+              class="text-4xl font-bold mb-24 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-neutral-400"
+            >
+              Executive Team
+            </h2>
+            <div
+              class="relative"
+            >
+              <div
+                class="absolute inset-0 flex justify-center"
+              >
+                <div
+                  class="relative h-full w-px bg-gradient-to-b from-primary/50 via-primary/10 to-transparent"
+                >
+                  <div
+                    class="absolute top-0 w-px h-full origin-top bg-primary"
+                  />
+                  <div
+                    class="absolute w-4 h-4 -translate-x-[7px] bg-primary rounded-full"
+                    style="top: 0%;"
+                  >
+                    <div
+                      class="absolute inset-0 animate-pulse rounded-full bg-primary blur-md"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="space-y-32 relative"
+              >
+                <div
+                  class="relative grid grid-cols-[1fr,2px,1fr] w-full px-16 group"
+                >
+                  <div
+                    class="pr-16"
+                  >
+                    <div
+                      class="flex justify-end"
+                    >
+                      <div
+                        class="max-w-md text-right"
+                      >
+                        <h3
+                          class="text-2xl font-semibold text-neutral-200"
+                        >
+                          Jeremy Friesen
+                        </h3>
+                        <p
+                          class="mt-2 text-lg text-primary"
+                        >
+                          President
+                        </p>
+                        <p
+                          class="mt-4 text-base text-neutral-400"
+                        >
+                          Favorite Hobby: Golf
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="relative"
+                  />
+                  <div
+                    class="pl-16"
+                  >
+                    <div>
+                      <div
+                        class="relative w-[280px] rounded-3xl bg-neutral-900/90 p-6 transition-all duration-300 hover:bg-neutral-800/90 hover:-translate-y-1 border border-transparent hover:border-primary/20"
+                      >
+                        <div
+                          class="absolute inset-0 rounded-3xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
+                        />
+                        <div
+                          class="flex flex-col items-center"
+                        >
+                          <div
+                            class="relative mb-4"
+                          >
+                            <div
+                              class="h-48 w-48 overflow-hidden rounded-3xl border-2 border-neutral-800 transition-colors duration-300 group-hover:border-primary/50"
+                            >
+                              <img
+                                alt="Jeremy Friesen"
+                                class="h-full w-full object-cover"
+                                height="320"
+                                loading="lazy"
+                                src="/stockIcon.jpg"
+                                width="320"
+                              />
+                            </div>
+                          </div>
+                          <a
+                            class="relative z-10 rounded-full p-3 text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-primary"
+                            href="https://www.linkedin.com/in/jeremyfriesen1/"
+                            rel="noopener noreferrer"
+                            target="_blank"
+                          >
+                            <svg
+                              class="h-6 w-6"
+                              fill="currentColor"
+                              height="1em"
+                              stroke="currentColor"
+                              stroke-width="0"
+                              viewBox="0 0 448 512"
+                              width="1em"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+                              />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="relative grid grid-cols-[1fr,2px,1fr] w-full px-16 group"
+                >
+                  <div
+                    class="pr-16"
+                  >
+                    <div
+                      class="flex justify-end"
+                    >
+                      <div
+                        class="relative w-[280px] rounded-3xl bg-neutral-900/90 p-6 transition-all duration-300 hover:bg-neutral-800/90 hover:-translate-y-1 border border-transparent hover:border-primary/20"
+                      >
+                        <div
+                          class="absolute inset-0 rounded-3xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
+                        />
+                        <div
+                          class="flex flex-col items-center"
+                        >
+                          <div
+                            class="relative mb-4"
+                          >
+                            <div
+                              class="h-48 w-48 overflow-hidden rounded-3xl border-2 border-neutral-800 transition-colors duration-300 group-hover:border-primary/50"
+                            >
+                              <img
+                                alt="Marc Aoun"
+                                class="h-full w-full object-cover"
+                                height="320"
+                                loading="lazy"
+                                src="/stockIcon.jpg"
+                                width="320"
+                              />
+                            </div>
+                          </div>
+                          <a
+                            class="relative z-10 rounded-full p-3 text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-primary"
+                            href="https://www.linkedin.com/in/marc-aoun-263b981ab/"
+                            rel="noopener noreferrer"
+                            target="_blank"
+                          >
+                            <svg
+                              class="h-6 w-6"
+                              fill="currentColor"
+                              height="1em"
+                              stroke="currentColor"
+                              stroke-width="0"
+                              viewBox="0 0 448 512"
+                              width="1em"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+                              />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="relative"
+                  />
+                  <div
+                    class="pl-16"
+                  >
+                    <div>
+                      <div
+                        class="max-w-md"
+                      >
+                        <h3
+                          class="text-2xl font-semibold text-neutral-200"
+                        >
+                          Marc Aoun
+                        </h3>
+                        <p
+                          class="mt-2 text-lg text-primary"
+                        >
+                          VP Academics
+                        </p>
+                        <p
+                          class="mt-4 text-base text-neutral-400"
+                        >
+                          Favorite Hobby: Soccer
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="relative grid grid-cols-[1fr,2px,1fr] w-full px-16 group"
+                >
+                  <div
+                    class="pr-16"
+                  >
+                    <div
+                      class="flex justify-end"
+                    >
+                      <div
+                        class="max-w-md text-right"
+                      >
+                        <h3
+                          class="text-2xl font-semibold text-neutral-200"
+                        >
+                          Sofia Alhennawi
+                        </h3>
+                        <p
+                          class="mt-2 text-lg text-primary"
+                        >
+                          VP Community
+                        </p>
+                        <p
+                          class="mt-4 text-base text-neutral-400"
+                        >
+                          Favorite Hobby: 
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="relative"
+                  />
+                  <div
+                    class="pl-16"
+                  >
+                    <div>
+                      <div
+                        class="relative w-[280px] rounded-3xl bg-neutral-900/90 p-6 transition-all duration-300 hover:bg-neutral-800/90 hover:-translate-y-1 border border-transparent hover:border-primary/20"
+                      >
+                        <div
+                          class="absolute inset-0 rounded-3xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
+                        />
+                        <div
+                          class="flex flex-col items-center"
+                        >
+                          <div
+                            class="relative mb-4"
+                          >
+                            <div
+                              class="h-48 w-48 overflow-hidden rounded-3xl border-2 border-neutral-800 transition-colors duration-300 group-hover:border-primary/50"
+                            >
+                              <img
+                                alt="Sofia Alhennawi"
+                                class="h-full w-full object-cover"
+                                height="320"
+                                loading="lazy"
+                                src="/stockIcon.jpg"
+                                width="320"
+                              />
+                            </div>
+                          </div>
+                          <a
+                            class="relative z-10 rounded-full p-3 text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-primary"
+                            href="https://www.linkedin.com/in/sofia-alhennawi-b6aa19344/"
+                            rel="noopener noreferrer"
+                            target="_blank"
+                          >
+                            <svg
+                              class="h-6 w-6"
+                              fill="currentColor"
+                              height="1em"
+                              stroke="currentColor"
+                              stroke-width="0"
+                              viewBox="0 0 448 512"
+                              width="1em"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+                              />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="relative grid grid-cols-[1fr,2px,1fr] w-full px-16 group"
+                >
+                  <div
+                    class="pr-16"
+                  >
+                    <div
+                      class="flex justify-end"
+                    >
+                      <div
+                        class="relative w-[280px] rounded-3xl bg-neutral-900/90 p-6 transition-all duration-300 hover:bg-neutral-800/90 hover:-translate-y-1 border border-transparent hover:border-primary/20"
+                      >
+                        <div
+                          class="absolute inset-0 rounded-3xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
+                        />
+                        <div
+                          class="flex flex-col items-center"
+                        >
+                          <div
+                            class="relative mb-4"
+                          >
+                            <div
+                              class="h-48 w-48 overflow-hidden rounded-3xl border-2 border-neutral-800 transition-colors duration-300 group-hover:border-primary/50"
+                            >
+                              <img
+                                alt="Nnaya Oluigbo"
+                                class="h-full w-full object-cover"
+                                height="320"
+                                loading="lazy"
+                                src="/stockIcon.jpg"
+                                width="320"
+                              />
+                            </div>
+                          </div>
+                          <a
+                            class="relative z-10 rounded-full p-3 text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-primary"
+                            href="https://www.linkedin.com/in/chizurum-oluigbo/"
+                            rel="noopener noreferrer"
+                            target="_blank"
+                          >
+                            <svg
+                              class="h-6 w-6"
+                              fill="currentColor"
+                              height="1em"
+                              stroke="currentColor"
+                              stroke-width="0"
+                              viewBox="0 0 448 512"
+                              width="1em"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+                              />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="relative"
+                  />
+                  <div
+                    class="pl-16"
+                  >
+                    <div>
+                      <div
+                        class="max-w-md"
+                      >
+                        <h3
+                          class="text-2xl font-semibold text-neutral-200"
+                        >
+                          Nnaya Oluigbo
+                        </h3>
+                        <p
+                          class="mt-2 text-lg text-primary"
+                        >
+                          VP Events
+                        </p>
+                        <p
+                          class="mt-4 text-base text-neutral-400"
+                        >
+                          Favorite Hobby: Reading
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="relative grid grid-cols-[1fr,2px,1fr] w-full px-16 group"
+                >
+                  <div
+                    class="pr-16"
+                  >
+                    <div
+                      class="flex justify-end"
+                    >
+                      <div
+                        class="max-w-md text-right"
+                      >
+                        <h3
+                          class="text-2xl font-semibold text-neutral-200"
+                        >
+                          Alexander James Rigas
+                        </h3>
+                        <p
+                          class="mt-2 text-lg text-primary"
+                        >
+                          VP Finance
+                        </p>
+                        <p
+                          class="mt-4 text-base text-neutral-400"
+                        >
+                          Favorite Hobby: 
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="relative"
+                  />
+                  <div
+                    class="pl-16"
+                  >
+                    <div>
+                      <div
+                        class="relative w-[280px] rounded-3xl bg-neutral-900/90 p-6 transition-all duration-300 hover:bg-neutral-800/90 hover:-translate-y-1 border border-transparent hover:border-primary/20"
+                      >
+                        <div
+                          class="absolute inset-0 rounded-3xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
+                        />
+                        <div
+                          class="flex flex-col items-center"
+                        >
+                          <div
+                            class="relative mb-4"
+                          >
+                            <div
+                              class="h-48 w-48 overflow-hidden rounded-3xl border-2 border-neutral-800 transition-colors duration-300 group-hover:border-primary/50"
+                            >
+                              <img
+                                alt="Alexander James Rigas"
+                                class="h-full w-full object-cover"
+                                height="320"
+                                loading="lazy"
+                                src="/stockIcon.jpg"
+                                width="320"
+                              />
+                            </div>
+                          </div>
+                          <a
+                            class="relative z-10 rounded-full p-3 text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-primary"
+                            href="https://www.linkedin.com/in/alexanderrigas/"
+                            rel="noopener noreferrer"
+                            target="_blank"
+                          >
+                            <svg
+                              class="h-6 w-6"
+                              fill="currentColor"
+                              height="1em"
+                              stroke="currentColor"
+                              stroke-width="0"
+                              viewBox="0 0 448 512"
+                              width="1em"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+                              />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="relative grid grid-cols-[1fr,2px,1fr] w-full px-16 group"
+                >
+                  <div
+                    class="pr-16"
+                  >
+                    <div
+                      class="flex justify-end"
+                    >
+                      <div
+                        class="relative w-[280px] rounded-3xl bg-neutral-900/90 p-6 transition-all duration-300 hover:bg-neutral-800/90 hover:-translate-y-1 border border-transparent hover:border-primary/20"
+                      >
+                        <div
+                          class="absolute inset-0 rounded-3xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
+                        />
+                        <div
+                          class="flex flex-col items-center"
+                        >
+                          <div
+                            class="relative mb-4"
+                          >
+                            <div
+                              class="h-48 w-48 overflow-hidden rounded-3xl border-2 border-neutral-800 transition-colors duration-300 group-hover:border-primary/50"
+                            >
+                              <img
+                                alt="Abdulrahman Zrein"
+                                class="h-full w-full object-cover"
+                                height="320"
+                                loading="lazy"
+                                src="/stockIcon.jpg"
+                                width="320"
+                              />
+                            </div>
+                          </div>
+                          <a
+                            class="relative z-10 rounded-full p-3 text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-primary"
+                            href="https://www.linkedin.com/in/abdulrahmanzrein/"
+                            rel="noopener noreferrer"
+                            target="_blank"
+                          >
+                            <svg
+                              class="h-6 w-6"
+                              fill="currentColor"
+                              height="1em"
+                              stroke="currentColor"
+                              stroke-width="0"
+                              viewBox="0 0 448 512"
+                              width="1em"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+                              />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="relative"
+                  />
+                  <div
+                    class="pl-16"
+                  >
+                    <div>
+                      <div
+                        class="max-w-md"
+                      >
+                        <h3
+                          class="text-2xl font-semibold text-neutral-200"
+                        >
+                          Abdulrahman Zrein
+                        </h3>
+                        <p
+                          class="mt-2 text-lg text-primary"
+                        >
+                          VP Projects/Technology
+                        </p>
+                        <p
+                          class="mt-4 text-base text-neutral-400"
+                        >
+                          Favorite Hobby: Skiing
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="mt-24"
+        >
+          <h2
+            class="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-neutral-400"
+          >
+            Previous Teams
+          </h2>
+          <div
+            class="space-y-16"
+          >
+            <div
+              class="mb-8"
+            >
+              <h3
+                class="text-xl font-semibold mb-4 text-center text-primary"
+              >
+                2025-2026
+              </h3>
+              <div
+                class="flex flex-wrap justify-center gap-6"
+              >
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Hamzah Hamad"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Hamzah Hamad
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      President
+                    </div>
+                    <div
+                      class="text-neutral-400 text-xs mb-1"
+                    >
+                      Favorite Hobby: Golf
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/hamzahhamad"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Yuvraj Bains"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Yuvraj Bains
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      VP Academics
+                    </div>
+                    <div
+                      class="text-neutral-400 text-xs mb-1"
+                    >
+                      Favorite Hobby: Ice Hockey
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/yuvrajbains00/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Sahil Kumar"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Sahil Kumar
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      VP Finance & Community
+                    </div>
+                    <div
+                      class="text-neutral-400 text-xs mb-1"
+                    >
+                      Favorite Hobby: Cricket
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/-sahil-kumar-/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Megh Ghajjar"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Megh Ghajjar
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      VP Events
+                    </div>
+                    <div
+                      class="text-neutral-400 text-xs mb-1"
+                    >
+                      Favorite Hobby: Exploring Music
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/megh-gajjar-269543308/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mb-8"
+            >
+              <h3
+                class="text-xl font-semibold mb-4 text-center text-primary"
+              >
+                2024-2025
+              </h3>
+              <div
+                class="flex flex-wrap justify-center gap-6"
+              >
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Awwab Mahdi"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Awwab Mahdi
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Co-President
+                    </div>
+                    <div
+                      class="text-neutral-400 text-xs mb-1"
+                    >
+                      Current obsession: Lord of the Mysteries
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/awwabm"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Tarek Sallam"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Tarek Sallam
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Co-President
+                    </div>
+                    <div
+                      class="text-neutral-400 text-xs mb-1"
+                    >
+                      Current obsession: Deep Learning
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/tareksallam"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Diego Fuentes"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Diego Fuentes
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      VP Academics
+                    </div>
+                    <div
+                      class="text-neutral-400 text-xs mb-1"
+                    >
+                      Current obsession: Holistic Health and Wellness
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/diego-fuentesa"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Kierra Blankespoor"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Kierra Blankespoor
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      VP Community
+                    </div>
+                    <div
+                      class="text-neutral-400 text-xs mb-1"
+                    >
+                      Current Obsession: Dinner rolls
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/kierra-blankespoor"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Vaibhav Panchanadam"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Vaibhav Panchanadam
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      VP Events
+                    </div>
+                    <div
+                      class="text-neutral-400 text-xs mb-1"
+                    >
+                      Current obsession: blue by young kai
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/vaibhav-panchanadam"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Mohamed Bouslama"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Mohamed Bouslama
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      VP Events
+                    </div>
+                    <div
+                      class="text-neutral-400 text-xs mb-1"
+                    >
+                      Current obsession: Game dev
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/mohamed-bouslama-2092892b1"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Tarek Ibrahim"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Tarek Ibrahim
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      VP Projects and Technology
+                    </div>
+                    <div
+                      class="text-neutral-400 text-xs mb-1"
+                    >
+                      Current obsession: Go
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/im-tarek"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Zeeshan Jahangir"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Zeeshan Jahangir
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      VP Finance
+                    </div>
+                    <div
+                      class="text-neutral-400 text-xs mb-1"
+                    >
+                      Current obsession: Collecting Fake Internet Points
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/zeeshan-jahangir-604ba762"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mb-8"
+            >
+              <h3
+                class="text-xl font-semibold mb-4 text-center text-primary"
+              >
+                2023-2024
+              </h3>
+              <div
+                class="flex flex-wrap justify-center gap-6"
+              >
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Enos Odigie"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Enos Odigie
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Co-President
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/enosodigie/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Gordon Tang"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Gordon Tang
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Co-President & VP Finance
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/gordon-tang-2023/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Kanishk Patoliya"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Kanishk Patoliya
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      VP External and Events
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/kanishk-patoliya/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Nadia Uddin"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Nadia Uddin
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Events Coordinator
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/nadiauddin86/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Farzad Roozitalab"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Farzad Roozitalab
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Workshop Lead
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/farzad-roozitalab/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="David Hobson"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      David Hobson
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Workshop Lead
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/david-hobson-2728661b0/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Abdul Mutakabbir"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Abdul Mutakabbir
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Workshop Lead
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/abdul-mutakabbir-15ab41188/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Khun Thu Rein"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Khun Thu Rein
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Webmaster
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/khunthurein77ca/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Rabten Tsering"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Rabten Tsering
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Webmaster
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/rabten-tsering/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Jahnelle Woldegiorgis"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Jahnelle Woldegiorgis
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Social Media Coordinator
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/jahnelle-woldegiorgis/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Itoro Umanah"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Itoro Umanah
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Social Media Coordinator
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/itoro-umanah-a85532210/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Renee Tejani"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Renee Tejani
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Social Media Coordinator
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/reneetejani/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mb-8"
+            >
+              <h3
+                class="text-xl font-semibold mb-4 text-center text-primary"
+              >
+                2022-2023
+              </h3>
+              <div
+                class="flex flex-wrap justify-center gap-6"
+              >
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Enos Odigie"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Enos Odigie
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Co-President
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/enosodigie/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Gordon Tang"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Gordon Tang
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Co-President & VP Finance
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/gordon-tang-2023/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Kanishk Patoliya"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Kanishk Patoliya
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      VP External and Events
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/kanishk-patoliya/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Nadia Uddin"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Nadia Uddin
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Events Coordinator
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/nadiauddin86/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Farzad Roozitalab"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Farzad Roozitalab
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Workshop Lead
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/farzad-roozitalab/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="David Hobson"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      David Hobson
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Workshop Lead
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/david-hobson-2728661b0/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Khun Thu Rein"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Khun Thu Rein
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Webmaster
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/khunthurein77ca/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Rabten Tsering"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Rabten Tsering
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Webmaster
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/rabten-tsering/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Jahnelle Woldegiorgis"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Jahnelle Woldegiorgis
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Social Media Coordinator
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/jahnelle-woldegiorgis/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Itoro Umanah"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Itoro Umanah
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Social Media Coordinator
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/itoro-umanah-a85532210/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Renee Tejani"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Renee Tejani
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Social Media Coordinator
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/reneetejani/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mb-8"
+            >
+              <h3
+                class="text-xl font-semibold mb-4 text-center text-primary"
+              >
+                2021-2022
+              </h3>
+              <div
+                class="flex flex-wrap justify-center gap-6"
+              >
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Abdullah Al-Chihabi"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Abdullah Al-Chihabi
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Co-President
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/abdullahalchihabi/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Gordon Tang"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Gordon Tang
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Co-President
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/gordon-tang-2023/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Kyle Knobloch"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Kyle Knobloch
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      VP Events
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/kylejknobloch/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Fareen Lavji"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Fareen Lavji
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      VP Finance
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/flavji/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Japinder Sandhu"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Japinder Sandhu
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      VP Sponsorship
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/japinder-sandhu/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Justin Bellavance"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Justin Bellavance
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      VP Development
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/justin-b-bba970129/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Ujan Sen"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Ujan Sen
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      VP External
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/ujansen/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Enos Odigie"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Enos Odigie
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      VP Engagement and Webmaster
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/enosodigie/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Kanishk Patoliya"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Kanishk Patoliya
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      VP Communications and Engagement
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/kanishk-patoliya/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Anoushka Singhal"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Anoushka Singhal
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Social Media Coordinator
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/anoushkasinghal/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Samaia Aidroos"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Samaia Aidroos
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Social Media Coordinator
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/samaia-aidroos-290757208/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Brian Yang"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Brian Yang
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Social Media Coordinator
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/brian-yang-14842020a/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Anh Khoa Tran"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Anh Khoa Tran
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Workshop Lead
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/anh-khoa-tran/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Victoria Ajila"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Victoria Ajila
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Workshop Lead
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/victoria-ajila-63616914b/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Arushan Sinnadurai"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Arushan Sinnadurai
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Workshop Lead
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/arushan-sinnadurai/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Damilola Adesola"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Damilola Adesola
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Workshop Lead
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/damilola-adesola/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
+                >
+                  <img
+                    alt="Ilan Gofman"
+                    class="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                    src="/stockIcon.jpg"
+                  />
+                  <div
+                    class="text-center"
+                  >
+                    <div
+                      class="font-semibold text-neutral-200"
+                    >
+                      Ilan Gofman
+                    </div>
+                    <div
+                      class="text-primary text-sm mb-1"
+                    >
+                      Workshop Lead
+                    </div>
+                    <a
+                      class="inline-block mt-1 text-primary hover:underline"
+                      href="https://www.linkedin.com/in/ilan-gofman/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </DocumentFragment>
 `;

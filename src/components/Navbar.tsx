@@ -166,6 +166,11 @@ export default function Navbar() {
       </div>
 
       <div
+        id="mobile-menu"
+        data-testid="mobile-menu"
+        role="navigation"
+        aria-label="Mobile navigation"
+        aria-hidden={!isMobileMenuOpen}
         className={`${isMobileMenuOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"} 
           sm:hidden absolute top-full left-0 right-0 overflow-hidden transition-all duration-300 
           bg-gradient-to-b from-background/95 to-background/90 backdrop-blur-xl shadow-lg border-t border-border/20`}
