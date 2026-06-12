@@ -5,6 +5,7 @@ import { Stats } from "../../components/Stats";
 import { UpcomingEvents } from "../../components/UpcomingEvents";
 import { LatestEvents } from "../../components/LatestEvents";
 import { JoinCTA } from "../../components/JoinCTA";
+import { publicAssetPath } from "@/lib/assets";
 
 const HomePage = () => {
   return (
@@ -18,7 +19,7 @@ const HomePage = () => {
 
       <Hero
         description="A student club at Carleton University for anyone interested in AI and machine learning. Join us to learn, build projects, and meet others who share your interests."
-        logoSrc="/header-club.png"
+        logoSrc={publicAssetPath("/header-club.png")}
         primaryAction={{
           text: "See Events",
           to: "/events",

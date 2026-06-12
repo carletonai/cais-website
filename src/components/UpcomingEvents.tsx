@@ -9,6 +9,7 @@ import {
   BellIcon,
 } from "lucide-react";
 import eventsData from "@/data/events.json";
+import { publicAssetPath } from "@/lib/assets";
 
 const now = new Date();
 now.setHours(0, 0, 0, 0);
@@ -112,7 +113,9 @@ export function UpcomingEvents() {
                 <div className="aspect-video relative overflow-hidden">
                   <div
                     className="absolute inset-0 bg-cover bg-center transform group-hover:scale-110 transition-transform duration-500"
-                    style={{ backgroundImage: `url(${event.image})` }}
+                    style={{
+                      backgroundImage: `url(${publicAssetPath(event.image)})`,
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
                 </div>
