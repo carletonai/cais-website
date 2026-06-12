@@ -95,86 +95,58 @@ const item = {
 
 const Contribute = () => {
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/20 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-primary/10 blur-[120px] pointer-events-none" />
-      <div className="absolute top-2/3 left-1/3 w-72 h-72 rounded-full bg-primary/15 blur-[120px] pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-background pointer-events-none" />
-      <div className="absolute inset-0 bg-glow opacity-20 pointer-events-none" />
-      <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
+    <div className="container mx-auto px-4 py-16 max-w-4xl">
+      <h1 className="text-4xl font-bold mb-6">Get Involved</h1>
 
-      <div className="relative z-10 container mx-auto px-4 pt-28 pb-24">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16 max-w-2xl mx-auto"
-        >
-          <p className="text-sm font-mono text-primary mb-4 tracking-widest uppercase">
-            Get Involved
+      <p className="text-lg text-muted-foreground mb-12">
+        Interested in artificial intelligence? There are many ways to get
+        involved with the Carleton Artificial Intelligence Society (CAIS),
+        whether you're completely new to AI or already building projects.
+      </p>
+
+      <div className="space-y-8">
+        <div className="p-6 rounded-lg border">
+          <h2 className="text-2xl font-semibold mb-2">Attend Our Events</h2>
+          <p className="text-muted-foreground">
+            Join our workshops, panels, networking events, and technical
+            sessions to learn about artificial intelligence and connect with
+            other students.
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/50 mb-4">
-            Contribute to CAIS
-          </h1>
-          <p className="text-lg text-muted-foreground">
-            There are many ways to make an impact — pick what fits you best.
+        </div>
+
+        <div className="p-6 rounded-lg border">
+          <h2 className="text-2xl font-semibold mb-2">Work on Projects</h2>
+          <p className="text-muted-foreground">
+            Participate in AI-related projects, hackathons, and collaborative
+            initiatives to gain hands-on experience and build your portfolio.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
-        >
-          {WAYS.map(({ icon: Icon, title, description, link }) => (
-            <motion.div
-              key={title}
-              variants={item}
-              className="group bg-card/50 backdrop-blur-sm border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5 transition-all duration-200 flex flex-col"
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                  <Icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold">{title}</h3>
-              </div>
-              <p className="text-muted-foreground leading-relaxed text-sm flex-1 mb-4">
-                {description}
-              </p>
-              {link.external ? (
-                <a
-                  href={link.to}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-primary hover:text-primary/80 font-medium transition-colors"
-                >
-                  {link.label} →
-                </a>
-              ) : (
-                <Link
-                  to={link.to}
-                  className="text-sm text-primary hover:text-primary/80 font-medium transition-colors"
-                >
-                  {link.label} →
-                </Link>
-              )}
-            </motion.div>
-          ))}
-        </motion.div>
+        <div className="p-6 rounded-lg border">
+          <h2 className="text-2xl font-semibold mb-2">Volunteer</h2>
+          <p className="text-muted-foreground">
+            Help organize events, support workshops, and contribute to the
+            growth of the CAIS community.
+          </p>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="flex justify-center mt-16"
-        >
-          <Button asChild size="lg" variant="default">
-            <Link to="/contact">Contact Us</Link>
-          </Button>
-        </motion.div>
+        <div className="p-6 rounded-lg border">
+          <h2 className="text-2xl font-semibold mb-2">Join the Executive Team</h2>
+          <p className="text-muted-foreground">
+            Executive recruitment takes place periodically throughout the year.
+            Follow our announcements and social media channels for opportunities
+            to apply.
+          </p>
+        </div>
+
+        <div className="p-6 rounded-lg border">
+          <h2 className="text-2xl font-semibold mb-2">Contact Us</h2>
+          <p className="text-muted-foreground">
+            Have questions or ideas? We'd love to hear from you. Reach out to
+            the CAIS team through our social media channels or at one of our
+            events.
+          </p>
+        </div>
       </div>
     </div>
   );
