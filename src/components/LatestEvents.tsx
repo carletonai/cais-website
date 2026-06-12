@@ -119,8 +119,17 @@ export function LatestEvents() {
                   </div>
 
                   {event.rsvpLink && event.rsvpLink !== "#" && (
-                    <Button variant="ghost" size="sm" className="group/btn" asChild>
-                      <a href={event.rsvpLink} target="_blank" rel="noopener noreferrer">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="group/btn"
+                      asChild
+                    >
+                      <a
+                        href={event.rsvpLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         Details
                         <ArrowRightIcon className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
                       </a>

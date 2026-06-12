@@ -131,7 +131,9 @@ const Contribute = () => {
         </div>
 
         <div className="p-6 rounded-lg border">
-          <h2 className="text-2xl font-semibold mb-2">Join the Executive Team</h2>
+          <h2 className="text-2xl font-semibold mb-2">
+            Join the Executive Team
+          </h2>
           <p className="text-muted-foreground">
             Executive recruitment takes place periodically throughout the year.
             Follow our announcements and social media channels for opportunities

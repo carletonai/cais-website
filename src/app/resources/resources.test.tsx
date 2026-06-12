@@ -5,6 +5,8 @@ import Resources from "./resources";
 describe("Resources", () => {
   it("renders resources page", () => {
     render(<Resources />);
-    expect(screen.getByText("Resources")).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /CAIS Resources Terminal/i }),
+    ).toBeInTheDocument();
   });
 });

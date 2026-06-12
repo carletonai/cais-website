@@ -108,7 +108,9 @@ const AboutPage = () => {
                 </div>
                 <h3 className="text-lg font-semibold">{title}</h3>
               </div>
-              <p className="text-muted-foreground leading-relaxed">{description}</p>
+              <p className="text-muted-foreground leading-relaxed">
+                {description}
+              </p>
             </motion.div>
           ))}
         </motion.div>

@@ -2,7 +2,12 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { CalendarIcon, MapPinIcon, ArrowRightIcon, BellIcon } from "lucide-react";
+import {
+  CalendarIcon,
+  MapPinIcon,
+  ArrowRightIcon,
+  BellIcon,
+} from "lucide-react";
 import eventsData from "@/data/events.json";
 
 const now = new Date();
@@ -69,8 +74,12 @@ export function UpcomingEvents() {
           >
             <BellIcon className="w-10 h-10 text-primary/60" />
             <div className="text-center">
-              <p className="text-lg font-medium mb-1">No upcoming events right now</p>
-              <p className="text-muted-foreground">Stay tuned — more events are on the way.</p>
+              <p className="text-lg font-medium mb-1">
+                No upcoming events right now
+              </p>
+              <p className="text-muted-foreground">
+                Stay tuned — more events are on the way.
+              </p>
             </div>
             <Button asChild variant="default" size="lg">
               <a
@@ -141,8 +150,17 @@ export function UpcomingEvents() {
                     </div>
 
                     {event.rsvpLink && event.rsvpLink !== "#" && (
-                      <Button variant="ghost" size="sm" className="group/btn" asChild>
-                        <a href={event.rsvpLink} target="_blank" rel="noopener noreferrer">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="group/btn"
+                        asChild
+                      >
+                        <a
+                          href={event.rsvpLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           RSVP
                           <ArrowRightIcon className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
                         </a>

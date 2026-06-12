@@ -5,7 +5,6 @@ import { BrowserRouter } from "react-router-dom";
 import Hero from "./Hero";
 
 const mockProps = {
-  title: "Test Title",
   description: "Test Description",
   logoSrc: "/test-logo.png",
   primaryAction: {
@@ -29,11 +28,11 @@ const renderHero = (props = mockProps) => {
 describe("Hero Component", () => {
   it("renders title and description", async () => {
     renderHero();
-    // Check for individual words of the title
-    mockProps.title.split(" ").forEach((word) => {
-      expect(screen.getByText(word)).toBeInTheDocument();
-    });
-    // Check for the description text
+
+    expect(
+      screen.getByRole("heading", { name: /Carleton\s+ΛI\s+Society/i }),
+    ).toBeInTheDocument();
+
     const description = await screen.findByText(mockProps.description);
     expect(description).toBeInTheDocument();
   });

@@ -176,7 +176,7 @@ ${index + 1}. ${
    Details: ${event.description}
    Tags: ${event.tags.map((tag) => `#${tag}`).join(" ")}
    ${event.rsvpLink ? `RSVP: ${event.rsvpLink}` : ""}
-`
+`,
   )
   .join("\n")}
 
@@ -205,7 +205,7 @@ ${
    - ${member.name}
    - ${member.description}
    ${member.linkedinURL ? `   - LinkedIn: ${member.linkedinURL}` : ""}
-`
+`,
   )
   .join("\n")}
 
@@ -327,7 +327,7 @@ const ANIMATIONS = {
       <pre
         className={cn(
           "font-mono text-center whitespace-pre",
-          THEMES[currentTheme].primary
+          THEMES[currentTheme].primary,
         )}
       >
         {ASCII_ART.cais}
@@ -344,13 +344,13 @@ const ANIMATIONS = {
       <div
         className={cn(
           "h-1 w-48 mx-auto mt-2 rounded-full overflow-hidden",
-          THEMES[currentTheme].inputBg
+          THEMES[currentTheme].inputBg,
         )}
       >
         <div
           className={cn(
             "h-full animate-progress rounded-full",
-            THEMES[currentTheme].accent
+            THEMES[currentTheme].accent,
           )}
           style={{ width: "25%" }}
         />
@@ -364,13 +364,13 @@ const ANIMATIONS = {
       <div
         className={cn(
           "h-1 w-48 mx-auto mt-2 rounded-full overflow-hidden",
-          THEMES[currentTheme].inputBg
+          THEMES[currentTheme].inputBg,
         )}
       >
         <div
           className={cn(
             "h-full animate-progress rounded-full",
-            THEMES[currentTheme].accent
+            THEMES[currentTheme].accent,
           )}
           style={{ width: "50%" }}
         />
@@ -384,13 +384,13 @@ const ANIMATIONS = {
       <div
         className={cn(
           "h-1 w-48 mx-auto mt-2 rounded-full overflow-hidden",
-          THEMES[currentTheme].inputBg
+          THEMES[currentTheme].inputBg,
         )}
       >
         <div
           className={cn(
             "h-full animate-progress rounded-full",
-            THEMES[currentTheme].accent
+            THEMES[currentTheme].accent,
           )}
           style={{ width: "75%" }}
         />
@@ -404,13 +404,13 @@ const ANIMATIONS = {
       <div
         className={cn(
           "h-1 w-48 mx-auto mt-2 rounded-full overflow-hidden",
-          THEMES[currentTheme].inputBg
+          THEMES[currentTheme].inputBg,
         )}
       >
         <div
           className={cn(
             "h-full animate-progress rounded-full",
-            THEMES[currentTheme].accent
+            THEMES[currentTheme].accent,
           )}
           style={{ width: "100%" }}
         />
@@ -536,7 +536,7 @@ const Resources = () => {
     input: string,
     output: React.ReactNode | string,
     isError = false,
-    isSystem = false
+    isSystem = false,
   ) => {
     const timestamp = new Date().toLocaleString();
     const processedOutput =
@@ -606,7 +606,7 @@ const Resources = () => {
 
       const input = currentInput.toLowerCase();
       const matchingCommands = availableCommands.filter((cmd) =>
-        cmd.startsWith(input)
+        cmd.startsWith(input),
       );
 
       if (matchingCommands.length === 1) {
@@ -624,7 +624,7 @@ const Resources = () => {
         if (newIndex < history.commands.length) {
           setHistory((prev) => ({ ...prev, currentIndex: newIndex }));
           setCurrentInput(
-            history.commands[history.commands.length - 1 - newIndex]
+            history.commands[history.commands.length - 1 - newIndex],
           );
         }
       }
@@ -636,7 +636,7 @@ const Resources = () => {
         setCurrentInput(
           newIndex === -1
             ? ""
-            : history.commands[history.commands.length - 1 - newIndex]
+            : history.commands[history.commands.length - 1 - newIndex],
         );
       }
     } else if (e.key === "Enter") {
@@ -1292,7 +1292,7 @@ Contact: partnerships@carletonai.com
             <div>Type your guess below:</div>
           </div>,
           false,
-          true
+          true,
         );
         break;
     }
@@ -1331,7 +1331,7 @@ Contact: partnerships@carletonai.com
         )}
       </div>,
       false,
-      true
+      true,
     );
 
     if (gameOver) setCurrentGame(null);
@@ -1341,7 +1341,7 @@ Contact: partnerships@carletonai.com
     <div
       className={cn(
         "min-h-screen relative overflow-hidden",
-        THEMES[theme].background
+        THEMES[theme].background,
       )}
     >
       {}
@@ -1364,7 +1364,7 @@ Contact: partnerships@carletonai.com
           "absolute inset-0 bg-gradient-to-b",
           theme === "matrix"
             ? "from-green-900/0 via-green-900/20 to-black"
-            : "from-black/0 via-black/20 to-background"
+            : "from-black/0 via-black/20 to-background",
         )}
       />
 
@@ -1378,7 +1378,7 @@ Contact: partnerships@carletonai.com
             className={cn(
               "text-4xl sm:text-5xl font-bold mb-8 text-center bg-clip-text text-transparent",
               "bg-gradient-to-r",
-              THEMES[theme].gradient
+              THEMES[theme].gradient,
             )}
           >
             CAIS Resources Terminal
@@ -1395,7 +1395,7 @@ Contact: partnerships@carletonai.com
             "border border-primary/10",
             "font-mono text-sm sm:text-base",
             "shadow-lg shadow-primary/10",
-            theme === "matrix" ? "matrix-scrollbar" : "terminal-scrollbar"
+            theme === "matrix" ? "matrix-scrollbar" : "terminal-scrollbar",
           )}
         >
           <div className="flex items-center gap-2 mb-4 pb-2 border-b border-primary/10">
@@ -1407,7 +1407,7 @@ Contact: partnerships@carletonai.com
             <div
               className={cn(
                 "flex-1 text-center text-xs",
-                THEMES[theme].primary
+                THEMES[theme].primary,
               )}
             >
               CAIS Terminal - {theme.charAt(0).toUpperCase() + theme.slice(1)}{" "}
@@ -1418,7 +1418,7 @@ Contact: partnerships@carletonai.com
           <div
             className={cn(
               "h-[60vh] overflow-y-auto mb-4 space-y-2",
-              theme === "matrix" ? "matrix-scrollbar" : "terminal-scrollbar"
+              theme === "matrix" ? "matrix-scrollbar" : "terminal-scrollbar",
             )}
             style={{
               scrollbarWidth: "thin",
@@ -1436,7 +1436,7 @@ Contact: partnerships@carletonai.com
                   <div
                     className={cn(
                       "flex items-center gap-2",
-                      THEMES[theme].primary
+                      THEMES[theme].primary,
                     )}
                   >
                     <span>{">"}</span>
@@ -1456,7 +1456,7 @@ Contact: partnerships@carletonai.com
                       : cmd.isSystem
                         ? THEMES[theme].accent
                         : "text-muted-foreground",
-                    typeof cmd.output === "object" && "w-full"
+                    typeof cmd.output === "object" && "w-full",
                   )}
                 >
                   {cmd.output}
@@ -1477,7 +1477,7 @@ Contact: partnerships@carletonai.com
                   "flex-1 bg-transparent border-none outline-none",
                   THEMES[theme].primary,
                   "placeholder:text-opacity-50",
-                  isBooting && "cursor-not-allowed opacity-50"
+                  isBooting && "cursor-not-allowed opacity-50",
                 )}
                 placeholder={
                   isBooting ? "Initializing..." : "Type a command..."

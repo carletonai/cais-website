@@ -3,18 +3,912 @@
 exports[`renders EventsPage correctly 1`] = `
 <DocumentFragment>
   <div
-    class="min-h-screen p-8"
+    class="min-h-screen bg-background relative overflow-hidden"
   >
-    <h1
-      class="text-4xl font-bold mb-6"
+    <div
+      class="absolute inset-0 bg-glow opacity-30"
+    />
+    <div
+      class="absolute inset-0 bg-grid opacity-20"
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-background"
+    />
+    <section
+      class="relative h-[70vh] flex items-center justify-center overflow-hidden"
     >
-      Events
-    </h1>
-    <p
-      class="text-lg"
+      <div
+        class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_65%)] opacity-20"
+      />
+      <div
+        class="container mx-auto text-center relative z-10 px-4"
+      >
+        <h1
+          class="text-7xl sm:text-8xl font-bold mb-6 text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/50"
+        >
+          Events
+        </h1>
+        <p
+          class="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+        >
+          Join us for immersive workshops, insightful panels, and engaging discussions about the future of artificial intelligence.
+        </p>
+      </div>
+    </section>
+    <section
+      class="relative z-10 py-8"
     >
-      Stay tuned for upcoming CAIS events and activities.
-    </p>
+      <div
+        class="container mx-auto px-4"
+      >
+        <div
+          class="flex flex-wrap gap-3 justify-center mb-12"
+        >
+          <div>
+            <button
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-6 py-2 rounded-full transition-all duration-300 hover:scale-105 scale-105 shadow-lg shadow-primary/20"
+            >
+              All
+            </button>
+          </div>
+          <div>
+            <button
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
+            >
+              Workshop
+            </button>
+          </div>
+          <div>
+            <button
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
+            >
+              Social
+            </button>
+          </div>
+          <div>
+            <button
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
+            >
+              Panel
+            </button>
+          </div>
+          <div>
+            <button
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
+            >
+              Symposium
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="relative z-10 py-16 px-4"
+    >
+      <div
+        class="container mx-auto"
+      >
+        <h2
+          class="text-3xl font-bold mb-8 text-glow"
+        >
+          Upcoming Events
+        </h2>
+        <p
+          class="text-muted-foreground mb-16"
+        >
+          No upcoming events are currently scheduled. Check back soon for updates.
+        </p>
+        <h2
+          class="text-3xl font-bold mb-8 text-glow"
+        >
+          Past Events
+        </h2>
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <div
+            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
+          >
+            <div
+              class="aspect-video relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                style="background-image: url(/assets/events/ml-workshop.jpg);"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+            </div>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2025-01-15
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  Teraanga Commons
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2"
+              >
+                Club Expo
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-2"
+              >
+                Presenting the club to new students and recruiting new members.
+              </p>
+              <div
+                class="flex gap-2 flex-wrap"
+              >
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  social
+                </span>
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  recruitment
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
+          >
+            <div
+              class="aspect-video relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                style="background-image: url(/assets/events/ml-workshop.jpg);"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+            </div>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2025-01-22
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  Paterson Hall 114
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2"
+              >
+                Club Executive Meet and Greet
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-2"
+              >
+                Meet the club executives and learn about the club's goals and our plans for the future
+              </p>
+              <div
+                class="flex gap-2 flex-wrap"
+              >
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  social
+                </span>
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  planning
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
+          >
+            <div
+              class="aspect-video relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                style="background-image: url(/assets/events/ml-workshop.jpg);"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+            </div>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2025-03-06
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  Tory Building 217
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2"
+              >
+                Introduction to Artificial Intelligence
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-2"
+              >
+                Learn the fundamentals of artificial intelligence, focusing on the history, different types of algorithms, and how you can learn about it.
+              </p>
+              <div
+                class="flex gap-2 flex-wrap"
+              >
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  beginner-friendly
+                </span>
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  conceptual
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
+          >
+            <div
+              class="aspect-video relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                style="background-image: url(/assets/events/neural-networks.jpg);"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+            </div>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2025-03-15
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  Richcraft Hall 1200
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2"
+              >
+                CUHacking AI Workshop
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-2"
+              >
+                Hackathon workshop on how to implement Ollama and HuggingFace models in your projects. Also, mentorship access to hackathon participants.
+              </p>
+              <div
+                class="flex gap-2 flex-wrap"
+              >
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  beginner-friendly
+                </span>
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  hands-on
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
+          >
+            <div
+              class="aspect-video relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                style="background-image: url(/assets/events/neural-networks.jpg);"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+            </div>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2025-03-20
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  Canal Building 2400
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2"
+              >
+                Build Your Own Neural Network
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-2"
+              >
+                Beginner workshop on implementing neural networks and a demo on how to build your own model.
+              </p>
+              <div
+                class="flex gap-2 flex-wrap"
+              >
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  hands-on
+                </span>
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  technical
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
+          >
+            <div
+              class="aspect-video relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                style="background-image: url(/assets/events/neural-networks.jpg);"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+            </div>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2025-04-02
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  Tory Building 431
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2"
+              >
+                Using AI APIs
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-2"
+              >
+                Learn how to use AI APIs to implement AI in your projects.
+              </p>
+              <div
+                class="flex gap-2 flex-wrap"
+              >
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  hands-on
+                </span>
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  technical
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
+          >
+            <div
+              class="aspect-video relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                style="background-image: url(/assets/events/neural-networks.jpg);"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+            </div>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2025-11-28
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  Tory Building 342
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2"
+              >
+                CAIS Icebreaker
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-2"
+              >
+                Meet the CAIS executive team, learn about the club, and connect with students interested in AI.
+              </p>
+              <div
+                class="flex gap-2 flex-wrap"
+              >
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  beginner-friendly
+                </span>
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  networking
+                </span>
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  social
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
+          >
+            <div
+              class="aspect-video relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                style="background-image: url(/assets/events/neural-networks.jpg);"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+            </div>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2026-01-23
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  Richcraft Hall 3110
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2"
+              >
+                Workshop #1 – Introduction to Artificial Intelligence
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-2"
+              >
+                An introductory workshop covering core AI concepts and real-world applications.
+              </p>
+              <div
+                class="flex gap-2 flex-wrap"
+              >
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  beginner-friendly
+                </span>
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  educational
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
+          >
+            <div
+              class="aspect-video relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                style="background-image: url(/assets/events/neural-networks.jpg);"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+            </div>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2026-01-27
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  Richcraft Hall 3228
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2"
+              >
+                Workshop #2 – Vibe Coding vs Prompt Engineering
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-2"
+              >
+                A workshop comparing vibe coding and prompt engineering in modern AI development.
+              </p>
+              <div
+                class="flex gap-2 flex-wrap"
+              >
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  technical
+                </span>
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  discussion
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
+          >
+            <div
+              class="aspect-video relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                style="background-image: url(/assets/events/neural-networks.jpg);"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+            </div>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2026-01-29
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  Tory Building 342
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2"
+              >
+                Workshop #3 – What Are Large Language Models?
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-2"
+              >
+                An introduction to large language models and how they power modern AI systems.
+              </p>
+              <div
+                class="flex gap-2 flex-wrap"
+              >
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  beginner-friendly
+                </span>
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  technical
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
+          >
+            <div
+              class="aspect-video relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                style="background-image: url(/assets/events/neural-networks.jpg);"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+            </div>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2026-02-24
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  Tory Building 210
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2"
+              >
+                Building an AI Chatbot!
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-2"
+              >
+                Learn how AI chatbots work using RAG and semantic search in LLM applications.
+              </p>
+              <div
+                class="flex gap-2 flex-wrap"
+              >
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  hands-on
+                </span>
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  technical
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
+          >
+            <div
+              class="aspect-video relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                style="background-image: url(/assets/events/neural-networks.jpg);"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+            </div>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2026-02-26
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  Tory Building 210
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2"
+              >
+                Training an AI Model!
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-2"
+              >
+                Train your first machine learning model using Python in a hands-on session.
+              </p>
+              <div
+                class="flex gap-2 flex-wrap"
+              >
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  hands-on
+                </span>
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  beginner-friendly
+                </span>
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                >
+                  technical
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="relative z-10 py-16 px-4 mb-16"
+    >
+      <div
+        class="container mx-auto"
+      >
+        <div
+          class="text-center mb-12"
+        >
+          <h2
+            class="text-3xl font-bold mb-4 text-glow"
+          >
+            Events Calendar
+          </h2>
+          <p
+            class="text-lg text-muted-foreground"
+          >
+            View our full schedule of upcoming events
+          </p>
+        </div>
+        <div
+          class="aspect-video w-full max-w-4xl mx-auto rounded-lg overflow-hidden border border-primary/10 bg-card/50 backdrop-blur-sm"
+        >
+          <iframe
+            frameborder="0"
+            height="100%"
+            scrolling="no"
+            src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID"
+            style="border: 0px;"
+            width="100%"
+          />
+        </div>
+      </div>
+    </section>
   </div>
 </DocumentFragment>
 `;
