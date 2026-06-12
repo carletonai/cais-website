@@ -26,8 +26,11 @@
     </script>
     <script>
       sessionStorage.redirect = location.href;
+      var repoBase = "/cais-website/";
+      var redirectBase =
+        location.pathname.indexOf(repoBase) === 0 ? repoBase : "/";
+      location.replace(redirectBase);
     </script>
-    <meta http-equiv="refresh" content="0;URL='/'" />
   </head>
   <body>
     Redirecting to homepage...
