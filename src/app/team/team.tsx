@@ -24,21 +24,8 @@ const TeamPage = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-4xl mx-auto"
         >
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80 mb-6">
-            Meet Our{" "}
-            <motion.span
-              className="text-primary font-mono inline-block mx-2 drop-shadow-[0_0_8px_rgba(226,56,63,0.3)]"
-              animate={{
-                textShadow: [
-                  "0 0 8px rgba(226,56,63,0.3)",
-                  "0 0 12px rgba(226,56,63,0.5)",
-                  "0 0 8px rgba(226,56,63,0.3)",
-                ],
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              Team
-            </motion.span>
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/50 mb-6">
+            Meet Our Team
           </h1>
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
             The passionate individuals driving innovation and fostering AI

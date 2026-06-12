@@ -97,14 +97,16 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
                     />
                   </div>
                 </div>
-                <a
-                  href={linkedinURL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative z-10 rounded-full p-3 text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-primary"
-                >
-                  <FaLinkedin className="h-6 w-6" />
-                </a>
+                {linkedinURL && (
+                  <a
+                    href={linkedinURL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative z-10 rounded-full p-3 text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-primary"
+                  >
+                    <FaLinkedin className="h-6 w-6" />
+                  </a>
+                )}
               </div>
             </div>
           </motion.div>
@@ -134,14 +136,16 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
                     />
                   </div>
                 </div>
-                <a
-                  href={linkedinURL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative z-10 rounded-full p-3 text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-primary"
-                >
-                  <FaLinkedin className="h-6 w-6" />
-                </a>
+                {linkedinURL && (
+                  <a
+                    href={linkedinURL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative z-10 rounded-full p-3 text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-primary"
+                  >
+                    <FaLinkedin className="h-6 w-6" />
+                  </a>
+                )}
               </div>
             </div>
           </motion.div>
@@ -280,7 +284,7 @@ const FloatingLights = () => {
 
 const TeamDisplay = () => {
   const members = teamData.members;
-  const executives = members.slice(0, 4);
+  const executives = members;
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("down");
 
   return (
