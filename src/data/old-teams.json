@@ -1,6 +1,43 @@
 {
     "teams": [
         {
+            "year": "2025-2026",
+            "members": [
+              {
+                "image": "/stockIcon.jpg",
+                "name": "Hamzah Hamad",
+                "description": "Favorite Hobby: Golf",
+                "title": "President",
+                "linkedinURL": "https://www.linkedin.com/in/hamzahhamad",
+                "linkedin": "/linkedin.svg"
+              },
+              {
+                "image": "/stockIcon.jpg",
+                "name": "Yuvraj Bains",
+                "description": "Favorite Hobby: Ice Hockey",
+                "title": "VP Academics",
+                "linkedinURL": "https://www.linkedin.com/in/yuvrajbains00/",
+                "linkedin": "/linkedin.svg"
+              },
+              {
+                "image": "/stockIcon.jpg",
+                "name": "Sahil Kumar",
+                "description": "Favorite Hobby: Cricket",
+                "title": "VP Finance & Community",
+                "linkedinURL": "https://www.linkedin.com/in/-sahil-kumar-/",
+                "linkedin": "/linkedin.svg"
+              },
+              {
+                "image": "/stockIcon.jpg",
+                "name": "Megh Ghajjar",
+                "description": "Favorite Hobby: Exploring Music",
+                "title": "VP Events",
+                "linkedinURL": "https://www.linkedin.com/in/megh-gajjar-269543308/",
+                "linkedin": "/linkedin.svg"
+              }
+            ]
+          },
+        {
             "year": "2024-2025",
             "members": [
                 {

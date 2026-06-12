@@ -3,7 +3,7 @@
     {
       "image": "/stockIcon.jpg",
       "name": "Jeremy Friesen",
-      "description": "Leads the club, represents CAIS to the university and external partners.",
+      "description": "Favorite Hobby: Golf",
       "title": "President",
       "linkedinURL": "https://www.linkedin.com/in/jeremyfriesen1/",
       "linkedin": "/linkedin.svg"
@@ -11,7 +11,7 @@
     {
       "image": "/stockIcon.jpg",
       "name": "Marc Aoun",
-      "description": "Plans and runs educational workshops and manages academic partnerships.",
+      "description": "Favorite Hobby: Soccer",
       "title": "VP Academics",
       "linkedinURL": "https://www.linkedin.com/in/marc-aoun-263b981ab/",
       "linkedin": "/linkedin.svg"
@@ -19,7 +19,7 @@
     {
       "image": "/stockIcon.jpg",
       "name": "Sofia Alhennawi",
-      "description": "Builds and maintains the CAIS community and manages member engagement.",
+      "description": "Favorite Hobby: ",
       "title": "VP Community",
       "linkedinURL": "https://www.linkedin.com/in/sofia-alhennawi-b6aa19344/",
       "linkedin": "/linkedin.svg"
@@ -27,23 +27,23 @@
     {
       "image": "/stockIcon.jpg",
       "name": "Nnaya Oluigbo",
-      "description": "Organizes and coordinates all club events from logistics to promotion.",
+      "description": "Favorite Hobby: Reading",
       "title": "VP Events",
-      "linkedinURL": "",
+      "linkedinURL": "https://www.linkedin.com/in/chizurum-oluigbo/",
       "linkedin": "/linkedin.svg"
     },
     {
       "image": "/stockIcon.jpg",
       "name": "Alexander James Rigas",
-      "description": "Manages the club budget, funding applications, and financial reporting.",
+      "description": "Favorite Hobby: ",
       "title": "VP Finance",
-      "linkedinURL": "",
+      "linkedinURL": "https://www.linkedin.com/in/alexanderrigas/",
       "linkedin": "/linkedin.svg"
     },
     {
       "image": "/stockIcon.jpg",
       "name": "Abdulrahman Zrein",
-      "description": "Leads technical projects and manages the club's technology infrastructure.",
+      "description": "Favorite Hobby: Skiing",
       "title": "VP Projects/Technology",
       "linkedinURL": "https://www.linkedin.com/in/abdulrahmanzrein/",
       "linkedin": "/linkedin.svg"
