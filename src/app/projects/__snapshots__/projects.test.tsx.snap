@@ -46,21 +46,67 @@ exports[`renders ProjectsPage correctly 1`] = `
         </p>
       </div>
       <div
-        class="flex flex-col items-center justify-center py-16 gap-4 bg-card/50 backdrop-blur-sm border border-primary/10 rounded-xl max-w-2xl mx-auto"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
       >
-        <p
-          class="text-muted-foreground text-center"
+        <div
+          class="group bg-card/50 backdrop-blur-sm border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5 transition-all duration-200 flex flex-col"
         >
-          Projects coming soon. Want to start one?
-        </p>
-        <a
-          class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8"
-          href="https://discord.gg/Ar3JpVZE6t"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          Join our Discord
-        </a>
+          <span
+            class="w-fit mb-3 px-2.5 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20"
+          >
+            Previous Project
+          </span>
+          <h3
+            class="text-lg font-semibold mb-2 group-hover:text-primary transition-colors"
+          >
+            CuMind
+          </h3>
+          <p
+            class="text-muted-foreground text-sm leading-relaxed flex-1 mb-4"
+          >
+            A MuZero-style reinforcement learning framework built with JAX and Flax, combining a learned model with Monte Carlo Tree Search for complex decision-making environments.
+          </p>
+          <div
+            class="flex flex-wrap gap-2 mb-5"
+          >
+            <span
+              class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
+            >
+              JAX
+            </span>
+            <span
+              class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
+            >
+              Flax
+            </span>
+            <span
+              class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
+            >
+              MuZero
+            </span>
+            <span
+              class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
+            >
+              MCTS
+            </span>
+            <span
+              class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
+            >
+              Reinforcement Learning
+            </span>
+          </div>
+          <a
+            class="inline-flex items-center gap-1 text-sm text-primary hover:text-primary/80 font-medium transition-colors"
+            href="https://github.com/carletonai/CuMind"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            View Project 
+            <svg
+              class="w-3 h-3"
+            />
+          </a>
+        </div>
       </div>
     </div>
   </div>
