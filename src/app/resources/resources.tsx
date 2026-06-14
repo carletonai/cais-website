@@ -1361,7 +1361,6 @@ Contact: partnerships@carletonai.com
         THEMES[theme].background,
       )}
     >
-      {}
       <AnimatePresence>
         {theme === "matrix" && (
           <motion.div
@@ -1373,7 +1372,6 @@ Contact: partnerships@carletonai.com
         )}
       </AnimatePresence>
 
-      {}
       <div className="absolute inset-0 bg-glow opacity-30" />
       <div className="absolute inset-0 bg-grid opacity-20" />
       <div
@@ -1516,7 +1514,6 @@ Contact: partnerships@carletonai.com
         </motion.div>
       </div>
 
-      {}
       {showSuggestions && suggestions.length > 0 && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
