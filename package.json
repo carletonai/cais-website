@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.1.1",
-    "@fontsource-variable/manrope": "^5.1.1",
+    "@fontsource-variable/manrope": "^5.2.8",
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-avatar": "^1.1.2",
     "@radix-ui/react-hover-card": "^1.1.4",
