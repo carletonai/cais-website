@@ -424,13 +424,6 @@ const ANIMATIONS = {
   ],
 };
 
-const progressAnimation = {
-  "@keyframes progress": {
-    "0%": { width: "0%" },
-    "100%": { width: "100%" },
-  },
-};
-
 const KEYBOARD_SHORTCUTS = `
 Keyboard Shortcuts:
   Ctrl + L    - Clear terminal
