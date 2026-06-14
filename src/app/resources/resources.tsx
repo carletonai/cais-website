@@ -318,7 +318,6 @@ const ANIMATIONS = {
     "Breaking encryption...",
     "Access granted! 🎉",
   ],
-  loading: [],
   boot: (currentTheme: keyof typeof THEMES, isBooting: boolean) => [
     <div
       key="ascii"
