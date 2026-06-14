@@ -549,6 +549,9 @@ const Resources = () => {
     return { command, args, flags };
   };
 
+  const SCROLL_BOTTOM_THRESHOLD_PX = 100;
+  const SCROLL_TO_BOTTOM_DELAY_MS = 50;
+
   const addCommand = (
     input: string,
     output: React.ReactNode | string,
@@ -574,9 +577,9 @@ const Resources = () => {
         if (
           isSystem ||
           terminal.scrollTop + terminal.clientHeight >=
-            terminal.scrollHeight - 100
+            terminal.scrollHeight - SCROLL_BOTTOM_THRESHOLD_PX
         ) {
-          setTimeout(scrollToBottom, 50);
+          setTimeout(scrollToBottom, SCROLL_TO_BOTTOM_DELAY_MS);
         }
       }
       return newCommands;
