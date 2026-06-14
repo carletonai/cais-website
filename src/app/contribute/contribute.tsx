@@ -84,15 +84,6 @@ const container = {
   },
 };
 
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring", stiffness: 100, damping: 15 },
-  },
-};
-
 const Contribute = () => {
   return (
     <div className="container mx-auto px-4 py-16 max-w-4xl">
