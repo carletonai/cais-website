@@ -518,7 +518,7 @@ const Resources = () => {
     "default" | "cyberpunk" | "retro" | "matrix"
   >("default");
   const [isBooting, setIsBooting] = useState(true);
-  const [konamiProgress, setKonamiProgress] = useState<string[]>([]);
+  const [, setKonamiProgress] = useState<string[]>([]);
   const [currentGame, setCurrentGame] = useState<GameState | null>(null);
   const terminalEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
