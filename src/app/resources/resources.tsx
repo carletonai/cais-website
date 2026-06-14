@@ -26,7 +26,7 @@ interface ParsedCommand {
 
 interface GameState {
   name: string;
-  data: any;
+  data: unknown;
 }
 
 const INITIAL_MESSAGE = `Welcome to CAIS Resources Terminal v2.0.0
