@@ -468,10 +468,27 @@ const makeLinksClickable = (text: string): React.ReactNode => {
             href = "https://github.com" + part;
           }
 
+          const sanitizeUrl = (candidate: string): string | null => {
+            try {
+              const parsed = new URL(candidate, "https://example.com");
+              if (parsed.protocol === "http:" || parsed.protocol === "https:") {
+                return parsed.href;
+              }
+              return null;
+            } catch {
+              return null;
+            }
+          };
+
+          const safeHref = sanitizeUrl(href);
+          if (!safeHref) {
+            return part;
+          }
+
           return (
             <a
               key={i}
-              href={href}
+              href={safeHref}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-400 hover:text-blue-300 hover:underline cursor-pointer"
