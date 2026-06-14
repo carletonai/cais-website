@@ -26,7 +26,7 @@ interface ParsedCommand {
 
 interface GameState {
   name: string;
-  data: any;
+  data: unknown;
 }
 
 const INITIAL_MESSAGE = `Welcome to CAIS Resources Terminal v2.0.0
@@ -318,7 +318,6 @@ const ANIMATIONS = {
     "Breaking encryption...",
     "Access granted! 🎉",
   ],
-  loading: [],
   boot: (currentTheme: keyof typeof THEMES, isBooting: boolean) => [
     <div
       key="ascii"
@@ -468,10 +467,27 @@ const makeLinksClickable = (text: string): React.ReactNode => {
             href = "https://github.com" + part;
           }
 
+          const sanitizeUrl = (candidate: string): string | null => {
+            try {
+              const parsed = new URL(candidate, "https://example.com");
+              if (parsed.protocol === "http:" || parsed.protocol === "https:") {
+                return parsed.href;
+              }
+              return null;
+            } catch {
+              return null;
+            }
+          };
+
+          const safeHref = sanitizeUrl(href);
+          if (!safeHref) {
+            return part;
+          }
+
           return (
             <a
               key={i}
-              href={href}
+              href={safeHref}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-400 hover:text-blue-300 hover:underline cursor-pointer"
@@ -502,7 +518,7 @@ const Resources = () => {
     "default" | "cyberpunk" | "retro" | "matrix"
   >("default");
   const [isBooting, setIsBooting] = useState(true);
-  const [konamiProgress, setKonamiProgress] = useState<string[]>([]);
+  const [, setKonamiProgress] = useState<string[]>([]);
   const [currentGame, setCurrentGame] = useState<GameState | null>(null);
   const terminalEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -532,6 +548,9 @@ const Resources = () => {
     return { command, args, flags };
   };
 
+  const SCROLL_BOTTOM_THRESHOLD_PX = 100;
+  const SCROLL_TO_BOTTOM_DELAY_MS = 50;
+
   const addCommand = (
     input: string,
     output: React.ReactNode | string,
@@ -557,9 +576,9 @@ const Resources = () => {
         if (
           isSystem ||
           terminal.scrollTop + terminal.clientHeight >=
-            terminal.scrollHeight - 100
+            terminal.scrollHeight - SCROLL_BOTTOM_THRESHOLD_PX
         ) {
-          setTimeout(scrollToBottom, 50);
+          setTimeout(scrollToBottom, SCROLL_TO_BOTTOM_DELAY_MS);
         }
       }
       return newCommands;
@@ -1344,7 +1363,6 @@ Contact: partnerships@carletonai.com
         THEMES[theme].background,
       )}
     >
-      {}
       <AnimatePresence>
         {theme === "matrix" && (
           <motion.div
@@ -1356,7 +1374,6 @@ Contact: partnerships@carletonai.com
         )}
       </AnimatePresence>
 
-      {}
       <div className="absolute inset-0 bg-glow opacity-30" />
       <div className="absolute inset-0 bg-grid opacity-20" />
       <div
@@ -1499,7 +1516,6 @@ Contact: partnerships@carletonai.com
         </motion.div>
       </div>
 
-      {}
       {showSuggestions && suggestions.length > 0 && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
