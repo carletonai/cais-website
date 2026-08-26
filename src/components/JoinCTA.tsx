@@ -28,9 +28,9 @@ export function JoinCTA() {
                 Join Our Community
               </h2>
               <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-6 sm:mb-8">
-                Whether you're just starting your AI journey or you're an
-                experienced practitioner, CAIS offers a supportive community to
-                learn, grow, and innovate together.
+                Whether you&apos;re just starting your AI journey or you&apos;re
+                an experienced practitioner, CAIS offers a supportive community
+                to learn, grow, and innovate together.
               </p>
             </motion.div>
             <motion.div

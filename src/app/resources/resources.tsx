@@ -1306,7 +1306,7 @@ Contact: partnerships@carletonai.com
         addCommand(
           `game ${gameName}`,
           <div className="space-y-2">
-            <div>🔢 I'm thinking of a number between 1-100</div>
+            <div>🔢 I&apos;m thinking of a number between 1-100</div>
             <div>🎯 You have 7 attempts to guess it</div>
             <div>Type your guess below:</div>
           </div>,

@@ -78,9 +78,9 @@ export function Features() {
             Get Involved
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
-            Discover how you can be part of Carleton's AI community. Whether
-            you're just starting or already experienced, we have opportunities
-            for everyone.
+            Discover how you can be part of Carleton&apos;s AI community.
+            Whether you&apos;re just starting or already experienced, we have
+            opportunities for everyone.
           </p>
           <Link
             to="/about"

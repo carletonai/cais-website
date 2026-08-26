@@ -101,7 +101,7 @@ const Contribute = () => {
       <p className="text-lg text-muted-foreground mb-12">
         Interested in artificial intelligence? There are many ways to get
         involved with the Carleton Artificial Intelligence Society (CAIS),
-        whether you're completely new to AI or already building projects.
+        whether you&apos;re completely new to AI or already building projects.
       </p>
 
       <div className="space-y-8">
@@ -144,8 +144,8 @@ const Contribute = () => {
         <div className="p-6 rounded-lg border">
           <h2 className="text-2xl font-semibold mb-2">Contact Us</h2>
           <p className="text-muted-foreground">
-            Have questions or ideas? We'd love to hear from you. Reach out to
-            the CAIS team through our social media channels or at one of our
+            Have questions or ideas? We&apos;d love to hear from you. Reach out
+            to the CAIS team through our social media channels or at one of our
             events.
           </p>
         </div>

@@ -1,12 +1,22 @@
-const { FlatCompat } = require("@eslint/eslintrc");
-const { configs } = require("eslint-plugin-react");
+import { FlatCompat } from "@eslint/eslintrc";
+import react from "eslint-plugin-react";
+import reactRefresh from "eslint-plugin-react-refresh";
+import tsParser from "@typescript-eslint/parser";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
+
 const compat = new FlatCompat({
-  recommendedConfig: configs.recommended,
+  baseDirectory: import.meta.dirname,
+  recommendedConfig: react.configs.recommended,
 });
 
-module.exports = [
+export default [
   {
+    files: ["**/*.{js,mjs,cjs,jsx,ts,tsx}"],
     languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        ecmaFeatures: { jsx: true },
+      },
       ecmaVersion: "latest",
       sourceType: "module",
       globals: {
@@ -20,7 +30,8 @@ module.exports = [
       },
     },
     plugins: {
-      "react-refresh": require("eslint-plugin-react-refresh"),
+      "react-refresh": reactRefresh,
+      "@typescript-eslint": tsPlugin,
     },
     rules: {
       "react/jsx-no-target-blank": "off",
