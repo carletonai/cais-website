@@ -19,6 +19,7 @@ If your platform supports private advisories (for example, GitHub Security Advis
 you may also submit reports there.
 
 When reporting, please include:
+
 - A description of the issue and its potential impact
 - Steps to reproduce (proof of concept if available)
 - Affected versions/commit hashes and environment details
