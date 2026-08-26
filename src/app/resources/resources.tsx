@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useHotkeys } from "react-hotkeys-hook";
@@ -551,44 +551,57 @@ const Resources = () => {
   const SCROLL_BOTTOM_THRESHOLD_PX = 100;
   const SCROLL_TO_BOTTOM_DELAY_MS = 50;
 
-  const addCommand = (
-    input: string,
-    output: React.ReactNode | string,
-    isError = false,
-    isSystem = false,
-  ) => {
-    const timestamp = new Date().toLocaleString();
-    const processedOutput =
-      typeof output === "string" ? makeLinksClickable(output) : output;
+  const scrollToBottom = useCallback(() => {
+    const terminal = terminalEndRef.current;
+    if (terminal) {
+      terminal.scrollTo({
+        top: terminal.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  }, []);
 
-    const newCommand = {
-      input,
-      output: processedOutput,
-      timestamp,
-      isError,
-      isSystem,
-    };
+  const addCommand = useCallback(
+    (
+      input: string,
+      output: React.ReactNode | string,
+      isError = false,
+      isSystem = false,
+    ) => {
+      const timestamp = new Date().toLocaleString();
+      const processedOutput =
+        typeof output === "string" ? makeLinksClickable(output) : output;
 
-    setCommands((prev) => {
-      const newCommands = [...prev, newCommand];
-      const terminal = terminalEndRef.current;
-      if (terminal) {
-        if (
-          isSystem ||
-          terminal.scrollTop + terminal.clientHeight >=
-            terminal.scrollHeight - SCROLL_BOTTOM_THRESHOLD_PX
-        ) {
-          setTimeout(scrollToBottom, SCROLL_TO_BOTTOM_DELAY_MS);
+      const newCommand = {
+        input,
+        output: processedOutput,
+        timestamp,
+        isError,
+        isSystem,
+      };
+
+      setCommands((prev) => {
+        const newCommands = [...prev, newCommand];
+        const terminal = terminalEndRef.current;
+        if (terminal) {
+          if (
+            isSystem ||
+            terminal.scrollTop + terminal.clientHeight >=
+              terminal.scrollHeight - SCROLL_BOTTOM_THRESHOLD_PX
+          ) {
+            setTimeout(scrollToBottom, SCROLL_TO_BOTTOM_DELAY_MS);
+          }
         }
-      }
-      return newCommands;
-    });
+        return newCommands;
+      });
 
-    setHistory((prev) => ({
-      commands: [...prev.commands, input],
-      currentIndex: -1,
-    }));
-  };
+      setHistory((prev) => ({
+        commands: [...prev.commands, input],
+        currentIndex: -1,
+      }));
+    },
+    [scrollToBottom],
+  );
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (isBooting) return;
@@ -676,16 +689,6 @@ const Resources = () => {
     }
   };
 
-  const scrollToBottom = () => {
-    const terminal = terminalEndRef.current;
-    if (terminal) {
-      terminal.scrollTo({
-        top: terminal.scrollHeight,
-        behavior: "smooth",
-      });
-    }
-  };
-
   useEffect(() => {
     const bootSequence = async () => {
       if (hasBooted.current || !isBooting) return;
@@ -731,7 +734,7 @@ const Resources = () => {
     };
 
     bootSequence();
-  }, [theme, isBooting]);
+  }, [theme, isBooting, scrollToBottom]);
 
   useHotkeys("ctrl+l", (e: KeyboardEvent) => {
     e.preventDefault();
@@ -792,7 +795,7 @@ const Resources = () => {
 
     window.addEventListener("keydown", handleKonami);
     return () => window.removeEventListener("keydown", handleKonami);
-  }, []);
+  }, [addCommand]);
 
   const handleCommand = (parsed: ParsedCommand) => {
     const { command, args, flags } = parsed;

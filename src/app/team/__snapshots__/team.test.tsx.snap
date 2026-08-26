@@ -15,7 +15,7 @@ exports[`renders TeamPage correctly 1`] = `
       class="fixed inset-0 bg-gradient-to-b from-black/0 via-primary/15 to-background pointer-events-none"
     />
     <div
-      class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_70%)] opacity-10 blur-3xl"
+      class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-primary)_0%,_transparent_70%)] opacity-10 blur-3xl"
     />
     <section
       class="relative z-10 px-6 lg:px-14 pt-20 pb-16"
@@ -52,7 +52,7 @@ exports[`renders TeamPage correctly 1`] = `
           />
         </div>
         <div
-          class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_70%)] opacity-10 blur-3xl pointer-events-none"
+          class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-primary)_0%,_transparent_70%)] opacity-10 blur-3xl pointer-events-none"
         />
         <div
           class="space-y-48 relative z-10"

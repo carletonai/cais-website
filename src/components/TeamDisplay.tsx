@@ -52,7 +52,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
         rotateX: 0,
         rotateY: 0,
         transition: {
-          type: "spring",
+          type: "spring" as const,
           stiffness: 120,
           damping: scrollDirection === "down" ? 25 : 30,
           mass: 0.8,
@@ -297,7 +297,7 @@ const TeamDisplay = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_70%)] opacity-10 blur-3xl pointer-events-none"
+          className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-primary)_0%,_transparent_70%)] opacity-10 blur-3xl pointer-events-none"
         />
 
         <div className="space-y-48 relative z-10">

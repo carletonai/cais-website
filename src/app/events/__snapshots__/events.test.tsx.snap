@@ -18,7 +18,7 @@ exports[`renders EventsPage correctly 1`] = `
       class="relative h-[70vh] flex items-center justify-center overflow-hidden"
     >
       <div
-        class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_65%)] opacity-20"
+        class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-primary)_0%,_transparent_65%)] opacity-20"
       />
       <div
         class="container mx-auto text-center relative z-10 px-4"

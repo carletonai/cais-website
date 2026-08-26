@@ -42,6 +42,16 @@ export default [
       semi: ["error", "always"],
     },
   },
+  {
+    // Vendored shadcn/ui primitives: these intentionally export variant
+    // helpers and Radix aliases alongside components. Keeping them as
+    // upstream ships them matters more than fast-refresh granularity in
+    // files nobody edits during development.
+    files: ["src/components/ui/**"],
+    rules: {
+      "react-refresh/only-export-components": "off",
+    },
+  },
   ...compat.config({
     extends: [
       "eslint:recommended",

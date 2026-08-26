@@ -24,7 +24,7 @@ const item = {
     opacity: 1,
     y: 0,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 100,
       damping: 15,
     },
@@ -37,7 +37,7 @@ const filterContainer = {
     opacity: 1,
     y: 0,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 100,
       damping: 15,
       staggerChildren: 0.1,
@@ -51,7 +51,7 @@ const filterItem = {
     opacity: 1,
     scale: 1,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 100,
       damping: 15,
     },
@@ -86,7 +86,7 @@ const EventsPage = () => {
 
       {/* Hero section */}
       <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_65%)] opacity-20" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-primary)_0%,_transparent_65%)] opacity-20" />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -169,7 +169,7 @@ const EventsPage = () => {
                     whileHover={{
                       scale: 1.02,
                       transition: {
-                        type: "spring",
+                        type: "spring" as const,
                         stiffness: 400,
                         damping: 10,
                       },
