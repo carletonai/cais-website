@@ -46,7 +46,7 @@ exports[`renders ContactPage correctly 1`] = `
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto"
       >
         <a
-          class="group relative flex items-center gap-4 p-5 rounded-xl bg-card/50 backdrop-blur-sm border border-primary/10 hover:translate-y-[-2px] hover:shadow-lg transition-all duration-200 hover:border-indigo-500/50 hover:shadow-indigo-500/10"
+          class="group relative flex items-center gap-4 p-5 rounded-xl bg-card/50 backdrop-blur-xs border border-primary/10 hover:translate-y-[-2px] hover:shadow-lg transition-all duration-200 hover:border-indigo-500/50 hover:shadow-indigo-500/10"
           href="https://discord.gg/Ar3JpVZE6t"
           rel="noopener noreferrer"
           target="_blank"
@@ -88,7 +88,7 @@ exports[`renders ContactPage correctly 1`] = `
           />
         </a>
         <a
-          class="group relative flex items-center gap-4 p-5 rounded-xl bg-card/50 backdrop-blur-sm border border-primary/10 hover:translate-y-[-2px] hover:shadow-lg transition-all duration-200 hover:border-pink-500/50 hover:shadow-pink-500/10"
+          class="group relative flex items-center gap-4 p-5 rounded-xl bg-card/50 backdrop-blur-xs border border-primary/10 hover:translate-y-[-2px] hover:shadow-lg transition-all duration-200 hover:border-pink-500/50 hover:shadow-pink-500/10"
           href="https://www.instagram.com/carletonaisociety/"
           rel="noopener noreferrer"
           target="_blank"
@@ -130,7 +130,7 @@ exports[`renders ContactPage correctly 1`] = `
           />
         </a>
         <a
-          class="group relative flex items-center gap-4 p-5 rounded-xl bg-card/50 backdrop-blur-sm border border-primary/10 hover:translate-y-[-2px] hover:shadow-lg transition-all duration-200 hover:border-blue-500/50 hover:shadow-blue-500/10"
+          class="group relative flex items-center gap-4 p-5 rounded-xl bg-card/50 backdrop-blur-xs border border-primary/10 hover:translate-y-[-2px] hover:shadow-lg transition-all duration-200 hover:border-blue-500/50 hover:shadow-blue-500/10"
           href="https://www.linkedin.com/company/carleton-ai"
           rel="noopener noreferrer"
           target="_blank"
@@ -172,7 +172,7 @@ exports[`renders ContactPage correctly 1`] = `
           />
         </a>
         <a
-          class="group relative flex items-center gap-4 p-5 rounded-xl bg-card/50 backdrop-blur-sm border border-primary/10 hover:translate-y-[-2px] hover:shadow-lg transition-all duration-200 hover:border-red-500/50 hover:shadow-red-500/10"
+          class="group relative flex items-center gap-4 p-5 rounded-xl bg-card/50 backdrop-blur-xs border border-primary/10 hover:translate-y-[-2px] hover:shadow-lg transition-all duration-200 hover:border-red-500/50 hover:shadow-red-500/10"
           href="https://www.youtube.com/channel/UCWKRnTa68hlHrW6WYCgCNaw"
           rel="noopener noreferrer"
           target="_blank"
@@ -214,7 +214,7 @@ exports[`renders ContactPage correctly 1`] = `
           />
         </a>
         <a
-          class="group relative flex items-center gap-4 p-5 rounded-xl bg-card/50 backdrop-blur-sm border border-primary/10 hover:translate-y-[-2px] hover:shadow-lg transition-all duration-200 hover:border-emerald-500/50 hover:shadow-emerald-500/10"
+          class="group relative flex items-center gap-4 p-5 rounded-xl bg-card/50 backdrop-blur-xs border border-primary/10 hover:translate-y-[-2px] hover:shadow-lg transition-all duration-200 hover:border-emerald-500/50 hover:shadow-emerald-500/10"
           href="mailto:carletonaicontact@gmail.com"
           rel="noopener noreferrer"
         >
@@ -248,7 +248,7 @@ exports[`renders ContactPage correctly 1`] = `
         class="flex justify-center mt-16"
       >
         <a
-          class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8"
+          class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8"
           href="https://forms.gle/3xCK7fCbGcZXGr1d6"
           rel="noopener noreferrer"
           role="button"

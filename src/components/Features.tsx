@@ -104,7 +104,7 @@ export function Features() {
                 <div
                   className={cn(
                     "group relative h-full rounded-lg p-5 sm:p-6",
-                    "bg-card/50 backdrop-blur-sm",
+                    "bg-card/50 backdrop-blur-xs",
                     "border border-primary/10",
                     "transition-all duration-200 ease-out",
                     "hover:border-primary/30 hover:bg-primary/5",

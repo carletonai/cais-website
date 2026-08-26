@@ -77,7 +77,7 @@ export function LatestEvents() {
                 scale: 1.02,
                 transition: { type: "spring", stiffness: 400, damping: 10 },
               }}
-              className="group relative bg-card/50 backdrop-blur-sm rounded-xl overflow-hidden border border-primary/10 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5 transition-all duration-200"
+              className="group relative bg-card/50 backdrop-blur-xs rounded-xl overflow-hidden border border-primary/10 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5 transition-all duration-200"
             >
               <div className="aspect-video relative overflow-hidden">
                 <div

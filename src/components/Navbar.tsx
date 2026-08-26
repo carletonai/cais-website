@@ -84,7 +84,7 @@ export default function Navbar() {
             inline-flex items-center gap-1.5 hover:bg-primary/10 
             ${
               location.pathname === item.path
-                ? "text-primary bg-primary/15 shadow-sm"
+                ? "text-primary bg-primary/15 shadow-xs"
                 : "text-foreground/90 hover:text-primary"
             }`}
                 >

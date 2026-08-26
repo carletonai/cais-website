@@ -104,7 +104,7 @@ const ContactPage = () => (
               href={url}
               target={url.startsWith("mailto") ? undefined : "_blank"}
               rel="noopener noreferrer"
-              className={`group relative flex items-center gap-4 p-5 rounded-xl bg-card/50 backdrop-blur-sm border border-primary/10 hover:translate-y-[-2px] hover:shadow-lg transition-all duration-200 ${hoverColor}`}
+              className={`group relative flex items-center gap-4 p-5 rounded-xl bg-card/50 backdrop-blur-xs border border-primary/10 hover:translate-y-[-2px] hover:shadow-lg transition-all duration-200 ${hoverColor}`}
             >
               <div className="p-2.5 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors shrink-0">
                 <Icon className={`w-5 h-5 ${iconColor}`} />

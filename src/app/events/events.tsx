@@ -329,7 +329,7 @@ const EventsPage = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="aspect-video w-full max-w-4xl mx-auto rounded-lg overflow-hidden border border-primary/10 bg-card/50 backdrop-blur-sm"
+            className="aspect-video w-full max-w-4xl mx-auto rounded-lg overflow-hidden border border-primary/10 bg-card/50 backdrop-blur-xs"
           >
             <iframe
               src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID"

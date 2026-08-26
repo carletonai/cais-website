@@ -1,39 +1,41 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+@theme {
+  --color-background: hsl(225 30% 8%);
+  --color-foreground: hsl(210 40% 98%);
+
+  --color-card: hsl(225 30% 9%);
+  --color-card-foreground: hsl(210 40% 98%);
+
+  --color-popover: hsl(225 30% 9%);
+  --color-popover-foreground: hsl(210 40% 98%);
+
+  --color-primary: hsl(358 75% 55%);
+  --color-primary-foreground: hsl(210 40% 98%);
+
+  --color-secondary: hsl(225 30% 11%);
+  --color-secondary-foreground: hsl(210 40% 98%);
+
+  --color-muted: hsl(225 30% 11%);
+  --color-muted-foreground: hsl(210 40% 85%);
+
+  --color-accent: hsl(195 85% 55%);
+  --color-accent-foreground: hsl(210 40% 98%);
+
+  --color-destructive: hsl(0 84% 60%);
+  --color-destructive-foreground: hsl(210 40% 98%);
+
+  --color-border: hsl(225 30% 14%);
+  --color-input: hsl(225 30% 14%);
+  --color-ring: hsl(0 90% 65%);
+}
 
 @layer base {
   :root {
     --transparent: transparent;
     --white: white;
     --black: black;
-    --background: 225 30% 8%;
-    --foreground: 210 40% 98%;
-
-    --card: 225 30% 9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 225 30% 9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 358 75% 55%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 225 30% 11%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 225 30% 11%;
-    --muted-foreground: 210 40% 85%;
-
-    --accent: 195 85% 55%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 225 30% 14%;
-    --input: 225 30% 14%;
-    --ring: 0 90% 65%;
 
     --radius: 0.5rem;
   }
@@ -70,7 +72,7 @@
 
 @layer utilities {
   .glass {
-    @apply bg-background/90 backdrop-blur-sm border-border/30;
+    @apply bg-background/90 backdrop-blur-xs border-border/30;
   }
 
   .section-transition {

@@ -1408,7 +1408,7 @@ Contact: partnerships@carletonai.com
           transition={{ delay: 0.2, duration: 0.6 }}
           className={cn(
             "max-w-4xl mx-auto mt-8 p-4 rounded-lg",
-            "bg-black/50 backdrop-blur-sm",
+            "bg-black/50 backdrop-blur-xs",
             "border border-primary/10",
             "font-mono text-sm sm:text-base",
             "shadow-lg shadow-primary/10",
@@ -1491,7 +1491,7 @@ Contact: partnerships@carletonai.com
                 onChange={(e) => setCurrentInput(e.target.value)}
                 onKeyDown={handleKeyDown}
                 className={cn(
-                  "flex-1 bg-transparent border-none outline-none",
+                  "flex-1 bg-transparent border-none outline-hidden",
                   THEMES[theme].primary,
                   "placeholder:text-opacity-50",
                   isBooting && "cursor-not-allowed opacity-50",

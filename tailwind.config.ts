@@ -1,19 +1,6 @@
 import type { Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
 
-const flattenColorPalette =
-  require("tailwindcss/lib/util/flattenColorPalette").default;
-
-function addVariablesForColors({ addBase, theme }: any) {
-  let allColors = flattenColorPalette(theme("colors"));
-  let newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, val]) => [`--${key}`, val]),
-  );
-  addBase({
-    ":root": newVars,
-  });
-}
-
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx,mdx}"],
 
@@ -41,43 +28,8 @@ export default {
           },
         ],
       },
-      colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-      },
       borderRadius: {
-        lg: "var(--radius)",
+        lg: "hsl(var(--radius) / <alpha-value>)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
@@ -101,18 +53,30 @@ export default {
         },
         "accordion-down": {
           from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          to: {
+            height:
+              "hsl(var(--radix-accordion-content-height) / <alpha-value>)",
+          },
         },
         "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
+          from: {
+            height:
+              "hsl(var(--radix-accordion-content-height) / <alpha-value>)",
+          },
           to: { height: "0" },
         },
         "slide-down": {
           from: { height: "0" },
-          to: { height: "var(--radix-navigation-menu-viewport-height)" },
+          to: {
+            height:
+              "hsl(var(--radix-navigation-menu-viewport-height) / <alpha-value>)",
+          },
         },
         "slide-up": {
-          from: { height: "var(--radix-navigation-menu-viewport-height)" },
+          from: {
+            height:
+              "hsl(var(--radix-navigation-menu-viewport-height) / <alpha-value>)",
+          },
           to: { height: "0" },
         },
         moveHorizontal: {
@@ -174,5 +138,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), addVariablesForColors],
+  plugins: [require("tailwindcss-animate")],
 } satisfies Config;

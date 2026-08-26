@@ -69,7 +69,7 @@ const ProjectsPage = () => (
             <motion.div
               key={project.id ?? project.title}
               variants={item}
-              className="group bg-card/50 backdrop-blur-sm border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5 transition-all duration-200 flex flex-col"
+              className="group bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5 transition-all duration-200 flex flex-col"
             >
               {project.status && (
                 <span className="w-fit mb-3 px-2.5 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
@@ -112,7 +112,7 @@ const ProjectsPage = () => (
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="flex flex-col items-center justify-center py-16 gap-4 bg-card/50 backdrop-blur-sm border border-primary/10 rounded-xl max-w-2xl mx-auto"
+          className="flex flex-col items-center justify-center py-16 gap-4 bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl max-w-2xl mx-auto"
         >
           <p className="text-muted-foreground text-center">
             Projects coming soon. Want to start one?

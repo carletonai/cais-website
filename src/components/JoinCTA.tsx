@@ -11,7 +11,7 @@ export function JoinCTA() {
         <motion.div
           className={cn(
             "max-w-3xl mx-auto relative rounded-lg p-6 sm:p-10",
-            "bg-card/50 backdrop-blur-sm",
+            "bg-card/50 backdrop-blur-xs",
             "border border-primary/10",
             "transition-all duration-200 ease-out",
             "hover:border-primary/30 hover:bg-primary/5",

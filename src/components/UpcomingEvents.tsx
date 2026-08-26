@@ -71,7 +71,7 @@ export function UpcomingEvents() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center justify-center py-16 gap-6 bg-card/50 backdrop-blur-sm border border-primary/10 rounded-xl"
+            className="flex flex-col items-center justify-center py-16 gap-6 bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl"
           >
             <BellIcon className="w-10 h-10 text-primary/60" />
             <div className="text-center">
@@ -108,7 +108,7 @@ export function UpcomingEvents() {
                   scale: 1.02,
                   transition: { type: "spring", stiffness: 400, damping: 10 },
                 }}
-                className="group relative bg-card/50 backdrop-blur-sm rounded-xl overflow-hidden border border-primary/10 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5 transition-all duration-200"
+                className="group relative bg-card/50 backdrop-blur-xs rounded-xl overflow-hidden border border-primary/10 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5 transition-all duration-200"
               >
                 <div className="aspect-video relative overflow-hidden">
                   <div
