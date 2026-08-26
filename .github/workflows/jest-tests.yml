@@ -51,5 +51,11 @@ jobs:
         env:
           NPM_CONFIG_REGISTRY: "https://registry.npmjs.org/"
 
+      - name: Lint and format check
+        run: pnpm run check
+
+      - name: Build
+        run: pnpm run build
+
       - name: Run Jest tests
         run: pnpm test
