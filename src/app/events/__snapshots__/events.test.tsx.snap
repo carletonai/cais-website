@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`renders EventsPage correctly 1`] = `
 <DocumentFragment>
@@ -119,7 +119,7 @@ exports[`renders EventsPage correctly 1`] = `
             >
               <div
                 class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url(/assets/events/ml-workshop.jpg);"
+                style="background-image: url("/assets/events/ml-workshop.jpg");"
               />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
@@ -182,7 +182,7 @@ exports[`renders EventsPage correctly 1`] = `
             >
               <div
                 class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url(/assets/events/ml-workshop.jpg);"
+                style="background-image: url("/assets/events/ml-workshop.jpg");"
               />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
@@ -245,7 +245,7 @@ exports[`renders EventsPage correctly 1`] = `
             >
               <div
                 class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url(/assets/events/ml-workshop.jpg);"
+                style="background-image: url("/assets/events/ml-workshop.jpg");"
               />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
@@ -308,7 +308,7 @@ exports[`renders EventsPage correctly 1`] = `
             >
               <div
                 class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url(/assets/events/neural-networks.jpg);"
+                style="background-image: url("/assets/events/neural-networks.jpg");"
               />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
@@ -371,7 +371,7 @@ exports[`renders EventsPage correctly 1`] = `
             >
               <div
                 class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url(/assets/events/neural-networks.jpg);"
+                style="background-image: url("/assets/events/neural-networks.jpg");"
               />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
@@ -434,7 +434,7 @@ exports[`renders EventsPage correctly 1`] = `
             >
               <div
                 class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url(/assets/events/neural-networks.jpg);"
+                style="background-image: url("/assets/events/neural-networks.jpg");"
               />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
@@ -497,7 +497,7 @@ exports[`renders EventsPage correctly 1`] = `
             >
               <div
                 class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url(/assets/events/neural-networks.jpg);"
+                style="background-image: url("/assets/events/neural-networks.jpg");"
               />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
@@ -565,7 +565,7 @@ exports[`renders EventsPage correctly 1`] = `
             >
               <div
                 class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url(/assets/events/neural-networks.jpg);"
+                style="background-image: url("/assets/events/neural-networks.jpg");"
               />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
@@ -628,7 +628,7 @@ exports[`renders EventsPage correctly 1`] = `
             >
               <div
                 class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url(/assets/events/neural-networks.jpg);"
+                style="background-image: url("/assets/events/neural-networks.jpg");"
               />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
@@ -691,7 +691,7 @@ exports[`renders EventsPage correctly 1`] = `
             >
               <div
                 class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url(/assets/events/neural-networks.jpg);"
+                style="background-image: url("/assets/events/neural-networks.jpg");"
               />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
@@ -754,7 +754,7 @@ exports[`renders EventsPage correctly 1`] = `
             >
               <div
                 class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url(/assets/events/neural-networks.jpg);"
+                style="background-image: url("/assets/events/neural-networks.jpg");"
               />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
@@ -817,7 +817,7 @@ exports[`renders EventsPage correctly 1`] = `
             >
               <div
                 class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url(/assets/events/neural-networks.jpg);"
+                style="background-image: url("/assets/events/neural-networks.jpg");"
               />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
