@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -60,7 +60,6 @@ const filterItem = {
 
 const EventsPage = () => {
   const [selectedType, setSelectedType] = useState("All");
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const filteredEvents = events.filter(
     (event) => selectedType === "All" || event.type === selectedType,
@@ -159,7 +158,7 @@ const EventsPage = () => {
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"
             >
               <AnimatePresence mode="wait">
-                {upcomingEvents.map((event, index) => (
+                {upcomingEvents.map((event, _index) => (
                   <motion.div
                     key={event.id}
                     variants={item}
@@ -252,7 +251,7 @@ const EventsPage = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             <AnimatePresence mode="wait">
-              {pastEvents.map((event, index) => (
+              {pastEvents.map((event, _index) => (
                 <motion.div
                   key={event.id}
                   variants={item}

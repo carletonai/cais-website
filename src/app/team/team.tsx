@@ -1,7 +1,5 @@
-import React from "react";
 import TeamDisplay from "@/components/TeamDisplay";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
 
 const TeamPage = () => {
   return (

@@ -35,6 +35,13 @@ export default [
     },
     rules: {
       "react/jsx-no-target-blank": "off",
+      // Base rule is off in favour of the TS-aware one, which understands
+      // type-only usage and destructuring holes.
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+      ],
       "react-refresh/only-export-components": [
         "warn",
         { allowConstantExport: true },

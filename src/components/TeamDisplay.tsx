@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   motion,
   useScroll,
@@ -6,7 +6,6 @@ import {
   useTransform,
   useMotionValueEvent,
 } from "framer-motion";
-import { Member } from "@/types/team";
 import teamData from "@/data/team.json";
 import oldTeamsData from "@/data/old-teams.json";
 import OldTeamsRow from "./OldTeamsRow";
@@ -202,7 +201,7 @@ const ScrollingLine = () => {
 
 const AppScrollDetector = () => {
   const { scrollY } = useScroll();
-  const [scrollDirection, setScrollDirection] = useState<"up" | "down">("down");
+  const [, setScrollDirection] = useState<"up" | "down">("down");
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() || 0;
@@ -286,7 +285,7 @@ const FloatingLights = () => {
 const TeamDisplay = () => {
   const members = teamData.members;
   const executives = members;
-  const [scrollDirection, setScrollDirection] = useState<"up" | "down">("down");
+  const [scrollDirection] = useState<"up" | "down">("down");
 
   return (
     <ScrollDirectionContext.Provider value={scrollDirection}>
