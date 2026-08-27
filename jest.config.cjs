@@ -1,8 +1,11 @@
 module.exports = {
   testEnvironment: "jsdom",
   transform: {
-    "^.+\\.(ts|tsx)$": "babel-jest",
+    "^.+\\.(ts|tsx|js|jsx|mjs)$": "babel-jest",
   },
+  // react-hotkeys-hook 5 is ESM-only and ships untranspiled, so it has to
+  // go through babel rather than being skipped with the rest of node_modules.
+  transformIgnorePatterns: ["/node_modules/(?!.*react-hotkeys-hook)"],
   moduleNameMapper: {
     "\\.(css|less|scss|sass)$": "<rootDir>/__mocks__/styleMock.js",
     "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
