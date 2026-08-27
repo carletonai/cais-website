@@ -85,10 +85,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/carletonai/cais-web.git"
+    "url": "https://github.com/carletonai/cais-website.git"
   },
   "bugs": {
-    "url": "https://github.com/carletonai/cais-web/issues"
+    "url": "https://github.com/carletonai/cais-website/issues"
   },
   "keywords": [
     "react",

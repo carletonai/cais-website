@@ -16,8 +16,8 @@
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/carletonai/cais-web.git
-cd cais-web
+git clone https://github.com/carletonai/cais-website.git
+cd cais-website
 ```
 
 2. Install dependencies:
