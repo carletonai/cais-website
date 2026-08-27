@@ -46,11 +46,11 @@
     "@shadcn/ui": "^0.0.4",
     "@tailwindcss/postcss": "^4.3.3",
     "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.5.2",
     "@types/jest": "^30.0.0",
-    "@types/node": "^22.10.5",
+    "@types/node": "^26.4.0",
     "@types/react": "^19.0.5",
     "@types/react-dom": "^19.0.3",
     "@types/react-router-dom": "^5.3.3",
@@ -71,13 +71,13 @@
     "lucide-react": "^1.18.0",
     "postcss": "^8.5.26",
     "prettier": "^3.8.4",
-    "tailwind-merge": "^2.6.0",
+    "tailwind-merge": "^3.6.0",
     "tailwindcss": "^4.3.3",
     "tailwindcss-animate": "^1.0.7",
     "ts-jest": "^29.4.12",
     "typescript": "^5.7.3",
     "vite": "^6.4.2",
-    "vite-plugin-svgr": "^4.3.0"
+    "vite-plugin-svgr": "^5.2.0"
   },
   "engines": {
     "node": ">=18.0.0"
