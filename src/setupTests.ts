@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import util from "util";
+import util from "node:util";
 
 Object.defineProperties(globalThis, {
   TextEncoder: {
