@@ -889,8 +889,12 @@ const Resources = () => {
         };
         break;
       case "quote":
-        const randomQuote =
-          AI_QUOTES[Math.floor(Math.random() * AI_QUOTES.length)];
+        // handleCommand only ever runs from handleKeyDown, a keyboard event
+        // handler, so this is never evaluated during render. The compiler
+        // cannot trace that call path.
+        // eslint-disable-next-line react-hooks/purity
+        const quoteIndex = Math.floor(Math.random() * AI_QUOTES.length);
+        const randomQuote = AI_QUOTES[quoteIndex];
         output = {
           content: randomQuote,
           isSystem: true,
