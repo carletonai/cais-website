@@ -55,7 +55,7 @@ export function LatestEvents() {
             asChild
             variant="outline"
             size="lg"
-            className="glass hover:bg-primary/5 hover:border-primary/30 transition-all duration-200"
+            className="glass hover:bg-brand/5 hover:border-primary/30 transition-all duration-200"
           >
             <Link to="/events">View All Events</Link>
           </Button>
@@ -80,7 +80,7 @@ export function LatestEvents() {
                   damping: 10,
                 },
               }}
-              className="group relative bg-card/50 backdrop-blur-xs rounded-xl overflow-hidden border border-primary/10 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5 transition-all duration-200"
+              className="group relative bg-card/50 backdrop-blur-xs rounded-xl overflow-hidden border border-primary/10 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5 transition-all duration-200"
             >
               <div className="aspect-video relative overflow-hidden">
                 <div
@@ -117,7 +117,7 @@ export function LatestEvents() {
                     {event.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                        className="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                       >
                         {tag}
                       </span>

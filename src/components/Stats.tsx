@@ -81,8 +81,8 @@ export function Stats() {
                   "bg-card/50 backdrop-blur-xs",
                   "border border-primary/10",
                   "transition-all duration-200 ease-out",
-                  "hover:border-primary/30 hover:bg-primary/5",
-                  "hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5",
+                  "hover:border-primary/30 hover:bg-brand/5",
+                  "hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5",
                 )}
               >
                 <div className="text-center relative z-10">
@@ -94,7 +94,7 @@ export function Stats() {
                   >
                     {stat.number}
                   </motion.div>
-                  <div className="text-base sm:text-lg font-medium mb-1 text-foreground/90">
+                  <div className="text-base sm:text-lg font-medium mb-1 text-foreground">
                     {stat.label}
                   </div>
                   <p className="text-xs sm:text-sm text-muted-foreground">

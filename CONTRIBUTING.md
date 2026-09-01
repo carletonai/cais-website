@@ -63,9 +63,45 @@ pnpm dev          # Start development server
 pnpm build        # Build for production
 pnpm serve        # Start production server
 pnpm test         # Run tests
+pnpm test:contrast # Audit colour contrast against WCAG AAA (needs a dev server)
 pnpm lint         # Run linting
 pnpm format       # Check formatting
 ```
+
+## Accessibility
+
+The site targets **WCAG 2.2 Level AAA** for contrast: 7:1 for body text, 4.5:1
+for large text (>=24px, or >=18.66px bold).
+
+Most text sits on a stack of gradients, blurred blooms and grid overlays rather
+than on a flat colour, so contrast cannot be checked by reading Tailwind classes.
+`pnpm test:contrast` measures it from rendered pixels instead — it screenshots
+each page twice (once normally, once with glyphs made transparent), diffs the
+two to find the pixels each glyph covers, and evaluates the specified text
+colour against the real backdrop at those pixels.
+
+```bash
+pnpm dev &                       # the audit drives a running dev server
+pnpm test:contrast --base http://localhost:5173 --width 1280
+pnpm test:contrast --base http://localhost:5173 --width 375   # mobile layout
+```
+
+It needs Playwright's chromium (`npx playwright install chromium`); set
+`PLAYWRIGHT_CHROMIUM_PATH` to reuse a browser you already have. The script exits
+non-zero when anything fails, so it can gate CI.
+
+Two colour roles keep this working, and they are not interchangeable:
+
+- `primary` is the brand red as **ink**. It is light enough to clear 7:1 on
+  every surface. Use it for text and icons.
+- `brand` is the brand red as a **fill** — solid buttons, tinted chips,
+  decorative blooms. It is dark enough that `foreground` on top of it clears
+  7:1. A saturated red cannot do both jobs at once on a near-black ground.
+
+Putting text on `bg-primary`, or a bloom on `primary`, is what previously made
+whole pages unreadable. When adding decorative layers, keep their alpha low:
+they sit behind body copy, and lifting the backdrop luminance breaks the
+guarantee every ink colour depends on.
 
 ## Contributing
 

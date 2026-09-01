@@ -66,7 +66,11 @@ export default function Navbar() {
           className={`flex justify-between items-center transition-all duration-300`}
         >
           <div className="flex items-center">
-            <Link to="/" className="flex items-center group">
+            <Link
+              to="/"
+              aria-label="Carleton AI Society — home"
+              className="flex min-h-11 items-center group"
+            >
               <img
                 src={publicAssetPath("/header-club.png")}
                 alt="CAIS Logo"
@@ -80,12 +84,15 @@ export default function Navbar() {
               <div key={item.path} className="relative group">
                 <Link
                   to={item.path}
-                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 
-            inline-flex items-center gap-1.5 hover:bg-primary/10 
+                  aria-current={
+                    location.pathname === item.path ? "page" : undefined
+                  }
+                  className={`min-h-11 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 
+            inline-flex items-center gap-1.5 hover:bg-brand/10 
             ${
               location.pathname === item.path
-                ? "text-primary bg-primary/15 shadow-xs"
-                : "text-foreground/90 hover:text-primary"
+                ? "text-primary bg-brand/20 shadow-xs"
+                : "text-foreground hover:text-primary"
             }`}
                 >
                   {item.label}
@@ -96,21 +103,25 @@ export default function Navbar() {
                 {item.children && (
                   <div
                     className="absolute top-full left-0 mt-1 w-52 py-2 
-                  bg-gradient-to-b from-background to-background/98 
+                  bg-background
                   backdrop-blur-2xl rounded-lg shadow-lg border border-border/20
-                  after:absolute after:inset-0 after:bg-black/50 after:pointer-events-none
                   opacity-0 invisible group-hover:opacity-100 group-hover:visible 
-                  transition-all duration-200 transform origin-top-left scale-95 group-hover:scale-100"
+                  group-focus-within:opacity-100 group-focus-within:visible
+                  transition-all duration-200 transform origin-top-left scale-95 
+                  group-hover:scale-100 group-focus-within:scale-100"
                   >
                     {item.children.map((child) => (
                       <Link
                         key={child.path}
                         to={child.path}
-                        className={`relative z-10 block px-4 py-2.5 text-sm font-medium transition-colors duration-200 
+                        aria-current={
+                          location.pathname === child.path ? "page" : undefined
+                        }
+                        className={`relative z-10 flex min-h-11 items-center px-4 py-2.5 text-sm font-medium transition-colors duration-200 
                     ${
                       location.pathname === child.path
-                        ? "text-primary bg-primary/20"
-                        : "text-white hover:text-primary hover:bg-primary/10"
+                        ? "text-primary bg-brand/20"
+                        : "text-foreground hover:text-primary hover:bg-brand/10"
                     }`}
                       >
                         {child.label}
@@ -126,13 +137,15 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="inline-flex items-center justify-center p-2.5 rounded-lg 
-                text-foreground hover:text-primary hover:bg-primary/10 
+              className="inline-flex min-h-11 min-w-11 items-center justify-center p-2.5 rounded-lg 
+                text-foreground hover:text-primary hover:bg-brand/10 
                 transition-colors duration-300"
               aria-controls="mobile-menu"
               aria-expanded={isMobileMenuOpen}
             >
-              <span className="sr-only">Open main menu</span>
+              <span className="sr-only">
+                {isMobileMenuOpen ? "Close main menu" : "Open main menu"}
+              </span>
               <svg
                 className={`${isMobileMenuOpen ? "hidden" : "block"} h-6 w-6`}
                 xmlns="http://www.w3.org/2000/svg"
@@ -172,9 +185,9 @@ export default function Navbar() {
         role="navigation"
         aria-label="Mobile navigation"
         aria-hidden={!isMobileMenuOpen}
-        className={`${isMobileMenuOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"} 
+        className={`${isMobileMenuOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0 invisible"} 
           sm:hidden absolute top-full left-0 right-0 overflow-hidden transition-all duration-300 
-          bg-gradient-to-b from-background/95 to-background/90 backdrop-blur-xl shadow-lg border-t border-border/20`}
+          bg-background backdrop-blur-xl shadow-lg border-t border-border/20`}
       >
         <div className="px-4 py-3 space-y-2">
           {NAV_ITEMS.map((item) => (
@@ -182,11 +195,14 @@ export default function Navbar() {
               <Link
                 to={item.path}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`block px-4 py-2.5 text-base font-medium rounded-lg transition-all duration-300 
+                aria-current={
+                  location.pathname === item.path ? "page" : undefined
+                }
+                className={`block min-h-11 px-4 py-2.5 text-base font-medium rounded-lg transition-all duration-300 
               ${
                 location.pathname === item.path
-                  ? "text-primary bg-primary/20"
-                  : "text-foreground hover:text-primary hover:bg-primary/10"
+                  ? "text-primary bg-brand/20"
+                  : "text-foreground hover:text-primary hover:bg-brand/10"
               }`}
               >
                 <div className="flex items-center justify-between">
@@ -201,11 +217,14 @@ export default function Navbar() {
                       key={child.path}
                       to={child.path}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className={`block px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-300 
+                      aria-current={
+                        location.pathname === child.path ? "page" : undefined
+                      }
+                      className={`flex min-h-11 items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-300 
                     ${
                       location.pathname === child.path
-                        ? "text-primary bg-primary/20"
-                        : "text-foreground/95 hover:text-primary hover:bg-primary/10"
+                        ? "text-primary bg-brand/20"
+                        : "text-foreground hover:text-primary hover:bg-brand/10"
                     }`}
                     >
                       {child.label}

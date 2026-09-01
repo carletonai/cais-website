@@ -21,7 +21,7 @@ export default function Footer() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <p className="text-muted-foreground/80">
+            <p className="text-muted-foreground">
               © {new Date().getFullYear()} Carleton Artificial Intelligence
               Society
             </p>

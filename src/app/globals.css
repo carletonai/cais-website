@@ -2,6 +2,7 @@
 @config "../../tailwind.config.ts";
 
 @theme {
+  /* Surfaces. Text is guaranteed AAA against every one of these. */
   --color-background: hsl(225 30% 8%);
   --color-foreground: hsl(210 40% 98%);
 
@@ -11,24 +12,33 @@
   --color-popover: hsl(225 30% 9%);
   --color-popover-foreground: hsl(210 40% 98%);
 
-  --color-primary: hsl(358 75% 55%);
-  --color-primary-foreground: hsl(210 40% 98%);
+  /* `primary` is the brand red as *ink*: light enough to clear 7:1 on every
+     surface above. Solid red fills use `brand` instead — a saturated red can
+     never reach 7:1 on a near-black ground, so the two roles need two values. */
+  --color-primary: hsl(357 92% 78%);
+  --color-primary-foreground: hsl(225 30% 8%);
+
+  /* `brand` is the red as a *fill*, dark enough that `foreground` on top of it
+     clears 7:1. Also used for decorative blooms, which must not lift the
+     backdrop luminance past the budget the ink colours assume. */
+  --color-brand: hsl(358 84% 36%);
+  --color-brand-foreground: hsl(210 40% 98%);
 
   --color-secondary: hsl(225 30% 11%);
   --color-secondary-foreground: hsl(210 40% 98%);
 
   --color-muted: hsl(225 30% 11%);
-  --color-muted-foreground: hsl(210 40% 85%);
+  --color-muted-foreground: hsl(213 32% 88%);
 
-  --color-accent: hsl(195 85% 55%);
-  --color-accent-foreground: hsl(210 40% 98%);
+  --color-accent: hsl(190 90% 72%);
+  --color-accent-foreground: hsl(225 30% 8%);
 
-  --color-destructive: hsl(0 84% 60%);
+  --color-destructive: hsl(0 84% 35%);
   --color-destructive-foreground: hsl(210 40% 98%);
 
   --color-border: hsl(225 30% 14%);
   --color-input: hsl(225 30% 14%);
-  --color-ring: hsl(0 90% 65%);
+  --color-ring: hsl(190 90% 72%);
 }
 
 @layer base {
@@ -65,8 +75,70 @@
     @apply bg-background text-foreground;
   }
 
+  /* 1.4.8 Visual Presentation: line spacing of at least 1.5 within a
+     paragraph, spacing after a paragraph of at least 1.5x that, and blocks of
+     text no wider than 80 characters. */
   p {
-    @apply leading-relaxed;
+    line-height: 1.6;
+    /* 1.4.8 caps a block of text at 80 characters. Inter's average advance is
+       well under its `0` glyph, so 72ch rendered ~96 characters; 58ch measures
+       out at roughly 78. */
+    max-width: 58ch;
+  }
+
+  /* The cap above narrows the paragraph box, which would knock centred copy
+     off-centre inside a wider container. */
+  p.text-center,
+  .text-center p:not(.text-left) {
+    margin-inline: auto;
+  }
+
+  p + p {
+    margin-top: 1.5em;
+  }
+
+  /* No fully justified text (1.4.8). */
+  [style*="text-align: justify"],
+  .text-justify {
+    text-align: start !important;
+  }
+
+  /* 2.4.7 / 1.4.11: a focus indicator that stays visible on every surface. */
+  :focus-visible {
+    outline: 3px solid var(--color-ring);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Skip link (2.4.1) — off-screen until focused. */
+  .skip-link {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    z-index: 100;
+    translate: -50% -150%;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+    background: var(--color-brand);
+    color: var(--color-brand-foreground);
+    font-weight: 600;
+  }
+
+  .skip-link:focus {
+    translate: -50% 0;
+  }
+
+  /* 2.3.3 Animation from Interactions: honour the OS setting. The decorative
+     glow, float and typing effects carry no information, so they simply stop. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
@@ -130,6 +202,15 @@
     @apply drop-shadow-[0_0_5px_rgba(226,56,63,0.5)];
   }
 
+  /* In forced-colors mode the drop-shadow is rasterised as a visible box
+     around the heading instead of a glow, so drop it. */
+  @media (forced-colors: active) {
+    .text-glow,
+    .text-glow-sm {
+      filter: none;
+    }
+  }
+
   .gradient-mask-b {
     mask-image: linear-gradient(to bottom, black, transparent);
   }
@@ -152,8 +233,8 @@
 
   .bg-grid {
     background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+      linear-gradient(to right, rgba(255, 255, 255, 0.09) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.09) 1px, transparent 1px);
     background-size: 60px 60px;
     background-position: center center;
   }
@@ -167,6 +248,10 @@
     background-position: center;
   }
 
+  /* Decorative bloom. These layers sit behind body copy, so their alpha is
+     capped: at the animation's peak the composite must not lift the backdrop
+     above the luminance the AAA ink colours are validated against. Raising
+     these alphas is what made the text unreadable — keep them low. */
   .bg-glow::before {
     content: "";
     position: absolute;
@@ -174,17 +259,17 @@
     background:
       radial-gradient(
         circle at 50% -20%,
-        rgba(226, 56, 63, 0.6),
+        rgba(226, 56, 63, 0.12),
         transparent 60%
       ),
       radial-gradient(
         circle at 0% 50%,
-        rgba(99, 68, 245, 0.3),
+        rgba(99, 68, 245, 0.08),
         transparent 50%
       ),
       radial-gradient(
         circle at 100% 50%,
-        rgba(226, 56, 63, 0.3),
+        rgba(226, 56, 63, 0.08),
         transparent 50%
       );
     z-index: 0;

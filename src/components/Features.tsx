@@ -76,7 +76,7 @@ export function Features() {
           </p>
           <Link
             to="/about"
-            className="inline-flex items-center gap-1.5 text-primary hover:text-primary/80 transition-colors"
+            className="inline-flex min-h-11 items-center gap-1.5 text-primary hover:text-primary hover:underline transition-colors"
           >
             <span>View All Opportunities</span>
             <ArrowUpRight className="h-4 w-4" />
@@ -99,8 +99,8 @@ export function Features() {
                     "bg-card/50 backdrop-blur-xs",
                     "border border-primary/10",
                     "transition-all duration-200 ease-out",
-                    "hover:border-primary/30 hover:bg-primary/5",
-                    "hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5",
+                    "hover:border-primary/30 hover:bg-brand/5",
+                    "hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5",
                   )}
                 >
                   <div className="relative z-50">
@@ -110,7 +110,7 @@ export function Features() {
                       </h3>
                       <ArrowUpRight className="h-4 w-4 text-primary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                     </div>
-                    <p className="font-medium text-sm sm:text-base text-foreground/90 mb-3">
+                    <p className="font-medium text-sm sm:text-base text-foreground mb-3">
                       {feature.description}
                     </p>
                     <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">

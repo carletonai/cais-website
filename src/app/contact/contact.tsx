@@ -65,8 +65,8 @@ const item = {
 
 const ContactPage = () => (
   <div className="min-h-screen bg-background relative overflow-hidden">
-    <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/20 blur-[120px] pointer-events-none" />
-    <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-primary/10 blur-[120px] pointer-events-none" />
+    <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-brand/20 blur-[120px] pointer-events-none" />
+    <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-brand/10 blur-[120px] pointer-events-none" />
     <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-background pointer-events-none" />
     <div className="absolute inset-0 bg-glow opacity-20 pointer-events-none" />
     <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
@@ -81,7 +81,7 @@ const ContactPage = () => (
         <p className="text-sm font-mono text-primary mb-4 tracking-widest uppercase">
           Reach Us
         </p>
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/50 mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary/75 mb-4">
           Contact Us
         </h1>
         <p className="text-lg text-muted-foreground">
@@ -105,7 +105,7 @@ const ContactPage = () => (
               rel="noopener noreferrer"
               className={`group relative flex items-center gap-4 p-5 rounded-xl bg-card/50 backdrop-blur-xs border border-primary/10 hover:translate-y-[-2px] hover:shadow-lg transition-all duration-200 ${hoverColor}`}
             >
-              <div className="p-2.5 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors shrink-0">
+              <div className="p-2.5 rounded-lg bg-brand/10 group-hover:bg-brand/20 transition-colors shrink-0">
                 <Icon className={`w-5 h-5 ${iconColor}`} />
               </div>
               <div className="min-w-0">

@@ -80,10 +80,25 @@ const useTransform = (_value, _input, output) =>
   Array.isArray(output) ? output[0] : output;
 const useMotionValueEvent = () => {};
 
+// Mirrors the real hook: null when the media query is unavailable (jsdom
+// reports no preference), so components take their full-motion path in tests.
+const useReducedMotion = () =>
+  typeof window !== "undefined" && typeof window.matchMedia === "function"
+    ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    : false;
+
+const MotionConfig = ({ children }) =>
+  React.createElement(React.Fragment, null, children);
+MotionConfig.propTypes = {
+  children: PropTypes.node,
+};
+
 module.exports = {
   AnimatePresence,
+  MotionConfig,
   motion,
   useMotionValueEvent,
+  useReducedMotion,
   useScroll,
   useSpring,
   useTransform,

@@ -12,10 +12,11 @@ exports[`renders TeamPage correctly 1`] = `
       class="absolute inset-0 bg-grid opacity-20"
     />
     <div
-      class="fixed inset-0 bg-gradient-to-b from-black/0 via-primary/15 to-background pointer-events-none"
+      class="fixed inset-0 bg-gradient-to-b from-black/0 via-brand/10 to-background pointer-events-none"
     />
     <div
-      class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-primary)_0%,_transparent_70%)] opacity-10 blur-3xl"
+      aria-hidden="true"
+      class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-brand)_0%,_transparent_70%)] blur-3xl"
     />
     <section
       class="relative z-10 px-6 lg:px-14 pt-20 pb-16"
@@ -24,12 +25,12 @@ exports[`renders TeamPage correctly 1`] = `
         class="text-center max-w-4xl mx-auto"
       >
         <h1
-          class="text-4xl md:text-6xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/50 mb-6"
+          class="text-4xl md:text-6xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary/75 mb-6"
         >
           Meet Our Team
         </h1>
         <p
-          class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto"
+          class="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto"
         >
           The passionate individuals driving innovation and fostering AI education at Carleton University
         </p>
@@ -42,17 +43,19 @@ exports[`renders TeamPage correctly 1`] = `
         class="px-6 lg:px-14 pb-24 relative"
       >
         <div
+          aria-hidden="true"
           class="absolute inset-0 pointer-events-none"
         >
           <div
-            class="absolute left-[20%] top-[30%] h-[40vh] w-[40vh] rounded-full bg-primary/30 blur-[100px]"
+            class="absolute left-[20%] top-[30%] h-[40vh] w-[40vh] rounded-full bg-brand/30 blur-[100px]"
           />
           <div
-            class="absolute right-[10%] top-[20%] h-[30vh] w-[30vh] rounded-full bg-purple-500/20 blur-[80px]"
+            class="absolute right-[10%] top-[20%] h-[30vh] w-[30vh] rounded-full bg-purple-900/30 blur-[80px]"
           />
         </div>
         <div
-          class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-primary)_0%,_transparent_70%)] opacity-10 blur-3xl pointer-events-none"
+          aria-hidden="true"
+          class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-brand)_0%,_transparent_70%)] blur-3xl pointer-events-none"
         />
         <div
           class="space-y-48 relative z-10"
@@ -73,14 +76,14 @@ exports[`renders TeamPage correctly 1`] = `
                   class="relative h-full w-px bg-gradient-to-b from-primary/50 via-primary/10 to-transparent"
                 >
                   <div
-                    class="absolute top-0 w-px h-full origin-top bg-primary"
+                    class="absolute top-0 w-px h-full origin-top bg-brand"
                   />
                   <div
-                    class="absolute w-4 h-4 -translate-x-[7px] bg-primary rounded-full"
+                    class="absolute w-4 h-4 -translate-x-[7px] bg-brand rounded-full"
                     style="top: 0%;"
                   >
                     <div
-                      class="absolute inset-0 animate-pulse rounded-full bg-primary blur-md"
+                      class="absolute inset-0 animate-pulse rounded-full bg-brand blur-md"
                     />
                   </div>
                 </div>
@@ -101,7 +104,7 @@ exports[`renders TeamPage correctly 1`] = `
                         class="max-w-md text-right"
                       >
                         <h3
-                          class="text-2xl font-semibold text-neutral-200"
+                          class="text-2xl font-semibold text-foreground"
                         >
                           Jeremy Friesen
                         </h3>
@@ -111,7 +114,7 @@ exports[`renders TeamPage correctly 1`] = `
                           President
                         </p>
                         <p
-                          class="mt-4 text-base text-neutral-400"
+                          class="mt-4 text-base text-muted-foreground"
                         >
                           Favorite Hobby: Golf
                         </p>
@@ -129,7 +132,7 @@ exports[`renders TeamPage correctly 1`] = `
                         class="relative w-[280px] rounded-3xl bg-neutral-900/90 p-6 transition-all duration-300 hover:bg-neutral-800/90 hover:-translate-y-1 border border-transparent hover:border-primary/20"
                       >
                         <div
-                          class="absolute inset-0 rounded-3xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
+                          class="absolute inset-0 rounded-3xl bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
                         />
                         <div
                           class="flex flex-col items-center"
@@ -151,7 +154,8 @@ exports[`renders TeamPage correctly 1`] = `
                             </div>
                           </div>
                           <a
-                            class="relative z-10 rounded-full p-3 text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-primary"
+                            aria-label="Jeremy Friesen on LinkedIn"
+                            class="relative z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-3 text-muted-foreground transition-colors hover:bg-neutral-800 hover:text-primary"
                             href="https://www.linkedin.com/in/jeremyfriesen1/"
                             rel="noopener noreferrer"
                             target="_blank"
@@ -189,7 +193,7 @@ exports[`renders TeamPage correctly 1`] = `
                         class="relative w-[280px] rounded-3xl bg-neutral-900/90 p-6 transition-all duration-300 hover:bg-neutral-800/90 hover:-translate-y-1 border border-transparent hover:border-primary/20"
                       >
                         <div
-                          class="absolute inset-0 rounded-3xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
+                          class="absolute inset-0 rounded-3xl bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
                         />
                         <div
                           class="flex flex-col items-center"
@@ -211,7 +215,8 @@ exports[`renders TeamPage correctly 1`] = `
                             </div>
                           </div>
                           <a
-                            class="relative z-10 rounded-full p-3 text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-primary"
+                            aria-label="Marc Aoun on LinkedIn"
+                            class="relative z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-3 text-muted-foreground transition-colors hover:bg-neutral-800 hover:text-primary"
                             href="https://www.linkedin.com/in/marc-aoun-263b981ab/"
                             rel="noopener noreferrer"
                             target="_blank"
@@ -246,7 +251,7 @@ exports[`renders TeamPage correctly 1`] = `
                         class="max-w-md"
                       >
                         <h3
-                          class="text-2xl font-semibold text-neutral-200"
+                          class="text-2xl font-semibold text-foreground"
                         >
                           Marc Aoun
                         </h3>
@@ -256,7 +261,7 @@ exports[`renders TeamPage correctly 1`] = `
                           VP Academics
                         </p>
                         <p
-                          class="mt-4 text-base text-neutral-400"
+                          class="mt-4 text-base text-muted-foreground"
                         >
                           Favorite Hobby: Soccer
                         </p>
@@ -277,7 +282,7 @@ exports[`renders TeamPage correctly 1`] = `
                         class="max-w-md text-right"
                       >
                         <h3
-                          class="text-2xl font-semibold text-neutral-200"
+                          class="text-2xl font-semibold text-foreground"
                         >
                           Sofia Alhennawi
                         </h3>
@@ -287,7 +292,7 @@ exports[`renders TeamPage correctly 1`] = `
                           VP Community
                         </p>
                         <p
-                          class="mt-4 text-base text-neutral-400"
+                          class="mt-4 text-base text-muted-foreground"
                         >
                           Favorite Hobby: 
                         </p>
@@ -305,7 +310,7 @@ exports[`renders TeamPage correctly 1`] = `
                         class="relative w-[280px] rounded-3xl bg-neutral-900/90 p-6 transition-all duration-300 hover:bg-neutral-800/90 hover:-translate-y-1 border border-transparent hover:border-primary/20"
                       >
                         <div
-                          class="absolute inset-0 rounded-3xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
+                          class="absolute inset-0 rounded-3xl bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
                         />
                         <div
                           class="flex flex-col items-center"
@@ -327,7 +332,8 @@ exports[`renders TeamPage correctly 1`] = `
                             </div>
                           </div>
                           <a
-                            class="relative z-10 rounded-full p-3 text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-primary"
+                            aria-label="Sofia Alhennawi on LinkedIn"
+                            class="relative z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-3 text-muted-foreground transition-colors hover:bg-neutral-800 hover:text-primary"
                             href="https://www.linkedin.com/in/sofia-alhennawi-b6aa19344/"
                             rel="noopener noreferrer"
                             target="_blank"
@@ -365,7 +371,7 @@ exports[`renders TeamPage correctly 1`] = `
                         class="relative w-[280px] rounded-3xl bg-neutral-900/90 p-6 transition-all duration-300 hover:bg-neutral-800/90 hover:-translate-y-1 border border-transparent hover:border-primary/20"
                       >
                         <div
-                          class="absolute inset-0 rounded-3xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
+                          class="absolute inset-0 rounded-3xl bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
                         />
                         <div
                           class="flex flex-col items-center"
@@ -387,7 +393,8 @@ exports[`renders TeamPage correctly 1`] = `
                             </div>
                           </div>
                           <a
-                            class="relative z-10 rounded-full p-3 text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-primary"
+                            aria-label="Nnaya Oluigbo on LinkedIn"
+                            class="relative z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-3 text-muted-foreground transition-colors hover:bg-neutral-800 hover:text-primary"
                             href="https://www.linkedin.com/in/chizurum-oluigbo/"
                             rel="noopener noreferrer"
                             target="_blank"
@@ -422,7 +429,7 @@ exports[`renders TeamPage correctly 1`] = `
                         class="max-w-md"
                       >
                         <h3
-                          class="text-2xl font-semibold text-neutral-200"
+                          class="text-2xl font-semibold text-foreground"
                         >
                           Nnaya Oluigbo
                         </h3>
@@ -432,7 +439,7 @@ exports[`renders TeamPage correctly 1`] = `
                           VP Events
                         </p>
                         <p
-                          class="mt-4 text-base text-neutral-400"
+                          class="mt-4 text-base text-muted-foreground"
                         >
                           Favorite Hobby: Reading
                         </p>
@@ -453,7 +460,7 @@ exports[`renders TeamPage correctly 1`] = `
                         class="max-w-md text-right"
                       >
                         <h3
-                          class="text-2xl font-semibold text-neutral-200"
+                          class="text-2xl font-semibold text-foreground"
                         >
                           Alexander James Rigas
                         </h3>
@@ -463,7 +470,7 @@ exports[`renders TeamPage correctly 1`] = `
                           VP Finance
                         </p>
                         <p
-                          class="mt-4 text-base text-neutral-400"
+                          class="mt-4 text-base text-muted-foreground"
                         >
                           Favorite Hobby: 
                         </p>
@@ -481,7 +488,7 @@ exports[`renders TeamPage correctly 1`] = `
                         class="relative w-[280px] rounded-3xl bg-neutral-900/90 p-6 transition-all duration-300 hover:bg-neutral-800/90 hover:-translate-y-1 border border-transparent hover:border-primary/20"
                       >
                         <div
-                          class="absolute inset-0 rounded-3xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
+                          class="absolute inset-0 rounded-3xl bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
                         />
                         <div
                           class="flex flex-col items-center"
@@ -503,7 +510,8 @@ exports[`renders TeamPage correctly 1`] = `
                             </div>
                           </div>
                           <a
-                            class="relative z-10 rounded-full p-3 text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-primary"
+                            aria-label="Alexander James Rigas on LinkedIn"
+                            class="relative z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-3 text-muted-foreground transition-colors hover:bg-neutral-800 hover:text-primary"
                             href="https://www.linkedin.com/in/alexanderrigas/"
                             rel="noopener noreferrer"
                             target="_blank"
@@ -541,7 +549,7 @@ exports[`renders TeamPage correctly 1`] = `
                         class="relative w-[280px] rounded-3xl bg-neutral-900/90 p-6 transition-all duration-300 hover:bg-neutral-800/90 hover:-translate-y-1 border border-transparent hover:border-primary/20"
                       >
                         <div
-                          class="absolute inset-0 rounded-3xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
+                          class="absolute inset-0 rounded-3xl bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
                         />
                         <div
                           class="flex flex-col items-center"
@@ -563,7 +571,8 @@ exports[`renders TeamPage correctly 1`] = `
                             </div>
                           </div>
                           <a
-                            class="relative z-10 rounded-full p-3 text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-primary"
+                            aria-label="Abdulrahman Zrein on LinkedIn"
+                            class="relative z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-3 text-muted-foreground transition-colors hover:bg-neutral-800 hover:text-primary"
                             href="https://www.linkedin.com/in/abdulrahmanzrein/"
                             rel="noopener noreferrer"
                             target="_blank"
@@ -598,7 +607,7 @@ exports[`renders TeamPage correctly 1`] = `
                         class="max-w-md"
                       >
                         <h3
-                          class="text-2xl font-semibold text-neutral-200"
+                          class="text-2xl font-semibold text-foreground"
                         >
                           Abdulrahman Zrein
                         </h3>
@@ -608,7 +617,7 @@ exports[`renders TeamPage correctly 1`] = `
                           VP Projects/Technology
                         </p>
                         <p
-                          class="mt-4 text-base text-neutral-400"
+                          class="mt-4 text-base text-muted-foreground"
                         >
                           Favorite Hobby: Skiing
                         </p>
@@ -654,7 +663,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Hamzah Hamad
                     </div>
@@ -664,12 +673,13 @@ exports[`renders TeamPage correctly 1`] = `
                       President
                     </div>
                     <div
-                      class="text-neutral-400 text-xs mb-1"
+                      class="text-muted-foreground text-xs mb-1"
                     >
                       Favorite Hobby: Golf
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Hamzah Hamad on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/hamzahhamad"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -690,7 +700,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Yuvraj Bains
                     </div>
@@ -700,12 +710,13 @@ exports[`renders TeamPage correctly 1`] = `
                       VP Academics
                     </div>
                     <div
-                      class="text-neutral-400 text-xs mb-1"
+                      class="text-muted-foreground text-xs mb-1"
                     >
                       Favorite Hobby: Ice Hockey
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Yuvraj Bains on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/yuvrajbains00/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -726,7 +737,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Sahil Kumar
                     </div>
@@ -736,12 +747,13 @@ exports[`renders TeamPage correctly 1`] = `
                       VP Finance & Community
                     </div>
                     <div
-                      class="text-neutral-400 text-xs mb-1"
+                      class="text-muted-foreground text-xs mb-1"
                     >
                       Favorite Hobby: Cricket
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Sahil Kumar on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/-sahil-kumar-/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -762,7 +774,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Megh Ghajjar
                     </div>
@@ -772,12 +784,13 @@ exports[`renders TeamPage correctly 1`] = `
                       VP Events
                     </div>
                     <div
-                      class="text-neutral-400 text-xs mb-1"
+                      class="text-muted-foreground text-xs mb-1"
                     >
                       Favorite Hobby: Exploring Music
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Megh Ghajjar on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/megh-gajjar-269543308/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -811,7 +824,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Awwab Mahdi
                     </div>
@@ -821,12 +834,13 @@ exports[`renders TeamPage correctly 1`] = `
                       Co-President
                     </div>
                     <div
-                      class="text-neutral-400 text-xs mb-1"
+                      class="text-muted-foreground text-xs mb-1"
                     >
                       Current obsession: Lord of the Mysteries
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Awwab Mahdi on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/awwabm"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -847,7 +861,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Tarek Sallam
                     </div>
@@ -857,12 +871,13 @@ exports[`renders TeamPage correctly 1`] = `
                       Co-President
                     </div>
                     <div
-                      class="text-neutral-400 text-xs mb-1"
+                      class="text-muted-foreground text-xs mb-1"
                     >
                       Current obsession: Deep Learning
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Tarek Sallam on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/tareksallam"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -883,7 +898,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Diego Fuentes
                     </div>
@@ -893,12 +908,13 @@ exports[`renders TeamPage correctly 1`] = `
                       VP Academics
                     </div>
                     <div
-                      class="text-neutral-400 text-xs mb-1"
+                      class="text-muted-foreground text-xs mb-1"
                     >
                       Current obsession: Holistic Health and Wellness
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Diego Fuentes on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/diego-fuentesa"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -919,7 +935,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Kierra Blankespoor
                     </div>
@@ -929,12 +945,13 @@ exports[`renders TeamPage correctly 1`] = `
                       VP Community
                     </div>
                     <div
-                      class="text-neutral-400 text-xs mb-1"
+                      class="text-muted-foreground text-xs mb-1"
                     >
                       Current Obsession: Dinner rolls
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Kierra Blankespoor on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/kierra-blankespoor"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -955,7 +972,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Vaibhav Panchanadam
                     </div>
@@ -965,12 +982,13 @@ exports[`renders TeamPage correctly 1`] = `
                       VP Events
                     </div>
                     <div
-                      class="text-neutral-400 text-xs mb-1"
+                      class="text-muted-foreground text-xs mb-1"
                     >
                       Current obsession: blue by young kai
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Vaibhav Panchanadam on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/vaibhav-panchanadam"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -991,7 +1009,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Mohamed Bouslama
                     </div>
@@ -1001,12 +1019,13 @@ exports[`renders TeamPage correctly 1`] = `
                       VP Events
                     </div>
                     <div
-                      class="text-neutral-400 text-xs mb-1"
+                      class="text-muted-foreground text-xs mb-1"
                     >
                       Current obsession: Game dev
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Mohamed Bouslama on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/mohamed-bouslama-2092892b1"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1027,7 +1046,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Tarek Ibrahim
                     </div>
@@ -1037,12 +1056,13 @@ exports[`renders TeamPage correctly 1`] = `
                       VP Projects and Technology
                     </div>
                     <div
-                      class="text-neutral-400 text-xs mb-1"
+                      class="text-muted-foreground text-xs mb-1"
                     >
                       Current obsession: Go
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Tarek Ibrahim on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/im-tarek"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1063,7 +1083,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Zeeshan Jahangir
                     </div>
@@ -1073,12 +1093,13 @@ exports[`renders TeamPage correctly 1`] = `
                       VP Finance
                     </div>
                     <div
-                      class="text-neutral-400 text-xs mb-1"
+                      class="text-muted-foreground text-xs mb-1"
                     >
                       Current obsession: Collecting Fake Internet Points
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Zeeshan Jahangir on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/zeeshan-jahangir-604ba762"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1112,7 +1133,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Enos Odigie
                     </div>
@@ -1122,7 +1143,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Co-President
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Enos Odigie on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/enosodigie/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1143,7 +1165,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Gordon Tang
                     </div>
@@ -1153,7 +1175,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Co-President & VP Finance
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Gordon Tang on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/gordon-tang-2023/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1174,7 +1197,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Kanishk Patoliya
                     </div>
@@ -1184,7 +1207,8 @@ exports[`renders TeamPage correctly 1`] = `
                       VP External and Events
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Kanishk Patoliya on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/kanishk-patoliya/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1205,7 +1229,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Nadia Uddin
                     </div>
@@ -1215,7 +1239,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Events Coordinator
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Nadia Uddin on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/nadiauddin86/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1236,7 +1261,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Farzad Roozitalab
                     </div>
@@ -1246,7 +1271,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Workshop Lead
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Farzad Roozitalab on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/farzad-roozitalab/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1267,7 +1293,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       David Hobson
                     </div>
@@ -1277,7 +1303,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Workshop Lead
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="David Hobson on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/david-hobson-2728661b0/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1298,7 +1325,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Abdul Mutakabbir
                     </div>
@@ -1308,7 +1335,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Workshop Lead
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Abdul Mutakabbir on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/abdul-mutakabbir-15ab41188/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1329,7 +1357,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Khun Thu Rein
                     </div>
@@ -1339,7 +1367,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Webmaster
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Khun Thu Rein on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/khunthurein77ca/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1360,7 +1389,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Rabten Tsering
                     </div>
@@ -1370,7 +1399,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Webmaster
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Rabten Tsering on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/rabten-tsering/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1391,7 +1421,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Jahnelle Woldegiorgis
                     </div>
@@ -1401,7 +1431,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Social Media Coordinator
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Jahnelle Woldegiorgis on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/jahnelle-woldegiorgis/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1422,7 +1453,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Itoro Umanah
                     </div>
@@ -1432,7 +1463,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Social Media Coordinator
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Itoro Umanah on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/itoro-umanah-a85532210/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1453,7 +1485,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Renee Tejani
                     </div>
@@ -1463,7 +1495,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Social Media Coordinator
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Renee Tejani on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/reneetejani/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1497,7 +1530,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Enos Odigie
                     </div>
@@ -1507,7 +1540,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Co-President
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Enos Odigie on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/enosodigie/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1528,7 +1562,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Gordon Tang
                     </div>
@@ -1538,7 +1572,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Co-President & VP Finance
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Gordon Tang on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/gordon-tang-2023/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1559,7 +1594,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Kanishk Patoliya
                     </div>
@@ -1569,7 +1604,8 @@ exports[`renders TeamPage correctly 1`] = `
                       VP External and Events
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Kanishk Patoliya on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/kanishk-patoliya/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1590,7 +1626,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Nadia Uddin
                     </div>
@@ -1600,7 +1636,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Events Coordinator
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Nadia Uddin on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/nadiauddin86/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1621,7 +1658,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Farzad Roozitalab
                     </div>
@@ -1631,7 +1668,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Workshop Lead
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Farzad Roozitalab on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/farzad-roozitalab/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1652,7 +1690,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       David Hobson
                     </div>
@@ -1662,7 +1700,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Workshop Lead
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="David Hobson on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/david-hobson-2728661b0/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1683,7 +1722,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Khun Thu Rein
                     </div>
@@ -1693,7 +1732,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Webmaster
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Khun Thu Rein on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/khunthurein77ca/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1714,7 +1754,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Rabten Tsering
                     </div>
@@ -1724,7 +1764,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Webmaster
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Rabten Tsering on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/rabten-tsering/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1745,7 +1786,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Jahnelle Woldegiorgis
                     </div>
@@ -1755,7 +1796,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Social Media Coordinator
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Jahnelle Woldegiorgis on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/jahnelle-woldegiorgis/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1776,7 +1818,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Itoro Umanah
                     </div>
@@ -1786,7 +1828,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Social Media Coordinator
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Itoro Umanah on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/itoro-umanah-a85532210/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1807,7 +1850,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Renee Tejani
                     </div>
@@ -1817,7 +1860,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Social Media Coordinator
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Renee Tejani on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/reneetejani/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1851,7 +1895,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Abdullah Al-Chihabi
                     </div>
@@ -1861,7 +1905,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Co-President
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Abdullah Al-Chihabi on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/abdullahalchihabi/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1882,7 +1927,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Gordon Tang
                     </div>
@@ -1892,7 +1937,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Co-President
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Gordon Tang on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/gordon-tang-2023/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1913,7 +1959,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Kyle Knobloch
                     </div>
@@ -1923,7 +1969,8 @@ exports[`renders TeamPage correctly 1`] = `
                       VP Events
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Kyle Knobloch on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/kylejknobloch/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1944,7 +1991,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Fareen Lavji
                     </div>
@@ -1954,7 +2001,8 @@ exports[`renders TeamPage correctly 1`] = `
                       VP Finance
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Fareen Lavji on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/flavji/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -1975,7 +2023,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Japinder Sandhu
                     </div>
@@ -1985,7 +2033,8 @@ exports[`renders TeamPage correctly 1`] = `
                       VP Sponsorship
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Japinder Sandhu on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/japinder-sandhu/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -2006,7 +2055,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Justin Bellavance
                     </div>
@@ -2016,7 +2065,8 @@ exports[`renders TeamPage correctly 1`] = `
                       VP Development
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Justin Bellavance on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/justin-b-bba970129/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -2037,7 +2087,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Ujan Sen
                     </div>
@@ -2047,7 +2097,8 @@ exports[`renders TeamPage correctly 1`] = `
                       VP External
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Ujan Sen on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/ujansen/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -2068,7 +2119,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Enos Odigie
                     </div>
@@ -2078,7 +2129,8 @@ exports[`renders TeamPage correctly 1`] = `
                       VP Engagement and Webmaster
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Enos Odigie on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/enosodigie/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -2099,7 +2151,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Kanishk Patoliya
                     </div>
@@ -2109,7 +2161,8 @@ exports[`renders TeamPage correctly 1`] = `
                       VP Communications and Engagement
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Kanishk Patoliya on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/kanishk-patoliya/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -2130,7 +2183,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Anoushka Singhal
                     </div>
@@ -2140,7 +2193,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Social Media Coordinator
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Anoushka Singhal on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/anoushkasinghal/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -2161,7 +2215,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Samaia Aidroos
                     </div>
@@ -2171,7 +2225,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Social Media Coordinator
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Samaia Aidroos on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/samaia-aidroos-290757208/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -2192,7 +2247,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Brian Yang
                     </div>
@@ -2202,7 +2257,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Social Media Coordinator
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Brian Yang on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/brian-yang-14842020a/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -2223,7 +2279,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Anh Khoa Tran
                     </div>
@@ -2233,7 +2289,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Workshop Lead
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Anh Khoa Tran on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/anh-khoa-tran/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -2254,7 +2311,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Victoria Ajila
                     </div>
@@ -2264,7 +2321,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Workshop Lead
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Victoria Ajila on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/victoria-ajila-63616914b/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -2285,7 +2343,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Arushan Sinnadurai
                     </div>
@@ -2295,7 +2353,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Workshop Lead
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Arushan Sinnadurai on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/arushan-sinnadurai/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -2316,7 +2375,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Damilola Adesola
                     </div>
@@ -2326,7 +2385,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Workshop Lead
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Damilola Adesola on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/damilola-adesola/"
                       rel="noopener noreferrer"
                       target="_blank"
@@ -2347,7 +2407,7 @@ exports[`renders TeamPage correctly 1`] = `
                     class="text-center"
                   >
                     <div
-                      class="font-semibold text-neutral-200"
+                      class="font-semibold text-foreground"
                     >
                       Ilan Gofman
                     </div>
@@ -2357,7 +2417,8 @@ exports[`renders TeamPage correctly 1`] = `
                       Workshop Lead
                     </div>
                     <a
-                      class="inline-block mt-1 text-primary hover:underline"
+                      aria-label="Ilan Gofman on LinkedIn"
+                      class="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                       href="https://www.linkedin.com/in/ilan-gofman/"
                       rel="noopener noreferrer"
                       target="_blank"

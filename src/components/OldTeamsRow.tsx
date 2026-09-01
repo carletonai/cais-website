@@ -40,14 +40,14 @@ const OldTeamsRow: React.FC<OldTeamsRowProps> = ({ teams }) => {
                       className="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
                     />
                     <div className="text-center">
-                      <div className="font-semibold text-neutral-200">
+                      <div className="font-semibold text-foreground">
                         {member.name}
                       </div>
                       <div className="text-primary text-sm mb-1">
                         {member.title}
                       </div>
                       {member.description && (
-                        <div className="text-neutral-400 text-xs mb-1">
+                        <div className="text-muted-foreground text-xs mb-1">
                           {member.description}
                         </div>
                       )}
@@ -56,7 +56,8 @@ const OldTeamsRow: React.FC<OldTeamsRowProps> = ({ teams }) => {
                           href={member.linkedinURL}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-block mt-1 text-primary hover:underline"
+                          aria-label={`${member.name} on LinkedIn`}
+                          className="inline-flex min-h-11 items-center mt-1 text-primary hover:underline"
                         >
                           LinkedIn
                         </a>

@@ -9,9 +9,9 @@ import { publicAssetPath } from "@/lib/assets";
 const HomePage = () => {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/20 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-primary/10 blur-[120px] pointer-events-none" />
-      <div className="absolute top-2/3 left-1/2 w-72 h-72 rounded-full bg-primary/15 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-brand/25 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-brand/20 blur-[120px] pointer-events-none" />
+      <div className="absolute top-2/3 left-1/2 w-72 h-72 rounded-full bg-brand/20 blur-[120px] pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-background pointer-events-none" />
       <div className="absolute inset-0 bg-glow opacity-20 pointer-events-none" />
       <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />

@@ -12,6 +12,7 @@
     "build": "vite build",
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:contrast": "node scripts/a11y-contrast.mjs",
     "typecheck": "tsc --noEmit",
     "lint:check": "eslint .",
     "format:check": "prettier --check .",

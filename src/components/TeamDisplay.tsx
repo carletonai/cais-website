@@ -69,11 +69,11 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
             className="flex justify-end"
           >
             <div className="max-w-md text-right">
-              <h3 className="text-2xl font-semibold text-neutral-200">
-                {name}
-              </h3>
+              <h3 className="text-2xl font-semibold text-foreground">{name}</h3>
               <p className="mt-2 text-lg text-primary">{title}</p>
-              <p className="mt-4 text-base text-neutral-400">{description}</p>
+              <p className="mt-4 text-base text-muted-foreground">
+                {description}
+              </p>
             </div>
           </motion.div>
         ) : (
@@ -83,7 +83,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
             className="flex justify-end"
           >
             <div className="relative w-[280px] rounded-3xl bg-neutral-900/90 p-6 transition-all duration-300 hover:bg-neutral-800/90 hover:-translate-y-1 border border-transparent hover:border-primary/20">
-              <div className="absolute inset-0 rounded-3xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+              <div className="absolute inset-0 rounded-3xl bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
               <div className="flex flex-col items-center">
                 <div className="relative mb-4">
                   <div className="h-48 w-48 overflow-hidden rounded-3xl border-2 border-neutral-800 transition-colors duration-300 group-hover:border-primary/50">
@@ -102,7 +102,8 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
                     href={linkedinURL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative z-10 rounded-full p-3 text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-primary"
+                    aria-label={`${name} on LinkedIn`}
+                    className="relative z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-3 text-muted-foreground transition-colors hover:bg-neutral-800 hover:text-primary"
                   >
                     <FaLinkedin className="h-6 w-6" />
                   </a>
@@ -122,7 +123,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
             animate={{ opacity: 1, x: 0 }}
           >
             <div className="relative w-[280px] rounded-3xl bg-neutral-900/90 p-6 transition-all duration-300 hover:bg-neutral-800/90 hover:-translate-y-1 border border-transparent hover:border-primary/20">
-              <div className="absolute inset-0 rounded-3xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+              <div className="absolute inset-0 rounded-3xl bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
               <div className="flex flex-col items-center">
                 <div className="relative mb-4">
                   <div className="h-48 w-48 overflow-hidden rounded-3xl border-2 border-neutral-800 transition-colors duration-300 group-hover:border-primary/50">
@@ -141,7 +142,8 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
                     href={linkedinURL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative z-10 rounded-full p-3 text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-primary"
+                    aria-label={`${name} on LinkedIn`}
+                    className="relative z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-3 text-muted-foreground transition-colors hover:bg-neutral-800 hover:text-primary"
                   >
                     <FaLinkedin className="h-6 w-6" />
                   </a>
@@ -155,11 +157,11 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
             animate={{ opacity: 1, x: 0 }}
           >
             <div className="max-w-md">
-              <h3 className="text-2xl font-semibold text-neutral-200">
-                {name}
-              </h3>
+              <h3 className="text-2xl font-semibold text-foreground">{name}</h3>
               <p className="mt-2 text-lg text-primary">{title}</p>
-              <p className="mt-4 text-base text-neutral-400">{description}</p>
+              <p className="mt-4 text-base text-muted-foreground">
+                {description}
+              </p>
             </div>
           </motion.div>
         )}
@@ -185,14 +187,14 @@ const ScrollingLine = () => {
     <div ref={ref} className="absolute inset-0 flex justify-center">
       <div className="relative h-full w-px bg-gradient-to-b from-primary/50 via-primary/10 to-transparent">
         <motion.div
-          className="absolute top-0 w-px h-full origin-top bg-primary"
+          className="absolute top-0 w-px h-full origin-top bg-brand"
           style={{ scaleY }}
         />
         <motion.div
-          className="absolute w-4 h-4 -translate-x-[7px] bg-primary rounded-full"
+          className="absolute w-4 h-4 -translate-x-[7px] bg-brand rounded-full"
           style={{ top: useTransform(scaleY, [0, 1], ["0%", "100%"]) }}
         >
-          <div className="absolute inset-0 animate-pulse rounded-full bg-primary blur-md" />
+          <div className="absolute inset-0 animate-pulse rounded-full bg-brand blur-md" />
         </motion.div>
       </div>
     </div>
@@ -264,19 +266,18 @@ const TeamSection: React.FC<{
 
 const FloatingLights = () => {
   return (
-    <div className="absolute inset-0 pointer-events-none">
-      {}
+    <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.3 }}
         transition={{ duration: 2 }}
-        className="absolute left-[20%] top-[30%] h-[40vh] w-[40vh] rounded-full bg-primary/30 blur-[100px]"
+        className="absolute left-[20%] top-[30%] h-[40vh] w-[40vh] rounded-full bg-brand/30 blur-[100px]"
       />
       <motion.div
         initial={{ x: -100, y: -50 }}
         animate={{ x: [0, 100, 0], y: [0, 50, 0] }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute right-[10%] top-[20%] h-[30vh] w-[30vh] rounded-full bg-purple-500/20 blur-[80px]"
+        className="absolute right-[10%] top-[20%] h-[30vh] w-[30vh] rounded-full bg-purple-900/30 blur-[80px]"
       />
     </div>
   );
@@ -295,8 +296,9 @@ const TeamDisplay = () => {
 
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-primary)_0%,_transparent_70%)] opacity-10 blur-3xl pointer-events-none"
+          animate={{ opacity: 0.1 }}
+          aria-hidden="true"
+          className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-brand)_0%,_transparent_70%)] blur-3xl pointer-events-none"
         />
 
         <div className="space-y-48 relative z-10">

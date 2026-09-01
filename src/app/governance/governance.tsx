@@ -53,8 +53,8 @@ const item = {
 const Governance = () => {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/20 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-primary/10 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-brand/20 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-brand/10 blur-[120px] pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-background pointer-events-none" />
       <div className="absolute inset-0 bg-glow opacity-20 pointer-events-none" />
       <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
@@ -69,7 +69,7 @@ const Governance = () => {
           <p className="text-sm font-mono text-primary mb-4 tracking-widest uppercase">
             Club Structure
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/50 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary/75 mb-4">
             Governance
           </h1>
           <p className="text-lg text-muted-foreground">
@@ -89,11 +89,11 @@ const Governance = () => {
             <motion.div
               key={title}
               variants={item}
-              className="bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5 transition-all duration-200"
+              className="bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5 transition-all duration-200"
             >
-              <h3 className="text-lg font-semibold text-primary mb-3">
+              <h2 className="text-lg font-semibold text-primary mb-3">
                 {title}
-              </h3>
+              </h2>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 {description}
               </p>

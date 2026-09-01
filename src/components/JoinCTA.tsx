@@ -13,8 +13,8 @@ export function JoinCTA() {
             "bg-card/50 backdrop-blur-xs",
             "border border-primary/10",
             "transition-all duration-200 ease-out",
-            "hover:border-primary/30 hover:bg-primary/5",
-            "hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5",
+            "hover:border-primary/30 hover:bg-brand/5",
+            "hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5",
           )}
         >
           <div className="relative z-50">
@@ -41,7 +41,7 @@ export function JoinCTA() {
               <Button
                 asChild
                 size="lg"
-                className="w-full sm:w-auto min-w-[160px] h-11 text-base bg-primary/20 hover:bg-primary/30 text-primary transition-colors duration-200"
+                className="w-full sm:w-auto min-w-[160px] h-11 text-base bg-brand/20 hover:bg-brand/30 text-primary transition-colors duration-200"
               >
                 <Link to="/contact">Join Now</Link>
               </Button>
@@ -49,7 +49,7 @@ export function JoinCTA() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-auto min-w-[160px] h-11 text-base glass hover:bg-primary/5 hover:border-primary/30 transition-all duration-200"
+                className="w-full sm:w-auto min-w-[160px] h-11 text-base glass hover:bg-brand/5 hover:border-primary/30 transition-all duration-200"
               >
                 <Link to="/events">View Events</Link>
               </Button>

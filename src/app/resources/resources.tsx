@@ -242,34 +242,39 @@ const ASCII_ART = {
   `,
 };
 
+/**
+ * Terminal palettes. Each `primary`/`accent` ink clears 7:1 against its own
+ * `background`, which is why the grounds are the 950 shades: the 900s were
+ * light enough that the vivid 500-weight inks landed around 3:1.
+ */
 const THEMES = {
   default: {
     primary: "text-primary",
     background: "bg-background",
-    accent: "text-blue-400",
-    gradient: "from-primary via-primary/80 to-primary/50",
+    accent: "text-blue-300",
+    gradient: "from-primary via-primary/90 to-primary/75",
     inputBg: "bg-black/20",
   },
   cyberpunk: {
-    primary: "text-pink-500",
-    background: "bg-gradient-to-br from-purple-900 via-black to-blue-900",
-    accent: "text-yellow-400",
-    gradient: "from-pink-500 via-purple-500 to-blue-500",
-    inputBg: "bg-purple-900/20",
+    primary: "text-pink-300",
+    background: "bg-gradient-to-br from-purple-950 via-black to-blue-950",
+    accent: "text-yellow-300",
+    gradient: "from-pink-300 via-purple-300 to-blue-300",
+    inputBg: "bg-purple-950/40",
   },
   matrix: {
-    primary: "text-green-500",
+    primary: "text-green-400",
     background: "bg-black",
     accent: "text-green-300",
-    gradient: "from-green-400 via-green-500 to-green-600",
-    inputBg: "bg-green-900/20",
+    gradient: "from-green-300 via-green-400 to-green-300",
+    inputBg: "bg-green-950/40",
   },
   retro: {
-    primary: "text-amber-500",
-    background: "bg-amber-900",
-    accent: "text-amber-300",
-    gradient: "from-amber-400 via-amber-500 to-amber-600",
-    inputBg: "bg-amber-900/20",
+    primary: "text-amber-300",
+    background: "bg-amber-950",
+    accent: "text-amber-200",
+    gradient: "from-amber-200 via-amber-300 to-orange-200",
+    inputBg: "bg-amber-950/60",
   },
 };
 
@@ -331,7 +336,7 @@ const ANIMATIONS = {
       >
         {ASCII_ART.cais}
       </pre>
-      <div className="mt-4 text-sm text-red-500">
+      <div className="mt-4 text-sm text-primary">
         {isBooting ? "Initializing" : "Completed"} CAIS Terminal v2.0.0
       </div>
     </div>,
@@ -483,7 +488,7 @@ const makeLinksClickable = (text: string): React.ReactNode => {
               href={safeHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-400 hover:text-blue-300 hover:underline cursor-pointer"
+              className="text-blue-300 hover:text-blue-200 hover:underline cursor-pointer"
               onClick={(e) => {
                 e.stopPropagation();
               }}
@@ -934,7 +939,7 @@ const Resources = () => {
       case "hack":
         output = {
           content: (
-            <div className="space-y-1 text-green-500">
+            <div className="space-y-1 text-green-400">
               {ANIMATIONS.hack.map((line, i) => (
                 <motion.div
                   key={i}
@@ -1411,7 +1416,7 @@ Contact: partnerships@carletonai.com
             "bg-black/50 backdrop-blur-xs",
             "border border-primary/10",
             "font-mono text-sm sm:text-base",
-            "shadow-lg shadow-primary/10",
+            "shadow-lg shadow-brand/10",
             theme === "matrix" ? "matrix-scrollbar" : "terminal-scrollbar",
           )}
         >
@@ -1459,7 +1464,7 @@ Contact: partnerships@carletonai.com
                     <span>{">"}</span>
                     <span>{cmd.input}</span>
                     {cmd.timestamp && (
-                      <span className="text-xs opacity-50">
+                      <span className="text-xs text-muted-foreground">
                         [{cmd.timestamp}]
                       </span>
                     )}
@@ -1469,7 +1474,7 @@ Contact: partnerships@carletonai.com
                   className={cn(
                     "whitespace-pre-wrap",
                     cmd.isError
-                      ? "text-red-500"
+                      ? "text-red-300"
                       : cmd.isSystem
                         ? THEMES[theme].accent
                         : "text-muted-foreground",
@@ -1493,7 +1498,7 @@ Contact: partnerships@carletonai.com
                 className={cn(
                   "flex-1 bg-transparent border-none outline-hidden",
                   THEMES[theme].primary,
-                  "placeholder:text-opacity-50",
+                  "placeholder:text-muted-foreground",
                   isBooting && "cursor-not-allowed opacity-50",
                 )}
                 placeholder={

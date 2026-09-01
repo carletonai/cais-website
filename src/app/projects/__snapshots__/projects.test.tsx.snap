@@ -6,13 +6,13 @@ exports[`renders ProjectsPage correctly 1`] = `
     class="min-h-screen bg-background relative overflow-hidden"
   >
     <div
-      class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/20 blur-[120px] pointer-events-none"
+      class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-brand/20 blur-[120px] pointer-events-none"
     />
     <div
-      class="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-primary/10 blur-[120px] pointer-events-none"
+      class="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-brand/10 blur-[120px] pointer-events-none"
     />
     <div
-      class="absolute top-2/3 left-1/3 w-72 h-72 rounded-full bg-primary/15 blur-[120px] pointer-events-none"
+      class="absolute top-2/3 left-1/3 w-72 h-72 rounded-full bg-brand/15 blur-[120px] pointer-events-none"
     />
     <div
       class="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-background pointer-events-none"
@@ -35,7 +35,7 @@ exports[`renders ProjectsPage correctly 1`] = `
           What We Build
         </p>
         <h1
-          class="text-4xl md:text-5xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/50 mb-4"
+          class="text-4xl md:text-5xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary/75 mb-4"
         >
           Projects
         </h1>
@@ -49,18 +49,18 @@ exports[`renders ProjectsPage correctly 1`] = `
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
       >
         <div
-          class="group bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5 transition-all duration-200 flex flex-col"
+          class="group bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5 transition-all duration-200 flex flex-col"
         >
           <span
-            class="w-fit mb-3 px-2.5 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20"
+            class="w-fit mb-3 px-2.5 py-1 text-xs font-medium rounded-full bg-brand/10 text-primary border border-primary/20"
           >
             Previous Project
           </span>
-          <h3
+          <h2
             class="text-lg font-semibold mb-2 group-hover:text-primary transition-colors"
           >
             CuMind
-          </h3>
+          </h2>
           <p
             class="text-muted-foreground text-sm leading-relaxed flex-1 mb-4"
           >
@@ -96,7 +96,7 @@ exports[`renders ProjectsPage correctly 1`] = `
             </span>
           </div>
           <a
-            class="inline-flex items-center gap-1 text-sm text-primary hover:text-primary/80 font-medium transition-colors"
+            class="inline-flex min-h-11 items-center gap-1 text-sm text-primary hover:text-primary hover:underline font-medium transition-colors"
             href="https://github.com/carletonai/CuMind"
             rel="noopener noreferrer"
             target="_blank"

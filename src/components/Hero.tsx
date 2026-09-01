@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { SocialIcon } from "react-social-icons";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { FaDiscord } from "react-icons/fa";
 
@@ -64,19 +64,32 @@ export default function Hero({
   primaryAction,
   secondaryAction,
 }: HeroProps) {
-  const [displayText, setDisplayText] = useState("");
-  const [isTypingComplete, setIsTypingComplete] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
+  const [typedText, setTypedText] = useState("");
+  const [typingSettled, setTypingSettled] = useState(false);
+
+  // 2.3.3 / 2.2.2 — with reduced motion the copy is shown outright rather than
+  // typed out one character at a time.
+  const displayText = prefersReducedMotion ? description : typedText;
+  const isTypingComplete = prefersReducedMotion || typingSettled;
 
   useEffect(() => {
+    if (prefersReducedMotion) return;
+
+    let cancelled = false;
     const typeText = async () => {
       for (let i = 0; i <= description.length; i++) {
-        setDisplayText(description.slice(0, i));
         await new Promise((resolve) => setTimeout(resolve, 30));
+        if (cancelled) return;
+        setTypedText(description.slice(0, i));
       }
-      setIsTypingComplete(true);
+      setTypingSettled(true);
     };
     typeText();
-  }, [description]);
+    return () => {
+      cancelled = true;
+    };
+  }, [description, prefersReducedMotion]);
 
   return (
     <div className="relative min-h-[85vh] bg-black overflow-hidden">
@@ -104,7 +117,7 @@ export default function Hero({
           <motion.div variants={animations.item}>
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
               Carleton{" "}
-              <span className="text-primary font-mono inline-block mx-2 drop-shadow-[0_0_8px_rgba(226,56,63,0.3)]">
+              <span className="text-primary font-mono inline-block mx-2 drop-shadow-[0_0_8px_rgba(226,56,63,0.35)]">
                 ΛI
               </span>{" "}
               Society
@@ -116,7 +129,7 @@ export default function Hero({
             className="mx-auto max-w-2xl text-center min-h-[3.5rem] h-[3.5rem] sm:min-h-[4.5rem] sm:h-[4.5rem] flex items-center justify-center"
           >
             <div className="px-4 sm:px-6">
-              <p className="text-lg leading-8 text-muted-foreground/90">
+              <p className="text-lg leading-8 text-muted-foreground">
                 <span className="relative inline-block w-[80vw] max-w-xl sm:w-auto overflow-hidden text-ellipsis whitespace-nowrap sm:overflow-visible sm:whitespace-normal">
                   {displayText}
                   {!isTypingComplete && (
@@ -145,7 +158,7 @@ export default function Hero({
                   variant="default"
                   className={`h-14 px-8 glass-hover group ${
                     label === "Discord"
-                      ? "bg-primary/90 hover:bg-primary text-white font-semibold shadow-md hover:shadow-xl hover:shadow-primary/20 hover:scale-[1.02] transition-all duration-300 ease-out border border-primary/20 relative overflow-hidden text-lg"
+                      ? "bg-brand hover:bg-brand/80 text-brand-foreground font-semibold shadow-md hover:shadow-xl hover:shadow-brand/20 hover:scale-[1.02] transition-all duration-300 ease-out border border-primary/20 relative overflow-hidden text-lg"
                       : ""
                   }`}
                   asChild
@@ -169,27 +182,29 @@ export default function Hero({
             variants={animations.item}
             className="flex flex-wrap items-center justify-center gap-x-3 gap-y-3"
           >
-            {SOCIAL_LINKS.filter((link) => !link.priority).map(({ url }) => (
-              <motion.div
-                key={url}
-                whileHover={{ scale: 1.05 }}
-                transition={{
-                  type: "spring" as const,
-                  stiffness: 400,
-                  damping: 10,
-                }}
-              >
-                <SocialIcon
-                  url={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="opacity-75 hover:opacity-100 transition-opacity"
-                  style={{ height: 36, width: 36 }}
-                  bgColor="currentColor"
-                  fgColor="#1a2238"
-                />
-              </motion.div>
-            ))}
+            {SOCIAL_LINKS.filter((link) => !link.priority).map(
+              ({ url, label }) => (
+                <motion.div
+                  key={url}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{
+                    type: "spring" as const,
+                    stiffness: 400,
+                    damping: 10,
+                  }}
+                >
+                  <SocialIcon
+                    url={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Carleton AI Society on ${label}`}
+                    style={{ height: 44, width: 44 }}
+                    bgColor="currentColor"
+                    fgColor="#1a2238"
+                  />
+                </motion.div>
+              ),
+            )}
           </motion.div>
 
           {(primaryAction || secondaryAction) && (
@@ -202,7 +217,7 @@ export default function Hero({
                   asChild
                   variant="outline"
                   size="default"
-                  className="h-10 px-6 glass-hover hover:bg-primary/5 hover:border-primary/50 transition-all duration-300"
+                  className="h-11 px-6 glass-hover hover:bg-brand/5 hover:border-primary/50 transition-all duration-300"
                 >
                   <Link to={primaryAction.to}>{primaryAction.text}</Link>
                 </Button>
@@ -212,7 +227,7 @@ export default function Hero({
                   asChild
                   variant="outline"
                   size="default"
-                  className="h-10 px-6 glass-hover hover:bg-primary/5 hover:border-primary/50 transition-all duration-300"
+                  className="h-11 px-6 glass-hover hover:bg-brand/5 hover:border-primary/50 transition-all duration-300"
                 >
                   <Link to={secondaryAction.to}>{secondaryAction.text}</Link>
                 </Button>

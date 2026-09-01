@@ -50,9 +50,9 @@ const item = {
 const AboutPage = () => {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/20 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-primary/10 blur-[120px] pointer-events-none" />
-      <div className="absolute top-2/3 left-1/3 w-72 h-72 rounded-full bg-primary/15 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-brand/20 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-brand/10 blur-[120px] pointer-events-none" />
+      <div className="absolute top-2/3 left-1/3 w-72 h-72 rounded-full bg-brand/15 blur-[120px] pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-background pointer-events-none" />
       <div className="absolute inset-0 bg-glow opacity-20 pointer-events-none" />
       <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
@@ -66,7 +66,7 @@ const AboutPage = () => {
           <p className="text-sm font-mono text-primary mb-4 tracking-widest uppercase">
             About CAIS
           </p>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/50 mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary/75 mb-6">
             Carleton ΛI Society
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
@@ -99,10 +99,10 @@ const AboutPage = () => {
             <motion.div
               key={title}
               variants={item}
-              className="group bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5 transition-all duration-200"
+              className="group bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5 transition-all duration-200"
             >
               <div className="flex items-center gap-3 mb-3">
-                <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <div className="p-2 rounded-lg bg-brand/10 group-hover:bg-brand/20 transition-colors">
                   <Icon className="w-5 h-5 text-primary" />
                 </div>
                 <h3 className="text-lg font-semibold">{title}</h3>
@@ -128,7 +128,7 @@ const AboutPage = () => {
             asChild
             size="lg"
             variant="outline"
-            className="hover:bg-primary/5 hover:border-primary/50 transition-all duration-300"
+            className="hover:bg-brand/5 hover:border-primary/50 transition-all duration-300"
           >
             <Link to="/contact">Get in Touch</Link>
           </Button>

@@ -24,7 +24,7 @@ exports[`renders EventsPage correctly 1`] = `
         class="container mx-auto text-center relative z-10 px-4"
       >
         <h1
-          class="text-7xl sm:text-8xl font-bold mb-6 text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/50"
+          class="text-7xl sm:text-8xl font-bold mb-6 text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary/75"
         >
           Events
         </h1>
@@ -46,7 +46,7 @@ exports[`renders EventsPage correctly 1`] = `
         >
           <div>
             <button
-              class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-6 py-2 rounded-full transition-all duration-300 hover:scale-105 scale-105 shadow-lg shadow-primary/20"
+              class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-brand text-brand-foreground hover:bg-brand/90 h-11 px-6 py-2 rounded-full transition-all duration-300 hover:scale-105 scale-105 shadow-lg shadow-brand/20"
               type="button"
             >
               All
@@ -54,7 +54,7 @@ exports[`renders EventsPage correctly 1`] = `
           </div>
           <div>
             <button
-              class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
+              class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
               type="button"
             >
               Workshop
@@ -62,7 +62,7 @@ exports[`renders EventsPage correctly 1`] = `
           </div>
           <div>
             <button
-              class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
+              class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
               type="button"
             >
               Social
@@ -70,7 +70,7 @@ exports[`renders EventsPage correctly 1`] = `
           </div>
           <div>
             <button
-              class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
+              class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
               type="button"
             >
               Panel
@@ -78,7 +78,7 @@ exports[`renders EventsPage correctly 1`] = `
           </div>
           <div>
             <button
-              class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
+              class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
               type="button"
             >
               Symposium
@@ -162,12 +162,12 @@ exports[`renders EventsPage correctly 1`] = `
                 class="flex gap-2 flex-wrap"
               >
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   social
                 </span>
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   recruitment
                 </span>
@@ -225,12 +225,12 @@ exports[`renders EventsPage correctly 1`] = `
                 class="flex gap-2 flex-wrap"
               >
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   social
                 </span>
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   planning
                 </span>
@@ -288,12 +288,12 @@ exports[`renders EventsPage correctly 1`] = `
                 class="flex gap-2 flex-wrap"
               >
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   beginner-friendly
                 </span>
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   conceptual
                 </span>
@@ -351,12 +351,12 @@ exports[`renders EventsPage correctly 1`] = `
                 class="flex gap-2 flex-wrap"
               >
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   beginner-friendly
                 </span>
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   hands-on
                 </span>
@@ -414,12 +414,12 @@ exports[`renders EventsPage correctly 1`] = `
                 class="flex gap-2 flex-wrap"
               >
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   hands-on
                 </span>
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   technical
                 </span>
@@ -477,12 +477,12 @@ exports[`renders EventsPage correctly 1`] = `
                 class="flex gap-2 flex-wrap"
               >
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   hands-on
                 </span>
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   technical
                 </span>
@@ -540,17 +540,17 @@ exports[`renders EventsPage correctly 1`] = `
                 class="flex gap-2 flex-wrap"
               >
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   beginner-friendly
                 </span>
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   networking
                 </span>
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   social
                 </span>
@@ -608,12 +608,12 @@ exports[`renders EventsPage correctly 1`] = `
                 class="flex gap-2 flex-wrap"
               >
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   beginner-friendly
                 </span>
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   educational
                 </span>
@@ -671,12 +671,12 @@ exports[`renders EventsPage correctly 1`] = `
                 class="flex gap-2 flex-wrap"
               >
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   technical
                 </span>
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   discussion
                 </span>
@@ -734,12 +734,12 @@ exports[`renders EventsPage correctly 1`] = `
                 class="flex gap-2 flex-wrap"
               >
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   beginner-friendly
                 </span>
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   technical
                 </span>
@@ -797,12 +797,12 @@ exports[`renders EventsPage correctly 1`] = `
                 class="flex gap-2 flex-wrap"
               >
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   hands-on
                 </span>
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   technical
                 </span>
@@ -860,17 +860,17 @@ exports[`renders EventsPage correctly 1`] = `
                 class="flex gap-2 flex-wrap"
               >
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   hands-on
                 </span>
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   beginner-friendly
                 </span>
                 <span
-                  class="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                 >
                   technical
                 </span>

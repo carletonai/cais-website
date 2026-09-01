@@ -6,10 +6,10 @@ exports[`renders ContactPage correctly 1`] = `
     class="min-h-screen bg-background relative overflow-hidden"
   >
     <div
-      class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/20 blur-[120px] pointer-events-none"
+      class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-brand/20 blur-[120px] pointer-events-none"
     />
     <div
-      class="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-primary/10 blur-[120px] pointer-events-none"
+      class="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-brand/10 blur-[120px] pointer-events-none"
     />
     <div
       class="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-background pointer-events-none"
@@ -32,7 +32,7 @@ exports[`renders ContactPage correctly 1`] = `
           Reach Us
         </p>
         <h1
-          class="text-4xl md:text-5xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/50 mb-4"
+          class="text-4xl md:text-5xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary/75 mb-4"
         >
           Contact Us
         </h1>
@@ -52,7 +52,7 @@ exports[`renders ContactPage correctly 1`] = `
           target="_blank"
         >
           <div
-            class="p-2.5 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors shrink-0"
+            class="p-2.5 rounded-lg bg-brand/10 group-hover:bg-brand/20 transition-colors shrink-0"
           >
             <svg
               class="w-5 h-5 text-indigo-400"
@@ -94,7 +94,7 @@ exports[`renders ContactPage correctly 1`] = `
           target="_blank"
         >
           <div
-            class="p-2.5 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors shrink-0"
+            class="p-2.5 rounded-lg bg-brand/10 group-hover:bg-brand/20 transition-colors shrink-0"
           >
             <svg
               class="w-5 h-5 text-pink-400"
@@ -136,7 +136,7 @@ exports[`renders ContactPage correctly 1`] = `
           target="_blank"
         >
           <div
-            class="p-2.5 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors shrink-0"
+            class="p-2.5 rounded-lg bg-brand/10 group-hover:bg-brand/20 transition-colors shrink-0"
           >
             <svg
               class="w-5 h-5 text-blue-400"
@@ -178,7 +178,7 @@ exports[`renders ContactPage correctly 1`] = `
           target="_blank"
         >
           <div
-            class="p-2.5 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors shrink-0"
+            class="p-2.5 rounded-lg bg-brand/10 group-hover:bg-brand/20 transition-colors shrink-0"
           >
             <svg
               class="w-5 h-5 text-red-400"
@@ -219,7 +219,7 @@ exports[`renders ContactPage correctly 1`] = `
           rel="noopener noreferrer"
         >
           <div
-            class="p-2.5 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors shrink-0"
+            class="p-2.5 rounded-lg bg-brand/10 group-hover:bg-brand/20 transition-colors shrink-0"
           >
             <svg
               class="w-5 h-5 text-emerald-400"
@@ -248,7 +248,7 @@ exports[`renders ContactPage correctly 1`] = `
         class="flex justify-center mt-16"
       >
         <a
-          class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8"
+          class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-brand text-brand-foreground hover:bg-brand/90 h-12 rounded-md px-8"
           href="https://forms.gle/3xCK7fCbGcZXGr1d6"
           rel="noopener noreferrer"
           role="button"

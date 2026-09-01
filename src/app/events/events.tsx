@@ -93,7 +93,7 @@ const EventsPage = () => {
           className="container mx-auto text-center relative z-10 px-4"
         >
           <motion.h1
-            className="text-7xl sm:text-8xl font-bold mb-6 text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/50"
+            className="text-7xl sm:text-8xl font-bold mb-6 text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary/75"
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5 }}
@@ -129,7 +129,7 @@ const EventsPage = () => {
                   className={cn(
                     "px-6 py-2 rounded-full transition-all duration-300 hover:scale-105",
                     selectedType === type &&
-                      "scale-105 shadow-lg shadow-primary/20",
+                      "scale-105 shadow-lg shadow-brand/20",
                   )}
                 >
                   {type}
@@ -210,7 +210,7 @@ const EventsPage = () => {
                           {event.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                              className="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                             >
                               {tag}
                             </span>
@@ -294,7 +294,7 @@ const EventsPage = () => {
                       {event.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                          className="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                         >
                           {tag}
                         </span>

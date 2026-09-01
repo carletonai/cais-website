@@ -31,9 +31,9 @@ const item = {
 
 const ProjectsPage = () => (
   <div className="min-h-screen bg-background relative overflow-hidden">
-    <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/20 blur-[120px] pointer-events-none" />
-    <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-primary/10 blur-[120px] pointer-events-none" />
-    <div className="absolute top-2/3 left-1/3 w-72 h-72 rounded-full bg-primary/15 blur-[120px] pointer-events-none" />
+    <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-brand/20 blur-[120px] pointer-events-none" />
+    <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-brand/10 blur-[120px] pointer-events-none" />
+    <div className="absolute top-2/3 left-1/3 w-72 h-72 rounded-full bg-brand/15 blur-[120px] pointer-events-none" />
     <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-background pointer-events-none" />
     <div className="absolute inset-0 bg-glow opacity-20 pointer-events-none" />
     <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
@@ -48,7 +48,7 @@ const ProjectsPage = () => (
         <p className="text-sm font-mono text-primary mb-4 tracking-widest uppercase">
           What We Build
         </p>
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/50 mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary/75 mb-4">
           Projects
         </h1>
         <p className="text-lg text-muted-foreground">
@@ -68,16 +68,16 @@ const ProjectsPage = () => (
             <motion.div
               key={project.id ?? project.title}
               variants={item}
-              className="group bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5 transition-all duration-200 flex flex-col"
+              className="group bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5 transition-all duration-200 flex flex-col"
             >
               {project.status && (
-                <span className="w-fit mb-3 px-2.5 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
+                <span className="w-fit mb-3 px-2.5 py-1 text-xs font-medium rounded-full bg-brand/10 text-primary border border-primary/20">
                   {project.status}
                 </span>
               )}
-              <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
+              <h2 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
                 {project.title}
-              </h3>
+              </h2>
               <p className="text-muted-foreground text-sm leading-relaxed flex-1 mb-4">
                 {project.description}
               </p>
@@ -98,7 +98,7 @@ const ProjectsPage = () => (
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-sm text-primary hover:text-primary/80 font-medium transition-colors"
+                  className="inline-flex min-h-11 items-center gap-1 text-sm text-primary hover:text-primary hover:underline font-medium transition-colors"
                 >
                   View Project <ExternalLinkIcon className="w-3 h-3" />
                 </a>
