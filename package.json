@@ -60,7 +60,7 @@
     "@typescript-eslint/parser": "^8.19.1",
     "@vitejs/plugin-react": "^6.1.0",
     "autoprefixer": "^10.4.20",
-    "babel-jest": "^30.4.1",
+    "babel-jest": "^30.5.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "eslint": "^10.9.1",
