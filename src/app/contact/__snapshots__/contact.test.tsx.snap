@@ -257,7 +257,7 @@ exports[`renders ContactPage correctly 1`] = `
         </a>
         <a
           class="group relative flex items-center gap-4 p-5 rounded-xl bg-card/50 backdrop-blur-xs border border-primary/10 hover:translate-y-[-2px] hover:shadow-lg transition-all duration-200 hover:border-emerald-500/50 hover:shadow-emerald-500/10"
-          href="mailto:carletonaicontact@gmail.com"
+          href="mailto:info.carletonai@gmail.com"
           rel="noopener noreferrer"
         >
           <div
@@ -278,7 +278,7 @@ exports[`renders ContactPage correctly 1`] = `
             <p
               class="text-xs text-muted-foreground truncate"
             >
-              carletonaicontact@gmail.com
+              info.carletonai@gmail.com
             </p>
           </div>
           <svg

@@ -84,7 +84,7 @@ Essential Links:
 💼 LinkedIn: https://www.linkedin.com/company/carleton-ai
 📺 YouTube: https://www.youtube.com/channel/UCWKRnTa68hlHrW6WYCgCNaw
 💻 GitHub: https://github.com/carletonai
-📧 Email: carletonaicontact@gmail.com
+📧 Email: info.carletonai@gmail.com
 
 Sign Up:
 📝 Join Form: https://forms.gle/3xCK7fCbGcZXGr1d6
@@ -210,7 +210,7 @@ ${
   )
   .join("\n")}
 
-Contact us: carletonaicontact@gmail.com
+Contact us: info.carletonai@gmail.com
 `;
 
 const ASCII_ART = {
@@ -1038,7 +1038,7 @@ Benefits:
       case "contact":
         output = {
           content: `
-📧 Email: carletonaicontact@gmail.com
+📧 Email: info.carletonai@gmail.com
 📝 Sign Up Form: https://forms.gle/3xCK7fCbGcZXGr1d6
 🤝 Discord: https://discord.gg/gCs3v653de
 📱 Instagram: https://www.instagram.com/carletonaisociety/

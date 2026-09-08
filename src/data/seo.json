@@ -1,0 +1,45 @@
+{
+  "siteName": "Carleton AI Society",
+  "siteUrl": "https://carletonai.com",
+  "image": "/og-image.png",
+  "locale": "en_CA",
+  "twitterCard": "summary_large_image",
+  "routes": {
+    "/": {
+      "title": "Carleton AI Society",
+      "description": "A student club at Carleton University for anyone interested in artificial intelligence — workshops, projects, talks, and a community open to every skill level."
+    },
+    "/about": {
+      "title": "About",
+      "description": "What CAIS does: hands-on workshops covering machine learning and deep learning, collaborative AI projects, and a community connecting students, alumni, and industry professionals."
+    },
+    "/projects": {
+      "title": "Projects",
+      "description": "Innovative AI and machine learning projects built by CAIS members, taken from idea to working prototype."
+    },
+    "/events": {
+      "title": "Events",
+      "description": "Workshops, panels, and socials hosted by the Carleton AI Society. See what is coming up and browse past events."
+    },
+    "/contact": {
+      "title": "Contact",
+      "description": "Reach the Carleton AI Society on Discord, Instagram, LinkedIn, YouTube, GitHub, or by email."
+    },
+    "/team": {
+      "title": "Team",
+      "description": "Meet the executive team driving AI education at Carleton University, alongside the members of previous CAIS teams."
+    },
+    "/governance": {
+      "title": "Governance",
+      "description": "How CAIS is structured: the responsibilities of each executive role and the club's governing documents."
+    },
+    "/resources": {
+      "title": "Resources",
+      "description": "An interactive terminal for exploring CAIS learning resources, community links, upcoming events, and how to join."
+    },
+    "/contribute": {
+      "title": "Get Involved",
+      "description": "Ways to get involved with CAIS, whether you are new to AI or already building: attend events, join a project team, or volunteer."
+    }
+  }
+}

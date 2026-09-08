@@ -52,8 +52,8 @@ const SOCIAL_LINKS = [
   },
   {
     label: "Email",
-    handle: "carletonaicontact@gmail.com",
-    url: "mailto:carletonaicontact@gmail.com",
+    handle: "info.carletonai@gmail.com",
+    url: "mailto:info.carletonai@gmail.com",
     icon: MailIcon,
     hoverColor: "hover:border-emerald-500/50 hover:shadow-emerald-500/10",
     iconColor: "text-emerald-400",
