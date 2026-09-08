@@ -8,6 +8,10 @@ import { publicAssetPath } from "@/lib/assets";
 
 const eventTypes = ["All", "Workshop", "Social", "Panel", "Symposium"];
 
+// The embed is only rendered once a real calendar is configured. Shipping the
+// iframe unconfigured pointed every visitor at a Google 401 error page.
+const calendarId = __GOOGLE_CALENDAR_ID__;
+
 const events = eventsData.events;
 
 const container = {
@@ -330,14 +334,34 @@ const EventsPage = () => {
             transition={{ duration: 0.6 }}
             className="aspect-video w-full max-w-4xl mx-auto rounded-lg overflow-hidden border border-primary/10 bg-card/50 backdrop-blur-xs"
           >
-            <iframe
-              src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID"
-              style={{ border: 0 }}
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              scrolling="no"
-            />
+            {calendarId ? (
+              <iframe
+                title="Carleton AI Society events calendar"
+                src={`https://calendar.google.com/calendar/embed?src=${encodeURIComponent(calendarId)}`}
+                style={{ border: 0 }}
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                scrolling="no"
+              />
+            ) : (
+              <div className="flex h-full flex-col items-center justify-center gap-3 p-8 text-center">
+                <CalendarIcon className="h-8 w-8 text-primary" />
+                <p className="text-muted-foreground">
+                  Our shared calendar is not published yet — the dates above are
+                  the full schedule.
+                </p>
+                <Button asChild variant="outline">
+                  <a
+                    href="https://discord.gg/gCs3v653de"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Get event reminders on Discord
+                  </a>
+                </Button>
+              </div>
+            )}
           </motion.div>
         </div>
       </section>

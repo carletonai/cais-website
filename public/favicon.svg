@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="CAIS">
+  <!-- Dark plate so the mark stays legible on both light and dark tab bars;
+       the wordmark's own snowflake glyph is white and would vanish on white. -->
+  <rect width="64" height="64" rx="14" fill="#0e1119" />
+  <!-- The wordmark's red "AI": a crossbar-less lambda beside a solid I. -->
+  <path d="M26 15 L38 47 L31 47 L26 31.5 L21 47 L14 47 Z" fill="#e2383f" />
+  <rect x="42" y="15" width="8" height="32" fill="#e2383f" />
+</svg>
