@@ -83,6 +83,7 @@ Essential Links:
 📱 Instagram: https://www.instagram.com/carletonaisociety/
 💼 LinkedIn: https://www.linkedin.com/company/carleton-ai
 📺 YouTube: https://www.youtube.com/channel/UCWKRnTa68hlHrW6WYCgCNaw
+💻 GitHub: https://github.com/carletonai
 📧 Email: carletonaicontact@gmail.com
 
 Sign Up:
@@ -1018,6 +1019,7 @@ How to Join CAIS:
    - Discord: https://discord.gg/gCs3v653de
    - Instagram: @carletonaisociety
    - LinkedIn: /company/carleton-ai
+   - GitHub: https://github.com/carletonai
 
 3. Get Involved:
    - Attend our events and workshops
@@ -1042,6 +1044,7 @@ Benefits:
 📱 Instagram: https://www.instagram.com/carletonaisociety/
 💼 LinkedIn: https://www.linkedin.com/company/carleton-ai
 📺 YouTube: https://www.youtube.com/channel/UCWKRnTa68hlHrW6WYCgCNaw
+💻 GitHub: https://github.com/carletonai
     `,
           isSystem: true,
         };
@@ -1067,7 +1070,7 @@ Ways to Contribute to CAIS:
    - Social media
 
 4. Technical Contributions
-   - GitHub projects
+   - GitHub projects: https://github.com/carletonai
    - Documentation
    - Resource curation
 

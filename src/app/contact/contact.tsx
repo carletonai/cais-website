@@ -1,7 +1,13 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRightIcon, MailIcon } from "lucide-react";
-import { FaDiscord, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
+import {
+  FaDiscord,
+  FaGithub,
+  FaInstagram,
+  FaLinkedin,
+  FaYoutube,
+} from "react-icons/fa";
 
 const SOCIAL_LINKS = [
   {
@@ -35,6 +41,14 @@ const SOCIAL_LINKS = [
     icon: FaYoutube,
     hoverColor: "hover:border-red-500/50 hover:shadow-red-500/10",
     iconColor: "text-red-400",
+  },
+  {
+    label: "GitHub",
+    handle: "@carletonai",
+    url: "https://github.com/carletonai",
+    icon: FaGithub,
+    hoverColor: "hover:border-slate-400/50 hover:shadow-slate-400/10",
+    iconColor: "text-slate-300",
   },
   {
     label: "Email",

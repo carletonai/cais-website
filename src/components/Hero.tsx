@@ -26,6 +26,11 @@ const SOCIAL_LINKS = [
     label: "YouTube",
     priority: false,
   },
+  {
+    url: "https://github.com/carletonai",
+    label: "GitHub",
+    priority: false,
+  },
 ];
 
 interface ActionButton {

@@ -21,6 +21,7 @@
     "format": "prettier --write .",
     "fix": "npm run lint && npm run format",
     "predeploy": "npm run fix && npm run build",
+    "deploy": "gh-pages -d dist",
     "push": "git commit --allow-empty -m \"SKIP CI commit [skip ci]\" && git push origin master"
   },
   "dependencies": {
