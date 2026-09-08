@@ -47,7 +47,7 @@ exports[`renders ContactPage correctly 1`] = `
       >
         <a
           class="group relative flex items-center gap-4 p-5 rounded-xl bg-card/50 backdrop-blur-xs border border-primary/10 hover:translate-y-[-2px] hover:shadow-lg transition-all duration-200 hover:border-indigo-500/50 hover:shadow-indigo-500/10"
-          href="https://discord.gg/Ar3JpVZE6t"
+          href="https://discord.gg/gCs3v653de"
           rel="noopener noreferrer"
           target="_blank"
         >

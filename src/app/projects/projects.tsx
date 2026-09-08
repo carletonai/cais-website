@@ -118,7 +118,7 @@ const ProjectsPage = () => (
           </p>
           <Button asChild variant="default" size="lg">
             <a
-              href="https://discord.gg/Ar3JpVZE6t"
+              href="https://discord.gg/gCs3v653de"
               target="_blank"
               rel="noopener noreferrer"
             >

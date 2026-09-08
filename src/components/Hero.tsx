@@ -12,7 +12,7 @@ const SOCIAL_LINKS = [
     priority: false,
   },
   {
-    url: "https://discord.gg/Ar3JpVZE6t",
+    url: "https://discord.gg/gCs3v653de",
     label: "Discord",
     priority: true,
   },

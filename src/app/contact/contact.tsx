@@ -7,7 +7,7 @@ const SOCIAL_LINKS = [
   {
     label: "Discord",
     handle: "CAIS Discord",
-    url: "https://discord.gg/Ar3JpVZE6t",
+    url: "https://discord.gg/gCs3v653de",
     icon: FaDiscord,
     hoverColor: "hover:border-indigo-500/50 hover:shadow-indigo-500/10",
     iconColor: "text-indigo-400",

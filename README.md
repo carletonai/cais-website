@@ -31,7 +31,7 @@
 <div>
   <h3 align="center">Team</h3>
   <p align="center">
-    This project is maintained by the CAIS development team. For any questions or concerns, please open an issue or reach out to the team on <a href="https://discord.gg/nsvsMJaSRJ">Discord</a>. 
+    This project is maintained by the CAIS development team. For any questions or concerns, please open an issue or reach out to the team on <a href="https://discord.gg/gCs3v653de">Discord</a>. 
   </p>
 </div>
 

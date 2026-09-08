@@ -79,7 +79,7 @@ What We Do:
 const LINKS = `
 Essential Links:
 🌐 Club Website: https://carletonai.com
-🤝 Discord: https://discord.gg/nsvsMJaSRJ
+🤝 Discord: https://discord.gg/gCs3v653de
 📱 Instagram: https://www.instagram.com/carletonaisociety/
 💼 LinkedIn: https://www.linkedin.com/company/carleton-ai
 📺 YouTube: https://www.youtube.com/channel/UCWKRnTa68hlHrW6WYCgCNaw
@@ -1015,7 +1015,7 @@ How to Join CAIS:
    https://forms.gle/3xCK7fCbGcZXGr1d6
 
 2. Join our Community:
-   - Discord: https://discord.gg/nsvsMJaSRJ
+   - Discord: https://discord.gg/gCs3v653de
    - Instagram: @carletonaisociety
    - LinkedIn: /company/carleton-ai
 
@@ -1038,7 +1038,7 @@ Benefits:
           content: `
 📧 Email: carletonaicontact@gmail.com
 📝 Sign Up Form: https://forms.gle/3xCK7fCbGcZXGr1d6
-🤝 Discord: https://discord.gg/nsvsMJaSRJ
+🤝 Discord: https://discord.gg/gCs3v653de
 📱 Instagram: https://www.instagram.com/carletonaisociety/
 💼 LinkedIn: https://www.linkedin.com/company/carleton-ai
 📺 YouTube: https://www.youtube.com/channel/UCWKRnTa68hlHrW6WYCgCNaw
