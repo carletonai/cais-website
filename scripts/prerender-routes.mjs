@@ -8,7 +8,13 @@
 // tags baked in, so a crawler sees the right metadata without running any
 // JavaScript. src/components/RouteMeta.tsx applies the same values on
 // client-side navigation, and both read src/data/seo.json.
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
+import {
+  readFileSync,
+  writeFileSync,
+  mkdirSync,
+  existsSync,
+  readdirSync,
+} from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -88,6 +94,58 @@ for (const route of routes) {
     mkdirSync(dir, { recursive: true });
     writeFileSync(join(dir, "index.html"), html);
   }
+}
+
+// public/404.html is served on its own, without the app's CSS, so it has no
+// way to reach the webfonts. Point it at the hashed files vite already emitted
+// rather than shipping a second copy: the page then renders in the site's own
+// typefaces instead of falling back to a system sans.
+const FONT_FACES = [
+  {
+    family: "Inter Variable",
+    prefix: "inter-latin-wght-normal-",
+    weight: "100 900",
+  },
+  {
+    family: "Manrope Variable",
+    prefix: "manrope-latin-wght-normal-",
+    weight: "200 800",
+  },
+];
+
+const notFoundPage = join(dist, "404.html");
+if (existsSync(notFoundPage)) {
+  const assets = readdirSync(join(dist, "assets"));
+  const faces = FONT_FACES.map(({ family, prefix, weight }) => {
+    const file = assets.find(
+      (a) => a.startsWith(prefix) && a.endsWith(".woff2"),
+    );
+    if (!file) {
+      console.error(
+        `prerender-routes: no built font matching ${prefix}*.woff2`,
+      );
+      process.exit(1);
+    }
+    return `      @font-face {
+        font-family: "${family}";
+        font-style: normal;
+        font-display: swap;
+        font-weight: ${weight};
+        src: url(/assets/${file}) format("woff2-variations");
+      }`;
+  }).join("\n");
+
+  const html = readFileSync(notFoundPage, "utf8");
+  if (!html.includes("<!--FONT-FACE-->")) {
+    console.error(
+      "prerender-routes: 404.html is missing its <!--FONT-FACE--> marker.",
+    );
+    process.exit(1);
+  }
+  writeFileSync(
+    notFoundPage,
+    html.replace("<!--FONT-FACE-->", `<style>\n${faces}\n    </style>`),
+  );
 }
 
 const today = new Date().toISOString().slice(0, 10);

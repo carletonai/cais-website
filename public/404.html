@@ -6,8 +6,11 @@
     <title>Page Not Found | Carleton AI Society</title>
     <meta name="robots" content="noindex" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <!-- Standalone page: it is served before the app bundle exists, so the
-         few tokens it needs are inlined rather than imported. -->
+    <!-- Standalone page: it loads none of the app's CSS or JS, so the tokens
+         it needs are inlined. The @font-face rules are injected here by
+         scripts/prerender-routes.mjs, which knows the hashed filenames vite
+         gives the font files the app already ships. -->
+    <!--FONT-FACE-->
     <style>
       :root {
         color-scheme: dark;
@@ -29,16 +32,12 @@
         padding: 1.5rem;
         background: var(--background);
         color: var(--foreground);
-        font-family:
-          "Manrope",
-          "Inter",
-          ui-sans-serif,
-          system-ui,
-          -apple-system,
-          "Segoe UI",
-          Roboto,
-          sans-serif;
+        font-family: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
         text-align: center;
+      }
+      .code,
+      h1 {
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
       }
       .code {
         margin: 0;
