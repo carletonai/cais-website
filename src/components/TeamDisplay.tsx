@@ -10,7 +10,7 @@ import teamData from "@/data/team.json";
 import oldTeamsData from "@/data/old-teams.json";
 import OldTeamsRow from "./OldTeamsRow";
 import { FaLinkedin } from "react-icons/fa";
-import { publicAssetPath } from "@/lib/assets";
+import MemberAvatar from "./MemberAvatar";
 
 interface TeamMemberCardProps {
   image: string;
@@ -71,9 +71,11 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
             <div className="max-w-md text-right">
               <h3 className="text-2xl font-semibold text-foreground">{name}</h3>
               <p className="mt-2 text-lg text-primary">{title}</p>
-              <p className="mt-4 text-base text-muted-foreground">
-                {description}
-              </p>
+              {description.trim() && (
+                <p className="mt-4 text-base text-muted-foreground">
+                  {description}
+                </p>
+              )}
             </div>
           </motion.div>
         ) : (
@@ -87,13 +89,11 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
               <div className="flex flex-col items-center">
                 <div className="relative mb-4">
                   <div className="h-48 w-48 overflow-hidden rounded-3xl border-2 border-neutral-800 transition-colors duration-300 group-hover:border-primary/50">
-                    <img
-                      src={publicAssetPath(image)}
-                      alt={name}
-                      width={320}
-                      height={320}
+                    <MemberAvatar
+                      name={name}
+                      image={image}
                       className="h-full w-full object-cover"
-                      loading="lazy"
+                      monogramClassName="text-6xl"
                     />
                   </div>
                 </div>
@@ -127,13 +127,11 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
               <div className="flex flex-col items-center">
                 <div className="relative mb-4">
                   <div className="h-48 w-48 overflow-hidden rounded-3xl border-2 border-neutral-800 transition-colors duration-300 group-hover:border-primary/50">
-                    <img
-                      src={publicAssetPath(image)}
-                      alt={name}
-                      width={320}
-                      height={320}
+                    <MemberAvatar
+                      name={name}
+                      image={image}
                       className="h-full w-full object-cover"
-                      loading="lazy"
+                      monogramClassName="text-6xl"
                     />
                   </div>
                 </div>
@@ -159,9 +157,11 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
             <div className="max-w-md">
               <h3 className="text-2xl font-semibold text-foreground">{name}</h3>
               <p className="mt-2 text-lg text-primary">{title}</p>
-              <p className="mt-4 text-base text-muted-foreground">
-                {description}
-              </p>
+              {description.trim() && (
+                <p className="mt-4 text-base text-muted-foreground">
+                  {description}
+                </p>
+              )}
             </div>
           </motion.div>
         )}

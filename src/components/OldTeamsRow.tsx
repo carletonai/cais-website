@@ -1,5 +1,5 @@
 import React from "react";
-import { publicAssetPath } from "@/lib/assets";
+import MemberAvatar from "./MemberAvatar";
 
 interface OldTeamsRowProps {
   teams: Array<{
@@ -34,10 +34,11 @@ const OldTeamsRow: React.FC<OldTeamsRowProps> = ({ teams }) => {
                     key={member.name + member.title}
                     className="flex flex-col items-center bg-neutral-900/80 rounded-2xl p-4 w-56 border border-neutral-800"
                   >
-                    <img
-                      src={publicAssetPath(member.image)}
-                      alt={member.name}
+                    <MemberAvatar
+                      name={member.name}
+                      image={member.image}
                       className="w-24 h-24 object-cover rounded-xl border border-neutral-700 mb-2"
+                      monogramClassName="text-2xl"
                     />
                     <div className="text-center">
                       <div className="font-semibold text-foreground">
