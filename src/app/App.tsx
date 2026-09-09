@@ -22,12 +22,6 @@ const Governance = lazy(() => import("./governance/governance"));
 const Resources = lazy(() => import("./resources/resources"));
 const Contribute = lazy(() => import("./contribute/contribute"));
 
-const routerBasename =
-  typeof window !== "undefined" &&
-  window.location.pathname.startsWith("/cais-website")
-    ? "/cais-website"
-    : undefined;
-
 /** Holds the viewport height while a route chunk arrives, so the footer does
  *  not jump up the page. Animation is disabled by the reduced-motion rule in
  *  globals.css. */
@@ -44,7 +38,7 @@ const RouteFallback = () => (
 
 const App = () => {
   return (
-    <Router basename={routerBasename}>
+    <Router>
       <RouteMeta />
       <div className="min-h-screen bg-background text-foreground flex flex-col">
         <a href="#main-content" className="skip-link">

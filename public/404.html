@@ -1,38 +1,94 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>CAIS — Page Not Found</title>
-    <script>
-      // Single Page Apps for GitHub Pages
-      // MIT License
-      // https://github.com/rafgraph/spa-github-pages
-      (function (l) {
-        if (l.search[1] === "/") {
-          var decoded = l.search
-            .slice(1)
-            .split("&")
-            .map(function (s) {
-              return s.replace(/~and~/g, "&");
-            })
-            .join("?");
-          window.history.replaceState(
-            null,
-            null,
-            l.pathname.slice(0, -1) + decoded + l.hash,
-          );
-        }
-      })(window.location);
-    </script>
-    <script>
-      sessionStorage.redirect = location.href;
-      var repoBase = "/cais-website/";
-      var redirectBase =
-        location.pathname.indexOf(repoBase) === 0 ? repoBase : "/";
-      location.replace(redirectBase);
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found | Carleton AI Society</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Standalone page: it is served before the app bundle exists, so the
+         few tokens it needs are inlined rather than imported. -->
+    <style>
+      :root {
+        color-scheme: dark;
+        --background: hsl(225 30% 8%);
+        --foreground: hsl(210 40% 98%);
+        --muted: hsl(213 32% 88%);
+        --primary: hsl(357 92% 78%);
+        --border: hsl(225 30% 14%);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        background: var(--background);
+        color: var(--foreground);
+        font-family:
+          "Manrope",
+          "Inter",
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        text-align: center;
+      }
+      .code {
+        margin: 0;
+        font-size: clamp(3.5rem, 12vw, 6rem);
+        font-weight: 800;
+        line-height: 1;
+        color: var(--primary);
+      }
+      h1 {
+        margin: 1rem 0 0;
+        font-size: clamp(1.25rem, 4vw, 1.75rem);
+        font-weight: 700;
+      }
+      p {
+        margin: 0.75rem auto 0;
+        max-width: 34rem;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--muted);
+      }
+      a {
+        display: inline-block;
+        margin-top: 2rem;
+        padding: 0.75rem 1.5rem;
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+        color: var(--foreground);
+        font-weight: 600;
+        text-decoration: none;
+        transition: border-color 0.2s ease;
+      }
+      a:hover,
+      a:focus-visible {
+        border-color: var(--primary);
+      }
+      a:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+      }
+    </style>
   </head>
   <body>
-    Redirecting to homepage...
+    <main>
+      <p class="code">404</p>
+      <h1>We couldn&rsquo;t find that page</h1>
+      <p>
+        The link may be out of date, or the page may have moved. Everything else
+        is still where you left it.
+      </p>
+      <a href="/">Back to the homepage</a>
+    </main>
   </body>
 </html>

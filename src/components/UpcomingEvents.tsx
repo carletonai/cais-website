@@ -8,7 +8,6 @@ import {
   BellIcon,
 } from "lucide-react";
 import eventsData from "@/data/events.json";
-import { publicAssetPath } from "@/lib/assets";
 import { upcomingEvents } from "@/lib/events";
 
 const upcoming = upcomingEvents(eventsData.events).slice(0, 3);
@@ -112,7 +111,7 @@ export function UpcomingEvents() {
                   <div
                     className="absolute inset-0 bg-cover bg-center transform group-hover:scale-110 transition-transform duration-500"
                     style={{
-                      backgroundImage: `url(${publicAssetPath(event.image)})`,
+                      backgroundImage: `url(${event.image})`,
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />

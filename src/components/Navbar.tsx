@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
-import { publicAssetPath } from "@/lib/assets";
 
 interface NavItem {
   label: string;
@@ -72,7 +71,7 @@ export default function Navbar() {
               className="flex min-h-11 items-center group"
             >
               <img
-                src={publicAssetPath("/header-club.png")}
+                src={"/header-club.png"}
                 alt="CAIS Logo"
                 className={`transition-all duration-300 group-hover:scale-105 ${atTop ? "h-9" : "h-8"}`}
               />

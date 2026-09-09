@@ -23,14 +23,6 @@ describe("Navbar Component", () => {
     expect(logo.src).toContain("header-club.png");
   });
 
-  it("renders the logo from the GitHub Pages project path", () => {
-    window.history.pushState({}, "", "/cais-website/");
-    renderNavbar();
-
-    const logo = screen.getByAltText("CAIS Logo") as HTMLImageElement;
-    expect(new URL(logo.src).pathname).toBe("/cais-website/header-club.png");
-  });
-
   it("renders navigation links", () => {
     renderNavbar();
     const links = ["Home", "About", "Events", "Team", "Projects", "Contact"];

@@ -1,5 +1,3 @@
-import { publicAssetPath } from "@/lib/assets";
-
 /** The generic silhouette that stands in for a missing headshot. */
 const PLACEHOLDER = "/stockIcon.jpg";
 
@@ -36,14 +34,7 @@ const MemberAvatar = ({
   monogramClassName = "text-3xl",
 }: MemberAvatarProps) => {
   if (image && image !== PLACEHOLDER) {
-    return (
-      <img
-        src={publicAssetPath(image)}
-        alt={name}
-        className={className}
-        loading="lazy"
-      />
-    );
+    return <img src={image} alt={name} className={className} loading="lazy" />;
   }
 
   return (

@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { CalendarIcon, MapPinIcon, ArrowRightIcon } from "lucide-react";
 import eventsData from "@/data/events.json";
-import { publicAssetPath } from "@/lib/assets";
 import { pastEvents, upcomingEvents } from "@/lib/events";
 
 const eventTypes = ["All", "Workshop", "Social", "Panel", "Symposium"];
@@ -176,7 +175,7 @@ const EventsPage = () => {
                       <div
                         className="absolute inset-0 bg-cover bg-center transform group-hover:scale-110 transition-transform duration-500"
                         style={{
-                          backgroundImage: `url(${publicAssetPath(event.image)})`,
+                          backgroundImage: `url(${event.image})`,
                         }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
@@ -261,7 +260,7 @@ const EventsPage = () => {
                     <div
                       className="absolute inset-0 bg-cover bg-center"
                       style={{
-                        backgroundImage: `url(${publicAssetPath(event.image)})`,
+                        backgroundImage: `url(${event.image})`,
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />

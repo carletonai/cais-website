@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
-import { publicAssetPath } from "@/lib/assets";
 
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden w-full z-50 mt-auto">
       <div
         className="absolute inset-0 bg-center opacity-5"
-        style={{ backgroundImage: `url(${publicAssetPath("/grid.svg")})` }}
+        style={{ backgroundImage: `url(${"/grid.svg"})` }}
       />
 
       <div className="absolute inset-0">

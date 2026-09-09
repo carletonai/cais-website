@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { CalendarIcon, MapPinIcon, ArrowRightIcon } from "lucide-react";
 import eventsData from "@/data/events.json";
-import { publicAssetPath } from "@/lib/assets";
 import { pastEvents } from "@/lib/events";
 
 const latest = pastEvents(eventsData.events).slice(0, 3);
@@ -81,7 +80,7 @@ export function LatestEvents() {
                 <div
                   className="absolute inset-0 bg-cover bg-center transform group-hover:scale-110 transition-transform duration-500"
                   style={{
-                    backgroundImage: `url(${publicAssetPath(event.image)})`,
+                    backgroundImage: `url(${event.image})`,
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
