@@ -32,13 +32,13 @@
     "@radix-ui/react-hover-card": "^1.1.16",
     "@radix-ui/react-navigation-menu": "^1.2.3",
     "@radix-ui/react-slot": "^1.1.1",
-    "framer-motion": "^13.1.1",
+    "framer-motion": "^13.2.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-hotkeys-hook": "^5.3.3",
-    "react-icons": "^5.6.0",
+    "react-icons": "^5.7.0",
     "react-router-dom": "^7.18.3",
-    "react-social-icons": "^6.18.0"
+    "react-social-icons": "^6.26.0"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
@@ -60,20 +60,20 @@
     "@typescript-eslint/eslint-plugin": "^8.19.1",
     "@typescript-eslint/parser": "^8.19.1",
     "@vitejs/plugin-react": "^6.1.0",
-    "autoprefixer": "^10.4.20",
+    "autoprefixer": "^10.5.5",
     "babel-jest": "^30.5.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "eslint": "^10.9.1",
-    "eslint-plugin-react": "^7.37.3",
+    "eslint": "^10.10.0",
+    "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.5",
+    "eslint-plugin-react-refresh": "^0.5.6",
     "gh-pages": "^6.3.0",
-    "jest": "^30.4.2",
+    "jest": "^30.5.1",
     "jest-environment-jsdom": "^30.5.1",
-    "lucide-react": "^1.18.0",
-    "postcss": "^8.5.26",
-    "prettier": "^3.8.4",
+    "lucide-react": "^1.43.0",
+    "postcss": "^8.5.28",
+    "prettier": "^3.9.6",
     "tailwind-merge": "^3.6.0",
     "tailwindcss": "^4.3.3",
     "tailwindcss-animate": "^1.0.7",
@@ -83,7 +83,7 @@
     "vite-plugin-svgr": "^5.2.0"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": "^20.19.0 || >=22.12.0"
   },
   "repository": {
     "type": "git",
@@ -101,7 +101,7 @@
     "club",
     "website"
   ],
-  "authors": [
+  "contributors": [
     {
       "name": "Tarek Ibrahim",
       "email": "tarekibrahim3@cmail.carleton.ca"
@@ -109,18 +109,6 @@
     {
       "name": "Angus Bailey",
       "email": "AngusBailey@cmail.carleton.ca"
-    },
-    {
-      "name": "Author Two",
-      "email": "author2@example.com"
-    },
-    {
-      "name": "Author Two",
-      "email": "author2@example.com"
-    },
-    {
-      "name": "Author Two",
-      "email": "author2@example.com"
     }
   ],
   "license": "MIT"
