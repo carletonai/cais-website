@@ -1,4 +1,4 @@
-name: CI
+name: Run Jest Tests
 
 on:
   pull_request:
@@ -48,52 +48,3 @@ jobs:
 
       - name: Run Jest tests
         run: pnpm test
-
-      # Handed to the deploy job so the site ships the exact tree that passed.
-      - name: Upload build output
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist
-          retention-days: 1
-
-  deploy:
-    needs: test
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    permissions:
-      # The repository default is read-only; pushing gh-pages needs write.
-      contents: write
-    concurrency:
-      group: deploy-gh-pages
-      cancel-in-progress: false
-
-    steps:
-      - name: Download build output
-        uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist
-
-      - name: Guard against publishing an empty site
-        run: |
-          test -f dist/index.html
-          test -f dist/CNAME
-          test -f dist/sitemap.xml
-
-      # GitHub Pages serves the gh-pages branch, which holds build output only,
-      # so it is replaced wholesale rather than merged.
-      - name: Publish to gh-pages
-        run: |
-          cd dist
-          git init -q -b gh-pages
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -q -m "deploy: ${GITHUB_SHA}"
-          git push -q --force \
-            "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
-            gh-pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
