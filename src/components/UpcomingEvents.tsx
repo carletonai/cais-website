@@ -9,14 +9,9 @@ import {
 } from "lucide-react";
 import eventsData from "@/data/events.json";
 import { publicAssetPath } from "@/lib/assets";
+import { upcomingEvents } from "@/lib/events";
 
-const now = new Date();
-now.setHours(0, 0, 0, 0);
-
-const upcomingEvents = eventsData.events
-  .filter((e) => new Date(e.date) >= now)
-  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-  .slice(0, 3);
+const upcoming = upcomingEvents(eventsData.events).slice(0, 3);
 
 const container = {
   hidden: { opacity: 0 },
@@ -64,7 +59,7 @@ export function UpcomingEvents() {
           </Button>
         </motion.div>
 
-        {upcomingEvents.length === 0 ? (
+        {upcoming.length === 0 ? (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -99,7 +94,7 @@ export function UpcomingEvents() {
             viewport={{ once: true, margin: "-50px" }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {upcomingEvents.map((event) => (
+            {upcoming.map((event) => (
               <motion.div
                 key={event.id}
                 variants={item}

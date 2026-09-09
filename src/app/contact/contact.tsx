@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { ArrowUpRightIcon, MailIcon } from "lucide-react";
 import {
   FaDiscord,
@@ -132,23 +131,6 @@ const ContactPage = () => (
             </motion.a>
           ),
         )}
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, delay: 0.6 }}
-        className="flex justify-center mt-16"
-      >
-        <Button asChild size="lg" variant="default">
-          <a
-            href="https://forms.gle/3xCK7fCbGcZXGr1d6"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Become a Member
-          </a>
-        </Button>
       </motion.div>
     </div>
   </div>

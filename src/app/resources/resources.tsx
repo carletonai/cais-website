@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { useHotkeys } from "react-hotkeys-hook";
 import teamData from "@/data/team.json";
 import eventsData from "@/data/events.json";
+import { eventDate } from "@/lib/events";
 
 interface Command {
   input: string;
@@ -85,9 +86,6 @@ Essential Links:
 📺 YouTube: https://www.youtube.com/channel/UCWKRnTa68hlHrW6WYCgCNaw
 💻 GitHub: https://github.com/carletonai
 📧 Email: info.carletonai@gmail.com
-
-Sign Up:
-📝 Join Form: https://forms.gle/3xCK7fCbGcZXGr1d6
 
 Learning Resources:
 📘 Fast.ai: https://www.fast.ai/
@@ -172,7 +170,7 @@ ${index + 1}. ${
             ? "🎓"
             : "📅"
     } ${event.title}
-   Date: ${new Date(event.date).toLocaleDateString()} at ${event.time}
+   Date: ${eventDate(event).toLocaleDateString()} at ${event.time}
    Location: ${event.location}
    Details: ${event.description}
    Tags: ${event.tags.map((tag) => `#${tag}`).join(" ")}
@@ -1012,16 +1010,13 @@ const Resources = () => {
           content: `
 How to Join CAIS:
 
-1. Fill out our Sign-up Form:
-   https://forms.gle/3xCK7fCbGcZXGr1d6
-
-2. Join our Community:
+1. Join our Community:
    - Discord: https://discord.gg/gCs3v653de
    - Instagram: @carletonaisociety
    - LinkedIn: /company/carleton-ai
    - GitHub: https://github.com/carletonai
 
-3. Get Involved:
+2. Get Involved:
    - Attend our events and workshops
    - Join project teams
    - Participate in discussions
@@ -1039,7 +1034,6 @@ Benefits:
         output = {
           content: `
 📧 Email: info.carletonai@gmail.com
-📝 Sign Up Form: https://forms.gle/3xCK7fCbGcZXGr1d6
 🤝 Discord: https://discord.gg/gCs3v653de
 📱 Instagram: https://www.instagram.com/carletonaisociety/
 💼 LinkedIn: https://www.linkedin.com/company/carleton-ai
@@ -1089,7 +1083,7 @@ Event Details:
 
 ${event.type === "Workshop" ? "🎯" : event.type === "Panel" ? "🤝" : event.type === "Symposium" ? "🎓" : "📅"} ${event.title}
 
-Date: ${new Date(event.date).toLocaleDateString()}
+Date: ${eventDate(event).toLocaleDateString()}
 Time: ${event.time}
 Location: ${event.location}
 Type: ${event.type}

@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { CalendarIcon, MapPinIcon, ArrowRightIcon } from "lucide-react";
 import eventsData from "@/data/events.json";
 import { publicAssetPath } from "@/lib/assets";
+import { pastEvents, upcomingEvents } from "@/lib/events";
 
 const eventTypes = ["All", "Workshop", "Social", "Panel", "Symposium"];
 
@@ -69,16 +70,8 @@ const EventsPage = () => {
     (event) => selectedType === "All" || event.type === selectedType,
   );
 
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-
-  const upcomingEvents = filteredEvents.filter(
-    (event) => new Date(event.date) >= today,
-  );
-
-  const pastEvents = filteredEvents.filter(
-    (event) => new Date(event.date) < today,
-  );
+  const upcoming = upcomingEvents(filteredEvents);
+  const past = pastEvents(filteredEvents);
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
@@ -149,7 +142,7 @@ const EventsPage = () => {
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold mb-8 text-glow">Upcoming Events</h2>
 
-          {upcomingEvents.length === 0 ? (
+          {upcoming.length === 0 ? (
             <p className="text-muted-foreground mb-16">
               No upcoming events are currently scheduled. Check back soon for
               updates.
@@ -162,7 +155,7 @@ const EventsPage = () => {
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"
             >
               <AnimatePresence mode="wait">
-                {upcomingEvents.map((event, _index) => (
+                {upcoming.map((event, _index) => (
                   <motion.div
                     key={event.id}
                     variants={item}
@@ -255,7 +248,7 @@ const EventsPage = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             <AnimatePresence mode="wait">
-              {pastEvents.map((event, _index) => (
+              {past.map((event, _index) => (
                 <motion.div
                   key={event.id}
                   variants={item}

@@ -4,14 +4,9 @@ import { motion } from "framer-motion";
 import { CalendarIcon, MapPinIcon, ArrowRightIcon } from "lucide-react";
 import eventsData from "@/data/events.json";
 import { publicAssetPath } from "@/lib/assets";
+import { pastEvents } from "@/lib/events";
 
-const now = new Date();
-now.setHours(0, 0, 0, 0);
-
-const pastEvents = eventsData.events
-  .filter((e) => new Date(e.date) < now)
-  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-  .slice(0, 3);
+const latest = pastEvents(eventsData.events).slice(0, 3);
 
 const container = {
   hidden: { opacity: 0 },
@@ -31,7 +26,7 @@ const item = {
 };
 
 export function LatestEvents() {
-  if (pastEvents.length === 0) return null;
+  if (latest.length === 0) return null;
 
   return (
     <section className="py-16 relative">
@@ -68,7 +63,7 @@ export function LatestEvents() {
           viewport={{ once: true, margin: "-50px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {pastEvents.map((event) => (
+          {latest.map((event) => (
             <motion.div
               key={event.id}
               variants={item}
