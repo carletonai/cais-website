@@ -1,11 +1,36 @@
+import { useState, type CSSProperties } from "react";
 import { Maximize2Icon } from "lucide-react";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
+
+/** Scale the enlarged poster grows from — roughly its size on the card. */
+const ZOOM_FROM_SCALE = 0.35;
+
+/**
+ * Anchors the enlarge animation to the card that was clicked, so the poster
+ * grows out of the card and shrinks back into it. The lightbox is centred on
+ * the viewport; moving its transform-origin (card − centre) / (1 − s) off
+ * centre puts its first frame, at scale s, right over the card.
+ */
+const zoomFrom = (card: HTMLElement) => {
+  const { left, top, width, height } = card.getBoundingClientRect();
+  const offset = (cardCentre: number, viewport: number) =>
+    (cardCentre - viewport / 2) / (1 - ZOOM_FROM_SCALE);
+  const x = offset(left + width / 2, window.innerWidth);
+  const y = offset(top + height / 2, window.innerHeight);
+
+  return {
+    transformOrigin: `calc(50% + ${x}px) calc(50% + ${y}px)`,
+    "--tw-enter-scale": ZOOM_FROM_SCALE,
+    "--tw-exit-scale": ZOOM_FROM_SCALE,
+  } as CSSProperties;
+};
 
 type EventPosterProps = {
   /** Fallback artwork, used whenever the event has no real poster. */
@@ -23,7 +48,8 @@ type EventPosterProps = {
  * Posters are portrait, so filling the card would crop away the title and the
  * date — they are contained instead, over a blurred copy of themselves that
  * fills the leftover width. Containing them makes them small, hence the
- * click-to-enlarge.
+ * click-to-enlarge: the poster alone, over the page as it was, with no frame
+ * or dimmed backdrop around it.
  */
 export function EventPoster({
   image,
@@ -31,6 +57,8 @@ export function EventPoster({
   title,
   zoomOnHover = false,
 }: EventPosterProps) {
+  const [zoomOrigin, setZoomOrigin] = useState<CSSProperties>();
+
   if (!poster) {
     return (
       <div className="aspect-video relative overflow-hidden">
@@ -53,6 +81,7 @@ export function EventPoster({
         <button
           type="button"
           aria-label={`Enlarge poster for ${title}`}
+          onClick={(e) => setZoomOrigin(zoomFrom(e.currentTarget))}
           className="aspect-video relative block w-full cursor-zoom-in overflow-hidden focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset"
         >
           <div
@@ -75,13 +104,27 @@ export function EventPoster({
         </button>
       </DialogTrigger>
 
-      <DialogContent className="max-w-3xl bg-transparent p-0 shadow-none">
+      <DialogContent
+        overlayClassName="bg-transparent backdrop-blur-none"
+        showCloseButton={false}
+        aria-describedby={undefined}
+        style={zoomOrigin}
+        className="w-auto max-w-none rounded-xl border-0 bg-transparent p-0 shadow-none duration-300 ease-out"
+      >
         <DialogTitle className="sr-only">{title}</DialogTitle>
-        <img
-          src={poster}
-          alt={`Poster for ${title}`}
-          className="mx-auto max-h-[85vh] w-auto rounded-xl"
-        />
+        <DialogClose asChild>
+          <button
+            type="button"
+            aria-label="Close poster"
+            className="block cursor-zoom-out rounded-xl focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            <img
+              src={poster}
+              alt={`Poster for ${title}`}
+              className="block max-h-[85dvh] max-w-[92vw] rounded-xl shadow-2xl shadow-black/70"
+            />
+          </button>
+        </DialogClose>
       </DialogContent>
     </Dialog>
   );
