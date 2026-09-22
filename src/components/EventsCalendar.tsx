@@ -1,4 +1,4 @@
-import { useId, useState } from "react";
+import { useId, useMemo, useState } from "react";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -6,6 +6,10 @@ import {
   MapPinIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  type CalendarEntry,
+  CalendarEntryDialog,
+} from "@/components/CalendarEntryDialog";
 import { cn } from "@/lib/utils";
 import {
   type ClubEvent,
@@ -29,6 +33,7 @@ const monthName = new Intl.DateTimeFormat("en-CA", {
   month: "long",
   year: "numeric",
 });
+const shortMonth = new Intl.DateTimeFormat("en-CA", { month: "short" });
 const weekdayName = new Intl.DateTimeFormat("en-CA", { weekday: "short" });
 const shortDate = new Intl.DateTimeFormat("en-CA", {
   weekday: "short",
@@ -70,6 +75,28 @@ const weeksOf = (days: Date[]) => {
   );
 };
 
+/**
+ * Every month that has an event, oldest first and grouped by year, so past
+ * events a year back are one click away rather than a dozen.
+ */
+const monthsWithEvents = (events: readonly ClubEvent[]) => {
+  const byMonth = new Map<number, { month: Date; count: number }>();
+  for (const event of events) {
+    const date = eventDate(event);
+    const month = new Date(date.getFullYear(), date.getMonth(), 1);
+    const entry = byMonth.get(month.getTime()) ?? { month, count: 0 };
+    entry.count += 1;
+    byMonth.set(month.getTime(), entry);
+  }
+
+  const byYear = new Map<number, { month: Date; count: number }[]>();
+  for (const [, entry] of [...byMonth].sort(([a], [b]) => a - b)) {
+    const year = entry.month.getFullYear();
+    byYear.set(year, [...(byYear.get(year) ?? []), entry]);
+  }
+  return [...byYear];
+};
+
 type EventsCalendarProps = {
   events: readonly ClubEvent[];
   /** Calendar-only entries: shown in the grid, never listed as events. */
@@ -79,11 +106,15 @@ type EventsCalendarProps = {
 /**
  * Month view of the same events the cards above list, plus club meetings.
  * Titles only fit in the cells from `md` up; below that each entry is a dot,
- * and the agenda under the grid carries the details at every width.
+ * and the agenda under the grid carries the details at every width. Any
+ * entry, in the grid or the agenda, opens its full details.
  */
 export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
   const [month, setMonth] = useState(() => openingMonth(events));
+  const [selected, setSelected] = useState<CalendarEntry | null>(null);
+  const [detailsOpen, setDetailsOpen] = useState(false);
   const headingId = useId();
+  const shortcuts = useMemo(() => monthsWithEvents(events), [events]);
 
   const year = month.getFullYear();
   const monthIndex = month.getMonth();
@@ -101,19 +132,34 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
     days.some((day) => meetsOn(meeting, day)),
   );
 
-  const entriesOn = (day: Date) => [
+  const entriesOn = (
+    day: Date,
+  ): { key: string; title: string; entry: CalendarEntry }[] => [
     ...monthEvents
       .filter((event) => eventDate(event).getDate() === day.getDate())
-      .map((event) => ({ ...event, meeting: false })),
+      .map((event) => ({
+        key: `event-${event.id}`,
+        title: event.title,
+        entry: { kind: "event" as const, event },
+      })),
     ...monthMeetings
       .filter((meeting) => meetsOn(meeting, day))
-      .map((meeting) => ({ ...meeting, meeting: true })),
+      .map((meeting) => ({
+        key: `meeting-${meeting.id}`,
+        title: meeting.title,
+        entry: { kind: "meeting" as const, meeting, date: day },
+      })),
   ];
 
   const isToday = (day: Date) => day.toDateString() === today.toDateString();
 
   const showMonth = (offset: number) =>
     setMonth(new Date(year, monthIndex + offset, 1));
+
+  const showDetails = (entry: CalendarEntry) => {
+    setSelected(entry);
+    setDetailsOpen(true);
+  };
 
   return (
     <div className="p-4 sm:p-6">
@@ -143,6 +189,50 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
         </Button>
       </div>
 
+      <nav aria-label="Months with events" className="mb-5 space-y-2">
+        {shortcuts.map(([shortcutYear, months]) => (
+          <div
+            key={shortcutYear}
+            className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3"
+          >
+            <span className="w-12 shrink-0 text-sm font-semibold text-muted-foreground">
+              {shortcutYear}
+            </span>
+            <div className="flex flex-wrap gap-2">
+              {months.map(({ month: shortcut, count }) => {
+                const current = shortcut.getTime() === month.getTime();
+
+                return (
+                  <Button
+                    key={shortcut.getTime()}
+                    size="sm"
+                    variant={current ? "default" : "outline"}
+                    aria-current={current ? "true" : undefined}
+                    onClick={() => setMonth(shortcut)}
+                    className="gap-1.5 rounded-full px-3"
+                  >
+                    {shortMonth.format(shortcut)}
+                    <span className="sr-only"> {shortcutYear},</span>
+                    <span
+                      className={cn(
+                        "rounded-full px-1.5 text-xs",
+                        // A light tint over the brand fill drops below 7:1.
+                        current ? "bg-black/30" : "bg-current/20",
+                      )}
+                    >
+                      {count}
+                    </span>
+                    <span className="sr-only">
+                      {count === 1 ? " event" : " events"}
+                    </span>
+                  </Button>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </nav>
+
       <table
         aria-labelledby={headingId}
         className="w-full table-fixed border-collapse"
@@ -167,7 +257,9 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
             <tr key={weekIndex}>
               {week.map((day, dayIndex) => {
                 const entries = day ? entriesOn(day) : [];
-                const hasEvent = entries.some((entry) => !entry.meeting);
+                const hasEvent = entries.some(
+                  ({ entry }) => entry.kind === "event",
+                );
 
                 return (
                   <td
@@ -195,31 +287,32 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
                           <span className="sr-only">(today)</span>
                         )}
                         {entries.length > 0 && (
-                          <ul className="mt-1 flex flex-wrap gap-1 md:block md:space-y-1">
-                            {entries.map((entry) => (
-                              <li
-                                key={`${entry.meeting ? "meeting" : "event"}-${entry.id}`}
-                                title={entry.title}
-                              >
-                                <span
-                                  aria-hidden="true"
+                          <ul className="mt-0.5 space-y-0.5 md:mt-1 md:space-y-1">
+                            {entries.map(({ key, title, entry }) => (
+                              <li key={key}>
+                                <button
+                                  type="button"
+                                  onClick={() => showDetails(entry)}
                                   className={cn(
-                                    "block h-2 w-2 rounded-full md:hidden",
-                                    entry.meeting
-                                      ? "bg-muted-foreground"
-                                      : "bg-primary",
-                                  )}
-                                />
-                                <span
-                                  className={cn(
-                                    "sr-only md:not-sr-only md:line-clamp-2 md:rounded md:px-1.5 md:py-0.5 md:text-xs md:leading-snug",
-                                    entry.meeting
+                                    "flex h-6 w-full items-center justify-center rounded focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring md:block md:h-auto md:px-1.5 md:py-0.5 md:text-left md:text-xs md:leading-snug md:hover:ring-1 md:hover:ring-primary/60",
+                                    entry.kind === "meeting"
                                       ? "md:border md:border-border md:text-muted-foreground"
                                       : "md:bg-brand/20 md:font-medium md:text-primary",
                                   )}
                                 >
-                                  {entry.title}
-                                </span>
+                                  <span
+                                    aria-hidden="true"
+                                    className={cn(
+                                      "block h-2 w-2 rounded-full md:hidden",
+                                      entry.kind === "meeting"
+                                        ? "bg-muted-foreground"
+                                        : "bg-primary",
+                                    )}
+                                  />
+                                  <span className="sr-only md:not-sr-only md:line-clamp-2">
+                                    {title}
+                                  </span>
+                                </button>
                               </li>
                             ))}
                           </ul>
@@ -245,34 +338,37 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
               const date = eventDate(event);
 
               return (
-                <li
-                  key={event.id}
-                  className="flex gap-4 rounded-lg border border-border bg-background/60 p-4 text-left"
-                >
-                  <time
-                    dateTime={event.date}
-                    className="flex w-12 shrink-0 flex-col items-center"
+                <li key={event.id}>
+                  <button
+                    type="button"
+                    onClick={() => showDetails({ kind: "event", event })}
+                    className="flex w-full gap-4 rounded-lg border border-border bg-background/60 p-4 text-left transition-colors hover:border-primary/50 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring"
                   >
-                    <span className="text-xs font-medium uppercase text-primary">
-                      {weekdayName.format(date)}
-                    </span>
-                    <span className="text-2xl font-bold leading-tight">
-                      {date.getDate()}
-                    </span>
-                  </time>
-                  <div className="min-w-0">
-                    <p className="font-semibold">{event.title}</p>
-                    <p className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
-                      <span className="inline-flex items-center gap-1">
-                        <ClockIcon className="h-4 w-4" />
-                        {event.time}
+                    <time
+                      dateTime={event.date}
+                      className="flex w-12 shrink-0 flex-col items-center"
+                    >
+                      <span className="text-xs font-medium uppercase text-primary">
+                        {weekdayName.format(date)}
                       </span>
-                      <span className="inline-flex items-center gap-1">
-                        <MapPinIcon className="h-4 w-4" />
-                        {event.location}
+                      <span className="text-2xl font-bold leading-tight">
+                        {date.getDate()}
                       </span>
-                    </p>
-                  </div>
+                    </time>
+                    <span className="block min-w-0">
+                      <span className="block font-semibold">{event.title}</span>
+                      <span className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
+                        <span className="inline-flex items-center gap-1">
+                          <ClockIcon className="h-4 w-4" />
+                          {event.time}
+                        </span>
+                        <span className="inline-flex items-center gap-1">
+                          <MapPinIcon className="h-4 w-4" />
+                          {event.location}
+                        </span>
+                      </span>
+                    </span>
+                  </button>
                 </li>
               );
             })}
@@ -282,31 +378,40 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
         {monthMeetings.length > 0 && (
           <ul className="space-y-2">
             {monthMeetings.map((meeting) => (
-              <li
-                key={meeting.id}
-                className="flex flex-wrap gap-x-4 gap-y-1 rounded-lg border border-dashed border-border px-4 py-3 text-left text-sm text-muted-foreground"
-              >
-                <span className="font-medium text-foreground">
-                  {meeting.title}
-                </span>
-                <span>
-                  {meeting.weekly
-                    ? `${WEEKDAYS[eventDate(meeting).getDay()][1]}s`
-                    : shortDate.format(eventDate(meeting))}
-                </span>
-                <span className="inline-flex items-center gap-1">
-                  <ClockIcon className="h-4 w-4" />
-                  {meeting.time}
-                </span>
-                <span className="inline-flex items-center gap-1">
-                  <MapPinIcon className="h-4 w-4" />
-                  {meeting.location}
-                </span>
+              <li key={meeting.id}>
+                <button
+                  type="button"
+                  onClick={() => showDetails({ kind: "meeting", meeting })}
+                  className="flex w-full flex-wrap gap-x-4 gap-y-1 rounded-lg border border-dashed border-border px-4 py-3 text-left text-sm text-muted-foreground transition-colors hover:border-primary/50 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <span className="font-medium text-foreground">
+                    {meeting.title}
+                  </span>
+                  <span>
+                    {meeting.weekly
+                      ? `${WEEKDAYS[eventDate(meeting).getDay()][1]}s`
+                      : shortDate.format(eventDate(meeting))}
+                  </span>
+                  <span className="inline-flex items-center gap-1">
+                    <ClockIcon className="h-4 w-4" />
+                    {meeting.time}
+                  </span>
+                  <span className="inline-flex items-center gap-1">
+                    <MapPinIcon className="h-4 w-4" />
+                    {meeting.location}
+                  </span>
+                </button>
               </li>
             ))}
           </ul>
         )}
       </div>
+
+      <CalendarEntryDialog
+        entry={selected}
+        open={detailsOpen}
+        onOpenChange={setDetailsOpen}
+      />
     </div>
   );
 }

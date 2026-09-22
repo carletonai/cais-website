@@ -18,21 +18,21 @@ const startOfToday = () => {
   return today;
 };
 
+/** Today's events count as upcoming until the day is over. */
+export const isUpcoming = (event: ClubEvent) =>
+  eventDate(event) >= startOfToday();
+
 /** Soonest first: the next event should lead. */
-export const upcomingEvents = (events: readonly ClubEvent[]) => {
-  const today = startOfToday();
-  return events
-    .filter((event) => eventDate(event) >= today)
+export const upcomingEvents = (events: readonly ClubEvent[]) =>
+  events
+    .filter(isUpcoming)
     .sort((a, b) => eventDate(a).getTime() - eventDate(b).getTime());
-};
 
 /** Most recent first, so 2026 sits above 2025. */
-export const pastEvents = (events: readonly ClubEvent[]) => {
-  const today = startOfToday();
-  return events
-    .filter((event) => eventDate(event) < today)
+export const pastEvents = (events: readonly ClubEvent[]) =>
+  events
+    .filter((event) => !isUpcoming(event))
     .sort((a, b) => eventDate(b).getTime() - eventDate(a).getTime());
-};
 
 /**
  * Calendar-only entries from meetings.json, like the exec meeting: they show

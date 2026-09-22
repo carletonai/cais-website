@@ -2,7 +2,7 @@
   "events": [
     {
       "id": "1",
-      "title": "Club Expo",
+      "title": "CUSA Club Expo",
       "date": "2025-01-15",
       "time": "11:00 AM - 4:00 PM",
       "location": "Teraanga Commons",
@@ -153,7 +153,7 @@
     },
     {
       "id": "15",
-      "title": "Club Expo",
+      "title": "CUSA Club Expo",
       "date": "2026-09-08",
       "time": "1:00 PM - 4:00 PM",
       "location": "Fieldhouse",
@@ -175,11 +175,11 @@
     },
     {
       "id": "17",
-      "title": "EDC Fair",
+      "title": "FED Meet & Greet",
       "date": "2026-09-17",
       "time": "6:00 PM - 8:00 PM",
       "location": "EDC, Mackenzie Building",
-      "description": "Meeting students at the EDC Fair, with free food and pizza.",
+      "description": "Meeting students at the FED Meet & Greet, with free food and pizza.",
       "type": "Social",
       "image": "/assets/events/ml-workshop.svg",
       "tags": ["social", "networking", "free-food"]

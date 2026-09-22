@@ -239,12 +239,12 @@ exports[`renders EventsPage correctly 1`] = `
               <h3
                 class="text-xl font-semibold mb-2"
               >
-                EDC Fair
+                FED Meet & Greet
               </h3>
               <p
                 class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
               >
-                Meeting students at the EDC Fair, with free food and pizza.
+                Meeting students at the FED Meet & Greet, with free food and pizza.
               </p>
               <div
                 class="flex gap-2 flex-wrap"
@@ -375,7 +375,7 @@ exports[`renders EventsPage correctly 1`] = `
               <h3
                 class="text-xl font-semibold mb-2"
               >
-                Club Expo
+                CUSA Club Expo
               </h3>
               <p
                 class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
@@ -1204,7 +1204,7 @@ exports[`renders EventsPage correctly 1`] = `
               <h3
                 class="text-xl font-semibold mb-2"
               >
-                Club Expo
+                CUSA Club Expo
               </h3>
               <p
                 class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
@@ -1247,7 +1247,7 @@ exports[`renders EventsPage correctly 1`] = `
           <p
             class="text-lg text-muted-foreground"
           >
-            View our full schedule of upcoming events
+            Browse our upcoming and past events
           </p>
         </div>
         <div
@@ -1281,6 +1281,206 @@ exports[`renders EventsPage correctly 1`] = `
                 <svg />
               </button>
             </div>
+            <nav
+              aria-label="Months with events"
+              class="mb-5 space-y-2"
+            >
+              <div
+                class="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3"
+              >
+                <span
+                  class="w-12 shrink-0 text-sm font-semibold text-muted-foreground"
+                >
+                  2025
+                </span>
+                <div
+                  class="flex flex-wrap gap-2"
+                >
+                  <button
+                    class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 gap-1.5 rounded-full px-3"
+                    type="button"
+                  >
+                    Jan
+                    <span
+                      class="sr-only"
+                    >
+                       2025,
+                    </span>
+                    <span
+                      class="rounded-full px-1.5 text-xs bg-current/20"
+                    >
+                      2
+                    </span>
+                    <span
+                      class="sr-only"
+                    >
+                       events
+                    </span>
+                  </button>
+                  <button
+                    class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 gap-1.5 rounded-full px-3"
+                    type="button"
+                  >
+                    Mar
+                    <span
+                      class="sr-only"
+                    >
+                       2025,
+                    </span>
+                    <span
+                      class="rounded-full px-1.5 text-xs bg-current/20"
+                    >
+                      3
+                    </span>
+                    <span
+                      class="sr-only"
+                    >
+                       events
+                    </span>
+                  </button>
+                  <button
+                    class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 gap-1.5 rounded-full px-3"
+                    type="button"
+                  >
+                    Apr
+                    <span
+                      class="sr-only"
+                    >
+                       2025,
+                    </span>
+                    <span
+                      class="rounded-full px-1.5 text-xs bg-current/20"
+                    >
+                      1
+                    </span>
+                    <span
+                      class="sr-only"
+                    >
+                       event
+                    </span>
+                  </button>
+                  <button
+                    class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 gap-1.5 rounded-full px-3"
+                    type="button"
+                  >
+                    Nov
+                    <span
+                      class="sr-only"
+                    >
+                       2025,
+                    </span>
+                    <span
+                      class="rounded-full px-1.5 text-xs bg-current/20"
+                    >
+                      1
+                    </span>
+                    <span
+                      class="sr-only"
+                    >
+                       event
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3"
+              >
+                <span
+                  class="w-12 shrink-0 text-sm font-semibold text-muted-foreground"
+                >
+                  2026
+                </span>
+                <div
+                  class="flex flex-wrap gap-2"
+                >
+                  <button
+                    class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 gap-1.5 rounded-full px-3"
+                    type="button"
+                  >
+                    Jan
+                    <span
+                      class="sr-only"
+                    >
+                       2026,
+                    </span>
+                    <span
+                      class="rounded-full px-1.5 text-xs bg-current/20"
+                    >
+                      3
+                    </span>
+                    <span
+                      class="sr-only"
+                    >
+                       events
+                    </span>
+                  </button>
+                  <button
+                    class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 gap-1.5 rounded-full px-3"
+                    type="button"
+                  >
+                    Feb
+                    <span
+                      class="sr-only"
+                    >
+                       2026,
+                    </span>
+                    <span
+                      class="rounded-full px-1.5 text-xs bg-current/20"
+                    >
+                      2
+                    </span>
+                    <span
+                      class="sr-only"
+                    >
+                       events
+                    </span>
+                  </button>
+                  <button
+                    class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 gap-1.5 rounded-full px-3"
+                    type="button"
+                  >
+                    Jul
+                    <span
+                      class="sr-only"
+                    >
+                       2026,
+                    </span>
+                    <span
+                      class="rounded-full px-1.5 text-xs bg-current/20"
+                    >
+                      1
+                    </span>
+                    <span
+                      class="sr-only"
+                    >
+                       event
+                    </span>
+                  </button>
+                  <button
+                    aria-current="true"
+                    class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-brand text-brand-foreground hover:bg-brand/90 h-11 gap-1.5 rounded-full px-3"
+                    type="button"
+                  >
+                    Sep
+                    <span
+                      class="sr-only"
+                    >
+                       2026,
+                    </span>
+                    <span
+                      class="rounded-full px-1.5 text-xs bg-black/30"
+                    >
+                      4
+                    </span>
+                    <span
+                      class="sr-only"
+                    >
+                       events
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </nav>
             <table
               aria-labelledby="_r_3_"
               class="w-full table-fixed border-collapse"
@@ -1448,20 +1648,23 @@ exports[`renders EventsPage correctly 1`] = `
                       8
                     </span>
                     <ul
-                      class="mt-1 flex flex-wrap gap-1 md:block md:space-y-1"
+                      class="mt-0.5 space-y-0.5 md:mt-1 md:space-y-1"
                     >
-                      <li
-                        title="Club Expo"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="block h-2 w-2 rounded-full md:hidden bg-primary"
-                        />
-                        <span
-                          class="sr-only md:not-sr-only md:line-clamp-2 md:rounded md:px-1.5 md:py-0.5 md:text-xs md:leading-snug md:bg-brand/20 md:font-medium md:text-primary"
+                      <li>
+                        <button
+                          class="flex h-6 w-full items-center justify-center rounded focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring md:block md:h-auto md:px-1.5 md:py-0.5 md:text-left md:text-xs md:leading-snug md:hover:ring-1 md:hover:ring-primary/60 md:bg-brand/20 md:font-medium md:text-primary"
+                          type="button"
                         >
-                          Club Expo
-                        </span>
+                          <span
+                            aria-hidden="true"
+                            class="block h-2 w-2 rounded-full md:hidden bg-primary"
+                          />
+                          <span
+                            class="sr-only md:not-sr-only md:line-clamp-2"
+                          >
+                            CUSA Club Expo
+                          </span>
+                        </button>
                       </li>
                     </ul>
                   </td>
@@ -1539,20 +1742,23 @@ exports[`renders EventsPage correctly 1`] = `
                       16
                     </span>
                     <ul
-                      class="mt-1 flex flex-wrap gap-1 md:block md:space-y-1"
+                      class="mt-0.5 space-y-0.5 md:mt-1 md:space-y-1"
                     >
-                      <li
-                        title="Tech Club Expo"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="block h-2 w-2 rounded-full md:hidden bg-primary"
-                        />
-                        <span
-                          class="sr-only md:not-sr-only md:line-clamp-2 md:rounded md:px-1.5 md:py-0.5 md:text-xs md:leading-snug md:bg-brand/20 md:font-medium md:text-primary"
+                      <li>
+                        <button
+                          class="flex h-6 w-full items-center justify-center rounded focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring md:block md:h-auto md:px-1.5 md:py-0.5 md:text-left md:text-xs md:leading-snug md:hover:ring-1 md:hover:ring-primary/60 md:bg-brand/20 md:font-medium md:text-primary"
+                          type="button"
                         >
-                          Tech Club Expo
-                        </span>
+                          <span
+                            aria-hidden="true"
+                            class="block h-2 w-2 rounded-full md:hidden bg-primary"
+                          />
+                          <span
+                            class="sr-only md:not-sr-only md:line-clamp-2"
+                          >
+                            Tech Club Expo
+                          </span>
+                        </button>
                       </li>
                     </ul>
                   </td>
@@ -1565,20 +1771,23 @@ exports[`renders EventsPage correctly 1`] = `
                       17
                     </span>
                     <ul
-                      class="mt-1 flex flex-wrap gap-1 md:block md:space-y-1"
+                      class="mt-0.5 space-y-0.5 md:mt-1 md:space-y-1"
                     >
-                      <li
-                        title="EDC Fair"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="block h-2 w-2 rounded-full md:hidden bg-primary"
-                        />
-                        <span
-                          class="sr-only md:not-sr-only md:line-clamp-2 md:rounded md:px-1.5 md:py-0.5 md:text-xs md:leading-snug md:bg-brand/20 md:font-medium md:text-primary"
+                      <li>
+                        <button
+                          class="flex h-6 w-full items-center justify-center rounded focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring md:block md:h-auto md:px-1.5 md:py-0.5 md:text-left md:text-xs md:leading-snug md:hover:ring-1 md:hover:ring-primary/60 md:bg-brand/20 md:font-medium md:text-primary"
+                          type="button"
                         >
-                          EDC Fair
-                        </span>
+                          <span
+                            aria-hidden="true"
+                            class="block h-2 w-2 rounded-full md:hidden bg-primary"
+                          />
+                          <span
+                            class="sr-only md:not-sr-only md:line-clamp-2"
+                          >
+                            FED Meet & Greet
+                          </span>
+                        </button>
                       </li>
                     </ul>
                   </td>
@@ -1634,20 +1843,23 @@ exports[`renders EventsPage correctly 1`] = `
                       (today)
                     </span>
                     <ul
-                      class="mt-1 flex flex-wrap gap-1 md:block md:space-y-1"
+                      class="mt-0.5 space-y-0.5 md:mt-1 md:space-y-1"
                     >
-                      <li
-                        title="Exec Meeting"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="block h-2 w-2 rounded-full md:hidden bg-muted-foreground"
-                        />
-                        <span
-                          class="sr-only md:not-sr-only md:line-clamp-2 md:rounded md:px-1.5 md:py-0.5 md:text-xs md:leading-snug md:border md:border-border md:text-muted-foreground"
+                      <li>
+                        <button
+                          class="flex h-6 w-full items-center justify-center rounded focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring md:block md:h-auto md:px-1.5 md:py-0.5 md:text-left md:text-xs md:leading-snug md:hover:ring-1 md:hover:ring-primary/60 md:border md:border-border md:text-muted-foreground"
+                          type="button"
                         >
-                          Exec Meeting
-                        </span>
+                          <span
+                            aria-hidden="true"
+                            class="block h-2 w-2 rounded-full md:hidden bg-muted-foreground"
+                          />
+                          <span
+                            class="sr-only md:not-sr-only md:line-clamp-2"
+                          >
+                            Exec Meeting
+                          </span>
+                        </button>
                       </li>
                     </ul>
                   </td>
@@ -1669,20 +1881,23 @@ exports[`renders EventsPage correctly 1`] = `
                       24
                     </span>
                     <ul
-                      class="mt-1 flex flex-wrap gap-1 md:block md:space-y-1"
+                      class="mt-0.5 space-y-0.5 md:mt-1 md:space-y-1"
                     >
-                      <li
-                        title="CAIS Icebreaker"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="block h-2 w-2 rounded-full md:hidden bg-primary"
-                        />
-                        <span
-                          class="sr-only md:not-sr-only md:line-clamp-2 md:rounded md:px-1.5 md:py-0.5 md:text-xs md:leading-snug md:bg-brand/20 md:font-medium md:text-primary"
+                      <li>
+                        <button
+                          class="flex h-6 w-full items-center justify-center rounded focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring md:block md:h-auto md:px-1.5 md:py-0.5 md:text-left md:text-xs md:leading-snug md:hover:ring-1 md:hover:ring-primary/60 md:bg-brand/20 md:font-medium md:text-primary"
+                          type="button"
                         >
-                          CAIS Icebreaker
-                        </span>
+                          <span
+                            aria-hidden="true"
+                            class="block h-2 w-2 rounded-full md:hidden bg-primary"
+                          />
+                          <span
+                            class="sr-only md:not-sr-only md:line-clamp-2"
+                          >
+                            CAIS Icebreaker
+                          </span>
+                        </button>
                       </li>
                     </ul>
                   </td>
@@ -1733,20 +1948,23 @@ exports[`renders EventsPage correctly 1`] = `
                       29
                     </span>
                     <ul
-                      class="mt-1 flex flex-wrap gap-1 md:block md:space-y-1"
+                      class="mt-0.5 space-y-0.5 md:mt-1 md:space-y-1"
                     >
-                      <li
-                        title="Exec Meeting"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="block h-2 w-2 rounded-full md:hidden bg-muted-foreground"
-                        />
-                        <span
-                          class="sr-only md:not-sr-only md:line-clamp-2 md:rounded md:px-1.5 md:py-0.5 md:text-xs md:leading-snug md:border md:border-border md:text-muted-foreground"
+                      <li>
+                        <button
+                          class="flex h-6 w-full items-center justify-center rounded focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring md:block md:h-auto md:px-1.5 md:py-0.5 md:text-left md:text-xs md:leading-snug md:hover:ring-1 md:hover:ring-primary/60 md:border md:border-border md:text-muted-foreground"
+                          type="button"
                         >
-                          Exec Meeting
-                        </span>
+                          <span
+                            aria-hidden="true"
+                            class="block h-2 w-2 rounded-full md:hidden bg-muted-foreground"
+                          />
+                          <span
+                            class="sr-only md:not-sr-only md:line-clamp-2"
+                          >
+                            Exec Meeting
+                          </span>
+                        </button>
                       </li>
                     </ul>
                   </td>
@@ -1777,229 +1995,244 @@ exports[`renders EventsPage correctly 1`] = `
               <ul
                 class="space-y-3"
               >
-                <li
-                  class="flex gap-4 rounded-lg border border-border bg-background/60 p-4 text-left"
-                >
-                  <time
-                    class="flex w-12 shrink-0 flex-col items-center"
-                    datetime="2026-09-08"
+                <li>
+                  <button
+                    class="flex w-full gap-4 rounded-lg border border-border bg-background/60 p-4 text-left transition-colors hover:border-primary/50 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring"
+                    type="button"
                   >
-                    <span
-                      class="text-xs font-medium uppercase text-primary"
-                    >
-                      Tue
-                    </span>
-                    <span
-                      class="text-2xl font-bold leading-tight"
-                    >
-                      8
-                    </span>
-                  </time>
-                  <div
-                    class="min-w-0"
-                  >
-                    <p
-                      class="font-semibold"
-                    >
-                      Club Expo
-                    </p>
-                    <p
-                      class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground"
+                    <time
+                      class="flex w-12 shrink-0 flex-col items-center"
+                      datetime="2026-09-08"
                     >
                       <span
-                        class="inline-flex items-center gap-1"
+                        class="text-xs font-medium uppercase text-primary"
                       >
-                        <svg
-                          class="h-4 w-4"
-                        />
-                        1:00 PM - 4:00 PM
+                        Tue
                       </span>
                       <span
-                        class="inline-flex items-center gap-1"
+                        class="text-2xl font-bold leading-tight"
                       >
-                        <svg
-                          class="h-4 w-4"
-                        />
-                        Fieldhouse
+                        8
                       </span>
-                    </p>
-                  </div>
+                    </time>
+                    <span
+                      class="block min-w-0"
+                    >
+                      <span
+                        class="block font-semibold"
+                      >
+                        CUSA Club Expo
+                      </span>
+                      <span
+                        class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground"
+                      >
+                        <span
+                          class="inline-flex items-center gap-1"
+                        >
+                          <svg
+                            class="h-4 w-4"
+                          />
+                          1:00 PM - 4:00 PM
+                        </span>
+                        <span
+                          class="inline-flex items-center gap-1"
+                        >
+                          <svg
+                            class="h-4 w-4"
+                          />
+                          Fieldhouse
+                        </span>
+                      </span>
+                    </span>
+                  </button>
                 </li>
-                <li
-                  class="flex gap-4 rounded-lg border border-border bg-background/60 p-4 text-left"
-                >
-                  <time
-                    class="flex w-12 shrink-0 flex-col items-center"
-                    datetime="2026-09-16"
+                <li>
+                  <button
+                    class="flex w-full gap-4 rounded-lg border border-border bg-background/60 p-4 text-left transition-colors hover:border-primary/50 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring"
+                    type="button"
                   >
-                    <span
-                      class="text-xs font-medium uppercase text-primary"
-                    >
-                      Wed
-                    </span>
-                    <span
-                      class="text-2xl font-bold leading-tight"
-                    >
-                      16
-                    </span>
-                  </time>
-                  <div
-                    class="min-w-0"
-                  >
-                    <p
-                      class="font-semibold"
-                    >
-                      Tech Club Expo
-                    </p>
-                    <p
-                      class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground"
+                    <time
+                      class="flex w-12 shrink-0 flex-col items-center"
+                      datetime="2026-09-16"
                     >
                       <span
-                        class="inline-flex items-center gap-1"
+                        class="text-xs font-medium uppercase text-primary"
                       >
-                        <svg
-                          class="h-4 w-4"
-                        />
-                        5:00 PM - 7:00 PM
+                        Wed
                       </span>
                       <span
-                        class="inline-flex items-center gap-1"
+                        class="text-2xl font-bold leading-tight"
                       >
-                        <svg
-                          class="h-4 w-4"
-                        />
-                        Herzberg Laboratories 4155
+                        16
                       </span>
-                    </p>
-                  </div>
+                    </time>
+                    <span
+                      class="block min-w-0"
+                    >
+                      <span
+                        class="block font-semibold"
+                      >
+                        Tech Club Expo
+                      </span>
+                      <span
+                        class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground"
+                      >
+                        <span
+                          class="inline-flex items-center gap-1"
+                        >
+                          <svg
+                            class="h-4 w-4"
+                          />
+                          5:00 PM - 7:00 PM
+                        </span>
+                        <span
+                          class="inline-flex items-center gap-1"
+                        >
+                          <svg
+                            class="h-4 w-4"
+                          />
+                          Herzberg Laboratories 4155
+                        </span>
+                      </span>
+                    </span>
+                  </button>
                 </li>
-                <li
-                  class="flex gap-4 rounded-lg border border-border bg-background/60 p-4 text-left"
-                >
-                  <time
-                    class="flex w-12 shrink-0 flex-col items-center"
-                    datetime="2026-09-17"
+                <li>
+                  <button
+                    class="flex w-full gap-4 rounded-lg border border-border bg-background/60 p-4 text-left transition-colors hover:border-primary/50 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring"
+                    type="button"
                   >
-                    <span
-                      class="text-xs font-medium uppercase text-primary"
-                    >
-                      Thu
-                    </span>
-                    <span
-                      class="text-2xl font-bold leading-tight"
-                    >
-                      17
-                    </span>
-                  </time>
-                  <div
-                    class="min-w-0"
-                  >
-                    <p
-                      class="font-semibold"
-                    >
-                      EDC Fair
-                    </p>
-                    <p
-                      class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground"
+                    <time
+                      class="flex w-12 shrink-0 flex-col items-center"
+                      datetime="2026-09-17"
                     >
                       <span
-                        class="inline-flex items-center gap-1"
+                        class="text-xs font-medium uppercase text-primary"
                       >
-                        <svg
-                          class="h-4 w-4"
-                        />
-                        6:00 PM - 8:00 PM
+                        Thu
                       </span>
                       <span
-                        class="inline-flex items-center gap-1"
+                        class="text-2xl font-bold leading-tight"
                       >
-                        <svg
-                          class="h-4 w-4"
-                        />
-                        EDC, Mackenzie Building
+                        17
                       </span>
-                    </p>
-                  </div>
+                    </time>
+                    <span
+                      class="block min-w-0"
+                    >
+                      <span
+                        class="block font-semibold"
+                      >
+                        FED Meet & Greet
+                      </span>
+                      <span
+                        class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground"
+                      >
+                        <span
+                          class="inline-flex items-center gap-1"
+                        >
+                          <svg
+                            class="h-4 w-4"
+                          />
+                          6:00 PM - 8:00 PM
+                        </span>
+                        <span
+                          class="inline-flex items-center gap-1"
+                        >
+                          <svg
+                            class="h-4 w-4"
+                          />
+                          EDC, Mackenzie Building
+                        </span>
+                      </span>
+                    </span>
+                  </button>
                 </li>
-                <li
-                  class="flex gap-4 rounded-lg border border-border bg-background/60 p-4 text-left"
-                >
-                  <time
-                    class="flex w-12 shrink-0 flex-col items-center"
-                    datetime="2026-09-24"
+                <li>
+                  <button
+                    class="flex w-full gap-4 rounded-lg border border-border bg-background/60 p-4 text-left transition-colors hover:border-primary/50 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring"
+                    type="button"
                   >
-                    <span
-                      class="text-xs font-medium uppercase text-primary"
-                    >
-                      Thu
-                    </span>
-                    <span
-                      class="text-2xl font-bold leading-tight"
-                    >
-                      24
-                    </span>
-                  </time>
-                  <div
-                    class="min-w-0"
-                  >
-                    <p
-                      class="font-semibold"
-                    >
-                      CAIS Icebreaker
-                    </p>
-                    <p
-                      class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground"
+                    <time
+                      class="flex w-12 shrink-0 flex-col items-center"
+                      datetime="2026-09-24"
                     >
                       <span
-                        class="inline-flex items-center gap-1"
+                        class="text-xs font-medium uppercase text-primary"
                       >
-                        <svg
-                          class="h-4 w-4"
-                        />
-                        6:00 PM - 8:00 PM
+                        Thu
                       </span>
                       <span
-                        class="inline-flex items-center gap-1"
+                        class="text-2xl font-bold leading-tight"
                       >
-                        <svg
-                          class="h-4 w-4"
-                        />
-                        Southam Hall 402
+                        24
                       </span>
-                    </p>
-                  </div>
+                    </time>
+                    <span
+                      class="block min-w-0"
+                    >
+                      <span
+                        class="block font-semibold"
+                      >
+                        CAIS Icebreaker
+                      </span>
+                      <span
+                        class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground"
+                      >
+                        <span
+                          class="inline-flex items-center gap-1"
+                        >
+                          <svg
+                            class="h-4 w-4"
+                          />
+                          6:00 PM - 8:00 PM
+                        </span>
+                        <span
+                          class="inline-flex items-center gap-1"
+                        >
+                          <svg
+                            class="h-4 w-4"
+                          />
+                          Southam Hall 402
+                        </span>
+                      </span>
+                    </span>
+                  </button>
                 </li>
               </ul>
               <ul
                 class="space-y-2"
               >
-                <li
-                  class="flex flex-wrap gap-x-4 gap-y-1 rounded-lg border border-dashed border-border px-4 py-3 text-left text-sm text-muted-foreground"
-                >
-                  <span
-                    class="font-medium text-foreground"
+                <li>
+                  <button
+                    class="flex w-full flex-wrap gap-x-4 gap-y-1 rounded-lg border border-dashed border-border px-4 py-3 text-left text-sm text-muted-foreground transition-colors hover:border-primary/50 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring"
+                    type="button"
                   >
-                    Exec Meeting
-                  </span>
-                  <span>
-                    Tuesdays
-                  </span>
-                  <span
-                    class="inline-flex items-center gap-1"
-                  >
-                    <svg
-                      class="h-4 w-4"
-                    />
-                    7:30 PM - 8:00 PM
-                  </span>
-                  <span
-                    class="inline-flex items-center gap-1"
-                  >
-                    <svg
-                      class="h-4 w-4"
-                    />
-                    Richcraft Hall 3228
-                  </span>
+                    <span
+                      class="font-medium text-foreground"
+                    >
+                      Exec Meeting
+                    </span>
+                    <span>
+                      Tuesdays
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-1"
+                    >
+                      <svg
+                        class="h-4 w-4"
+                      />
+                      7:30 PM - 8:00 PM
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-1"
+                    >
+                      <svg
+                        class="h-4 w-4"
+                      />
+                      Richcraft Hall 3228
+                    </span>
+                  </button>
                 </li>
               </ul>
             </div>

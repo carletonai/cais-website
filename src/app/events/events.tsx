@@ -305,7 +305,7 @@ const EventsPage = () => {
               Events Calendar
             </h2>
             <p className="text-lg text-muted-foreground">
-              View our full schedule of upcoming events
+              Browse our upcoming and past events
             </p>
           </motion.div>
           <motion.div
