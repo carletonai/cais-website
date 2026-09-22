@@ -207,6 +207,268 @@ exports[`renders EventsPage correctly 1`] = `
             >
               <div
                 class="absolute inset-0 bg-cover bg-center"
+                style="background-image: url("/assets/events/ml-workshop.svg");"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+            </div>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2026-09-17
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  EDC, Mackenzie Building
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2"
+              >
+                EDC Fair
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
+              >
+                Meeting students at the EDC Fair, with free food and pizza.
+              </p>
+              <div
+                class="flex gap-2 flex-wrap"
+              >
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                >
+                  social
+                </span>
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                >
+                  networking
+                </span>
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                >
+                  free-food
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
+          >
+            <div
+              class="aspect-video relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                style="background-image: url("/assets/events/ml-workshop.svg");"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+            </div>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2026-09-16
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  Herzberg Laboratories 4155
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2"
+              >
+                Tech Club Expo
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
+              >
+                Showcasing CAIS alongside Carleton's other tech clubs and meeting students interested in AI.
+              </p>
+              <div
+                class="flex gap-2 flex-wrap"
+              >
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                >
+                  social
+                </span>
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                >
+                  recruitment
+                </span>
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                >
+                  networking
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
+          >
+            <div
+              class="aspect-video relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                style="background-image: url("/assets/events/ml-workshop.svg");"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+            </div>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2026-09-08
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  Fieldhouse
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2"
+              >
+                Club Expo
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
+              >
+                Presenting the club to new students and recruiting new members.
+              </p>
+              <div
+                class="flex gap-2 flex-wrap"
+              >
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                >
+                  social
+                </span>
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                >
+                  recruitment
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
+          >
+            <div
+              class="aspect-video relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                style="background-image: url("/assets/events/neural-networks.svg");"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+            </div>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2026-07-11
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  Richcraft Hall 1200
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2"
+              >
+                cuHacking Workshop – How to Use Agentic AI to Build Neural Networks
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
+              >
+                A cuHacking workshop on using agentic AI to design and build neural networks.
+              </p>
+              <div
+                class="flex gap-2 flex-wrap"
+              >
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                >
+                  hands-on
+                </span>
+                <span
+                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                >
+                  technical
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
+          >
+            <div
+              class="aspect-video relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
                 style="background-image: url("/assets/events/neural-networks.svg");"
               />
               <div
@@ -989,29 +1251,758 @@ exports[`renders EventsPage correctly 1`] = `
           </p>
         </div>
         <div
-          class="aspect-video w-full max-w-4xl mx-auto rounded-lg overflow-hidden border border-primary/10 bg-card/50 backdrop-blur-xs"
+          class="w-full max-w-4xl mx-auto rounded-lg overflow-hidden border border-primary/10 bg-card/50 backdrop-blur-xs"
         >
           <div
-            class="flex h-full flex-col items-center justify-center gap-3 p-8 text-center"
+            class="p-4 sm:p-6"
           >
-            <svg
-              class="h-8 w-8 text-primary"
-            />
-            <p
-              class="text-muted-foreground"
+            <div
+              class="mb-4 flex items-center justify-between gap-2"
             >
-              Our shared calendar is not published yet — the dates above are the full schedule.
-            </p>
-            <a
-              class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 px-4 py-2"
-              href="https://discord.gg/gCs3v653de"
-              rel="noopener noreferrer"
-              role="button"
-              tabindex="0"
-              target="_blank"
+              <button
+                aria-label="Previous month"
+                class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-11 w-11 min-w-11"
+                type="button"
+              >
+                <svg />
+              </button>
+              <h3
+                aria-live="polite"
+                class="whitespace-nowrap text-lg font-semibold sm:text-2xl"
+                id="_r_3_"
+              >
+                September 2026
+              </h3>
+              <button
+                aria-label="Next month"
+                class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-11 w-11 min-w-11"
+                type="button"
+              >
+                <svg />
+              </button>
+            </div>
+            <table
+              aria-labelledby="_r_3_"
+              class="w-full table-fixed border-collapse"
             >
-              Get event reminders on Discord
-            </a>
+              <thead>
+                <tr>
+                  <th
+                    class="pb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                    scope="col"
+                  >
+                    <abbr
+                      class="no-underline"
+                      title="Sunday"
+                    >
+                      Sun
+                    </abbr>
+                  </th>
+                  <th
+                    class="pb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                    scope="col"
+                  >
+                    <abbr
+                      class="no-underline"
+                      title="Monday"
+                    >
+                      Mon
+                    </abbr>
+                  </th>
+                  <th
+                    class="pb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                    scope="col"
+                  >
+                    <abbr
+                      class="no-underline"
+                      title="Tuesday"
+                    >
+                      Tue
+                    </abbr>
+                  </th>
+                  <th
+                    class="pb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                    scope="col"
+                  >
+                    <abbr
+                      class="no-underline"
+                      title="Wednesday"
+                    >
+                      Wed
+                    </abbr>
+                  </th>
+                  <th
+                    class="pb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                    scope="col"
+                  >
+                    <abbr
+                      class="no-underline"
+                      title="Thursday"
+                    >
+                      Thu
+                    </abbr>
+                  </th>
+                  <th
+                    class="pb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                    scope="col"
+                  >
+                    <abbr
+                      class="no-underline"
+                      title="Friday"
+                    >
+                      Fri
+                    </abbr>
+                  </th>
+                  <th
+                    class="pb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                    scope="col"
+                  >
+                    <abbr
+                      class="no-underline"
+                      title="Saturday"
+                    >
+                      Sat
+                    </abbr>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  />
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  />
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      1
+                    </span>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      2
+                    </span>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      3
+                    </span>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      4
+                    </span>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      5
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      6
+                    </span>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      7
+                    </span>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5 bg-brand/10"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm font-semibold text-foreground"
+                    >
+                      8
+                    </span>
+                    <ul
+                      class="mt-1 flex flex-wrap gap-1 md:block md:space-y-1"
+                    >
+                      <li
+                        title="Club Expo"
+                      >
+                        <span
+                          aria-hidden="true"
+                          class="block h-2 w-2 rounded-full md:hidden bg-primary"
+                        />
+                        <span
+                          class="sr-only md:not-sr-only md:line-clamp-2 md:rounded md:px-1.5 md:py-0.5 md:text-xs md:leading-snug md:bg-brand/20 md:font-medium md:text-primary"
+                        >
+                          Club Expo
+                        </span>
+                      </li>
+                    </ul>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      9
+                    </span>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      10
+                    </span>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      11
+                    </span>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      12
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      13
+                    </span>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      14
+                    </span>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      15
+                    </span>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5 bg-brand/10"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm font-semibold text-foreground"
+                    >
+                      16
+                    </span>
+                    <ul
+                      class="mt-1 flex flex-wrap gap-1 md:block md:space-y-1"
+                    >
+                      <li
+                        title="Tech Club Expo"
+                      >
+                        <span
+                          aria-hidden="true"
+                          class="block h-2 w-2 rounded-full md:hidden bg-primary"
+                        />
+                        <span
+                          class="sr-only md:not-sr-only md:line-clamp-2 md:rounded md:px-1.5 md:py-0.5 md:text-xs md:leading-snug md:bg-brand/20 md:font-medium md:text-primary"
+                        >
+                          Tech Club Expo
+                        </span>
+                      </li>
+                    </ul>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5 bg-brand/10"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm font-semibold text-foreground"
+                    >
+                      17
+                    </span>
+                    <ul
+                      class="mt-1 flex flex-wrap gap-1 md:block md:space-y-1"
+                    >
+                      <li
+                        title="EDC Fair"
+                      >
+                        <span
+                          aria-hidden="true"
+                          class="block h-2 w-2 rounded-full md:hidden bg-primary"
+                        />
+                        <span
+                          class="sr-only md:not-sr-only md:line-clamp-2 md:rounded md:px-1.5 md:py-0.5 md:text-xs md:leading-snug md:bg-brand/20 md:font-medium md:text-primary"
+                        >
+                          EDC Fair
+                        </span>
+                      </li>
+                    </ul>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      18
+                    </span>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      19
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      20
+                    </span>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      21
+                    </span>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm bg-brand font-semibold text-brand-foreground"
+                    >
+                      22
+                    </span>
+                    <span
+                      class="sr-only"
+                    >
+                      (today)
+                    </span>
+                    <ul
+                      class="mt-1 flex flex-wrap gap-1 md:block md:space-y-1"
+                    >
+                      <li
+                        title="Exec Meeting"
+                      >
+                        <span
+                          aria-hidden="true"
+                          class="block h-2 w-2 rounded-full md:hidden bg-muted-foreground"
+                        />
+                        <span
+                          class="sr-only md:not-sr-only md:line-clamp-2 md:rounded md:px-1.5 md:py-0.5 md:text-xs md:leading-snug md:border md:border-border md:text-muted-foreground"
+                        >
+                          Exec Meeting
+                        </span>
+                      </li>
+                    </ul>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      23
+                    </span>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5 bg-brand/10"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm font-semibold text-foreground"
+                    >
+                      24
+                    </span>
+                    <ul
+                      class="mt-1 flex flex-wrap gap-1 md:block md:space-y-1"
+                    >
+                      <li
+                        title="CAIS Icebreaker"
+                      >
+                        <span
+                          aria-hidden="true"
+                          class="block h-2 w-2 rounded-full md:hidden bg-primary"
+                        />
+                        <span
+                          class="sr-only md:not-sr-only md:line-clamp-2 md:rounded md:px-1.5 md:py-0.5 md:text-xs md:leading-snug md:bg-brand/20 md:font-medium md:text-primary"
+                        >
+                          CAIS Icebreaker
+                        </span>
+                      </li>
+                    </ul>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      25
+                    </span>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      26
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      27
+                    </span>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      28
+                    </span>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      29
+                    </span>
+                    <ul
+                      class="mt-1 flex flex-wrap gap-1 md:block md:space-y-1"
+                    >
+                      <li
+                        title="Exec Meeting"
+                      >
+                        <span
+                          aria-hidden="true"
+                          class="block h-2 w-2 rounded-full md:hidden bg-muted-foreground"
+                        />
+                        <span
+                          class="sr-only md:not-sr-only md:line-clamp-2 md:rounded md:px-1.5 md:py-0.5 md:text-xs md:leading-snug md:border md:border-border md:text-muted-foreground"
+                        >
+                          Exec Meeting
+                        </span>
+                      </li>
+                    </ul>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  >
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                    >
+                      30
+                    </span>
+                  </td>
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  />
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  />
+                  <td
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                  />
+                </tr>
+              </tbody>
+            </table>
+            <div
+              class="mt-6 space-y-3"
+            >
+              <ul
+                class="space-y-3"
+              >
+                <li
+                  class="flex gap-4 rounded-lg border border-border bg-background/60 p-4 text-left"
+                >
+                  <time
+                    class="flex w-12 shrink-0 flex-col items-center"
+                    datetime="2026-09-08"
+                  >
+                    <span
+                      class="text-xs font-medium uppercase text-primary"
+                    >
+                      Tue
+                    </span>
+                    <span
+                      class="text-2xl font-bold leading-tight"
+                    >
+                      8
+                    </span>
+                  </time>
+                  <div
+                    class="min-w-0"
+                  >
+                    <p
+                      class="font-semibold"
+                    >
+                      Club Expo
+                    </p>
+                    <p
+                      class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground"
+                    >
+                      <span
+                        class="inline-flex items-center gap-1"
+                      >
+                        <svg
+                          class="h-4 w-4"
+                        />
+                        1:00 PM - 4:00 PM
+                      </span>
+                      <span
+                        class="inline-flex items-center gap-1"
+                      >
+                        <svg
+                          class="h-4 w-4"
+                        />
+                        Fieldhouse
+                      </span>
+                    </p>
+                  </div>
+                </li>
+                <li
+                  class="flex gap-4 rounded-lg border border-border bg-background/60 p-4 text-left"
+                >
+                  <time
+                    class="flex w-12 shrink-0 flex-col items-center"
+                    datetime="2026-09-16"
+                  >
+                    <span
+                      class="text-xs font-medium uppercase text-primary"
+                    >
+                      Wed
+                    </span>
+                    <span
+                      class="text-2xl font-bold leading-tight"
+                    >
+                      16
+                    </span>
+                  </time>
+                  <div
+                    class="min-w-0"
+                  >
+                    <p
+                      class="font-semibold"
+                    >
+                      Tech Club Expo
+                    </p>
+                    <p
+                      class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground"
+                    >
+                      <span
+                        class="inline-flex items-center gap-1"
+                      >
+                        <svg
+                          class="h-4 w-4"
+                        />
+                        5:00 PM - 7:00 PM
+                      </span>
+                      <span
+                        class="inline-flex items-center gap-1"
+                      >
+                        <svg
+                          class="h-4 w-4"
+                        />
+                        Herzberg Laboratories 4155
+                      </span>
+                    </p>
+                  </div>
+                </li>
+                <li
+                  class="flex gap-4 rounded-lg border border-border bg-background/60 p-4 text-left"
+                >
+                  <time
+                    class="flex w-12 shrink-0 flex-col items-center"
+                    datetime="2026-09-17"
+                  >
+                    <span
+                      class="text-xs font-medium uppercase text-primary"
+                    >
+                      Thu
+                    </span>
+                    <span
+                      class="text-2xl font-bold leading-tight"
+                    >
+                      17
+                    </span>
+                  </time>
+                  <div
+                    class="min-w-0"
+                  >
+                    <p
+                      class="font-semibold"
+                    >
+                      EDC Fair
+                    </p>
+                    <p
+                      class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground"
+                    >
+                      <span
+                        class="inline-flex items-center gap-1"
+                      >
+                        <svg
+                          class="h-4 w-4"
+                        />
+                        6:00 PM - 8:00 PM
+                      </span>
+                      <span
+                        class="inline-flex items-center gap-1"
+                      >
+                        <svg
+                          class="h-4 w-4"
+                        />
+                        EDC, Mackenzie Building
+                      </span>
+                    </p>
+                  </div>
+                </li>
+                <li
+                  class="flex gap-4 rounded-lg border border-border bg-background/60 p-4 text-left"
+                >
+                  <time
+                    class="flex w-12 shrink-0 flex-col items-center"
+                    datetime="2026-09-24"
+                  >
+                    <span
+                      class="text-xs font-medium uppercase text-primary"
+                    >
+                      Thu
+                    </span>
+                    <span
+                      class="text-2xl font-bold leading-tight"
+                    >
+                      24
+                    </span>
+                  </time>
+                  <div
+                    class="min-w-0"
+                  >
+                    <p
+                      class="font-semibold"
+                    >
+                      CAIS Icebreaker
+                    </p>
+                    <p
+                      class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground"
+                    >
+                      <span
+                        class="inline-flex items-center gap-1"
+                      >
+                        <svg
+                          class="h-4 w-4"
+                        />
+                        6:00 PM - 8:00 PM
+                      </span>
+                      <span
+                        class="inline-flex items-center gap-1"
+                      >
+                        <svg
+                          class="h-4 w-4"
+                        />
+                        Southam Hall 402
+                      </span>
+                    </p>
+                  </div>
+                </li>
+              </ul>
+              <ul
+                class="space-y-2"
+              >
+                <li
+                  class="flex flex-wrap gap-x-4 gap-y-1 rounded-lg border border-dashed border-border px-4 py-3 text-left text-sm text-muted-foreground"
+                >
+                  <span
+                    class="font-medium text-foreground"
+                  >
+                    Exec Meeting
+                  </span>
+                  <span>
+                    Tuesdays
+                  </span>
+                  <span
+                    class="inline-flex items-center gap-1"
+                  >
+                    <svg
+                      class="h-4 w-4"
+                    />
+                    7:30 PM - 8:00 PM
+                  </span>
+                  <span
+                    class="inline-flex items-center gap-1"
+                  >
+                    <svg
+                      class="h-4 w-4"
+                    />
+                    Richcraft Hall 3228
+                  </span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

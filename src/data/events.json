@@ -141,6 +141,50 @@
       "tags": ["hands-on", "beginner-friendly", "technical"]
     },
     {
+      "id": "14",
+      "title": "cuHacking Workshop – How to Use Agentic AI to Build Neural Networks",
+      "date": "2026-07-11",
+      "time": "2:30 PM - 3:00 PM",
+      "location": "Richcraft Hall 1200",
+      "description": "A cuHacking workshop on using agentic AI to design and build neural networks.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["hands-on", "technical"]
+    },
+    {
+      "id": "15",
+      "title": "Club Expo",
+      "date": "2026-09-08",
+      "time": "1:00 PM - 4:00 PM",
+      "location": "Fieldhouse",
+      "description": "Presenting the club to new students and recruiting new members.",
+      "type": "Social",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["social", "recruitment"]
+    },
+    {
+      "id": "16",
+      "title": "Tech Club Expo",
+      "date": "2026-09-16",
+      "time": "5:00 PM - 7:00 PM",
+      "location": "Herzberg Laboratories 4155",
+      "description": "Showcasing CAIS alongside Carleton's other tech clubs and meeting students interested in AI.",
+      "type": "Social",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["social", "recruitment", "networking"]
+    },
+    {
+      "id": "17",
+      "title": "EDC Fair",
+      "date": "2026-09-17",
+      "time": "6:00 PM - 8:00 PM",
+      "location": "EDC, Mackenzie Building",
+      "description": "Meeting students at the EDC Fair, with free food and pizza.",
+      "type": "Social",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["social", "networking", "free-food"]
+    },
+    {
       "id": "13",
       "title": "CAIS Icebreaker",
       "date": "2026-09-24",

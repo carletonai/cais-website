@@ -7,7 +7,7 @@ export type ClubEvent = (typeof eventsData.events)[number];
  * previous day everywhere behind UTC — enough to render an Ottawa event a day
  * early and to file today's event under "past". Build the date in local time.
  */
-export const eventDate = (event: ClubEvent) => {
+export const eventDate = (event: Pick<ClubEvent, "date">) => {
   const [year, month, day] = event.date.split("-").map(Number);
   return new Date(year, month - 1, day);
 };
@@ -32,4 +32,33 @@ export const pastEvents = (events: readonly ClubEvent[]) => {
   return events
     .filter((event) => eventDate(event) < today)
     .sort((a, b) => eventDate(b).getTime() - eventDate(a).getTime());
+};
+
+/**
+ * Calendar-only entries from meetings.json, like the exec meeting: they show
+ * on the events calendar but never as an event card, on the home page, or in
+ * the resources terminal.
+ */
+export type Meeting = {
+  id: string;
+  title: string;
+  /** The first (or only) meeting, YYYY-MM-DD. */
+  date: string;
+  time: string;
+  location: string;
+  /** Repeats every week on the weekday of `date`. */
+  weekly?: boolean;
+  /** Last day a weekly meeting can fall on, YYYY-MM-DD. Open-ended if unset. */
+  until?: string;
+};
+
+/** Whether the meeting takes place on `day`, a local-midnight date. */
+export const meetsOn = (meeting: Meeting, day: Date) => {
+  const first = eventDate(meeting);
+  if (day < first) return false;
+  if (meeting.until && day > eventDate({ date: meeting.until })) return false;
+
+  return meeting.weekly
+    ? day.getDay() === first.getDay()
+    : day.getTime() === first.getTime();
 };

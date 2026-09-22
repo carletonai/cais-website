@@ -1,7 +1,5 @@
 module.exports = {
   testEnvironment: "jsdom",
-  // Mirrors vite's `define`; tests run with no calendar configured.
-  globals: { __GOOGLE_CALENDAR_ID__: "" },
   transform: {
     "^.+\\.(ts|tsx|js|jsx|mjs)$": "babel-jest",
   },
