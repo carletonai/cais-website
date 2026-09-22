@@ -2,21 +2,18 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
-
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+This repository is the source of [carletonai.com](https://carletonai.com). Only
+the live site, built from the `master` branch, is supported; fixes ship there
+directly rather than to versioned releases.
 
 ## Reporting a Vulnerability
 
-Please report suspected security vulnerabilities by email to **security@example.com**.
-If your platform supports private advisories (for example, GitHub Security Advisories),
-you may also submit reports there.
+Please report suspected security vulnerabilities privately, not in a public
+issue or pull request:
+
+- [Open a private security advisory](https://github.com/carletonai/cais-website/security/advisories/new)
+  on GitHub (preferred), or
+- email **info.carletonai@gmail.com** with "Security" in the subject line.
 
 When reporting, please include:
 
