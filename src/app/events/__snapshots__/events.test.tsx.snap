@@ -98,11 +98,99 @@ exports[`renders EventsPage correctly 1`] = `
         >
           Upcoming Events
         </h2>
-        <p
-          class="text-muted-foreground mb-16"
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"
         >
-          No upcoming events are currently scheduled. Check back soon for updates.
-        </p>
+          <div
+            class="group relative bg-card rounded-xl overflow-hidden border border-border/50 hover:border-primary/50 transition-colors"
+          >
+            <button
+              aria-expanded="false"
+              aria-haspopup="dialog"
+              aria-label="Enlarge poster for CAIS Icebreaker"
+              class="aspect-video relative block w-full cursor-zoom-in overflow-hidden focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset"
+              data-state="closed"
+              type="button"
+            >
+              <div
+                aria-hidden="true"
+                class="absolute inset-0 scale-110 bg-cover bg-center opacity-40 blur-xl"
+                style="background-image: url("/assets/events/icebreaker-2026.jpg");"
+              />
+              <div
+                class="absolute inset-0 bg-contain bg-center bg-no-repeat transform group-hover:scale-105 transition-transform duration-500"
+                style="background-image: url("/assets/events/icebreaker-2026.jpg");"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+              <span
+                class="absolute right-3 top-3 rounded-full bg-background/70 p-2 text-primary opacity-80 transition-opacity group-hover:opacity-100"
+              >
+                <svg
+                  class="h-4 w-4"
+                />
+              </span>
+            </button>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2026-09-24
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  Southam Hall 402
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors"
+              >
+                CAIS Icebreaker
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
+              >
+                Come find out who we are and what we actually do. Free pizza, all years welcome, no experience needed.
+              </p>
+              <div
+                class="flex items-center justify-between"
+              >
+                <div
+                  class="flex gap-2 flex-wrap"
+                >
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    social
+                  </span>
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    beginner-friendly
+                  </span>
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    networking
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <h2
           class="text-3xl font-bold mb-8 text-glow"
         >
@@ -154,7 +242,7 @@ exports[`renders EventsPage correctly 1`] = `
                 Training an AI Model!
               </h3>
               <p
-                class="text-muted-foreground mb-4 line-clamp-2"
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
               >
                 Train your first machine learning model using Python in a hands-on session.
               </p>
@@ -222,7 +310,7 @@ exports[`renders EventsPage correctly 1`] = `
                 Building an AI Chatbot!
               </h3>
               <p
-                class="text-muted-foreground mb-4 line-clamp-2"
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
               >
                 Learn how AI chatbots work using RAG and semantic search in LLM applications.
               </p>
@@ -285,7 +373,7 @@ exports[`renders EventsPage correctly 1`] = `
                 Workshop #3 – What Are Large Language Models?
               </h3>
               <p
-                class="text-muted-foreground mb-4 line-clamp-2"
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
               >
                 An introduction to large language models and how they power modern AI systems.
               </p>
@@ -348,7 +436,7 @@ exports[`renders EventsPage correctly 1`] = `
                 Workshop #2 – Vibe Coding vs Prompt Engineering
               </h3>
               <p
-                class="text-muted-foreground mb-4 line-clamp-2"
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
               >
                 A workshop comparing vibe coding and prompt engineering in modern AI development.
               </p>
@@ -411,7 +499,7 @@ exports[`renders EventsPage correctly 1`] = `
                 Workshop #1 – Introduction to Artificial Intelligence
               </h3>
               <p
-                class="text-muted-foreground mb-4 line-clamp-2"
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
               >
                 An introductory workshop covering core AI concepts and real-world applications.
               </p>
@@ -474,7 +562,7 @@ exports[`renders EventsPage correctly 1`] = `
                 CAIS Icebreaker
               </h3>
               <p
-                class="text-muted-foreground mb-4 line-clamp-2"
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
               >
                 Meet the CAIS executive team, learn about the club, and connect with students interested in AI.
               </p>
@@ -542,7 +630,7 @@ exports[`renders EventsPage correctly 1`] = `
                 Using AI APIs
               </h3>
               <p
-                class="text-muted-foreground mb-4 line-clamp-2"
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
               >
                 Learn how to use AI APIs to implement AI in your projects.
               </p>
@@ -605,7 +693,7 @@ exports[`renders EventsPage correctly 1`] = `
                 Build Your Own Neural Network
               </h3>
               <p
-                class="text-muted-foreground mb-4 line-clamp-2"
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
               >
                 Beginner workshop on implementing neural networks and a demo on how to build your own model.
               </p>
@@ -668,9 +756,9 @@ exports[`renders EventsPage correctly 1`] = `
                 CUHacking AI Workshop
               </h3>
               <p
-                class="text-muted-foreground mb-4 line-clamp-2"
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
               >
-                Hackathon workshop on how to implement Ollama and HuggingFace models in your projects. Also, mentorship access to hackathon participants.
+                Hackathon workshop on using Ollama and HuggingFace models in your projects, plus mentorship on site.
               </p>
               <div
                 class="flex gap-2 flex-wrap"
@@ -731,9 +819,9 @@ exports[`renders EventsPage correctly 1`] = `
                 Introduction to Artificial Intelligence
               </h3>
               <p
-                class="text-muted-foreground mb-4 line-clamp-2"
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
               >
-                Learn the fundamentals of artificial intelligence, focusing on the history, different types of algorithms, and how you can learn about it.
+                Learn the fundamentals of AI: its history, the main types of algorithms, and how to keep learning.
               </p>
               <div
                 class="flex gap-2 flex-wrap"
@@ -794,7 +882,7 @@ exports[`renders EventsPage correctly 1`] = `
                 Club Executive Meet and Greet
               </h3>
               <p
-                class="text-muted-foreground mb-4 line-clamp-2"
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
               >
                 Meet the club executives and learn about the club's goals and our plans for the future
               </p>
@@ -857,7 +945,7 @@ exports[`renders EventsPage correctly 1`] = `
                 Club Expo
               </h3>
               <p
-                class="text-muted-foreground mb-4 line-clamp-2"
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
               >
                 Presenting the club to new students and recruiting new members.
               </p>

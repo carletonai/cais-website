@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { CalendarIcon, MapPinIcon, ArrowRightIcon } from "lucide-react";
+import { EventPoster } from "@/components/EventPoster";
 import eventsData from "@/data/events.json";
 import { pastEvents } from "@/lib/events";
 
@@ -76,15 +77,12 @@ export function LatestEvents() {
               }}
               className="group relative bg-card/50 backdrop-blur-xs rounded-xl overflow-hidden border border-primary/10 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5 transition-all duration-200"
             >
-              <div className="aspect-video relative overflow-hidden">
-                <div
-                  className="absolute inset-0 bg-cover bg-center transform group-hover:scale-110 transition-transform duration-500"
-                  style={{
-                    backgroundImage: `url(${event.image})`,
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
-              </div>
+              <EventPoster
+                image={event.image}
+                poster={event.poster}
+                title={event.title}
+                zoomOnHover
+              />
 
               <div className="p-6">
                 <div className="flex items-center gap-3 text-sm text-muted-foreground mb-3">
@@ -102,7 +100,7 @@ export function LatestEvents() {
                   {event.title}
                 </h3>
 
-                <p className="text-muted-foreground mb-4 line-clamp-2">
+                <p className="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4">
                   {event.description}
                 </p>
 

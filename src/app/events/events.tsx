@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { CalendarIcon, MapPinIcon, ArrowRightIcon } from "lucide-react";
+import { EventPoster } from "@/components/EventPoster";
 import eventsData from "@/data/events.json";
 import { pastEvents, upcomingEvents } from "@/lib/events";
 
@@ -153,13 +154,11 @@ const EventsPage = () => {
               animate="show"
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"
             >
-              <AnimatePresence mode="wait">
-                {upcoming.map((event, _index) => (
+              <AnimatePresence>
+                {upcoming.map((event) => (
                   <motion.div
                     key={event.id}
                     variants={item}
-                    initial="hidden"
-                    animate="show"
                     exit={{ opacity: 0, y: 20 }}
                     whileHover={{
                       scale: 1.02,
@@ -171,15 +170,12 @@ const EventsPage = () => {
                     }}
                     className="group relative bg-card rounded-xl overflow-hidden border border-border/50 hover:border-primary/50 transition-colors"
                   >
-                    <div className="aspect-video relative overflow-hidden">
-                      <div
-                        className="absolute inset-0 bg-cover bg-center transform group-hover:scale-110 transition-transform duration-500"
-                        style={{
-                          backgroundImage: `url(${event.image})`,
-                        }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
-                    </div>
+                    <EventPoster
+                      image={event.image}
+                      poster={event.poster}
+                      title={event.title}
+                      zoomOnHover
+                    />
 
                     <div className="p-6">
                       <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
@@ -197,7 +193,7 @@ const EventsPage = () => {
                         {event.title}
                       </h3>
 
-                      <p className="text-muted-foreground mb-4 line-clamp-2">
+                      <p className="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4">
                         {event.description}
                       </p>
 
@@ -246,25 +242,19 @@ const EventsPage = () => {
             animate="show"
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            <AnimatePresence mode="wait">
-              {past.map((event, _index) => (
+            <AnimatePresence>
+              {past.map((event) => (
                 <motion.div
                   key={event.id}
                   variants={item}
-                  initial="hidden"
-                  animate="show"
                   exit={{ opacity: 0, y: 20 }}
                   className="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
                 >
-                  <div className="aspect-video relative overflow-hidden">
-                    <div
-                      className="absolute inset-0 bg-cover bg-center"
-                      style={{
-                        backgroundImage: `url(${event.image})`,
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
-                  </div>
+                  <EventPoster
+                    image={event.image}
+                    poster={event.poster}
+                    title={event.title}
+                  />
 
                   <div className="p-6">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
@@ -282,7 +272,7 @@ const EventsPage = () => {
                       {event.title}
                     </h3>
 
-                    <p className="text-muted-foreground mb-4 line-clamp-2">
+                    <p className="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4">
                       {event.description}
                     </p>
 

@@ -28,7 +28,7 @@
       "date": "2025-03-06",
       "time": "6:00 PM - 7:00 PM",
       "location": "Tory Building 217",
-      "description": "Learn the fundamentals of artificial intelligence, focusing on the history, different types of algorithms, and how you can learn about it.",
+      "description": "Learn the fundamentals of AI: its history, the main types of algorithms, and how to keep learning.",
       "type": "Workshop",
       "image": "/assets/events/ml-workshop.svg",
       "tags": ["beginner-friendly", "conceptual"]
@@ -39,7 +39,7 @@
       "date": "2025-03-15",
       "time": "2:00 PM - 3:00 PM",
       "location": "Richcraft Hall 1200",
-      "description": "Hackathon workshop on how to implement Ollama and HuggingFace models in your projects. Also, mentorship access to hackathon participants.",
+      "description": "Hackathon workshop on using Ollama and HuggingFace models in your projects, plus mentorship on site.",
       "type": "Workshop",
       "image": "/assets/events/neural-networks.svg",
       "tags": ["beginner-friendly", "hands-on"]
@@ -139,6 +139,18 @@
       "image": "/assets/events/neural-networks.svg",
       "rsvpLink": "https://forms.google.com/...",
       "tags": ["hands-on", "beginner-friendly", "technical"]
+    },
+    {
+      "id": "13",
+      "title": "CAIS Icebreaker",
+      "date": "2026-09-24",
+      "time": "6:00 PM - 8:00 PM",
+      "location": "Southam Hall 402",
+      "description": "Come find out who we are and what we actually do. Free pizza, all years welcome, no experience needed.",
+      "type": "Social",
+      "image": "/assets/events/neural-networks.svg",
+      "poster": "/assets/events/icebreaker-2026.jpg",
+      "tags": ["social", "beginner-friendly", "networking"]
     }
   ]
 }
