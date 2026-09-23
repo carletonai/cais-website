@@ -16,16 +16,13 @@ interface OldTeamsRowProps {
 
 const OldTeamsRow: React.FC<OldTeamsRowProps> = ({ teams }) => {
   return (
-    <div className="mt-24">
-      <h2 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-neutral-400">
-        Previous Teams
-      </h2>
+    <div>
       <div className="space-y-16">
         {teams.map((team) => (
-          <div key={team.year} className="mb-8">
-            <h3 className="text-xl font-semibold mb-4 text-center text-primary">
+          <section key={team.year} aria-label={`${team.year} team`}>
+            <h2 className="text-2xl font-semibold mb-6 text-center text-primary">
               {team.year}
-            </h3>
+            </h2>
             <div className="flex flex-wrap justify-center gap-6">
               {team.members
                 .filter((m) => m.name)
@@ -67,7 +64,7 @@ const OldTeamsRow: React.FC<OldTeamsRowProps> = ({ teams }) => {
                   </div>
                 ))}
             </div>
-          </div>
+          </section>
         ))}
       </div>
     </div>

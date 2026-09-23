@@ -1,5 +1,8 @@
-import TeamDisplay from "@/components/TeamDisplay";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { ArrowRightIcon } from "lucide-react";
+import TeamDisplay from "@/components/TeamDisplay";
+import { Button } from "@/components/ui/button";
 
 const TeamPage = () => {
   return (
@@ -24,7 +27,7 @@ const TeamPage = () => {
           className="text-center max-w-4xl mx-auto"
         >
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary/75 mb-6">
-            Meet Our Team
+            Current Team
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
             The passionate individuals driving innovation and fostering AI
@@ -35,6 +38,15 @@ const TeamPage = () => {
 
       <div className="relative z-10">
         <TeamDisplay />
+      </div>
+
+      <div className="relative z-10 flex justify-center pb-24">
+        <Button asChild size="lg" variant="outline" className="group/btn">
+          <Link to="/team/past">
+            Meet our past teams
+            <ArrowRightIcon className="group-hover/btn:translate-x-1 transition-transform" />
+          </Link>
+        </Button>
       </div>
     </div>
   );

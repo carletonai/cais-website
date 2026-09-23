@@ -1,6 +1,475 @@
 {
   "events": [
     {
+      "id": "19",
+      "title": "CAIS Inauguration Meetup",
+      "date": "2019-03-06",
+      "time": "5:30 PM - 7:00 PM",
+      "location": "Tory Building 238",
+      "description": "The club's inauguration and very first meetup, billed as “Carleton AI Meetup #1”.",
+      "type": "Social",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["social"],
+      "materials": "https://github.com/cuaim/Meetup-Demo"
+    },
+    {
+      "id": "20",
+      "title": "Intro to Data Science Workshop",
+      "date": "2019-07-16",
+      "time": "5:30 PM - 6:30 PM",
+      "location": "Tory Building 238",
+      "description": "An introductory workshop for students new to data science and machine learning. Attendees were asked to bring a laptop.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["beginner-friendly", "hands-on", "technical"]
+    },
+    {
+      "id": "21",
+      "title": "Tech Talk: Navigating the Data Science Career Path",
+      "date": "2019-11-07",
+      "time": "6:00 PM - 7:30 PM",
+      "location": "Tory Building 206",
+      "description": "CAIS's first tech talk, with a speaker from Shopify, for everyone from first-year students getting into AI to master's students looking for research opportunities.",
+      "type": "Talk",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["guest-speaker"],
+      "page": "https://carleton.ca/scs/event/carleton-ai-society-tech-talk/"
+    },
+    {
+      "id": "22",
+      "title": "Visual Mapping of Data using Python",
+      "date": "2019-11-18",
+      "time": "6:00 PM - 7:30 PM",
+      "location": "Tory Building 206",
+      "description": "A hands-on tutorial on plotting datasets onto real maps with Pandas, Basemap and NumPy.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["hands-on", "technical"],
+      "materials": "https://www.kaggle.com/code/carletonai/carleton-ai-workshop-visual-mapping"
+    },
+    {
+      "id": "23",
+      "title": "Info Table at Tory Junction",
+      "date": "2019-11-21",
+      "time": "Until 4:30 PM",
+      "location": "Tory Junction",
+      "description": "An info table with candy and a live visual-processing demo, introducing students to the club.",
+      "type": "Social",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["recruitment"]
+    },
+    {
+      "id": "24",
+      "title": "Winter Meet & Greet",
+      "date": "2020-01-17",
+      "time": "",
+      "location": "Richcraft Hall 3220",
+      "description": "The first event of Winter 2020: food, the exec team, and other students interested in AI.",
+      "type": "Social",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["social"]
+    },
+    {
+      "id": "25",
+      "title": "Let's Talk: Computer Vision!",
+      "date": "2020-02-05",
+      "time": "",
+      "location": "",
+      "description": "A talk on computer vision, presented by CAIS co-founder and past president Fahad Hayat and Carleton MCS student Omar Benismael.",
+      "type": "Talk",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["technical"]
+    },
+    {
+      "id": "26",
+      "title": "Ethics of AI with Dr. Jim Davies",
+      "date": "2020-02-25",
+      "time": "7:00 PM - 8:30 PM",
+      "location": "",
+      "description": "The club's first lecture: the ethics of AI, given by Dr. Jim Davies, a four-time TEDx speaker.",
+      "type": "Talk",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["guest-speaker"]
+    },
+    {
+      "id": "27",
+      "title": "Expo Carleton 2020",
+      "date": "2020-09-08",
+      "time": "1:15 PM",
+      "location": "Online",
+      "description": "CAIS introduced itself to incoming students at the online Expo Carleton, streaming its presentation live on Twitch.",
+      "type": "Social",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["recruitment", "online"],
+      "recording": "https://www.youtube.com/watch?v=Al6fGKzrGTs"
+    },
+    {
+      "id": "28",
+      "title": "Welcome to CAIS! Fall Meet & Greet",
+      "date": "2020-09-20",
+      "time": "1:00 PM - 3:00 PM",
+      "location": "Online",
+      "description": "An online meet and greet with the whole exec team, previewing the semester's events and its competition.",
+      "type": "Social",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["social", "online"],
+      "recording": "https://www.youtube.com/watch?v=y3Z1mmaO9vA"
+    },
+    {
+      "id": "29",
+      "title": "Introduction to Python and Data Science",
+      "date": "2020-09-27",
+      "time": "6:00 PM - 8:00 PM",
+      "location": "Online",
+      "description": "A beginner session on what data science is, Python basics, Kaggle and Jupyter notebooks.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["beginner-friendly", "technical", "online"],
+      "recording": "https://www.youtube.com/watch?v=ck1Ej69bOOA"
+    },
+    {
+      "id": "30",
+      "title": "First Kaggle Competition Submission",
+      "date": "2020-10-04",
+      "time": "6:00 PM - 8:00 PM",
+      "location": "Online",
+      "description": "How to navigate Kaggle, then build and submit a first notebook for the CAIS X competition.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["hands-on", "technical", "online"],
+      "recording": "https://www.youtube.com/watch?v=Ylv7Z35njIw"
+    },
+    {
+      "id": "31",
+      "title": "CAIS X – Fall 2020",
+      "date": "2020-10-04",
+      "time": "",
+      "location": "Online (Kaggle)",
+      "description": "CAIS's first Kaggle competition for Carleton students: teams of up to two forecast COVID-19 cases, recoveries and deaths by province. It ran until January 3, 2021, with 14 teams taking part.",
+      "type": "Competition",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["competition", "online"],
+      "page": "https://www.kaggle.com/competitions/cais-x-t1-2021"
+    },
+    {
+      "id": "32",
+      "title": "Maximum Likelihood Estimation Lecture",
+      "date": "2020-10-11",
+      "time": "6:00 PM - 8:00 PM",
+      "location": "Online",
+      "description": "Introduced Maximum Likelihood Estimation and derived it for the Bernoulli and Gaussian distributions, touching on the bias-variance dilemma along the way.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["technical", "online"],
+      "recording": "https://www.youtube.com/watch?v=XggYZNaNRbg",
+      "materials": "https://web.archive.org/web/20240511150356/https://carletonai.com/wp-content/uploads/2020/10/CAIS_MLE-Slides.pdf"
+    },
+    {
+      "id": "33",
+      "title": "Feature Engineering Techniques",
+      "date": "2020-10-25",
+      "time": "6:00 PM - 8:00 PM",
+      "location": "Online",
+      "description": "Basic feature engineering techniques for improving model performance: garbage in, garbage out.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["technical", "online"],
+      "recording": "https://www.youtube.com/watch?v=EDUonPWsg20"
+    },
+    {
+      "id": "34",
+      "title": "Introduction to Scientific Python",
+      "date": "2020-10-29",
+      "time": "6:00 PM - 8:00 PM",
+      "location": "Online",
+      "description": "The core data science toolkit: NumPy, Pandas, scikit-learn and matplotlib.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["beginner-friendly", "technical", "online"],
+      "recording": "https://www.youtube.com/watch?v=xK0xmq0TruQ"
+    },
+    {
+      "id": "35",
+      "title": "Clustering: K-means vs. Gaussian Mixture Models",
+      "date": "2020-11-18",
+      "time": "6:00 PM - 8:00 PM",
+      "location": "Online",
+      "description": "Unsupervised learning through K-means and Gaussian Mixture Models, and how Expectation-Maximization fits a GMM.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["technical", "online"],
+      "recording": "https://www.youtube.com/watch?v=4FG0TWJRRPI"
+    },
+    {
+      "id": "36",
+      "title": "Dimensionality Reduction: PCA vs. LDA",
+      "date": "2021-01-23",
+      "time": "4:00 PM - 6:30 PM",
+      "location": "Online",
+      "description": "Derived Principal Component Analysis and Linear Discriminant Analysis and compared their strengths and limits. Streamed live on Twitch.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["technical", "online"],
+      "recording": "https://www.youtube.com/watch?v=lGpO1CgpSv0"
+    },
+    {
+      "id": "37",
+      "title": "CPA Ontario × CAIS: Power BI Workshop",
+      "date": "2021-03-16",
+      "time": "1:00 PM - 3:00 PM",
+      "location": "Online",
+      "description": "A demonstration of the Power BI business analytics tool followed by hands-on practice, run with club sponsor CPA Ontario.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["hands-on", "online"]
+    },
+    {
+      "id": "38",
+      "title": "Expo Carleton 2021",
+      "date": "2021-09-07",
+      "time": "12:30 PM - 4:00 PM",
+      "location": "Online",
+      "description": "CAIS joined Carleton's online fall orientation showcase to meet incoming students.",
+      "type": "Social",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["recruitment", "online"]
+    },
+    {
+      "id": "39",
+      "title": "AI Coffee Hour 1: Meet & Greet",
+      "date": "2021-09-09",
+      "time": "6:00 PM - 7:30 PM",
+      "location": "Online",
+      "description": "An informal chat introducing the team and the year's plans (workshops, CAIS X and the podcast), followed by an open discussion about machine learning.",
+      "type": "Social",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["social", "discussion", "online"],
+      "materials": "https://web.archive.org/web/20240406052651/https://carletonai.com/wp-content/uploads/2021/09/CAIS_Coffee_Hour_1.pdf"
+    },
+    {
+      "id": "40",
+      "title": "Game Night",
+      "date": "2021-09-15",
+      "time": "7:00 PM - 9:00 PM",
+      "location": "Online (Discord)",
+      "description": "A first-week game night in the CAIS Discord, to meet new people and learn about the club.",
+      "type": "Social",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["social", "online"]
+    },
+    {
+      "id": "41",
+      "title": "Introduction to Scientific Python",
+      "date": "2021-09-20",
+      "time": "5:30 PM - 7:30 PM",
+      "location": "Online",
+      "description": "NumPy, Pandas, scikit-learn and matplotlib for beginners.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["beginner-friendly", "technical", "online"],
+      "materials": "https://web.archive.org/web/20240216140245/https://carletonai.com/wp-content/uploads/2021/09/CAIS-Workshop.pdf"
+    },
+    {
+      "id": "42",
+      "title": "AI Coffee Hour 2: Reinforcement Learning",
+      "date": "2021-10-07",
+      "time": "6:00 PM - 7:30 PM",
+      "location": "Online",
+      "description": "An informal chat about reinforcement learning. No experience needed.",
+      "type": "Social",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["social", "discussion", "online"]
+    },
+    {
+      "id": "43",
+      "title": "Linear Regression",
+      "date": "2021-10-13",
+      "time": "7:30 PM - 9:30 PM",
+      "location": "Online",
+      "description": "What linear regression is, when it is useful and how it works, as part of a series preparing members for the CAIS X competition.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["technical", "online"],
+      "recording": "https://www.youtube.com/watch?v=jAVnWNh_uAU",
+      "materials": "https://www.kaggle.com/code/carletonai/cais-2021-workshop-2-linear-regression"
+    },
+    {
+      "id": "44",
+      "title": "Academic Trivia Night",
+      "date": "2021-10-22",
+      "time": "5:00 PM",
+      "location": "Online (Discord)",
+      "description": "AI and machine learning trivia on Kahoot, with prizes for the top two players.",
+      "type": "Social",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["social", "online"]
+    },
+    {
+      "id": "45",
+      "title": "Linear Classification",
+      "date": "2021-11-03",
+      "time": "7:30 PM - 9:30 PM",
+      "location": "Online",
+      "description": "An introduction to linear classifiers, focusing on logistic regression.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["technical", "online"],
+      "recording": "https://www.youtube.com/watch?v=7blenH4jRk4",
+      "materials": "https://www.kaggle.com/code/carletonai/cais-2021-workshop-3-linear-classification"
+    },
+    {
+      "id": "46",
+      "title": "AI Coffee Hour 4: Spooky AI Applications",
+      "date": "2021-11-18",
+      "time": "6:00 PM - 7:30 PM",
+      "location": "Online",
+      "description": "A Halloween-themed chat with the Systems and Computer Engineering Society (SCESoc) about the scary and unethical sides of AI and ML.",
+      "type": "Social",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["social", "discussion", "online"]
+    },
+    {
+      "id": "47",
+      "title": "Feature Selection & Transformation",
+      "date": "2021-11-24",
+      "time": "7:30 PM - 9:30 PM",
+      "location": "Online",
+      "description": "Techniques for selecting and transforming features to improve model quality and performance.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["technical", "online"],
+      "recording": "https://www.youtube.com/watch?v=TWaes_XkH_8",
+      "materials": "https://www.kaggle.com/code/carletonai/cais-2021-workshop-4-feature-selection"
+    },
+    {
+      "id": "48",
+      "title": "AI Coffee Hour 5: Positive AI Application",
+      "date": "2021-12-09",
+      "time": "6:00 PM - 7:30 PM",
+      "location": "Online",
+      "description": "Guest speaker Vinyas Harish, an MD/PhD student at the University of Toronto, on positive applications of AI and machine learning.",
+      "type": "Talk",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["guest-speaker", "online"]
+    },
+    {
+      "id": "49",
+      "title": "CAIS X 2021–22",
+      "date": "2022-01-01",
+      "time": "",
+      "location": "Online (Kaggle)",
+      "description": "CAIS's annual beginner machine learning competition, open to Carleton, uOttawa, Algonquin and La Cité students: predict students' final grades. It ran until April 1, 2022.",
+      "type": "Competition",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["competition", "online"],
+      "page": "https://www.kaggle.com/competitions/caisx"
+    },
+    {
+      "id": "50",
+      "title": "AI Coffee Hour 1: Meet & Greet",
+      "date": "2022-01-14",
+      "time": "6:00 PM - 7:30 PM",
+      "location": "Online",
+      "description": "The first event of Winter 2022: meet the team, recap the last semester and preview the next.",
+      "type": "Social",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["social", "online"]
+    },
+    {
+      "id": "51",
+      "title": "Intro to Neural Networks",
+      "date": "2022-01-19",
+      "time": "6:00 PM - 8:00 PM",
+      "location": "Online",
+      "description": "The foundations of deep learning: how simple parts combine into neural networks that can model complex relationships.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["beginner-friendly", "technical", "online"],
+      "recording": "https://www.youtube.com/watch?v=FEgwNUGq7N0",
+      "materials": "https://www.kaggle.com/code/carletonai/cais-2022-workshop-1-intro-to-neural-networks"
+    },
+    {
+      "id": "52",
+      "title": "Neural Networks Project 1: Build Your First Neural Network",
+      "date": "2022-01-26",
+      "time": "6:00 PM - 8:00 PM",
+      "location": "Online",
+      "description": "Build, train and test a simple neural network that makes predictions from tabular data.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["hands-on", "technical", "online"],
+      "recording": "https://www.youtube.com/watch?v=ggve4xg3yP4",
+      "materials": "https://www.kaggle.com/code/carletonai/cais-2022-workshop-2-neural-networks-project-1"
+    },
+    {
+      "id": "53",
+      "title": "AI Coffee Hour 2: Thriving in Graduate School",
+      "date": "2022-02-16",
+      "time": "6:00 PM",
+      "location": "",
+      "description": "Dr. Jason Bernard on getting into graduate school, and surviving and thriving once you are there.",
+      "type": "Talk",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["guest-speaker"]
+    },
+    {
+      "id": "54",
+      "title": "Intro to Convolutional Neural Network (CNN)",
+      "date": "2022-03-02",
+      "time": "6:00 PM - 8:00 PM",
+      "location": "Online",
+      "description": "The core ideas behind CNNs and the architectures behind image classification, object detection and segmentation.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["technical", "online"]
+    },
+    {
+      "id": "55",
+      "title": "Introduction to Natural Language Processing",
+      "date": "2023-01-19",
+      "time": "6:00 PM - 7:00 PM",
+      "location": "Tory Building 236",
+      "description": "The first workshop of Winter 2023: basic NLP libraries and common text pre-processing tasks.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["beginner-friendly", "technical"]
+    },
+    {
+      "id": "56",
+      "title": "Attention Mechanism in Deep Learning",
+      "date": "2023-02-09",
+      "time": "6:00 PM - 7:00 PM",
+      "location": "Tory Building 236",
+      "description": "Attention mechanisms for time-series forecasting, worked through a traffic-flow prediction example.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["technical"],
+      "materials": "https://github.com/Farzad-R/CAIS/tree/main/attention-mechanism"
+    },
+    {
+      "id": "57",
+      "title": "CAIS Hackathon 2023",
+      "date": "2023-03-18",
+      "time": "9:00 AM Sat - 1:30 PM Sun",
+      "location": "Richcraft Hall",
+      "description": "CAIS's first hackathon: a free weekend of machine learning and AI building, with workshops on TensorFlow, NLP, computer vision and ChatGPT. ChatRoller and WLIT took the prizes.",
+      "type": "Competition",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["hackathon", "competition"],
+      "page": "https://cais-hackathon.devpost.com/"
+    },
+    {
+      "id": "58",
+      "title": "Metrics 101",
+      "date": "2023-11-06",
+      "time": "5:30 PM",
+      "location": "Tory Building 208",
+      "description": "How to calculate and interpret metrics, with use cases for machine learning and data science projects.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["beginner-friendly", "technical"]
+    },
+    {
       "id": "1",
       "title": "CUSA Club Expo",
       "date": "2025-01-15",
@@ -81,6 +550,17 @@
       "tags": ["beginner-friendly", "networking", "social"]
     },
     {
+      "id": "59",
+      "title": "CUSA Winter Club Expo",
+      "date": "2026-01-19",
+      "time": "10:00 AM - 4:00 PM",
+      "location": "Richcraft Hall",
+      "description": "The exec team met students at CUSA's Frost Week expo and shared how CAIS is building an inclusive AI community on campus.",
+      "type": "Social",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["recruitment"]
+    },
+    {
       "id": "8",
       "title": "Workshop #1 – Introduction to Artificial Intelligence",
       "date": "2026-01-23",
@@ -126,7 +606,8 @@
       "type": "Workshop",
       "image": "/assets/events/neural-networks.svg",
       "rsvpLink": "https://forms.google.com/...",
-      "tags": ["hands-on", "technical"]
+      "tags": ["hands-on", "technical"],
+      "materials": "https://github.com/carletonai/chatbot"
     },
     {
       "id": "12",
@@ -138,7 +619,42 @@
       "type": "Workshop",
       "image": "/assets/events/neural-networks.svg",
       "rsvpLink": "https://forms.google.com/...",
-      "tags": ["hands-on", "beginner-friendly", "technical"]
+      "tags": ["hands-on", "beginner-friendly", "technical"],
+      "materials": "https://github.com/carletonai/model"
+    },
+    {
+      "id": "60",
+      "title": "Project Showcase",
+      "date": "2026-02-27",
+      "time": "6:00 PM - 9:00 PM",
+      "location": "Richcraft Hall 3201",
+      "description": "A science-fair-style night to demo AI, ML, cybersecurity and software projects, with no pitches or judges. Run by Carleton Blueprint with cuHacking, CAIS, Carleton Cybersecurity, SCESoc and CCSS.",
+      "type": "Social",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": ["social"]
+    },
+    {
+      "id": "61",
+      "title": "Innovation Hub Winter Pitch Night",
+      "date": "2026-03-19",
+      "time": "",
+      "location": "Innovation Hub, Sprott School of Business",
+      "description": "CAIS gave a guest presentation on artificial intelligence and the club's work at the Innovation Hub's Winter Pitch Night.",
+      "type": "Talk",
+      "image": "/assets/events/ml-workshop.svg",
+      "tags": []
+    },
+    {
+      "id": "62",
+      "title": "CAIS Hackathon 2.0",
+      "date": "2026-03-21",
+      "time": "10:00 AM - 4:30 PM (Mar 21); 10:00 AM - 1:00 PM (Mar 22)",
+      "location": "",
+      "description": "A 48-hour challenge with a $250 prize pool, building AI solutions to problems post-secondary students face. Registration filled to capacity. ThinkFirst, CUCognitive and Procrastination Bot took the top three spots.",
+      "type": "Competition",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["hackathon", "competition"],
+      "page": "https://www.linkedin.com/posts/carleton-ai_cais-hackathon-20-this-past-weekend-activity-7442672368860225536-dZ8H"
     },
     {
       "id": "14",
@@ -149,7 +665,7 @@
       "description": "A cuHacking workshop on using agentic AI to design and build neural networks.",
       "type": "Workshop",
       "image": "/assets/events/neural-networks.svg",
-      "tags": ["hands-on", "technical"]
+      "tags": ["hands-on", "technical", "beginner-friendly"]
     },
     {
       "id": "15",
@@ -167,22 +683,22 @@
       "title": "Tech Club Expo",
       "date": "2026-09-16",
       "time": "5:00 PM - 7:00 PM",
-      "location": "Herzberg Laboratories 4155",
+      "location": "Herzberg 4155",
       "description": "Showcasing CAIS alongside Carleton's other tech clubs and meeting students interested in AI.",
       "type": "Social",
       "image": "/assets/events/ml-workshop.svg",
-      "tags": ["social", "recruitment", "networking"]
+      "tags": ["social", "recruitment"]
     },
     {
       "id": "17",
       "title": "FED Meet & Greet",
       "date": "2026-09-17",
       "time": "6:00 PM - 8:00 PM",
-      "location": "EDC, Mackenzie Building",
+      "location": "EDC",
       "description": "Meeting students at the FED Meet & Greet, with free food and pizza.",
       "type": "Social",
       "image": "/assets/events/ml-workshop.svg",
-      "tags": ["social", "networking", "free-food"]
+      "tags": ["social", "recruitment", "free-food"]
     },
     {
       "id": "13",
@@ -194,7 +710,30 @@
       "type": "Social",
       "image": "/assets/events/neural-networks.svg",
       "poster": "/assets/events/icebreaker-2026.jpg",
-      "tags": ["social", "beginner-friendly", "networking"]
+      "tags": ["social", "networking", "free-food"]
+    },
+    {
+      "id": "63",
+      "title": "Machine Learning Workshop at Hack the Hill III",
+      "date": "2026-09-26",
+      "time": "3:00 PM - 4:00 PM",
+      "location": "Room C040, uOttawa (Hack the Hill III)",
+      "description": "A practical introduction to machine learning at uOttawa's Hack the Hill III hackathon: the core ideas behind models, and how to bring ML into a hackathon project.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": ["beginner-friendly", "technical"],
+      "page": "https://hackthehill.com"
+    },
+    {
+      "id": "18",
+      "title": "Tentative Event",
+      "date": "2026-10-06",
+      "time": "TBA",
+      "location": "TBA",
+      "description": "More details soon!",
+      "type": "TBA",
+      "image": "/assets/events/neural-networks.svg",
+      "tags": []
     }
   ]
 }

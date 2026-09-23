@@ -116,14 +116,14 @@ export default function Hero({
             variants={animations.item}
             src={logoSrc}
             alt="CAIS Logo"
-            className="h-24 md:h-32 lg:h-36 mx-auto drop-shadow-lg"
+            className="h-32 md:h-40 lg:h-48 mx-auto drop-shadow-lg"
           />
 
           <motion.div variants={animations.item}>
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
               Carleton{" "}
               <span className="text-primary font-mono inline-block mx-2 drop-shadow-[0_0_8px_rgba(226,56,63,0.35)]">
-                ΛI
+                AI
               </span>{" "}
               Society
             </h1>

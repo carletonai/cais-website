@@ -76,8 +76,8 @@ const weeksOf = (days: Date[]) => {
 };
 
 /**
- * Every month that has an event, oldest first and grouped by year, so past
- * events a year back are one click away rather than a dozen.
+ * Every month that has an event, oldest first and grouped by year, so any
+ * past event is two clicks away (year, then month) rather than dozens.
  */
 const monthsWithEvents = (events: readonly ClubEvent[]) => {
   const byMonth = new Map<number, { month: Date; count: number }>();
@@ -189,48 +189,63 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
         </Button>
       </div>
 
-      <nav aria-label="Months with events" className="mb-5 space-y-2">
-        {shortcuts.map(([shortcutYear, months]) => (
-          <div
-            key={shortcutYear}
-            className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3"
-          >
-            <span className="w-12 shrink-0 text-sm font-semibold text-muted-foreground">
-              {shortcutYear}
-            </span>
-            <div className="flex flex-wrap gap-2">
-              {months.map(({ month: shortcut, count }) => {
-                const current = shortcut.getTime() === month.getTime();
+      <nav aria-label="Months with events" className="mb-5 space-y-3">
+        <div className="flex flex-wrap gap-2">
+          {shortcuts.map(([shortcutYear, months]) => {
+            const current = shortcutYear === year;
+            const count = months.reduce((sum, m) => sum + m.count, 0);
 
-                return (
-                  <Button
-                    key={shortcut.getTime()}
-                    size="sm"
-                    variant={current ? "default" : "outline"}
-                    aria-current={current ? "true" : undefined}
-                    onClick={() => setMonth(shortcut)}
-                    className="gap-1.5 rounded-full px-3"
-                  >
-                    {shortMonth.format(shortcut)}
-                    <span className="sr-only"> {shortcutYear},</span>
-                    <span
-                      className={cn(
-                        "rounded-full px-1.5 text-xs",
-                        // A light tint over the brand fill drops below 7:1.
-                        current ? "bg-black/30" : "bg-current/20",
-                      )}
-                    >
-                      {count}
-                    </span>
-                    <span className="sr-only">
-                      {count === 1 ? " event" : " events"}
-                    </span>
-                  </Button>
-                );
-              })}
-            </div>
-          </div>
-        ))}
+            return (
+              <Button
+                key={shortcutYear}
+                size="sm"
+                variant={current ? "default" : "outline"}
+                aria-current={current ? "true" : undefined}
+                // A year jumps to its latest month with events.
+                onClick={() => setMonth(months[months.length - 1].month)}
+                // An sr-only span would be read "2021 , 3 events": it is
+                // out of flow, so name computation pads it with a space.
+                aria-label={`${shortcutYear}, ${count} ${count === 1 ? "event" : "events"}`}
+                className="rounded-full px-4"
+              >
+                {shortcutYear}
+              </Button>
+            );
+          })}
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {(
+            shortcuts.find(([shortcutYear]) => shortcutYear === year)?.[1] ?? []
+          ).map(({ month: shortcut, count }) => {
+            const current = shortcut.getTime() === month.getTime();
+
+            return (
+              <Button
+                key={shortcut.getTime()}
+                size="sm"
+                variant={current ? "default" : "outline"}
+                aria-current={current ? "true" : undefined}
+                onClick={() => setMonth(shortcut)}
+                className="gap-1.5 rounded-full px-3"
+              >
+                {shortMonth.format(shortcut)}
+                <span className="sr-only"> {year},</span>
+                <span
+                  className={cn(
+                    "rounded-full px-1.5 text-xs",
+                    // A light tint over the brand fill drops below 7:1.
+                    current ? "bg-black/30" : "bg-current/20",
+                  )}
+                >
+                  {count}
+                </span>
+                <span className="sr-only">
+                  {count === 1 ? " event" : " events"}
+                </span>
+              </Button>
+            );
+          })}
+        </div>
       </nav>
 
       <table
@@ -358,14 +373,18 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
                     <span className="block min-w-0">
                       <span className="block font-semibold">{event.title}</span>
                       <span className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
-                        <span className="inline-flex items-center gap-1">
-                          <ClockIcon className="h-4 w-4" />
-                          {event.time}
-                        </span>
-                        <span className="inline-flex items-center gap-1">
-                          <MapPinIcon className="h-4 w-4" />
-                          {event.location}
-                        </span>
+                        {event.time && (
+                          <span className="inline-flex items-center gap-1">
+                            <ClockIcon className="h-4 w-4" />
+                            {event.time}
+                          </span>
+                        )}
+                        {event.location && (
+                          <span className="inline-flex items-center gap-1">
+                            <MapPinIcon className="h-4 w-4" />
+                            {event.location}
+                          </span>
+                        )}
                       </span>
                     </span>
                   </button>

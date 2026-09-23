@@ -18,6 +18,14 @@ const startOfToday = () => {
   return today;
 };
 
+/** The academic year an event falls in, September to August: "2025–26". */
+export const academicYear = (event: Pick<ClubEvent, "date">) => {
+  const date = eventDate(event);
+  const start =
+    date.getMonth() >= 8 ? date.getFullYear() : date.getFullYear() - 1;
+  return `${start}–${String(start + 1).slice(2)}`;
+};
+
 /** Today's events count as upcoming until the day is over. */
 export const isUpcoming = (event: ClubEvent) =>
   eventDate(event) >= startOfToday();

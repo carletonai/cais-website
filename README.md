@@ -1,6 +1,6 @@
 <!-- redeploy -->
 <h3 align="center">
-  <img src="public/transparent-club.png" style="width: 250px; height: auto">
+  <img src="public/favicon.svg" alt="Carleton AI Society logo" width="200">
 </h3>
 
 <span> </span>

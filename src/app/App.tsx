@@ -1,9 +1,11 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
+  useLocation,
+  useNavigationType,
 } from "react-router-dom";
 import HomePage from "./home/home";
 import Navbar from "../components/Navbar";
@@ -13,14 +15,13 @@ import RouteMeta from "../components/RouteMeta";
 // The landing page stays in the main bundle — it is the most common entry and
 // shares most of its components with the shell. Every other page is split out,
 // which keeps the 1,500-line resources terminal off the critical path.
-const About = lazy(() => import("./about/about"));
 const Projects = lazy(() => import("./projects/projects"));
 const Events = lazy(() => import("./events/events"));
 const Contact = lazy(() => import("./contact/contact"));
 const Team = lazy(() => import("./team/team"));
+const PastTeams = lazy(() => import("./past-teams/past-teams"));
 const Governance = lazy(() => import("./governance/governance"));
 const Resources = lazy(() => import("./resources/resources"));
-const Contribute = lazy(() => import("./contribute/contribute"));
 
 /** Holds the viewport height while a route chunk arrives, so the footer does
  *  not jump up the page. Animation is disabled by the reduced-motion rule in
@@ -36,10 +37,25 @@ const RouteFallback = () => (
   </div>
 );
 
+/** A link to a new page lands at its top, not at the scroll offset of the page
+ *  it was clicked on. Hash links scroll themselves (see home.tsx), and back or
+ *  forward keeps the browser's own scroll restoration. */
+const ScrollToTop = () => {
+  const { pathname, hash } = useLocation();
+  const navigationType = useNavigationType();
+
+  useEffect(() => {
+    if (navigationType !== "POP" && !hash) window.scrollTo(0, 0);
+  }, [pathname, hash, navigationType]);
+
+  return null;
+};
+
 const App = () => {
   return (
     <Router>
       <RouteMeta />
+      <ScrollToTop />
       <div className="min-h-screen bg-background text-foreground flex flex-col">
         <a href="#main-content" className="skip-link">
           Skip to main content
@@ -49,14 +65,13 @@ const App = () => {
           <Suspense fallback={<RouteFallback />}>
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/about" element={<About />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/events" element={<Events />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/team" element={<Team />} />
+              <Route path="/team/past" element={<PastTeams />} />
               <Route path="/governance" element={<Governance />} />
               <Route path="/resources" element={<Resources />} />
-              <Route path="/contribute" element={<Contribute />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </Suspense>

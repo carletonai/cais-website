@@ -1,4 +1,11 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import {
+  ArrowRightIcon,
+  FileTextIcon,
+  HistoryIcon,
+  UsersIcon,
+} from "lucide-react";
 
 const ROLES = [
   {
@@ -30,6 +37,28 @@ const ROLES = [
     title: "VP Projects/Technology",
     description:
       "Leads student-run AI and ML projects, oversees the club's technical infrastructure including the website, and mentors members on technical skills.",
+  },
+];
+
+/** The Team tab lands here, so the rest of the tab is one click away. */
+const SECTIONS = [
+  {
+    icon: UsersIcon,
+    title: "Current Team",
+    description: "Meet this year's executive team.",
+    to: "/team",
+  },
+  {
+    icon: HistoryIcon,
+    title: "Past Teams",
+    description: "The executives who led CAIS in previous years.",
+    to: "/team/past",
+  },
+  {
+    icon: FileTextIcon,
+    title: "Constitution",
+    description: "The document that sets out how the club is run (PDF).",
+    href: "/constitution.pdf",
   },
 ];
 
@@ -78,6 +107,40 @@ const Governance = () => {
           </p>
         </motion.div>
 
+        <nav
+          aria-label="Team pages"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-5xl mx-auto mb-16"
+        >
+          {SECTIONS.map(({ icon: Icon, title, description, to, href }) => {
+            const body = (
+              <>
+                <span className="flex items-center gap-2 font-semibold text-foreground">
+                  <Icon className="h-5 w-5 text-primary" />
+                  {title}
+                  <ArrowRightIcon className="ml-auto h-4 w-4 text-primary transition-transform group-hover:translate-x-1" />
+                </span>
+                <span className="mt-2 block text-sm text-muted-foreground">
+                  {description}
+                </span>
+              </>
+            );
+            const className =
+              "group block rounded-xl border border-primary/20 bg-card/60 p-5 transition-colors hover:border-primary/50 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring";
+
+            return to ? (
+              <Link key={title} to={to} className={className}>
+                {body}
+              </Link>
+            ) : (
+              <a key={title} href={href} className={className}>
+                {body}
+              </a>
+            );
+          })}
+        </nav>
+
+        <h2 className="sr-only">Executive roles</h2>
+
         <motion.div
           variants={container}
           initial="hidden"
@@ -91,9 +154,9 @@ const Governance = () => {
               variants={item}
               className="bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5 transition-all duration-200"
             >
-              <h2 className="text-lg font-semibold text-primary mb-3">
+              <h3 className="text-lg font-semibold text-primary mb-3">
                 {title}
-              </h2>
+              </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 {description}
               </p>

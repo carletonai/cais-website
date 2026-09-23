@@ -20,12 +20,21 @@ describe("Navbar Component", () => {
     renderNavbar();
     const logo = screen.getByAltText("CAIS Logo") as HTMLImageElement;
     expect(logo).toBeInTheDocument();
-    expect(logo.src).toContain("header-club.png");
+    expect(logo.src).toContain("logo.svg");
   });
 
   it("renders navigation links", () => {
     renderNavbar();
-    const links = ["Home", "About", "Events", "Team", "Projects", "Contact"];
+    const links = [
+      "Home",
+      "Events",
+      "Projects",
+      "Team",
+      "Governance",
+      "Current Team",
+      "Past Teams",
+      "Contact",
+    ];
     links.forEach((link) => {
       expect(screen.getAllByText(link).length).toBeGreaterThan(0);
     });
@@ -50,14 +59,28 @@ describe("Navbar Component", () => {
     ).not.toBeInTheDocument();
   });
 
+  it("drops the removed About and Get Involved tabs", () => {
+    renderNavbar();
+    expect(screen.queryByText("About")).not.toBeInTheDocument();
+    expect(screen.queryByText("Get Involved")).not.toBeInTheDocument();
+    expect(screen.queryByText("Resources")).not.toBeInTheDocument();
+  });
+
+  it("keeps the Team tab lit on every page under it", () => {
+    window.history.pushState({}, "", "/team/past");
+    renderNavbar();
+    const [teamTab] = screen.getAllByRole("link", { name: "Team" });
+    expect(teamTab.className).toContain("text-primary");
+  });
+
   it("closes mobile menu when a link is clicked", () => {
     renderNavbar();
     const menuButton = screen.getByRole("button", { name: /open main menu/i });
 
     fireEvent.click(menuButton);
 
-    const aboutLink = screen.getAllByText("About")[1];
-    fireEvent.click(aboutLink);
+    const contactLink = screen.getAllByText("Contact")[1];
+    fireEvent.click(contactLink);
 
     expect(
       screen.queryByRole("navigation", { name: /mobile/i }),

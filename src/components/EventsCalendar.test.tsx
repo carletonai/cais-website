@@ -212,3 +212,31 @@ test("opens a meeting's details for the day that was clicked", async () => {
   expect(details).toHaveTextContent("7:30 PM - 8:00 PM");
   expect(details).toHaveTextContent("Richcraft Hall 3228");
 });
+
+test("picks a year, then a month, to reach events from other years", async () => {
+  const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
+  const older = {
+    ...workshop,
+    id: "3",
+    title: "Linear Regression",
+    date: "2021-10-13",
+  };
+  render(
+    <EventsCalendar events={[older, workshop, icebreaker]} meetings={[]} />,
+  );
+
+  const shortcuts = screen.getByRole("navigation", {
+    name: "Months with events",
+  });
+  await user.click(
+    within(shortcuts).getByRole("button", { name: "2021, 1 event" }),
+  );
+
+  expect(screen.getByRole("heading", { name: "October 2021" })).toBeVisible();
+  expect(
+    within(dayCell(13)).getByText("Linear Regression"),
+  ).toBeInTheDocument();
+  expect(
+    within(shortcuts).getByRole("button", { name: "Oct 2021, 1 event" }),
+  ).toHaveAttribute("aria-current", "true");
+});

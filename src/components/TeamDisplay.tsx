@@ -7,8 +7,6 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import teamData from "@/data/team.json";
-import oldTeamsData from "@/data/old-teams.json";
-import OldTeamsRow from "./OldTeamsRow";
 import { FaLinkedin } from "react-icons/fa";
 import MemberAvatar from "./MemberAvatar";
 
@@ -308,8 +306,6 @@ const TeamDisplay = () => {
             startIndex={0}
           />
         </div>
-
-        <OldTeamsRow teams={oldTeamsData.teams} />
       </div>
     </ScrollDirectionContext.Provider>
   );

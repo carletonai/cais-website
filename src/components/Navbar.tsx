@@ -13,23 +13,21 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Events", path: "/events" },
   { label: "Projects", path: "/projects" },
   {
-    label: "About",
-    path: "/about",
+    label: "Team",
+    path: "/governance",
     children: [
-      { label: "Team", path: "/team" },
       { label: "Governance", path: "/governance" },
-      { label: "Contact", path: "/contact" },
+      { label: "Current Team", path: "/team" },
+      { label: "Past Teams", path: "/team/past" },
     ],
   },
-  {
-    label: "Get Involved",
-    path: "/contribute",
-    children: [
-      { label: "Resources", path: "/resources" },
-      { label: "Contribute", path: "/contribute" },
-    ],
-  },
+  { label: "Contact", path: "/contact" },
 ];
+
+/** A tab stays lit while any page under it is open, not just its landing page. */
+const isInSection = (item: NavItem, pathname: string) =>
+  pathname === item.path ||
+  (item.children ?? []).some((child) => child.path === pathname);
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -71,9 +69,9 @@ export default function Navbar() {
               className="flex min-h-11 items-center group"
             >
               <img
-                src={"/header-club.png"}
+                src="/logo.svg"
                 alt="CAIS Logo"
-                className={`transition-all duration-300 group-hover:scale-105 ${atTop ? "h-9" : "h-8"}`}
+                className={`transition-all duration-300 group-hover:scale-105 ${atTop ? "h-11" : "h-10"}`}
               />
             </Link>
           </div>
@@ -84,12 +82,16 @@ export default function Navbar() {
                 <Link
                   to={item.path}
                   aria-current={
-                    location.pathname === item.path ? "page" : undefined
+                    location.pathname === item.path
+                      ? "page"
+                      : isInSection(item, location.pathname)
+                        ? "true"
+                        : undefined
                   }
                   className={`min-h-11 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 
             inline-flex items-center gap-1.5 hover:bg-brand/10 
             ${
-              location.pathname === item.path
+              isInSection(item, location.pathname)
                 ? "text-primary bg-brand/20 shadow-xs"
                 : "text-foreground hover:text-primary"
             }`}
@@ -195,11 +197,15 @@ export default function Navbar() {
                 to={item.path}
                 onClick={() => setIsMobileMenuOpen(false)}
                 aria-current={
-                  location.pathname === item.path ? "page" : undefined
+                  location.pathname === item.path
+                    ? "page"
+                    : isInSection(item, location.pathname)
+                      ? "true"
+                      : undefined
                 }
                 className={`block min-h-11 px-4 py-2.5 text-base font-medium rounded-lg transition-all duration-300 
               ${
-                location.pathname === item.path
+                isInSection(item, location.pathname)
                   ? "text-primary bg-brand/20"
                   : "text-foreground hover:text-primary hover:bg-brand/10"
               }`}

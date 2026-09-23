@@ -18,7 +18,7 @@
  * Usage:  node scripts/a11y-contrast.mjs [--base URL] [--width N] [--json FILE]
  * Requires a dev server (`npm run dev`) and Playwright's chromium.
  */
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 
 const arg = (flag, fallback) => {
   const i = process.argv.indexOf(flag);
@@ -29,9 +29,13 @@ const BASE = arg("--base", process.env.BASE || "http://localhost:5173");
 const VW = Number(arg("--width", 1280));
 const VH = Number(arg("--height", 900));
 const JSON_OUT = arg("--json", null);
+// Every route the site builds, from the same list the prerender step reads.
 const ROUTES = arg(
   "--routes",
-  "/,/about,/projects,/events,/contact,/team,/governance,/resources,/contribute",
+  Object.keys(
+    JSON.parse(readFileSync(new URL("../src/data/seo.json", import.meta.url)))
+      .routes,
+  ).join(","),
 ).split(",");
 
 let chromium;

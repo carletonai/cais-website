@@ -121,10 +121,12 @@ export function UpcomingEvents() {
                       <CalendarIcon className="w-4 h-4" />
                       {event.date}
                     </span>
-                    <span className="inline-flex items-center gap-1">
-                      <MapPinIcon className="w-4 h-4" />
-                      {event.location}
-                    </span>
+                    {event.location && (
+                      <span className="inline-flex items-center gap-1">
+                        <MapPinIcon className="w-4 h-4" />
+                        {event.location}
+                      </span>
+                    )}
                   </div>
 
                   <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">

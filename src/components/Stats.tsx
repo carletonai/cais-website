@@ -1,5 +1,13 @@
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import eventsData from "@/data/events.json";
+import projectsData from "@/data/projects.json";
+
+/** Counted from the data so the numbers keep up as events and projects land. */
+const eventCount = eventsData.events.length;
+const firstYear = Math.min(
+  ...eventsData.events.map((event) => Number(event.date.slice(0, 4))),
+);
 
 const stats = [
   {
@@ -8,14 +16,14 @@ const stats = [
     description: "Active students in our community",
   },
   {
-    number: "5+",
+    number: `${Math.floor(eventCount / 10) * 10}+`,
     label: "Events",
-    description: "Workshops and meetups per year",
+    description: `Workshops, talks and socials since ${firstYear}`,
   },
   {
-    number: "1",
+    number: String(projectsData.projects.length),
     label: "Projects",
-    description: "Collaborative AI projects completed",
+    description: "Club and hackathon projects built by members",
   },
   {
     number: "2",

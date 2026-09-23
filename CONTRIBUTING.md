@@ -124,9 +124,10 @@ src/
 
 ### Pages Description
 
-- **Home (/)**: Landing page showcasing CAIS's mission and latest updates
-- **About (/about)**: Information about CAIS, our history, mission, and values
-- **Events (/events)**: Upcoming and past events, workshops, and activities
-- **Team (/team)**: Meet our executive team and contributors
-- **Projects (/projects)**: Showcase of current and past projects
+- **Home (/)**: Landing page with CAIS's mission, an About section (`/#about`), and upcoming and past events
+- **Events (/events)**: Upcoming and past events, filterable by type and tag, plus the events calendar
+- **Projects (/projects)**: Showcase of current and past projects, including the CAIS Terminal (/resources)
+- **Governance (/governance)**: How the club is run; the landing page of the Team tab
+- **Current Team (/team)**: This year's executive team
+- **Past Teams (/team/past)**: Previous executive teams, year by year
 - **Contact (/contact)**: Get in touch with CAIS

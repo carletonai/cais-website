@@ -30,7 +30,7 @@ const features = [
     description: "Transparent club structure and operations",
     content:
       "Learn about our constitution, executive team, and how to get involved in club leadership. We maintain open communication about club decisions and future directions.",
-    link: "/about",
+    link: "/governance",
   },
 ];
 
@@ -74,13 +74,6 @@ export function Features() {
             Whether you&apos;re just starting or already experienced, we have
             opportunities for everyone.
           </p>
-          <Link
-            to="/about"
-            className="inline-flex min-h-11 items-center gap-1.5 text-primary hover:text-primary hover:underline transition-colors"
-          >
-            <span>View All Opportunities</span>
-            <ArrowUpRight className="h-4 w-4" />
-          </Link>
         </motion.div>
 
         <motion.div

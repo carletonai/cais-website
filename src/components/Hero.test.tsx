@@ -29,7 +29,7 @@ describe("Hero Component", () => {
     renderHero();
 
     expect(
-      screen.getByRole("heading", { name: /Carleton\s+ΛI\s+Society/i }),
+      screen.getByRole("heading", { name: /Carleton\s+AI\s+Society/i }),
     ).toBeInTheDocument();
 
     const description = await screen.findByText(mockProps.description);

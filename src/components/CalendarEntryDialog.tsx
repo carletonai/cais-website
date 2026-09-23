@@ -3,7 +3,10 @@ import {
   ArrowRightIcon,
   CalendarIcon,
   ClockIcon,
+  CodeIcon,
+  ExternalLinkIcon,
   MapPinIcon,
+  PlayCircleIcon,
   RepeatIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -78,8 +81,8 @@ const EventDetails = ({ event }: { event: ClubEvent }) => {
       </DialogTitle>
       <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
         <Fact icon={CalendarIcon}>{longDate.format(eventDate(event))}</Fact>
-        <Fact icon={ClockIcon}>{event.time}</Fact>
-        <Fact icon={MapPinIcon}>{event.location}</Fact>
+        {event.time && <Fact icon={ClockIcon}>{event.time}</Fact>}
+        {event.location && <Fact icon={MapPinIcon}>{event.location}</Fact>}
       </ul>
       <DialogDescription className="mt-4 text-base text-foreground">
         {event.description}
@@ -94,13 +97,56 @@ const EventDetails = ({ event }: { event: ClubEvent }) => {
           </span>
         ))}
       </div>
-      {upcoming && event.rsvpLink && (
-        <Button asChild className="mt-5">
-          <a href={event.rsvpLink} target="_blank" rel="noopener noreferrer">
-            RSVP
-            <ArrowRightIcon />
-          </a>
-        </Button>
+      {((upcoming && event.rsvpLink) ||
+        event.recording ||
+        event.materials ||
+        event.page) && (
+        <div className="mt-5 flex flex-wrap gap-3">
+          {upcoming && event.rsvpLink && (
+            <Button asChild>
+              <a
+                href={event.rsvpLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                RSVP
+                <ArrowRightIcon />
+              </a>
+            </Button>
+          )}
+          {event.recording && (
+            <Button asChild variant="outline">
+              <a
+                href={event.recording}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <PlayCircleIcon />
+                Watch the recording
+              </a>
+            </Button>
+          )}
+          {event.page && (
+            <Button asChild variant="outline">
+              <a href={event.page} target="_blank" rel="noopener noreferrer">
+                <ExternalLinkIcon />
+                Event page
+              </a>
+            </Button>
+          )}
+          {event.materials && (
+            <Button asChild variant="outline">
+              <a
+                href={event.materials}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <CodeIcon />
+                Workshop materials
+              </a>
+            </Button>
+          )}
+        </div>
       )}
     </>
   );

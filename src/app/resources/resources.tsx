@@ -4,7 +4,8 @@ import { cn } from "@/lib/utils";
 import { useHotkeys } from "react-hotkeys-hook";
 import teamData from "@/data/team.json";
 import eventsData from "@/data/events.json";
-import { eventDate } from "@/lib/events";
+import projectsData from "@/data/projects.json";
+import { eventDate, upcomingEvents } from "@/lib/events";
 
 interface Command {
   input: string;
@@ -48,7 +49,6 @@ Available commands:
   events    - Show upcoming events
   team      - Show executive team
   join      - How to join CAIS
-  calendar  - View events calendar
   contact   - Contact information
   theme     - Change terminal theme
   
@@ -124,62 +124,86 @@ Recommended Learning Path:
    - Contribute to open-source AI projects
 `;
 
-const PROJECTS = `
-Current CAIS Projects:
+/** The same projects the Projects page shows, so the two never disagree. */
+const PROJECT_LIST = projectsData.projects as {
+  title: string;
+  status?: string;
+  period?: string;
+  hackathon?: string;
+  description: string;
+  link?: string;
+  tags?: string[];
+}[];
 
-1. 🌐 CAIS Website Development
-   - Modern web platform for AI resources
-   - Tech stack: Next.js, TypeScript, TailwindCSS
-   - Status: Active Development
+const projectLink = (link: string) =>
+  link.startsWith("/") ? `https://carletonai.com${link}` : link;
 
-2. 🤖 ML Study Group Projects
-   - Weekly meetings and hands-on coding
-   - Current focus: Computer Vision
-   - Open for new members
+const projectLabel = (project: (typeof PROJECT_LIST)[number]) =>
+  [
+    project.hackathon
+      ? `${project.hackathon}, ${project.status}`
+      : project.status,
+    project.period,
+  ]
+    .filter(Boolean)
+    .join(" · ");
 
-3. 🎓 Workshop Materials
-   - Creating educational content
-   - Topics: ML basics, Deep Learning, MLOps
-   - Looking for contributors
+const projectByNumber = (arg: string | undefined) => {
+  const number = Number(arg);
+  return Number.isInteger(number) && number >= 1
+    ? PROJECT_LIST[number - 1]
+    : undefined;
+};
 
-4. 🔬 Research Reading Group
-   - Weekly paper discussions
-   - Focus on latest AI developments
-   - All skill levels welcome
+const projectDetails = (project: (typeof PROJECT_LIST)[number]) => `
+${project.title}
+${projectLabel(project)}
 
-5. 🤝 Industry Partnership Program
-   - Connecting students with AI companies
-   - Resume workshop series
-   - Mock interviews
-
-Type 'project <number>' for more details.
+${project.description}
+${project.tags?.length ? `\nTags: ${project.tags.join(", ")}` : ""}${project.link ? `\nLink: ${projectLink(project.link)}` : ""}
 `;
 
-const EVENTS = `
+const PROJECTS = `
+CAIS Projects:
+${PROJECT_LIST.map(
+  (project, index) => `
+${index + 1}. ${project.title}
+   ${projectLabel(project)}`,
+).join("\n")}
+
+Type 'project <number>' for more details, or visit carletonai.com/projects.
+`;
+
+/** Numbered for the \`event\` and \`rsvp\` commands, which index into it. */
+const UPCOMING = upcomingEvents(eventsData.events);
+
+/** \`event 3\` or \`rsvp 3\`: the matching upcoming event, if the number is valid. */
+const upcomingByNumber = (arg: string | undefined) => {
+  const number = Number(arg);
+  return Number.isInteger(number) && number >= 1
+    ? UPCOMING[number - 1]
+    : undefined;
+};
+
+const EVENTS = UPCOMING.length
+  ? `
 Upcoming Events:
 
-${eventsData.events
-  .map(
-    (event, index) => `
-${index + 1}. ${
-      event.type === "Workshop"
-        ? "🎯"
-        : event.type === "Panel"
-          ? "🤝"
-          : event.type === "Symposium"
-            ? "🎓"
-            : "📅"
-    } ${event.title}
+${UPCOMING.map(
+  (event, index) => `
+${index + 1}. ${event.type === "Workshop" ? "🎯" : "📅"} ${event.title}
    Date: ${eventDate(event).toLocaleDateString()} at ${event.time}
    Location: ${event.location}
    Details: ${event.description}
    Tags: ${event.tags.map((tag) => `#${tag}`).join(" ")}
    ${event.rsvpLink ? `RSVP: ${event.rsvpLink}` : ""}
 `,
-  )
-  .join("\n")}
+).join("\n")}
 
-Type 'event <number>' for more details or 'calendar' to view full schedule.
+Type 'event <number>' for more details, or visit carletonai.com/events for past events and the full calendar.
+`
+  : `
+No upcoming events right now. Visit carletonai.com/events for past events and the full calendar.
 `;
 
 const TEAM = `
@@ -1073,15 +1097,14 @@ Contact us or join Discord to get started!
           isSystem: true,
         };
         break;
-      case "event":
-        if (args[0] && parseInt(args[0]) <= eventsData.events.length) {
-          const eventIndex = parseInt(args[0]) - 1;
-          const event = eventsData.events[eventIndex];
+      case "event": {
+        const event = upcomingByNumber(args[0]);
+        if (event) {
           output = {
             content: makeLinksClickable(`
 Event Details:
 
-${event.type === "Workshop" ? "🎯" : event.type === "Panel" ? "🤝" : event.type === "Symposium" ? "🎓" : "📅"} ${event.title}
+${event.type === "Workshop" ? "🎯" : "📅"} ${event.title}
 
 Date: ${eventDate(event).toLocaleDateString()}
 Time: ${event.time}
@@ -1104,10 +1127,10 @@ ${event.rsvpLink ? `\nRSVP Link: ${event.rsvpLink}` : ""}
           };
         }
         break;
-      case "rsvp":
-        if (args[0] && parseInt(args[0]) <= eventsData.events.length) {
-          const eventIndex = parseInt(args[0]) - 1;
-          const event = eventsData.events[eventIndex];
+      }
+      case "rsvp": {
+        const event = upcomingByNumber(args[0]);
+        if (event) {
           if (event.rsvpLink) {
             output = {
               content: `Opening RSVP form for "${event.title}": ${event.rsvpLink}`,
@@ -1127,147 +1150,20 @@ ${event.rsvpLink ? `\nRSVP Link: ${event.rsvpLink}` : ""}
           };
         }
         break;
-      case "project":
-        if (args[0] && parseInt(args[0]) <= 5) {
-          const projectNum = parseInt(args[0]);
-          let projectDetails;
-
-          switch (projectNum) {
-            case 1:
-              projectDetails = `
-🌐 CAIS Website Development
-
-Description:
-- Building a modern web platform for AI resources and community engagement
-- Creating an interactive terminal interface for resource access
-- Implementing responsive design for all devices
-
-Tech Stack:
-- Next.js for frontend framework
-- TypeScript for type safety
-- TailwindCSS for styling
-- Framer Motion for animations
-
-Status: Active Development
-Looking for: Frontend developers, UI/UX designers
-
-Get involved: 
-- GitHub: /carleton-ai/website
-- Contact: developers@carletonai.com
-`;
-              break;
-            case 2:
-              projectDetails = `
-🤖 ML Study Group Projects
-
-Description:
-- Weekly collaborative learning sessions
-- Hands-on implementation of ML algorithms
-- Current focus: Computer Vision applications
-
-Current Projects:
-- Image classification using CNNs
-- Object detection implementation
-- Transfer learning experiments
-
-Schedule:
-- Meetings: Every Wednesday, 6:00 PM
-- Location: HP 4125
-- Discord channel: #ml-study-group
-
-Join us:
-- All skill levels welcome
-- Bring your laptop and enthusiasm
-- No prior ML experience required
-`;
-              break;
-            case 3:
-              projectDetails = `
-🎓 Workshop Materials Development
-
-Description:
-- Creating comprehensive AI/ML educational content
-- Developing hands-on tutorials and exercises
-- Building a resource library for future reference
-
-Current Focus:
-- ML fundamentals workshop series
-- Deep Learning practical guides
-- MLOps best practices
-
-Looking for contributors:
-- Content creators
-- Technical writers
-- Workshop presenters
-- Code example developers
-
-Contact: workshops@carletonai.com
-`;
-              break;
-            case 4:
-              projectDetails = `
-🔬 Research Reading Group
-
-Description:
-- Weekly paper discussions
-- Focus on latest AI developments
-- Critical analysis and implementation ideas
-
-Current Topics:
-- Large Language Models
-- Reinforcement Learning
-- AI Safety and Ethics
-
-Schedule:
-- Biweekly Thursdays
-- Location: Discord Voice Channel
-- Time: 7:00 PM - 8:30 PM
-
-How to participate:
-- Join #research-papers on Discord
-- Submit paper suggestions
-- Present papers (optional)
-`;
-              break;
-            case 5:
-              projectDetails = `
-🤝 Industry Partnership Program
-
-Description:
-- Building bridges between students and AI companies
-- Organizing industry networking events
-- Facilitating internship opportunities
-
-Current Initiatives:
-- Resume workshop series
-- Mock interview sessions
-- Industry speaker events
-- Company visit programs
-
-Get Involved:
-- Join #careers channel on Discord
-- Attend networking events
-- Volunteer as a mock interviewer
-
-Contact: partnerships@carletonai.com
-`;
-              break;
-            default:
-              projectDetails = "Project number not found.";
-          }
-
-          output = {
-            content: makeLinksClickable(projectDetails),
-            isSystem: true,
-          };
-        } else {
-          output = {
-            content:
-              "Please specify a valid project number (1-5). Use 'projects' to see all projects.",
-            isError: true,
-          };
-        }
+      }
+      case "project": {
+        const project = projectByNumber(args[0]);
+        output = project
+          ? {
+              content: makeLinksClickable(projectDetails(project)),
+              isSystem: true,
+            }
+          : {
+              content: `Please specify a valid project number (1-${PROJECT_LIST.length}). Use 'projects' to see all projects.`,
+              isError: true,
+            };
         break;
+      }
     }
 
     addCommand([command, ...args].join(" "), output.content, output.isError);

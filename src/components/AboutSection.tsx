@@ -26,7 +26,7 @@ const pillars = [
     icon: CalendarIcon,
     title: "Attend Events",
     description:
-      "Panels, symposiums, hackathons, and social meetups throughout the academic year.",
+      "Workshops, hackathons, and social meetups throughout the academic year.",
   },
 ];
 
@@ -47,45 +47,37 @@ const item = {
   },
 };
 
-const AboutPage = () => {
+/** What used to be the /about page, now the home page's "About CAIS" section. */
+export function AboutSection() {
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-brand/20 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-brand/10 blur-[120px] pointer-events-none" />
-      <div className="absolute top-2/3 left-1/3 w-72 h-72 rounded-full bg-brand/15 blur-[120px] pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-background pointer-events-none" />
-      <div className="absolute inset-0 bg-glow opacity-20 pointer-events-none" />
-      <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
-
-      <section className="relative z-10 container mx-auto px-4 pt-28 pb-16 text-center max-w-3xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="text-sm font-mono text-primary mb-4 tracking-widest uppercase">
-            About CAIS
-          </p>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary/75 mb-6">
-            Carleton ΛI Society
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-            A student-run club at Carleton University for anyone curious about
-            artificial intelligence and machine learning — from total beginners
-            to seasoned researchers.
-          </p>
-        </motion.div>
-      </section>
-
-      <section className="relative z-10 container mx-auto px-4 pb-24">
+    <section
+      id="about"
+      aria-labelledby="about-heading"
+      className="relative scroll-mt-24 py-16"
+    >
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-12 max-w-3xl mx-auto"
         >
-          <h2 className="text-3xl font-bold text-glow">What We Do</h2>
+          <p className="text-sm font-mono text-primary mb-4 tracking-widest uppercase">
+            About CAIS
+          </p>
+          <h2
+            id="about-heading"
+            tabIndex={-1}
+            className="text-3xl sm:text-4xl font-bold mb-4 text-glow outline-hidden"
+          >
+            What We Do
+          </h2>
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+            A student-run club at Carleton University for anyone curious about
+            artificial intelligence and machine learning — from total beginners
+            to seasoned researchers.
+          </p>
         </motion.div>
 
         <motion.div
@@ -119,7 +111,7 @@ const AboutPage = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.2 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-4 mt-16"
+          className="flex flex-wrap justify-center gap-4 mt-12"
         >
           <Button asChild size="lg" variant="default">
             <Link to="/team">Meet the Team</Link>
@@ -133,9 +125,7 @@ const AboutPage = () => {
             <Link to="/contact">Get in Touch</Link>
           </Button>
         </motion.div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
-};
-
-export default AboutPage;
+}

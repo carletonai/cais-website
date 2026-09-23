@@ -1,12 +1,105 @@
 {
   "projects": [
     {
+      "id": "cais-terminal",
+      "title": "CAIS Terminal",
+      "status": "Active Project",
+      "description": "An interactive terminal in the browser for exploring CAIS: learning resources, community links, upcoming events, the team, and a few easter eggs. Type 'help' to get started.",
+      "link": "/resources",
+      "tags": ["React", "TypeScript", "Terminal UI"],
+      "period": "2025–present"
+    },
+    {
       "id": "cumind",
       "title": "CuMind",
       "status": "Previous Project",
       "description": "A MuZero-style reinforcement learning framework built with JAX and Flax, combining a learned model with Monte Carlo Tree Search for complex decision-making environments.",
       "link": "https://github.com/carletonai/CuMind",
-      "tags": ["JAX", "Flax", "MuZero", "MCTS", "Reinforcement Learning"]
+      "tags": ["JAX", "Flax", "MuZero", "MCTS", "Reinforcement Learning"],
+      "period": "2024–25"
+    },
+    {
+      "id": "carleton-ai-show",
+      "title": "The Carleton AI Show",
+      "status": "Podcast",
+      "period": "2020–21",
+      "description": "The club's interview podcast about AI, with guests from industry and academia: Nayeem Ekbal of ReveMax, Dr. Matthew Holden, Dr. Jacob Levman and Dr. Tracey P. Lauriault.",
+      "link": "https://www.youtube.com/playlist?list=PLu55JWqZn53tChUFVmfUtw2t2G11opMAh",
+      "tags": ["Podcast", "Interviews"]
+    },
+    {
+      "id": "workshop-code",
+      "title": "CAIS Workshop Code",
+      "status": "Previous Project",
+      "period": "2022–24",
+      "description": "The code behind CAIS workshops by Workshop Lead Farzad Roozitalab: GPT-2 text generation, BERT sentiment analysis, GANs, U-Net segmentation, attention mechanisms and more.",
+      "link": "https://github.com/Farzad-R/CAIS",
+      "tags": ["NLP", "Computer Vision", "Generative Models"]
+    },
+    {
+      "id": "digit-recognition",
+      "title": "Digit Recognition",
+      "status": "Previous Project",
+      "period": "Winter 2020",
+      "description": "A multi-session club project that trained a model on the MNIST handwritten-digit dataset, aiming to serve it on a web page where you draw a digit for it to read.",
+      "link": "https://github.com/Itzaek/DigitRecognition",
+      "tags": ["MNIST", "Flask", "Python"]
+    },
+    {
+      "id": "rock-paper-scissors",
+      "title": "Rock-Paper-Scissors AI",
+      "status": "Previous Project",
+      "period": "Fall 2019",
+      "description": "The club-wide project for Fall 2019, built by 17 members: a Python AI designed to beat real human players at Rock, Paper, Scissors.",
+      "link": "https://github.com/carletonai/Rock-Paper-Scissors-Project",
+      "tags": ["Python", "Game AI"]
+    },
+    {
+      "id": "thinkfirst",
+      "title": "ThinkFirst",
+      "status": "1st Place",
+      "hackathon": "CAIS Hackathon 2.0",
+      "period": "March 2026",
+      "description": "An AI tutor that helps students understand concepts instead of handing them the answers.",
+      "tags": ["AI Tutor", "Education"]
+    },
+    {
+      "id": "cucognitive",
+      "title": "CUCognitive",
+      "status": "2nd Place",
+      "hackathon": "CAIS Hackathon 2.0",
+      "period": "March 2026",
+      "description": "A web app that tracks drowsiness through eye movement to help students study and manage their energy.",
+      "tags": ["Computer Vision", "Web App"]
+    },
+    {
+      "id": "procrastination-bot",
+      "title": "Procrastination Bot",
+      "status": "3rd Place",
+      "hackathon": "CAIS Hackathon 2.0",
+      "period": "March 2026",
+      "description": "An AI agent that uses retrieval-augmented generation to track deadlines and break assignments into manageable tasks.",
+      "tags": ["RAG", "Agents"]
+    },
+    {
+      "id": "chatroller",
+      "title": "ChatRoller",
+      "status": "Best Application Project",
+      "hackathon": "CAIS Hackathon 2023",
+      "period": "March 2023",
+      "description": "Real-time sentiment analysis for YouTube livestream chat, by Ryan Diep and Mika Toktamyssov, built with Node.js, the Cohere API and the YouTube Data API.",
+      "link": "https://devpost.com/software/chatroller",
+      "tags": ["Node.js", "Cohere", "Sentiment Analysis"]
+    },
+    {
+      "id": "wlit",
+      "title": "WLIT: What Language Is This?",
+      "status": "Best Fundamental Project",
+      "hackathon": "CAIS Hackathon 2023",
+      "period": "March 2023",
+      "description": "A machine learning language detector that identifies 11 languages, by Ryan Guo, Sahith Nulu, Roshan Dewmina Silva and Ethan Huynh.",
+      "link": "https://devpost.com/software/wlit",
+      "tags": ["scikit-learn", "spaCy", "NLP"]
     }
   ]
 }

@@ -31,7 +31,7 @@ exports[`renders EventsPage correctly 1`] = `
         <p
           class="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
         >
-          Join us for immersive workshops, insightful panels, and engaging discussions about the future of artificial intelligence.
+          Join us for immersive workshops, hackathon sessions, and socials exploring the future of artificial intelligence.
         </p>
       </div>
     </section>
@@ -42,10 +42,13 @@ exports[`renders EventsPage correctly 1`] = `
         class="container mx-auto px-4"
       >
         <div
-          class="flex flex-wrap gap-3 justify-center mb-12"
+          aria-label="Filter by type"
+          class="flex flex-wrap gap-3 justify-center mb-6"
+          role="group"
         >
           <div>
             <button
+              aria-pressed="true"
               class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-brand text-brand-foreground hover:bg-brand/90 h-11 px-6 py-2 rounded-full transition-all duration-300 hover:scale-105 scale-105 shadow-lg shadow-brand/20"
               type="button"
             >
@@ -54,6 +57,7 @@ exports[`renders EventsPage correctly 1`] = `
           </div>
           <div>
             <button
+              aria-pressed="false"
               class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
               type="button"
             >
@@ -62,6 +66,7 @@ exports[`renders EventsPage correctly 1`] = `
           </div>
           <div>
             <button
+              aria-pressed="false"
               class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
               type="button"
             >
@@ -70,21 +75,147 @@ exports[`renders EventsPage correctly 1`] = `
           </div>
           <div>
             <button
+              aria-pressed="false"
               class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
               type="button"
             >
-              Panel
+              Talk
             </button>
           </div>
           <div>
             <button
+              aria-pressed="false"
               class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
               type="button"
             >
-              Symposium
+              Competition
             </button>
           </div>
         </div>
+        <div
+          aria-label="Filter by tag"
+          class="-mx-4 flex gap-2 overflow-x-auto px-4 pb-2 sm:mx-auto sm:max-w-4xl sm:flex-wrap sm:justify-center sm:overflow-visible"
+          role="group"
+        >
+          <button
+            aria-pressed="true"
+            class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-brand text-brand-foreground hover:bg-brand/90 h-11 shrink-0 rounded-full px-4"
+            type="button"
+          >
+            All tags
+          </button>
+          <button
+            aria-pressed="false"
+            class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 shrink-0 rounded-full px-4"
+            type="button"
+          >
+            technical
+          </button>
+          <button
+            aria-pressed="false"
+            class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 shrink-0 rounded-full px-4"
+            type="button"
+          >
+            online
+          </button>
+          <button
+            aria-pressed="false"
+            class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 shrink-0 rounded-full px-4"
+            type="button"
+          >
+            social
+          </button>
+          <button
+            aria-pressed="false"
+            class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 shrink-0 rounded-full px-4"
+            type="button"
+          >
+            beginner-friendly
+          </button>
+          <button
+            aria-pressed="false"
+            class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 shrink-0 rounded-full px-4"
+            type="button"
+          >
+            hands-on
+          </button>
+          <button
+            aria-pressed="false"
+            class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 shrink-0 rounded-full px-4"
+            type="button"
+          >
+            recruitment
+          </button>
+          <button
+            aria-pressed="false"
+            class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 shrink-0 rounded-full px-4"
+            type="button"
+          >
+            competition
+          </button>
+          <button
+            aria-pressed="false"
+            class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 shrink-0 rounded-full px-4"
+            type="button"
+          >
+            discussion
+          </button>
+          <button
+            aria-pressed="false"
+            class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 shrink-0 rounded-full px-4"
+            type="button"
+          >
+            guest-speaker
+          </button>
+          <button
+            aria-pressed="false"
+            class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 shrink-0 rounded-full px-4"
+            type="button"
+          >
+            free-food
+          </button>
+          <button
+            aria-pressed="false"
+            class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 shrink-0 rounded-full px-4"
+            type="button"
+          >
+            hackathon
+          </button>
+          <button
+            aria-pressed="false"
+            class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 shrink-0 rounded-full px-4"
+            type="button"
+          >
+            networking
+          </button>
+          <button
+            aria-pressed="false"
+            class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 shrink-0 rounded-full px-4"
+            type="button"
+          >
+            conceptual
+          </button>
+          <button
+            aria-pressed="false"
+            class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 shrink-0 rounded-full px-4"
+            type="button"
+          >
+            educational
+          </button>
+          <button
+            aria-pressed="false"
+            class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 shrink-0 rounded-full px-4"
+            type="button"
+          >
+            planning
+          </button>
+        </div>
+        <p
+          class="sr-only"
+          role="status"
+        >
+          Showing all events.
+        </p>
       </div>
     </section>
     <section
@@ -179,13 +310,169 @@ exports[`renders EventsPage correctly 1`] = `
                   <span
                     class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                   >
+                    networking
+                  </span>
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    free-food
+                  </span>
+                </div>
+                <div
+                  class="flex shrink-0 items-center"
+                >
+                  <button
+                    aria-label="Details: CAIS Icebreaker"
+                    class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-3"
+                    type="button"
+                  >
+                    Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="group relative bg-card rounded-xl overflow-hidden border border-border/50 hover:border-primary/50 transition-colors"
+          >
+            <div
+              class="aspect-video relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center transform group-hover:scale-110 transition-transform duration-500"
+                style="background-image: url("/assets/events/neural-networks.svg");"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+            </div>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2026-09-26
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  Room C040, uOttawa (Hack the Hill III)
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors"
+              >
+                Machine Learning Workshop at Hack the Hill III
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
+              >
+                A practical introduction to machine learning at uOttawa's Hack the Hill III hackathon: the core ideas behind models, and how to bring ML into a hackathon project.
+              </p>
+              <div
+                class="flex items-center justify-between"
+              >
+                <div
+                  class="flex gap-2 flex-wrap"
+                >
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
                     beginner-friendly
                   </span>
                   <span
                     class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
                   >
-                    networking
+                    technical
                   </span>
+                </div>
+                <div
+                  class="flex shrink-0 items-center"
+                >
+                  <button
+                    aria-label="Details: Machine Learning Workshop at Hack the Hill III"
+                    class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-3"
+                    type="button"
+                  >
+                    Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="group relative bg-card rounded-xl overflow-hidden border border-border/50 hover:border-primary/50 transition-colors"
+          >
+            <div
+              class="aspect-video relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center transform group-hover:scale-110 transition-transform duration-500"
+                style="background-image: url("/assets/events/neural-networks.svg");"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+            </div>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2026-10-06
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  TBA
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors"
+              >
+                Tentative Event
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
+              >
+                More details soon!
+              </p>
+              <div
+                class="flex items-center justify-between"
+              >
+                <div
+                  class="flex gap-2 flex-wrap"
+                />
+                <div
+                  class="flex shrink-0 items-center"
+                >
+                  <button
+                    aria-label="Details: Tentative Event"
+                    class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-3"
+                    type="button"
+                  >
+                    Details
+                  </button>
                 </div>
               </div>
             </div>
@@ -233,7 +520,7 @@ exports[`renders EventsPage correctly 1`] = `
                   <svg
                     class="w-4 h-4"
                   />
-                  EDC, Mackenzie Building
+                  EDC
                 </span>
               </div>
               <h3
@@ -247,23 +534,34 @@ exports[`renders EventsPage correctly 1`] = `
                 Meeting students at the FED Meet & Greet, with free food and pizza.
               </p>
               <div
-                class="flex gap-2 flex-wrap"
+                class="flex items-center justify-between gap-2"
               >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                <div
+                  class="flex gap-2 flex-wrap"
                 >
-                  social
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    social
+                  </span>
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    recruitment
+                  </span>
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    free-food
+                  </span>
+                </div>
+                <button
+                  aria-label="Details: FED Meet & Greet"
+                  class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-3"
+                  type="button"
                 >
-                  networking
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  free-food
-                </span>
+                  Details
+                </button>
               </div>
             </div>
           </div>
@@ -301,7 +599,7 @@ exports[`renders EventsPage correctly 1`] = `
                   <svg
                     class="w-4 h-4"
                   />
-                  Herzberg Laboratories 4155
+                  Herzberg 4155
                 </span>
               </div>
               <h3
@@ -315,23 +613,29 @@ exports[`renders EventsPage correctly 1`] = `
                 Showcasing CAIS alongside Carleton's other tech clubs and meeting students interested in AI.
               </p>
               <div
-                class="flex gap-2 flex-wrap"
+                class="flex items-center justify-between gap-2"
               >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                <div
+                  class="flex gap-2 flex-wrap"
                 >
-                  social
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    social
+                  </span>
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    recruitment
+                  </span>
+                </div>
+                <button
+                  aria-label="Details: Tech Club Expo"
+                  class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-3"
+                  type="button"
                 >
-                  recruitment
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  networking
-                </span>
+                  Details
+                </button>
               </div>
             </div>
           </div>
@@ -383,18 +687,29 @@ exports[`renders EventsPage correctly 1`] = `
                 Presenting the club to new students and recruiting new members.
               </p>
               <div
-                class="flex gap-2 flex-wrap"
+                class="flex items-center justify-between gap-2"
               >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                <div
+                  class="flex gap-2 flex-wrap"
                 >
-                  social
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    social
+                  </span>
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    recruitment
+                  </span>
+                </div>
+                <button
+                  aria-label="Details: CUSA Club Expo"
+                  class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-3"
+                  type="button"
                 >
-                  recruitment
-                </span>
+                  Details
+                </button>
               </div>
             </div>
           </div>
@@ -446,18 +761,34 @@ exports[`renders EventsPage correctly 1`] = `
                 A cuHacking workshop on using agentic AI to design and build neural networks.
               </p>
               <div
-                class="flex gap-2 flex-wrap"
+                class="flex items-center justify-between gap-2"
               >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                <div
+                  class="flex gap-2 flex-wrap"
                 >
-                  hands-on
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    hands-on
+                  </span>
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    technical
+                  </span>
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    beginner-friendly
+                  </span>
+                </div>
+                <button
+                  aria-label="Details: cuHacking Workshop – How to Use Agentic AI to Build Neural Networks"
+                  class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-3"
+                  type="button"
                 >
-                  technical
-                </span>
+                  Details
+                </button>
               </div>
             </div>
           </div>
@@ -487,554 +818,43 @@ exports[`renders EventsPage correctly 1`] = `
                   <svg
                     class="w-4 h-4"
                   />
-                  2026-02-26
-                </span>
-                <span
-                  class="inline-flex items-center gap-1"
-                >
-                  <svg
-                    class="w-4 h-4"
-                  />
-                  Tory Building 210
+                  2026-03-21
                 </span>
               </div>
               <h3
                 class="text-xl font-semibold mb-2"
               >
-                Training an AI Model!
+                CAIS Hackathon 2.0
               </h3>
               <p
                 class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
               >
-                Train your first machine learning model using Python in a hands-on session.
+                A 48-hour challenge with a $250 prize pool, building AI solutions to problems post-secondary students face. Registration filled to capacity. ThinkFirst, CUCognitive and Procrastination Bot took the top three spots.
               </p>
               <div
-                class="flex gap-2 flex-wrap"
+                class="flex items-center justify-between gap-2"
               >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                <div
+                  class="flex gap-2 flex-wrap"
                 >
-                  hands-on
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    hackathon
+                  </span>
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    competition
+                  </span>
+                </div>
+                <button
+                  aria-label="Details: CAIS Hackathon 2.0"
+                  class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-3"
+                  type="button"
                 >
-                  beginner-friendly
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  technical
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
-          >
-            <div
-              class="aspect-video relative overflow-hidden"
-            >
-              <div
-                class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url("/assets/events/neural-networks.svg");"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
-              />
-            </div>
-            <div
-              class="p-6"
-            >
-              <div
-                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
-              >
-                <span
-                  class="inline-flex items-center gap-1"
-                >
-                  <svg
-                    class="w-4 h-4"
-                  />
-                  2026-02-24
-                </span>
-                <span
-                  class="inline-flex items-center gap-1"
-                >
-                  <svg
-                    class="w-4 h-4"
-                  />
-                  Tory Building 210
-                </span>
-              </div>
-              <h3
-                class="text-xl font-semibold mb-2"
-              >
-                Building an AI Chatbot!
-              </h3>
-              <p
-                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
-              >
-                Learn how AI chatbots work using RAG and semantic search in LLM applications.
-              </p>
-              <div
-                class="flex gap-2 flex-wrap"
-              >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  hands-on
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  technical
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
-          >
-            <div
-              class="aspect-video relative overflow-hidden"
-            >
-              <div
-                class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url("/assets/events/neural-networks.svg");"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
-              />
-            </div>
-            <div
-              class="p-6"
-            >
-              <div
-                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
-              >
-                <span
-                  class="inline-flex items-center gap-1"
-                >
-                  <svg
-                    class="w-4 h-4"
-                  />
-                  2026-01-29
-                </span>
-                <span
-                  class="inline-flex items-center gap-1"
-                >
-                  <svg
-                    class="w-4 h-4"
-                  />
-                  Tory Building 342
-                </span>
-              </div>
-              <h3
-                class="text-xl font-semibold mb-2"
-              >
-                Workshop #3 – What Are Large Language Models?
-              </h3>
-              <p
-                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
-              >
-                An introduction to large language models and how they power modern AI systems.
-              </p>
-              <div
-                class="flex gap-2 flex-wrap"
-              >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  beginner-friendly
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  technical
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
-          >
-            <div
-              class="aspect-video relative overflow-hidden"
-            >
-              <div
-                class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url("/assets/events/neural-networks.svg");"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
-              />
-            </div>
-            <div
-              class="p-6"
-            >
-              <div
-                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
-              >
-                <span
-                  class="inline-flex items-center gap-1"
-                >
-                  <svg
-                    class="w-4 h-4"
-                  />
-                  2026-01-27
-                </span>
-                <span
-                  class="inline-flex items-center gap-1"
-                >
-                  <svg
-                    class="w-4 h-4"
-                  />
-                  Richcraft Hall 3228
-                </span>
-              </div>
-              <h3
-                class="text-xl font-semibold mb-2"
-              >
-                Workshop #2 – Vibe Coding vs Prompt Engineering
-              </h3>
-              <p
-                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
-              >
-                A workshop comparing vibe coding and prompt engineering in modern AI development.
-              </p>
-              <div
-                class="flex gap-2 flex-wrap"
-              >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  technical
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  discussion
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
-          >
-            <div
-              class="aspect-video relative overflow-hidden"
-            >
-              <div
-                class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url("/assets/events/neural-networks.svg");"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
-              />
-            </div>
-            <div
-              class="p-6"
-            >
-              <div
-                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
-              >
-                <span
-                  class="inline-flex items-center gap-1"
-                >
-                  <svg
-                    class="w-4 h-4"
-                  />
-                  2026-01-23
-                </span>
-                <span
-                  class="inline-flex items-center gap-1"
-                >
-                  <svg
-                    class="w-4 h-4"
-                  />
-                  Richcraft Hall 3110
-                </span>
-              </div>
-              <h3
-                class="text-xl font-semibold mb-2"
-              >
-                Workshop #1 – Introduction to Artificial Intelligence
-              </h3>
-              <p
-                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
-              >
-                An introductory workshop covering core AI concepts and real-world applications.
-              </p>
-              <div
-                class="flex gap-2 flex-wrap"
-              >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  beginner-friendly
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  educational
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
-          >
-            <div
-              class="aspect-video relative overflow-hidden"
-            >
-              <div
-                class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url("/assets/events/neural-networks.svg");"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
-              />
-            </div>
-            <div
-              class="p-6"
-            >
-              <div
-                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
-              >
-                <span
-                  class="inline-flex items-center gap-1"
-                >
-                  <svg
-                    class="w-4 h-4"
-                  />
-                  2025-11-28
-                </span>
-                <span
-                  class="inline-flex items-center gap-1"
-                >
-                  <svg
-                    class="w-4 h-4"
-                  />
-                  Tory Building 342
-                </span>
-              </div>
-              <h3
-                class="text-xl font-semibold mb-2"
-              >
-                CAIS Icebreaker
-              </h3>
-              <p
-                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
-              >
-                Meet the CAIS executive team, learn about the club, and connect with students interested in AI.
-              </p>
-              <div
-                class="flex gap-2 flex-wrap"
-              >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  beginner-friendly
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  networking
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  social
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
-          >
-            <div
-              class="aspect-video relative overflow-hidden"
-            >
-              <div
-                class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url("/assets/events/neural-networks.svg");"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
-              />
-            </div>
-            <div
-              class="p-6"
-            >
-              <div
-                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
-              >
-                <span
-                  class="inline-flex items-center gap-1"
-                >
-                  <svg
-                    class="w-4 h-4"
-                  />
-                  2025-04-02
-                </span>
-                <span
-                  class="inline-flex items-center gap-1"
-                >
-                  <svg
-                    class="w-4 h-4"
-                  />
-                  Tory Building 431
-                </span>
-              </div>
-              <h3
-                class="text-xl font-semibold mb-2"
-              >
-                Using AI APIs
-              </h3>
-              <p
-                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
-              >
-                Learn how to use AI APIs to implement AI in your projects.
-              </p>
-              <div
-                class="flex gap-2 flex-wrap"
-              >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  hands-on
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  technical
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
-          >
-            <div
-              class="aspect-video relative overflow-hidden"
-            >
-              <div
-                class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url("/assets/events/neural-networks.svg");"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
-              />
-            </div>
-            <div
-              class="p-6"
-            >
-              <div
-                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
-              >
-                <span
-                  class="inline-flex items-center gap-1"
-                >
-                  <svg
-                    class="w-4 h-4"
-                  />
-                  2025-03-20
-                </span>
-                <span
-                  class="inline-flex items-center gap-1"
-                >
-                  <svg
-                    class="w-4 h-4"
-                  />
-                  Canal Building 2400
-                </span>
-              </div>
-              <h3
-                class="text-xl font-semibold mb-2"
-              >
-                Build Your Own Neural Network
-              </h3>
-              <p
-                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
-              >
-                Beginner workshop on implementing neural networks and a demo on how to build your own model.
-              </p>
-              <div
-                class="flex gap-2 flex-wrap"
-              >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  hands-on
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  technical
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
-          >
-            <div
-              class="aspect-video relative overflow-hidden"
-            >
-              <div
-                class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url("/assets/events/neural-networks.svg");"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
-              />
-            </div>
-            <div
-              class="p-6"
-            >
-              <div
-                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
-              >
-                <span
-                  class="inline-flex items-center gap-1"
-                >
-                  <svg
-                    class="w-4 h-4"
-                  />
-                  2025-03-15
-                </span>
-                <span
-                  class="inline-flex items-center gap-1"
-                >
-                  <svg
-                    class="w-4 h-4"
-                  />
-                  Richcraft Hall 1200
-                </span>
-              </div>
-              <h3
-                class="text-xl font-semibold mb-2"
-              >
-                CUHacking AI Workshop
-              </h3>
-              <p
-                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
-              >
-                Hackathon workshop on using Ollama and HuggingFace models in your projects, plus mentorship on site.
-              </p>
-              <div
-                class="flex gap-2 flex-wrap"
-              >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  beginner-friendly
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  hands-on
-                </span>
+                  Details
+                </button>
               </div>
             </div>
           </div>
@@ -1064,7 +884,7 @@ exports[`renders EventsPage correctly 1`] = `
                   <svg
                     class="w-4 h-4"
                   />
-                  2025-03-06
+                  2026-03-19
                 </span>
                 <span
                   class="inline-flex items-center gap-1"
@@ -1072,162 +892,1545 @@ exports[`renders EventsPage correctly 1`] = `
                   <svg
                     class="w-4 h-4"
                   />
-                  Tory Building 217
+                  Innovation Hub, Sprott School of Business
                 </span>
               </div>
               <h3
                 class="text-xl font-semibold mb-2"
               >
-                Introduction to Artificial Intelligence
+                Innovation Hub Winter Pitch Night
               </h3>
               <p
                 class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
               >
-                Learn the fundamentals of AI: its history, the main types of algorithms, and how to keep learning.
+                CAIS gave a guest presentation on artificial intelligence and the club's work at the Innovation Hub's Winter Pitch Night.
               </p>
               <div
-                class="flex gap-2 flex-wrap"
+                class="flex items-center justify-between gap-2"
               >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                <div
+                  class="flex gap-2 flex-wrap"
+                />
+                <button
+                  aria-label="Details: Innovation Hub Winter Pitch Night"
+                  class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-3"
+                  type="button"
                 >
-                  beginner-friendly
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  conceptual
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
-          >
-            <div
-              class="aspect-video relative overflow-hidden"
-            >
-              <div
-                class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url("/assets/events/ml-workshop.svg");"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
-              />
-            </div>
-            <div
-              class="p-6"
-            >
-              <div
-                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
-              >
-                <span
-                  class="inline-flex items-center gap-1"
-                >
-                  <svg
-                    class="w-4 h-4"
-                  />
-                  2025-01-22
-                </span>
-                <span
-                  class="inline-flex items-center gap-1"
-                >
-                  <svg
-                    class="w-4 h-4"
-                  />
-                  Paterson Hall 114
-                </span>
-              </div>
-              <h3
-                class="text-xl font-semibold mb-2"
-              >
-                Club Executive Meet and Greet
-              </h3>
-              <p
-                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
-              >
-                Meet the club executives and learn about the club's goals and our plans for the future
-              </p>
-              <div
-                class="flex gap-2 flex-wrap"
-              >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  social
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  planning
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="group relative bg-card/70 rounded-xl overflow-hidden border border-border/50 opacity-80"
-          >
-            <div
-              class="aspect-video relative overflow-hidden"
-            >
-              <div
-                class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url("/assets/events/ml-workshop.svg");"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
-              />
-            </div>
-            <div
-              class="p-6"
-            >
-              <div
-                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
-              >
-                <span
-                  class="inline-flex items-center gap-1"
-                >
-                  <svg
-                    class="w-4 h-4"
-                  />
-                  2025-01-15
-                </span>
-                <span
-                  class="inline-flex items-center gap-1"
-                >
-                  <svg
-                    class="w-4 h-4"
-                  />
-                  Teraanga Commons
-                </span>
-              </div>
-              <h3
-                class="text-xl font-semibold mb-2"
-              >
-                CUSA Club Expo
-              </h3>
-              <p
-                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
-              >
-                Presenting the club to new students and recruiting new members.
-              </p>
-              <div
-                class="flex gap-2 flex-wrap"
-              >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  social
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
-                >
-                  recruitment
-                </span>
+                  Details
+                </button>
               </div>
             </div>
           </div>
         </div>
+        <section
+          aria-labelledby="archive-heading"
+          class="mt-20"
+        >
+          <h3
+            class="text-2xl font-bold mb-2 text-glow"
+            id="archive-heading"
+          >
+            Event Archive
+          </h3>
+          <p
+            class="text-muted-foreground mb-6"
+          >
+            Everything else we have run, by academic year.
+          </p>
+          <div
+            class="space-y-3"
+          >
+            <details
+              class="group rounded-xl border border-border bg-card/60"
+              open=""
+            >
+              <summary
+                aria-label="2025–26, 8 events"
+                class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-5 py-3 font-semibold focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden"
+              >
+                <span>
+                  2025–26 
+                  <span
+                    class="ml-1 font-normal text-muted-foreground"
+                  >
+                    8 events
+                  </span>
+                </span>
+                <svg
+                  class="h-4 w-4 shrink-0 text-primary transition-transform group-open:rotate-180"
+                />
+              </summary>
+              <ul
+                class="divide-y divide-border border-t border-border"
+              >
+                <li>
+                  <button
+                    aria-label="Feb 27, 2026, Project Showcase, Social"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2026-02-27"
+                    >
+                      Feb 27, 2026
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Project Showcase
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Social
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Feb 26, 2026, Training an AI Model!, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2026-02-26"
+                    >
+                      Feb 26, 2026
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Training an AI Model!
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Feb 24, 2026, Building an AI Chatbot!, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2026-02-24"
+                    >
+                      Feb 24, 2026
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Building an AI Chatbot!
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Jan 29, 2026, Workshop #3 – What Are Large Language Models?, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2026-01-29"
+                    >
+                      Jan 29, 2026
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Workshop #3 – What Are Large Language Models?
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Jan 27, 2026, Workshop #2 – Vibe Coding vs Prompt Engineering, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2026-01-27"
+                    >
+                      Jan 27, 2026
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Workshop #2 – Vibe Coding vs Prompt Engineering
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Jan 23, 2026, Workshop #1 – Introduction to Artificial Intelligence, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2026-01-23"
+                    >
+                      Jan 23, 2026
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Workshop #1 – Introduction to Artificial Intelligence
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Jan 19, 2026, CUSA Winter Club Expo, Social"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2026-01-19"
+                    >
+                      Jan 19, 2026
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      CUSA Winter Club Expo
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Social
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Nov 28, 2025, CAIS Icebreaker, Social"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2025-11-28"
+                    >
+                      Nov 28, 2025
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      CAIS Icebreaker
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Social
+                    </span>
+                  </button>
+                </li>
+              </ul>
+            </details>
+            <details
+              class="group rounded-xl border border-border bg-card/60"
+            >
+              <summary
+                aria-label="2024–25, 6 events"
+                class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-5 py-3 font-semibold focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden"
+              >
+                <span>
+                  2024–25 
+                  <span
+                    class="ml-1 font-normal text-muted-foreground"
+                  >
+                    6 events
+                  </span>
+                </span>
+                <svg
+                  class="h-4 w-4 shrink-0 text-primary transition-transform group-open:rotate-180"
+                />
+              </summary>
+              <ul
+                class="divide-y divide-border border-t border-border"
+              >
+                <li>
+                  <button
+                    aria-label="Apr 2, 2025, Using AI APIs, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2025-04-02"
+                    >
+                      Apr 2, 2025
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Using AI APIs
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Mar 20, 2025, Build Your Own Neural Network, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2025-03-20"
+                    >
+                      Mar 20, 2025
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Build Your Own Neural Network
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Mar 15, 2025, CUHacking AI Workshop, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2025-03-15"
+                    >
+                      Mar 15, 2025
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      CUHacking AI Workshop
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Mar 6, 2025, Introduction to Artificial Intelligence, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2025-03-06"
+                    >
+                      Mar 6, 2025
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Introduction to Artificial Intelligence
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Jan 22, 2025, Club Executive Meet and Greet, Social"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2025-01-22"
+                    >
+                      Jan 22, 2025
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Club Executive Meet and Greet
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Social
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Jan 15, 2025, CUSA Club Expo, Social"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2025-01-15"
+                    >
+                      Jan 15, 2025
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      CUSA Club Expo
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Social
+                    </span>
+                  </button>
+                </li>
+              </ul>
+            </details>
+            <details
+              class="group rounded-xl border border-border bg-card/60"
+            >
+              <summary
+                aria-label="2023–24, 1 event"
+                class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-5 py-3 font-semibold focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden"
+              >
+                <span>
+                  2023–24 
+                  <span
+                    class="ml-1 font-normal text-muted-foreground"
+                  >
+                    1 event
+                  </span>
+                </span>
+                <svg
+                  class="h-4 w-4 shrink-0 text-primary transition-transform group-open:rotate-180"
+                />
+              </summary>
+              <ul
+                class="divide-y divide-border border-t border-border"
+              >
+                <li>
+                  <button
+                    aria-label="Nov 6, 2023, Metrics 101, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2023-11-06"
+                    >
+                      Nov 6, 2023
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Metrics 101
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+              </ul>
+            </details>
+            <details
+              class="group rounded-xl border border-border bg-card/60"
+            >
+              <summary
+                aria-label="2022–23, 3 events"
+                class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-5 py-3 font-semibold focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden"
+              >
+                <span>
+                  2022–23 
+                  <span
+                    class="ml-1 font-normal text-muted-foreground"
+                  >
+                    3 events
+                  </span>
+                </span>
+                <svg
+                  class="h-4 w-4 shrink-0 text-primary transition-transform group-open:rotate-180"
+                />
+              </summary>
+              <ul
+                class="divide-y divide-border border-t border-border"
+              >
+                <li>
+                  <button
+                    aria-label="Mar 18, 2023, CAIS Hackathon 2023, Competition"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2023-03-18"
+                    >
+                      Mar 18, 2023
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      CAIS Hackathon 2023
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Competition
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Feb 9, 2023, Attention Mechanism in Deep Learning, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2023-02-09"
+                    >
+                      Feb 9, 2023
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Attention Mechanism in Deep Learning
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Jan 19, 2023, Introduction to Natural Language Processing, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2023-01-19"
+                    >
+                      Jan 19, 2023
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Introduction to Natural Language Processing
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+              </ul>
+            </details>
+            <details
+              class="group rounded-xl border border-border bg-card/60"
+            >
+              <summary
+                aria-label="2021–22, 17 events"
+                class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-5 py-3 font-semibold focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden"
+              >
+                <span>
+                  2021–22 
+                  <span
+                    class="ml-1 font-normal text-muted-foreground"
+                  >
+                    17 events
+                  </span>
+                </span>
+                <svg
+                  class="h-4 w-4 shrink-0 text-primary transition-transform group-open:rotate-180"
+                />
+              </summary>
+              <ul
+                class="divide-y divide-border border-t border-border"
+              >
+                <li>
+                  <button
+                    aria-label="Mar 2, 2022, Intro to Convolutional Neural Network (CNN), Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2022-03-02"
+                    >
+                      Mar 2, 2022
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Intro to Convolutional Neural Network (CNN)
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Feb 16, 2022, AI Coffee Hour 2: Thriving in Graduate School, Talk"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2022-02-16"
+                    >
+                      Feb 16, 2022
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      AI Coffee Hour 2: Thriving in Graduate School
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Talk
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Jan 26, 2022, Neural Networks Project 1: Build Your First Neural Network, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2022-01-26"
+                    >
+                      Jan 26, 2022
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Neural Networks Project 1: Build Your First Neural Network
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Jan 19, 2022, Intro to Neural Networks, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2022-01-19"
+                    >
+                      Jan 19, 2022
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Intro to Neural Networks
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Jan 14, 2022, AI Coffee Hour 1: Meet & Greet, Social"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2022-01-14"
+                    >
+                      Jan 14, 2022
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      AI Coffee Hour 1: Meet & Greet
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Social
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Jan 1, 2022, CAIS X 2021–22, Competition"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2022-01-01"
+                    >
+                      Jan 1, 2022
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      CAIS X 2021–22
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Competition
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Dec 9, 2021, AI Coffee Hour 5: Positive AI Application, Talk"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2021-12-09"
+                    >
+                      Dec 9, 2021
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      AI Coffee Hour 5: Positive AI Application
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Talk
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Nov 24, 2021, Feature Selection & Transformation, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2021-11-24"
+                    >
+                      Nov 24, 2021
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Feature Selection & Transformation
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Nov 18, 2021, AI Coffee Hour 4: Spooky AI Applications, Social"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2021-11-18"
+                    >
+                      Nov 18, 2021
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      AI Coffee Hour 4: Spooky AI Applications
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Social
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Nov 3, 2021, Linear Classification, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2021-11-03"
+                    >
+                      Nov 3, 2021
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Linear Classification
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Oct 22, 2021, Academic Trivia Night, Social"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2021-10-22"
+                    >
+                      Oct 22, 2021
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Academic Trivia Night
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Social
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Oct 13, 2021, Linear Regression, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2021-10-13"
+                    >
+                      Oct 13, 2021
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Linear Regression
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Oct 7, 2021, AI Coffee Hour 2: Reinforcement Learning, Social"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2021-10-07"
+                    >
+                      Oct 7, 2021
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      AI Coffee Hour 2: Reinforcement Learning
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Social
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Sep 20, 2021, Introduction to Scientific Python, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2021-09-20"
+                    >
+                      Sep 20, 2021
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Introduction to Scientific Python
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Sep 15, 2021, Game Night, Social"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2021-09-15"
+                    >
+                      Sep 15, 2021
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Game Night
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Social
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Sep 9, 2021, AI Coffee Hour 1: Meet & Greet, Social"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2021-09-09"
+                    >
+                      Sep 9, 2021
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      AI Coffee Hour 1: Meet & Greet
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Social
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Sep 7, 2021, Expo Carleton 2021, Social"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2021-09-07"
+                    >
+                      Sep 7, 2021
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Expo Carleton 2021
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Social
+                    </span>
+                  </button>
+                </li>
+              </ul>
+            </details>
+            <details
+              class="group rounded-xl border border-border bg-card/60"
+            >
+              <summary
+                aria-label="2020–21, 11 events"
+                class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-5 py-3 font-semibold focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden"
+              >
+                <span>
+                  2020–21 
+                  <span
+                    class="ml-1 font-normal text-muted-foreground"
+                  >
+                    11 events
+                  </span>
+                </span>
+                <svg
+                  class="h-4 w-4 shrink-0 text-primary transition-transform group-open:rotate-180"
+                />
+              </summary>
+              <ul
+                class="divide-y divide-border border-t border-border"
+              >
+                <li>
+                  <button
+                    aria-label="Mar 16, 2021, CPA Ontario × CAIS: Power BI Workshop, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2021-03-16"
+                    >
+                      Mar 16, 2021
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      CPA Ontario × CAIS: Power BI Workshop
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Jan 23, 2021, Dimensionality Reduction: PCA vs. LDA, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2021-01-23"
+                    >
+                      Jan 23, 2021
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Dimensionality Reduction: PCA vs. LDA
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Nov 18, 2020, Clustering: K-means vs. Gaussian Mixture Models, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2020-11-18"
+                    >
+                      Nov 18, 2020
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Clustering: K-means vs. Gaussian Mixture Models
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Oct 29, 2020, Introduction to Scientific Python, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2020-10-29"
+                    >
+                      Oct 29, 2020
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Introduction to Scientific Python
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Oct 25, 2020, Feature Engineering Techniques, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2020-10-25"
+                    >
+                      Oct 25, 2020
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Feature Engineering Techniques
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Oct 11, 2020, Maximum Likelihood Estimation Lecture, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2020-10-11"
+                    >
+                      Oct 11, 2020
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Maximum Likelihood Estimation Lecture
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Oct 4, 2020, First Kaggle Competition Submission, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2020-10-04"
+                    >
+                      Oct 4, 2020
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      First Kaggle Competition Submission
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Oct 4, 2020, CAIS X – Fall 2020, Competition"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2020-10-04"
+                    >
+                      Oct 4, 2020
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      CAIS X – Fall 2020
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Competition
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Sep 27, 2020, Introduction to Python and Data Science, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2020-09-27"
+                    >
+                      Sep 27, 2020
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Introduction to Python and Data Science
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Sep 20, 2020, Welcome to CAIS! Fall Meet & Greet, Social"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2020-09-20"
+                    >
+                      Sep 20, 2020
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Welcome to CAIS! Fall Meet & Greet
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Social
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Sep 8, 2020, Expo Carleton 2020, Social"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2020-09-08"
+                    >
+                      Sep 8, 2020
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Expo Carleton 2020
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Social
+                    </span>
+                  </button>
+                </li>
+              </ul>
+            </details>
+            <details
+              class="group rounded-xl border border-border bg-card/60"
+            >
+              <summary
+                aria-label="2019–20, 6 events"
+                class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-5 py-3 font-semibold focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden"
+              >
+                <span>
+                  2019–20 
+                  <span
+                    class="ml-1 font-normal text-muted-foreground"
+                  >
+                    6 events
+                  </span>
+                </span>
+                <svg
+                  class="h-4 w-4 shrink-0 text-primary transition-transform group-open:rotate-180"
+                />
+              </summary>
+              <ul
+                class="divide-y divide-border border-t border-border"
+              >
+                <li>
+                  <button
+                    aria-label="Feb 25, 2020, Ethics of AI with Dr. Jim Davies, Talk"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2020-02-25"
+                    >
+                      Feb 25, 2020
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Ethics of AI with Dr. Jim Davies
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Talk
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Feb 5, 2020, Let's Talk: Computer Vision!, Talk"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2020-02-05"
+                    >
+                      Feb 5, 2020
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Let's Talk: Computer Vision!
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Talk
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Jan 17, 2020, Winter Meet & Greet, Social"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2020-01-17"
+                    >
+                      Jan 17, 2020
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Winter Meet & Greet
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Social
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Nov 21, 2019, Info Table at Tory Junction, Social"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2019-11-21"
+                    >
+                      Nov 21, 2019
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Info Table at Tory Junction
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Social
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Nov 18, 2019, Visual Mapping of Data using Python, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2019-11-18"
+                    >
+                      Nov 18, 2019
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Visual Mapping of Data using Python
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Nov 7, 2019, Tech Talk: Navigating the Data Science Career Path, Talk"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2019-11-07"
+                    >
+                      Nov 7, 2019
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Tech Talk: Navigating the Data Science Career Path
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Talk
+                    </span>
+                  </button>
+                </li>
+              </ul>
+            </details>
+            <details
+              class="group rounded-xl border border-border bg-card/60"
+            >
+              <summary
+                aria-label="2018–19, 2 events"
+                class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-5 py-3 font-semibold focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden"
+              >
+                <span>
+                  2018–19 
+                  <span
+                    class="ml-1 font-normal text-muted-foreground"
+                  >
+                    2 events
+                  </span>
+                </span>
+                <svg
+                  class="h-4 w-4 shrink-0 text-primary transition-transform group-open:rotate-180"
+                />
+              </summary>
+              <ul
+                class="divide-y divide-border border-t border-border"
+              >
+                <li>
+                  <button
+                    aria-label="Jul 16, 2019, Intro to Data Science Workshop, Workshop"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2019-07-16"
+                    >
+                      Jul 16, 2019
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      Intro to Data Science Workshop
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Workshop
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label="Mar 6, 2019, CAIS Inauguration Meetup, Social"
+                    class="flex w-full flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-3 text-left transition-colors hover:bg-brand/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="w-28 shrink-0 text-sm text-muted-foreground"
+                      datetime="2019-03-06"
+                    >
+                      Mar 6, 2019
+                    </time>
+                    <span
+                      class="min-w-0 flex-1 font-medium"
+                    >
+                      CAIS Inauguration Meetup
+                    </span>
+                    <span
+                      class="text-xs font-medium uppercase tracking-wide text-primary"
+                    >
+                      Social
+                    </span>
+                  </button>
+                </li>
+              </ul>
+            </details>
+          </div>
+        </section>
       </div>
     </section>
     <section
@@ -1269,7 +2472,7 @@ exports[`renders EventsPage correctly 1`] = `
               <h3
                 aria-live="polite"
                 class="whitespace-nowrap text-lg font-semibold sm:text-2xl"
-                id="_r_3_"
+                id="_r_6_"
               >
                 September 2026
               </h3>
@@ -1283,206 +2486,196 @@ exports[`renders EventsPage correctly 1`] = `
             </div>
             <nav
               aria-label="Months with events"
-              class="mb-5 space-y-2"
+              class="mb-5 space-y-3"
             >
               <div
-                class="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3"
+                class="flex flex-wrap gap-2"
               >
-                <span
-                  class="w-12 shrink-0 text-sm font-semibold text-muted-foreground"
+                <button
+                  aria-label="2019, 5 events"
+                  class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-full px-4"
+                  type="button"
+                >
+                  2019
+                </button>
+                <button
+                  aria-label="2020, 12 events"
+                  class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-full px-4"
+                  type="button"
+                >
+                  2020
+                </button>
+                <button
+                  aria-label="2021, 13 events"
+                  class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-full px-4"
+                  type="button"
+                >
+                  2021
+                </button>
+                <button
+                  aria-label="2022, 6 events"
+                  class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-full px-4"
+                  type="button"
+                >
+                  2022
+                </button>
+                <button
+                  aria-label="2023, 4 events"
+                  class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-full px-4"
+                  type="button"
+                >
+                  2023
+                </button>
+                <button
+                  aria-label="2025, 7 events"
+                  class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-full px-4"
+                  type="button"
                 >
                   2025
-                </span>
-                <div
-                  class="flex flex-wrap gap-2"
-                >
-                  <button
-                    class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 gap-1.5 rounded-full px-3"
-                    type="button"
-                  >
-                    Jan
-                    <span
-                      class="sr-only"
-                    >
-                       2025,
-                    </span>
-                    <span
-                      class="rounded-full px-1.5 text-xs bg-current/20"
-                    >
-                      2
-                    </span>
-                    <span
-                      class="sr-only"
-                    >
-                       events
-                    </span>
-                  </button>
-                  <button
-                    class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 gap-1.5 rounded-full px-3"
-                    type="button"
-                  >
-                    Mar
-                    <span
-                      class="sr-only"
-                    >
-                       2025,
-                    </span>
-                    <span
-                      class="rounded-full px-1.5 text-xs bg-current/20"
-                    >
-                      3
-                    </span>
-                    <span
-                      class="sr-only"
-                    >
-                       events
-                    </span>
-                  </button>
-                  <button
-                    class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 gap-1.5 rounded-full px-3"
-                    type="button"
-                  >
-                    Apr
-                    <span
-                      class="sr-only"
-                    >
-                       2025,
-                    </span>
-                    <span
-                      class="rounded-full px-1.5 text-xs bg-current/20"
-                    >
-                      1
-                    </span>
-                    <span
-                      class="sr-only"
-                    >
-                       event
-                    </span>
-                  </button>
-                  <button
-                    class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 gap-1.5 rounded-full px-3"
-                    type="button"
-                  >
-                    Nov
-                    <span
-                      class="sr-only"
-                    >
-                       2025,
-                    </span>
-                    <span
-                      class="rounded-full px-1.5 text-xs bg-current/20"
-                    >
-                      1
-                    </span>
-                    <span
-                      class="sr-only"
-                    >
-                       event
-                    </span>
-                  </button>
-                </div>
-              </div>
-              <div
-                class="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3"
-              >
-                <span
-                  class="w-12 shrink-0 text-sm font-semibold text-muted-foreground"
+                </button>
+                <button
+                  aria-current="true"
+                  aria-label="2026, 16 events"
+                  class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-brand text-brand-foreground hover:bg-brand/90 h-11 rounded-full px-4"
+                  type="button"
                 >
                   2026
-                </span>
-                <div
-                  class="flex flex-wrap gap-2"
+                </button>
+              </div>
+              <div
+                class="flex flex-wrap gap-2"
+              >
+                <button
+                  class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 gap-1.5 rounded-full px-3"
+                  type="button"
                 >
-                  <button
-                    class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 gap-1.5 rounded-full px-3"
-                    type="button"
+                  Jan
+                  <span
+                    class="sr-only"
                   >
-                    Jan
-                    <span
-                      class="sr-only"
-                    >
-                       2026,
-                    </span>
-                    <span
-                      class="rounded-full px-1.5 text-xs bg-current/20"
-                    >
-                      3
-                    </span>
-                    <span
-                      class="sr-only"
-                    >
-                       events
-                    </span>
-                  </button>
-                  <button
-                    class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 gap-1.5 rounded-full px-3"
-                    type="button"
+                     2026,
+                  </span>
+                  <span
+                    class="rounded-full px-1.5 text-xs bg-current/20"
                   >
-                    Feb
-                    <span
-                      class="sr-only"
-                    >
-                       2026,
-                    </span>
-                    <span
-                      class="rounded-full px-1.5 text-xs bg-current/20"
-                    >
-                      2
-                    </span>
-                    <span
-                      class="sr-only"
-                    >
-                       events
-                    </span>
-                  </button>
-                  <button
-                    class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 gap-1.5 rounded-full px-3"
-                    type="button"
+                    4
+                  </span>
+                  <span
+                    class="sr-only"
                   >
-                    Jul
-                    <span
-                      class="sr-only"
-                    >
-                       2026,
-                    </span>
-                    <span
-                      class="rounded-full px-1.5 text-xs bg-current/20"
-                    >
-                      1
-                    </span>
-                    <span
-                      class="sr-only"
-                    >
-                       event
-                    </span>
-                  </button>
-                  <button
-                    aria-current="true"
-                    class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-brand text-brand-foreground hover:bg-brand/90 h-11 gap-1.5 rounded-full px-3"
-                    type="button"
+                     events
+                  </span>
+                </button>
+                <button
+                  class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 gap-1.5 rounded-full px-3"
+                  type="button"
+                >
+                  Feb
+                  <span
+                    class="sr-only"
                   >
-                    Sep
-                    <span
-                      class="sr-only"
-                    >
-                       2026,
-                    </span>
-                    <span
-                      class="rounded-full px-1.5 text-xs bg-black/30"
-                    >
-                      4
-                    </span>
-                    <span
-                      class="sr-only"
-                    >
-                       events
-                    </span>
-                  </button>
-                </div>
+                     2026,
+                  </span>
+                  <span
+                    class="rounded-full px-1.5 text-xs bg-current/20"
+                  >
+                    3
+                  </span>
+                  <span
+                    class="sr-only"
+                  >
+                     events
+                  </span>
+                </button>
+                <button
+                  class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 gap-1.5 rounded-full px-3"
+                  type="button"
+                >
+                  Mar
+                  <span
+                    class="sr-only"
+                  >
+                     2026,
+                  </span>
+                  <span
+                    class="rounded-full px-1.5 text-xs bg-current/20"
+                  >
+                    2
+                  </span>
+                  <span
+                    class="sr-only"
+                  >
+                     events
+                  </span>
+                </button>
+                <button
+                  class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 gap-1.5 rounded-full px-3"
+                  type="button"
+                >
+                  Jul
+                  <span
+                    class="sr-only"
+                  >
+                     2026,
+                  </span>
+                  <span
+                    class="rounded-full px-1.5 text-xs bg-current/20"
+                  >
+                    1
+                  </span>
+                  <span
+                    class="sr-only"
+                  >
+                     event
+                  </span>
+                </button>
+                <button
+                  aria-current="true"
+                  class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-brand text-brand-foreground hover:bg-brand/90 h-11 gap-1.5 rounded-full px-3"
+                  type="button"
+                >
+                  Sep
+                  <span
+                    class="sr-only"
+                  >
+                     2026,
+                  </span>
+                  <span
+                    class="rounded-full px-1.5 text-xs bg-black/30"
+                  >
+                    5
+                  </span>
+                  <span
+                    class="sr-only"
+                  >
+                     events
+                  </span>
+                </button>
+                <button
+                  class="inline-flex min-h-11 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 gap-1.5 rounded-full px-3"
+                  type="button"
+                >
+                  Oct
+                  <span
+                    class="sr-only"
+                  >
+                     2026,
+                  </span>
+                  <span
+                    class="rounded-full px-1.5 text-xs bg-current/20"
+                  >
+                    1
+                  </span>
+                  <span
+                    class="sr-only"
+                  >
+                     event
+                  </span>
+                </button>
               </div>
             </nav>
             <table
-              aria-labelledby="_r_3_"
+              aria-labelledby="_r_6_"
               class="w-full table-fixed border-collapse"
             >
               <thead>
@@ -1911,13 +3104,33 @@ exports[`renders EventsPage correctly 1`] = `
                     </span>
                   </td>
                   <td
-                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5"
+                    class="h-14 border border-border p-1 align-top md:h-24 md:p-1.5 bg-brand/10"
                   >
                     <span
-                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm text-muted-foreground"
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full text-sm font-semibold text-foreground"
                     >
                       26
                     </span>
+                    <ul
+                      class="mt-0.5 space-y-0.5 md:mt-1 md:space-y-1"
+                    >
+                      <li>
+                        <button
+                          class="flex h-6 w-full items-center justify-center rounded focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring md:block md:h-auto md:px-1.5 md:py-0.5 md:text-left md:text-xs md:leading-snug md:hover:ring-1 md:hover:ring-primary/60 md:bg-brand/20 md:font-medium md:text-primary"
+                          type="button"
+                        >
+                          <span
+                            aria-hidden="true"
+                            class="block h-2 w-2 rounded-full md:hidden bg-primary"
+                          />
+                          <span
+                            class="sr-only md:not-sr-only md:line-clamp-2"
+                          >
+                            Machine Learning Workshop at Hack the Hill III
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
                   </td>
                 </tr>
                 <tr>
@@ -2091,7 +3304,7 @@ exports[`renders EventsPage correctly 1`] = `
                           <svg
                             class="h-4 w-4"
                           />
-                          Herzberg Laboratories 4155
+                          Herzberg 4155
                         </span>
                       </span>
                     </span>
@@ -2142,7 +3355,7 @@ exports[`renders EventsPage correctly 1`] = `
                           <svg
                             class="h-4 w-4"
                           />
-                          EDC, Mackenzie Building
+                          EDC
                         </span>
                       </span>
                     </span>
@@ -2194,6 +3407,57 @@ exports[`renders EventsPage correctly 1`] = `
                             class="h-4 w-4"
                           />
                           Southam Hall 402
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="flex w-full gap-4 rounded-lg border border-border bg-background/60 p-4 text-left transition-colors hover:border-primary/50 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring"
+                    type="button"
+                  >
+                    <time
+                      class="flex w-12 shrink-0 flex-col items-center"
+                      datetime="2026-09-26"
+                    >
+                      <span
+                        class="text-xs font-medium uppercase text-primary"
+                      >
+                        Sat
+                      </span>
+                      <span
+                        class="text-2xl font-bold leading-tight"
+                      >
+                        26
+                      </span>
+                    </time>
+                    <span
+                      class="block min-w-0"
+                    >
+                      <span
+                        class="block font-semibold"
+                      >
+                        Machine Learning Workshop at Hack the Hill III
+                      </span>
+                      <span
+                        class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground"
+                      >
+                        <span
+                          class="inline-flex items-center gap-1"
+                        >
+                          <svg
+                            class="h-4 w-4"
+                          />
+                          3:00 PM - 4:00 PM
+                        </span>
+                        <span
+                          class="inline-flex items-center gap-1"
+                        >
+                          <svg
+                            class="h-4 w-4"
+                          />
+                          Room C040, uOttawa (Hack the Hill III)
                         </span>
                       </span>
                     </span>
