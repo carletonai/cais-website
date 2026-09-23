@@ -3,7 +3,7 @@
 - **Framework**: Vite + React + TypeScript
 - **Styling**: TailwindCSS
 - **Package Manager**: pnpm
-- **Deployment**: GitHub Pages
+- **Deployment**: Vercel (every push to `master` deploys)
 - **CI/CD**: GitHub Actions
 
 ## Prerequisites
@@ -131,3 +131,7 @@ src/
 - **Current Team (/team)**: This year's executive team
 - **Past Teams (/team/past)**: Previous executive teams, year by year
 - **Contact (/contact)**: Get in touch with CAIS
+
+### Brand assets
+
+The official CAIS logo files live in `public/brand/` (and are served at `carletonai.com/brand/`): `cais-logo.svg` on black, `cais-logo-transparent.svg` for dark backgrounds, and `cais-logo.jpg`. The site's `logo.svg`, `favicon.svg`, `apple-touch-icon.png` and `og-image.png` are all derived from them.

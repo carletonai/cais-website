@@ -119,36 +119,8 @@
         {
           "image": "/stockIcon.jpg",
           "name": "Gordon Tang",
-          "title": "Co-President & VP Finance",
+          "title": "Co-President",
           "linkedinURL": "https://www.linkedin.com/in/gordon-tang-2023/",
-          "linkedin": "/linkedin.svg"
-        },
-        {
-          "image": "/stockIcon.jpg",
-          "name": "Kanishk Patoliya",
-          "title": "VP External and Events",
-          "linkedinURL": "https://www.linkedin.com/in/kanishk-patoliya/",
-          "linkedin": "/linkedin.svg"
-        },
-        {
-          "image": "/stockIcon.jpg",
-          "name": "Nadia Uddin",
-          "title": "Events Coordinator",
-          "linkedinURL": "https://www.linkedin.com/in/nadiauddin86/",
-          "linkedin": "/linkedin.svg"
-        },
-        {
-          "image": "/stockIcon.jpg",
-          "name": "Farzad Roozitalab",
-          "title": "Workshop Lead",
-          "linkedinURL": "https://www.linkedin.com/in/farzad-roozitalab/",
-          "linkedin": "/linkedin.svg"
-        },
-        {
-          "image": "/stockIcon.jpg",
-          "name": "David Hobson",
-          "title": "Workshop Lead",
-          "linkedinURL": "https://www.linkedin.com/in/david-hobson-2728661b0/",
           "linkedin": "/linkedin.svg"
         },
         {
@@ -167,13 +139,6 @@
         },
         {
           "image": "/stockIcon.jpg",
-          "name": "Rabten Tsering",
-          "title": "Webmaster",
-          "linkedinURL": "https://www.linkedin.com/in/rabten-tsering/",
-          "linkedin": "/linkedin.svg"
-        },
-        {
-          "image": "/stockIcon.jpg",
           "name": "Jahnelle Woldegiorgis",
           "title": "Social Media Coordinator",
           "linkedinURL": "https://www.linkedin.com/in/jahnelle-woldegiorgis/",
@@ -181,16 +146,16 @@
         },
         {
           "image": "/stockIcon.jpg",
-          "name": "Itoro Umanah",
-          "title": "Social Media Coordinator",
-          "linkedinURL": "https://www.linkedin.com/in/itoro-umanah-a85532210/",
+          "name": "Nadia Uddin",
+          "title": "Event Coordinator",
+          "linkedinURL": "https://www.linkedin.com/in/nadiauddin86/",
           "linkedin": "/linkedin.svg"
         },
         {
           "image": "/stockIcon.jpg",
-          "name": "Renee Tejani",
+          "name": "Itoro Umanah",
           "title": "Social Media Coordinator",
-          "linkedinURL": "https://www.linkedin.com/in/reneetejani/",
+          "linkedinURL": "https://www.linkedin.com/in/itoro-umanah-a85532210/",
           "linkedin": "/linkedin.svg"
         }
       ]
@@ -200,6 +165,13 @@
       "members": [
         {
           "image": "/stockIcon.jpg",
+          "name": "Gordon Tang",
+          "title": "Co-President",
+          "linkedinURL": "https://www.linkedin.com/in/gordon-tang-2023/",
+          "linkedin": "/linkedin.svg"
+        },
+        {
+          "image": "/stockIcon.jpg",
           "name": "Enos Odigie",
           "title": "Co-President",
           "linkedinURL": "https://www.linkedin.com/in/enosodigie/",
@@ -207,23 +179,9 @@
         },
         {
           "image": "/stockIcon.jpg",
-          "name": "Gordon Tang",
-          "title": "Co-President & VP Finance",
-          "linkedinURL": "https://www.linkedin.com/in/gordon-tang-2023/",
-          "linkedin": "/linkedin.svg"
-        },
-        {
-          "image": "/stockIcon.jpg",
-          "name": "Kanishk Patoliya",
-          "title": "VP External and Events",
-          "linkedinURL": "https://www.linkedin.com/in/kanishk-patoliya/",
-          "linkedin": "/linkedin.svg"
-        },
-        {
-          "image": "/stockIcon.jpg",
-          "name": "Nadia Uddin",
-          "title": "Events Coordinator",
-          "linkedinURL": "https://www.linkedin.com/in/nadiauddin86/",
+          "name": "Khun Thu Rein",
+          "title": "Webmaster",
+          "linkedinURL": "https://www.linkedin.com/in/khunthurein77ca/",
           "linkedin": "/linkedin.svg"
         },
         {
@@ -242,9 +200,9 @@
         },
         {
           "image": "/stockIcon.jpg",
-          "name": "Khun Thu Rein",
-          "title": "Webmaster",
-          "linkedinURL": "https://www.linkedin.com/in/khunthurein77ca/",
+          "name": "Jahnelle Woldegiorgis",
+          "title": "Social Media Coordinator",
+          "linkedinURL": "https://www.linkedin.com/in/jahnelle-woldegiorgis/",
           "linkedin": "/linkedin.svg"
         },
         {
@@ -256,9 +214,9 @@
         },
         {
           "image": "/stockIcon.jpg",
-          "name": "Jahnelle Woldegiorgis",
-          "title": "Social Media Coordinator",
-          "linkedinURL": "https://www.linkedin.com/in/jahnelle-woldegiorgis/",
+          "name": "Nadia Uddin",
+          "title": "Event Coordinator",
+          "linkedinURL": "https://www.linkedin.com/in/nadiauddin86/",
           "linkedin": "/linkedin.svg"
         },
         {
@@ -266,13 +224,6 @@
           "name": "Itoro Umanah",
           "title": "Social Media Coordinator",
           "linkedinURL": "https://www.linkedin.com/in/itoro-umanah-a85532210/",
-          "linkedin": "/linkedin.svg"
-        },
-        {
-          "image": "/stockIcon.jpg",
-          "name": "Renee Tejani",
-          "title": "Social Media Coordinator",
-          "linkedinURL": "https://www.linkedin.com/in/reneetejani/",
           "linkedin": "/linkedin.svg"
         }
       ]
@@ -283,14 +234,14 @@
         {
           "image": "/stockIcon.jpg",
           "name": "Abdullah Al-Chihabi",
-          "title": "Co-President",
+          "title": "Co-President, Tech Team",
           "linkedinURL": "https://www.linkedin.com/in/abdullahalchihabi/",
           "linkedin": "/linkedin.svg"
         },
         {
           "image": "/stockIcon.jpg",
           "name": "Gordon Tang",
-          "title": "Co-President",
+          "title": "Co-President, Admin Team",
           "linkedinURL": "https://www.linkedin.com/in/gordon-tang-2023/",
           "linkedin": "/linkedin.svg"
         },
@@ -310,9 +261,16 @@
         },
         {
           "image": "/stockIcon.jpg",
-          "name": "Japinder Sandhu",
-          "title": "VP Sponsorship",
-          "linkedinURL": "https://www.linkedin.com/in/japinder-sandhu/",
+          "name": "Ujan Sen",
+          "title": "VP External",
+          "linkedinURL": "https://www.linkedin.com/in/ujansen/",
+          "linkedin": "/linkedin.svg"
+        },
+        {
+          "image": "/stockIcon.jpg",
+          "name": "Enos Odigie",
+          "title": "VP Engagement & Webmaster",
+          "linkedinURL": "https://www.linkedin.com/in/enosodigie/",
           "linkedin": "/linkedin.svg"
         },
         {
@@ -324,20 +282,6 @@
         },
         {
           "image": "/stockIcon.jpg",
-          "name": "Ujan Sen",
-          "title": "VP External",
-          "linkedinURL": "https://www.linkedin.com/in/ujansen/",
-          "linkedin": "/linkedin.svg"
-        },
-        {
-          "image": "/stockIcon.jpg",
-          "name": "Enos Odigie",
-          "title": "VP Engagement and Webmaster",
-          "linkedinURL": "https://www.linkedin.com/in/enosodigie/",
-          "linkedin": "/linkedin.svg"
-        },
-        {
-          "image": "/stockIcon.jpg",
           "name": "Kanishk Patoliya",
           "title": "VP Communications and Engagement",
           "linkedinURL": "https://www.linkedin.com/in/kanishk-patoliya/",
@@ -345,9 +289,9 @@
         },
         {
           "image": "/stockIcon.jpg",
-          "name": "Anoushka Singhal",
-          "title": "Social Media Coordinator",
-          "linkedinURL": "https://www.linkedin.com/in/anoushkasinghal/",
+          "name": "Japinder Sandhu",
+          "title": "VP Sponsorship",
+          "linkedinURL": "https://www.linkedin.com/in/japinder-sandhu/",
           "linkedin": "/linkedin.svg"
         },
         {
@@ -366,13 +310,6 @@
         },
         {
           "image": "/stockIcon.jpg",
-          "name": "Anh Khoa Tran",
-          "title": "Workshop Lead",
-          "linkedinURL": "https://www.linkedin.com/in/anh-khoa-tran/",
-          "linkedin": "/linkedin.svg"
-        },
-        {
-          "image": "/stockIcon.jpg",
           "name": "Victoria Ajila",
           "title": "Workshop Lead",
           "linkedinURL": "https://www.linkedin.com/in/victoria-ajila-63616914b/",
@@ -380,9 +317,9 @@
         },
         {
           "image": "/stockIcon.jpg",
-          "name": "Arushan Sinnadurai",
+          "name": "Anh Khoa Tran",
           "title": "Workshop Lead",
-          "linkedinURL": "https://www.linkedin.com/in/arushan-sinnadurai/",
+          "linkedinURL": "https://www.linkedin.com/in/anh-khoa-tran/",
           "linkedin": "/linkedin.svg"
         },
         {
@@ -394,9 +331,142 @@
         },
         {
           "image": "/stockIcon.jpg",
-          "name": "Ilan Gofman",
+          "name": "Arushan Sinnadurai",
           "title": "Workshop Lead",
-          "linkedinURL": "https://www.linkedin.com/in/ilan-gofman/",
+          "linkedinURL": "https://www.linkedin.com/in/arushan-sinnadurai/",
+          "linkedin": "/linkedin.svg"
+        }
+      ]
+    },
+    {
+      "year": "2020-2021",
+      "members": [
+        {
+          "image": "/stockIcon.jpg",
+          "name": "Christopher Wang",
+          "description": "",
+          "title": "Co-President, Technical Team",
+          "linkedinURL": "https://www.linkedin.com/in/christopher-jj-wang/",
+          "linkedin": "/linkedin.svg"
+        },
+        {
+          "image": "/stockIcon.jpg",
+          "name": "Ujan Sen",
+          "description": "",
+          "title": "Co-President, Administration Team",
+          "linkedinURL": "https://www.linkedin.com/in/ujansen/",
+          "linkedin": "/linkedin.svg"
+        },
+        {
+          "image": "/stockIcon.jpg",
+          "name": "Kyle Knobloch",
+          "description": "",
+          "title": "VP Events",
+          "linkedinURL": "https://www.linkedin.com/in/kylejknobloch/",
+          "linkedin": "/linkedin.svg"
+        },
+        {
+          "image": "/stockIcon.jpg",
+          "name": "Staisya",
+          "description": "",
+          "title": "VP Finance",
+          "linkedinURL": "https://www.linkedin.com/in/staisya-murphy-1a364a1b5/",
+          "linkedin": "/linkedin.svg"
+        },
+        {
+          "image": "/stockIcon.jpg",
+          "name": "Darren",
+          "description": "",
+          "title": "Technical Project Manager",
+          "linkedinURL": "https://www.linkedin.com/in/darren-pierre/",
+          "linkedin": "/linkedin.svg"
+        },
+        {
+          "image": "/stockIcon.jpg",
+          "name": "Galen",
+          "description": "",
+          "title": "Technical Project Manager",
+          "linkedinURL": "https://www.linkedin.com/in/galenoshea14/",
+          "linkedin": "/linkedin.svg"
+        },
+        {
+          "image": "/stockIcon.jpg",
+          "name": "Amaya",
+          "description": "",
+          "title": "Project Coordinator",
+          "linkedinURL": "https://www.linkedin.com/in/amayamclean/",
+          "linkedin": "/linkedin.svg"
+        },
+        {
+          "image": "/stockIcon.jpg",
+          "name": "Abdullah Al-Chihabi",
+          "description": "",
+          "title": "Academic Lecturer",
+          "linkedinURL": "https://www.linkedin.com/in/abdullahalchihabi/",
+          "linkedin": "/linkedin.svg"
+        },
+        {
+          "image": "/stockIcon.jpg",
+          "name": "Gordon Tang",
+          "description": "",
+          "title": "VP Community Engagement",
+          "linkedinURL": "https://www.linkedin.com/in/gordon-tang-2023/",
+          "linkedin": "/linkedin.svg"
+        },
+        {
+          "image": "/stockIcon.jpg",
+          "name": "Japinder Sandhu",
+          "description": "",
+          "title": "VP Sponsorship",
+          "linkedinURL": "https://www.linkedin.com/in/japinder-sandhu/",
+          "linkedin": "/linkedin.svg"
+        },
+        {
+          "image": "/stockIcon.jpg",
+          "name": "Justin Bellavance",
+          "description": "",
+          "title": "VP Development",
+          "linkedinURL": "https://www.linkedin.com/in/justin-b-bba970129/",
+          "linkedin": "/linkedin.svg"
+        },
+        {
+          "image": "/stockIcon.jpg",
+          "name": "Danna Liu",
+          "description": "",
+          "title": "VP External",
+          "linkedinURL": "https://www.linkedin.com/in/dnaliu/",
+          "linkedin": "/linkedin.svg"
+        },
+        {
+          "image": "/stockIcon.jpg",
+          "name": "Harsh",
+          "description": "",
+          "title": "Social Media Coordinator",
+          "linkedinURL": "https://www.linkedin.com/in/harsh-panchal-b2a25419b/",
+          "linkedin": "/linkedin.svg"
+        },
+        {
+          "image": "/stockIcon.jpg",
+          "name": "Diya",
+          "description": "",
+          "title": "VP Communication",
+          "linkedinURL": "https://www.linkedin.com/in/diya-agarwal-64ab2a18a/",
+          "linkedin": "/linkedin.svg"
+        },
+        {
+          "image": "/stockIcon.jpg",
+          "name": "Kelsey",
+          "description": "",
+          "title": "Social Media Coordinator",
+          "linkedinURL": "https://www.linkedin.com/in/kelsey-drummond/",
+          "linkedin": "/linkedin.svg"
+        },
+        {
+          "image": "/stockIcon.jpg",
+          "name": "Nihal",
+          "description": "",
+          "title": "VP Internal",
+          "linkedinURL": "https://www.linkedin.com/in/nihal-syed-36753315a/",
           "linkedin": "/linkedin.svg"
         }
       ]
