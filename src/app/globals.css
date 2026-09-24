@@ -12,10 +12,12 @@
   --color-popover: hsl(225 30% 9%);
   --color-popover-foreground: hsl(210 40% 98%);
 
-  /* `primary` is the brand red as *ink*: light enough to clear 7:1 on every
-     surface above. Solid red fills use `brand` instead — a saturated red can
-     never reach 7:1 on a near-black ground, so the two roles need two values. */
-  --color-primary: hsl(357 92% 78%);
+  /* `primary` is the brand red as *ink*: the buttons' hue, lifted just enough
+     to read as text. No red that still looks red can reach 7:1 on a
+     near-black ground (pure #FF0000 tops out near 5:1), so red text is held to
+     AA instead (4.5:1, 3:1 large); everything else stays AAA. Solid red fills
+     use `brand`, which is far too dark to use as text. */
+  --color-primary: hsl(358 100% 62%);
   --color-primary-foreground: hsl(225 30% 8%);
 
   /* `brand` is the red as a *fill*, dark enough that `foreground` on top of it

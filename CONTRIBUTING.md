@@ -71,7 +71,9 @@ pnpm format       # Check formatting
 ## Accessibility
 
 The site targets **WCAG 2.2 Level AAA** for contrast: 7:1 for body text, 4.5:1
-for large text (>=24px, or >=18.66px bold).
+for large text (>=24px, or >=18.66px bold). The one exception is the brand-red
+text colour (`primary`), which is held to **AA** (4.5:1, 3:1 large): no red that
+still looks red can reach 7:1 on the site's near-black background.
 
 Most text sits on a stack of gradients, blurred blooms and grid overlays rather
 than on a flat colour, so contrast cannot be checked by reading Tailwind classes.
@@ -92,8 +94,8 @@ non-zero when anything fails, so it can gate CI.
 
 Two colour roles keep this working, and they are not interchangeable:
 
-- `primary` is the brand red as **ink**. It is light enough to clear 7:1 on
-  every surface. Use it for text and icons.
+- `primary` is the brand red as **ink**: the buttons' hue, lifted just enough to
+  clear 4.5:1 on every surface. Use it for text and icons.
 - `brand` is the brand red as a **fill** — solid buttons, tinted chips,
   decorative blooms. It is dark enough that `foreground` on top of it clears
   7:1. A saturated red cannot do both jobs at once on a near-black ground.

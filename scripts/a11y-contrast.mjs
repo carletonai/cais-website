@@ -87,6 +87,18 @@ const collect = () => {
     return out;
   };
 
+  /* The brand-red ink is held to AA rather than AAA: a red that still reads as
+     red cannot reach 7:1 on a near-black ground (see globals.css). */
+  const red = resolve(
+    getComputedStyle(document.documentElement).getPropertyValue(
+      "--color-primary",
+    ),
+  );
+  const isRed = (c) =>
+    Math.abs(c.r - red.r) < 3 &&
+    Math.abs(c.g - red.g) < 3 &&
+    Math.abs(c.b - red.b) < 3;
+
   const out = [];
   const w = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT);
   const path = (el) => {
@@ -133,16 +145,30 @@ const collect = () => {
     )
       continue;
 
+    const rgba = resolve(cs.color);
+    const gradient =
+      cs.webkitBackgroundClip === "text" || cs.backgroundClip === "text";
     out.push({
       path: path(el),
       text: own.slice(0, 50),
-      rgba: resolve(cs.color),
+      rgba,
       alpha,
       size: parseFloat(cs.fontSize),
       weight: Number(cs.fontWeight) || 400,
-      gradient:
-        cs.webkitBackgroundClip === "text" || cs.backgroundClip === "text",
+      gradient,
+      redInk: gradient
+        ? /\bfrom-primary\b/.test(el.getAttribute("class") || "")
+        : isRed(rgba),
       rect: { x: r.x, y: r.y, w: r.width, h: r.height },
+      /* Gradient ink is read from the screenshot, so a child with its own
+         colour (the red "AI" inside the hero title) would be scored as part
+         of this element. Such children are measured on their own; skip them. */
+      exclude: gradient
+        ? [...el.querySelectorAll("*")]
+            .filter((c) => resolve(getComputedStyle(c).color).a > 0)
+            .map((c) => c.getBoundingClientRect())
+            .map((c) => ({ x: c.x, y: c.y, w: c.width, h: c.height }))
+        : [],
     });
   }
   return out;
@@ -195,8 +221,16 @@ const measure = async ({ inkB64, bgB64, els }) => {
     let worst = Infinity,
       at = null,
       px = 0;
+    const width = x1 - x0;
+    const excluded = (k) => {
+      const x = x0 + (k % width),
+        y = y0 + Math.floor(k / width);
+      return (e.exclude || []).some(
+        (r) => x >= r.x && x < r.x + r.w && y >= r.y && y < r.y + r.h,
+      );
+    };
     for (let k = 0; k < n; k++) {
-      if (diff[k] < floor) continue;
+      if (diff[k] < floor || excluded(k)) continue;
       px++;
       const i = k * 4;
       const br = B[i],
@@ -271,7 +305,8 @@ for (const route of ROUTES) {
       runs++;
       total++;
       const large = e.size >= 24 || (e.size >= 18.66 && e.weight >= 700);
-      const need = large ? 4.5 : 7; // AAA: 4.5:1 large text, 7:1 otherwise
+      // AAA (7:1, 4.5:1 large), except the brand-red ink at AA (4.5:1, 3:1 large).
+      const need = e.redInk ? (large ? 3 : 4.5) : large ? 4.5 : 7;
       if (e.worst < need) findings.push({ route, scroll: y, need, ...e });
     }
   }
