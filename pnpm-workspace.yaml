@@ -1,0 +1,28 @@
+# pnpm settings. This is a single-package repo, not a monorepo: listing "."
+# lets older pnpm releases (9.x, 10.0-10.4) parse this file instead of failing
+# with "packages field missing or empty" before they switch to the version
+# pinned in package.json#packageManager.
+packages:
+  - "."
+
+# Dependency install scripts stay off (the pnpm 10+ default). Both packages
+# below come from Jest and are safe to skip: @parcel/watcher only compiles from
+# source when asked to, and unrs-resolver's postinstall only re-checks the
+# prebuilt binary pnpm already installed. With strictDepBuilds, any other
+# dependency that wants to run a script fails the install until it is
+# reviewed and listed here.
+allowBuilds:
+  "@parcel/watcher": false
+  unrs-resolver: false
+strictDepBuilds: true
+
+# Guards on anything pnpm resolves (pnpm add / update, Dependabot):
+# skip versions published less than a day ago,
+minimumReleaseAge: 1440
+# only take transitive dependencies from the registry (no git or tarball URLs),
+blockExoticSubdeps: true
+# and fail if a recent release lost the provenance or trusted-publisher
+# status its earlier releases had. Older releases are not judged: many
+# predate provenance (e.g. semver@6.3.1) and would otherwise fail.
+trustPolicy: no-downgrade
+trustPolicyIgnoreAfter: 43200
