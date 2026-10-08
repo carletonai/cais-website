@@ -2,683 +2,808 @@
 
 exports[`renders ProjectsPage correctly 1`] = `
 <DocumentFragment>
-  <div
-    class="min-h-screen bg-background relative overflow-hidden"
+  <header
+    class="relative overflow-hidden border-b border-border bg-dots"
   >
-    <div
-      class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-brand/20 blur-[120px] pointer-events-none"
-    />
-    <div
-      class="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-brand/10 blur-[120px] pointer-events-none"
-    />
-    <div
-      class="absolute top-2/3 left-1/3 w-72 h-72 rounded-full bg-brand/15 blur-[120px] pointer-events-none"
-    />
-    <div
-      class="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-background pointer-events-none"
-    />
-    <div
-      class="absolute inset-0 bg-glow opacity-20 pointer-events-none"
-    />
-    <div
-      class="absolute inset-0 bg-grid opacity-20 pointer-events-none"
-    />
-    <div
-      class="relative z-10 container mx-auto px-4 pt-28 pb-24"
+    <svg
+      aria-hidden="true"
+      class="pointer-events-none absolute -right-20 -top-32 w-48 lg:-right-16 lg:-top-40 lg:w-[26rem]"
+      focusable="false"
+      viewBox="0 0 100 100"
     >
-      <div
-        class="text-center mb-16 max-w-2xl mx-auto"
+      <circle
+        class="ring-draw"
+        cx="50"
+        cy="50"
+        fill="none"
+        pathLength="1"
+        r="44.5"
+        stroke="var(--color-mark)"
+        stroke-width="11"
+        transform="rotate(-90 50 50)"
+      />
+    </svg>
+    <div
+      class="relative mx-auto w-full max-w-6xl px-4 pb-12 pt-14 sm:px-6 sm:pb-16 sm:pt-20"
+    >
+      <p
+        class="label-mono mb-4 text-muted-foreground"
       >
-        <p
-          class="text-sm font-mono text-primary mb-4 tracking-widest uppercase"
+        Carleton AI Society 
+        <span
+          aria-hidden="true"
         >
-          What We Build
-        </p>
-        <h1
-          class="text-4xl md:text-5xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary/75 mb-4"
+          /
+        </span>
+         
+        <span
+          class="text-primary"
         >
           Projects
-        </h1>
-        <p
-          class="text-lg text-muted-foreground"
-        >
-          Innovative AI and ML projects developed by CAIS members.
-        </p>
-      </div>
-      <div
-        class="space-y-20"
+        </span>
+      </p>
+      <h1
+        class="font-display max-w-[14ch] text-title"
       >
-        <section
-          aria-labelledby="club-projects"
-          class="max-w-5xl mx-auto"
-        >
+        Projects
+      </h1>
+      <p
+        class="mt-5 text-lg text-muted-foreground"
+      >
+        AI and machine learning projects built by CAIS members, from club projects to hackathon winners.
+      </p>
+    </div>
+  </header>
+  <section
+    aria-labelledby="club-projects"
+    class="relative py-16 sm:py-20"
+  >
+    <div
+      class="mx-auto w-full max-w-6xl px-4 sm:px-6"
+    >
+      <div
+        class="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-end sm:justify-between"
+      >
+        <div>
+          <p
+            class="label-mono mb-3 text-primary"
+          >
+            What we build
+          </p>
           <h2
-            class="text-2xl md:text-3xl font-bold mb-2 text-glow"
+            class="text-3xl leading-tight sm:text-4xl"
             id="club-projects"
           >
             Club Projects
           </h2>
           <p
-            class="text-muted-foreground mb-8"
+            class="mt-3 text-muted-foreground"
           >
             Built by CAIS members, from our first year to now.
           </p>
-          <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            <div
-              class="group bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5 transition-all duration-200 flex flex-col"
-            >
-              <div
-                class="mb-3 flex flex-wrap items-center gap-2"
-              >
-                <span
-                  class="w-fit px-2.5 py-1 text-xs font-medium rounded-full bg-brand/10 text-primary border border-primary/20"
-                >
-                  Active Project
-                </span>
-                <span
-                  class="text-xs text-muted-foreground"
-                >
-                  2025–present
-                </span>
-              </div>
-              <h3
-                class="text-lg font-semibold mb-2 group-hover:text-primary transition-colors"
-              >
-                CAIS Terminal
-              </h3>
-              <p
-                class="text-muted-foreground text-sm leading-relaxed flex-1 mb-4"
-              >
-                An interactive terminal in the browser for exploring CAIS: learning resources, community links, upcoming events, the team, and a few easter eggs. Type 'help' to get started.
-              </p>
-              <div
-                class="flex flex-wrap gap-2 mb-5"
-              >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  React
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  TypeScript
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  Terminal UI
-                </span>
-              </div>
-              <a
-                class="inline-flex min-h-11 items-center gap-1 text-sm text-primary hover:text-primary hover:underline font-medium transition-colors"
-                data-discover="true"
-                href="/resources"
-              >
-                View Project 
-                <svg
-                  class="w-3 h-3"
-                />
-              </a>
-            </div>
-            <div
-              class="group bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5 transition-all duration-200 flex flex-col"
-            >
-              <div
-                class="mb-3 flex flex-wrap items-center gap-2"
-              >
-                <span
-                  class="w-fit px-2.5 py-1 text-xs font-medium rounded-full bg-brand/10 text-primary border border-primary/20"
-                >
-                  Previous Project
-                </span>
-                <span
-                  class="text-xs text-muted-foreground"
-                >
-                  2024–25
-                </span>
-              </div>
-              <h3
-                class="text-lg font-semibold mb-2 group-hover:text-primary transition-colors"
-              >
-                CuMind
-              </h3>
-              <p
-                class="text-muted-foreground text-sm leading-relaxed flex-1 mb-4"
-              >
-                A MuZero-style reinforcement learning framework built with JAX and Flax, combining a learned model with Monte Carlo Tree Search for complex decision-making environments.
-              </p>
-              <div
-                class="flex flex-wrap gap-2 mb-5"
-              >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  JAX
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  Flax
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  MuZero
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  MCTS
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  Reinforcement Learning
-                </span>
-              </div>
-              <a
-                class="inline-flex min-h-11 items-center gap-1 text-sm text-primary hover:text-primary hover:underline font-medium transition-colors"
-                href="https://github.com/carletonai/CuMind"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                View Project 
-                <svg
-                  class="w-3 h-3"
-                />
-              </a>
-            </div>
-            <div
-              class="group bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5 transition-all duration-200 flex flex-col"
-            >
-              <div
-                class="mb-3 flex flex-wrap items-center gap-2"
-              >
-                <span
-                  class="w-fit px-2.5 py-1 text-xs font-medium rounded-full bg-brand/10 text-primary border border-primary/20"
-                >
-                  Podcast
-                </span>
-                <span
-                  class="text-xs text-muted-foreground"
-                >
-                  2020–21
-                </span>
-              </div>
-              <h3
-                class="text-lg font-semibold mb-2 group-hover:text-primary transition-colors"
-              >
-                The Carleton AI Show
-              </h3>
-              <p
-                class="text-muted-foreground text-sm leading-relaxed flex-1 mb-4"
-              >
-                The club's interview podcast about AI, with guests from industry and academia: Nayeem Ekbal of ReveMax, Dr. Matthew Holden, Dr. Jacob Levman and Dr. Tracey P. Lauriault.
-              </p>
-              <div
-                class="flex flex-wrap gap-2 mb-5"
-              >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  Podcast
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  Interviews
-                </span>
-              </div>
-              <a
-                class="inline-flex min-h-11 items-center gap-1 text-sm text-primary hover:text-primary hover:underline font-medium transition-colors"
-                href="https://www.youtube.com/playlist?list=PLu55JWqZn53tChUFVmfUtw2t2G11opMAh"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                View Project 
-                <svg
-                  class="w-3 h-3"
-                />
-              </a>
-            </div>
-            <div
-              class="group bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5 transition-all duration-200 flex flex-col"
-            >
-              <div
-                class="mb-3 flex flex-wrap items-center gap-2"
-              >
-                <span
-                  class="w-fit px-2.5 py-1 text-xs font-medium rounded-full bg-brand/10 text-primary border border-primary/20"
-                >
-                  Previous Project
-                </span>
-                <span
-                  class="text-xs text-muted-foreground"
-                >
-                  2022–24
-                </span>
-              </div>
-              <h3
-                class="text-lg font-semibold mb-2 group-hover:text-primary transition-colors"
-              >
-                CAIS Workshop Code
-              </h3>
-              <p
-                class="text-muted-foreground text-sm leading-relaxed flex-1 mb-4"
-              >
-                The code behind CAIS workshops by Workshop Lead Farzad Roozitalab: GPT-2 text generation, BERT sentiment analysis, GANs, U-Net segmentation, attention mechanisms and more.
-              </p>
-              <div
-                class="flex flex-wrap gap-2 mb-5"
-              >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  NLP
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  Computer Vision
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  Generative Models
-                </span>
-              </div>
-              <a
-                class="inline-flex min-h-11 items-center gap-1 text-sm text-primary hover:text-primary hover:underline font-medium transition-colors"
-                href="https://github.com/Farzad-R/CAIS"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                View Project 
-                <svg
-                  class="w-3 h-3"
-                />
-              </a>
-            </div>
-            <div
-              class="group bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5 transition-all duration-200 flex flex-col"
-            >
-              <div
-                class="mb-3 flex flex-wrap items-center gap-2"
-              >
-                <span
-                  class="w-fit px-2.5 py-1 text-xs font-medium rounded-full bg-brand/10 text-primary border border-primary/20"
-                >
-                  Previous Project
-                </span>
-                <span
-                  class="text-xs text-muted-foreground"
-                >
-                  Winter 2020
-                </span>
-              </div>
-              <h3
-                class="text-lg font-semibold mb-2 group-hover:text-primary transition-colors"
-              >
-                Digit Recognition
-              </h3>
-              <p
-                class="text-muted-foreground text-sm leading-relaxed flex-1 mb-4"
-              >
-                A multi-session club project that trained a model on the MNIST handwritten-digit dataset, aiming to serve it on a web page where you draw a digit for it to read.
-              </p>
-              <div
-                class="flex flex-wrap gap-2 mb-5"
-              >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  MNIST
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  Flask
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  Python
-                </span>
-              </div>
-              <a
-                class="inline-flex min-h-11 items-center gap-1 text-sm text-primary hover:text-primary hover:underline font-medium transition-colors"
-                href="https://github.com/Itzaek/DigitRecognition"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                View Project 
-                <svg
-                  class="w-3 h-3"
-                />
-              </a>
-            </div>
-            <div
-              class="group bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5 transition-all duration-200 flex flex-col"
-            >
-              <div
-                class="mb-3 flex flex-wrap items-center gap-2"
-              >
-                <span
-                  class="w-fit px-2.5 py-1 text-xs font-medium rounded-full bg-brand/10 text-primary border border-primary/20"
-                >
-                  Previous Project
-                </span>
-                <span
-                  class="text-xs text-muted-foreground"
-                >
-                  Fall 2019
-                </span>
-              </div>
-              <h3
-                class="text-lg font-semibold mb-2 group-hover:text-primary transition-colors"
-              >
-                Rock-Paper-Scissors AI
-              </h3>
-              <p
-                class="text-muted-foreground text-sm leading-relaxed flex-1 mb-4"
-              >
-                The club-wide project for Fall 2019, built by 17 members: a Python AI designed to beat real human players at Rock, Paper, Scissors.
-              </p>
-              <div
-                class="flex flex-wrap gap-2 mb-5"
-              >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  Python
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  Game AI
-                </span>
-              </div>
-              <a
-                class="inline-flex min-h-11 items-center gap-1 text-sm text-primary hover:text-primary hover:underline font-medium transition-colors"
-                href="https://github.com/carletonai/Rock-Paper-Scissors-Project"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                View Project 
-                <svg
-                  class="w-3 h-3"
-                />
-              </a>
-            </div>
-          </div>
-        </section>
-        <section
-          aria-labelledby="hackathon-projects"
-          class="max-w-5xl mx-auto"
+        </div>
+      </div>
+      <ul
+        class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+      >
+        <li
+          class="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-colors duration-150 hover:border-input"
         >
+          <p
+            class="label-mono mb-4 flex flex-wrap items-center gap-x-2 text-muted-foreground"
+          >
+            <span
+              class="text-primary"
+            >
+              Active Project
+            </span>
+            <span
+              aria-hidden="true"
+            >
+              ·
+            </span>
+            <span>
+              2025–present
+            </span>
+          </p>
+          <h3
+            class="mb-2 text-xl"
+          >
+            CAIS Terminal
+          </h3>
+          <p
+            class="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground"
+          >
+            An interactive terminal in the browser for exploring CAIS: learning resources, community links, upcoming events, the team, and a few easter eggs. Type 'help' to get started.
+          </p>
+          <ul
+            aria-label="Built with"
+            class="mb-5 flex flex-wrap gap-2"
+          >
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              React
+            </li>
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              TypeScript
+            </li>
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              Terminal UI
+            </li>
+          </ul>
+          <a
+            class="label-mono relative z-10 mt-auto inline-flex min-h-11 items-center gap-2 text-foreground hover:text-primary"
+            data-discover="true"
+            href="/resources"
+          >
+            View project 
+            <span
+              class="sr-only"
+            >
+              : CAIS Terminal
+            </span>
+            <svg
+              aria-hidden="true"
+              class="size-4"
+            />
+          </a>
+        </li>
+        <li
+          class="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-colors duration-150 hover:border-input"
+        >
+          <p
+            class="label-mono mb-4 flex flex-wrap items-center gap-x-2 text-muted-foreground"
+          >
+            <span
+              class="text-primary"
+            >
+              Previous Project
+            </span>
+            <span
+              aria-hidden="true"
+            >
+              ·
+            </span>
+            <span>
+              2024–25
+            </span>
+          </p>
+          <h3
+            class="mb-2 text-xl"
+          >
+            CuMind
+          </h3>
+          <p
+            class="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground"
+          >
+            A MuZero-style reinforcement learning framework built with JAX and Flax, combining a learned model with Monte Carlo Tree Search for complex decision-making environments.
+          </p>
+          <ul
+            aria-label="Built with"
+            class="mb-5 flex flex-wrap gap-2"
+          >
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              JAX
+            </li>
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              Flax
+            </li>
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              MuZero
+            </li>
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              MCTS
+            </li>
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              Reinforcement Learning
+            </li>
+          </ul>
+          <a
+            class="label-mono relative z-10 mt-auto inline-flex min-h-11 items-center gap-2 text-foreground hover:text-primary"
+            href="https://github.com/carletonai/CuMind"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            View project
+            <span
+              class="sr-only"
+            >
+              : CuMind (opens in a new tab)
+            </span>
+            <svg
+              aria-hidden="true"
+              class="size-4"
+            />
+          </a>
+        </li>
+        <li
+          class="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-colors duration-150 hover:border-input"
+        >
+          <p
+            class="label-mono mb-4 flex flex-wrap items-center gap-x-2 text-muted-foreground"
+          >
+            <span
+              class="text-primary"
+            >
+              Podcast
+            </span>
+            <span
+              aria-hidden="true"
+            >
+              ·
+            </span>
+            <span>
+              2020–21
+            </span>
+          </p>
+          <h3
+            class="mb-2 text-xl"
+          >
+            The Carleton AI Show
+          </h3>
+          <p
+            class="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground"
+          >
+            The club's interview podcast about AI, with guests from industry and academia: Nayeem Ekbal of ReveMax, Dr. Matthew Holden, Dr. Jacob Levman and Dr. Tracey P. Lauriault.
+          </p>
+          <ul
+            aria-label="Built with"
+            class="mb-5 flex flex-wrap gap-2"
+          >
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              Podcast
+            </li>
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              Interviews
+            </li>
+          </ul>
+          <a
+            class="label-mono relative z-10 mt-auto inline-flex min-h-11 items-center gap-2 text-foreground hover:text-primary"
+            href="https://www.youtube.com/playlist?list=PLu55JWqZn53tChUFVmfUtw2t2G11opMAh"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            View project
+            <span
+              class="sr-only"
+            >
+              : The Carleton AI Show (opens in a new tab)
+            </span>
+            <svg
+              aria-hidden="true"
+              class="size-4"
+            />
+          </a>
+        </li>
+        <li
+          class="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-colors duration-150 hover:border-input"
+        >
+          <p
+            class="label-mono mb-4 flex flex-wrap items-center gap-x-2 text-muted-foreground"
+          >
+            <span
+              class="text-primary"
+            >
+              Previous Project
+            </span>
+            <span
+              aria-hidden="true"
+            >
+              ·
+            </span>
+            <span>
+              2022–24
+            </span>
+          </p>
+          <h3
+            class="mb-2 text-xl"
+          >
+            CAIS Workshop Code
+          </h3>
+          <p
+            class="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground"
+          >
+            The code behind CAIS workshops by Workshop Lead Farzad Roozitalab: GPT-2 text generation, BERT sentiment analysis, GANs, U-Net segmentation, attention mechanisms and more.
+          </p>
+          <ul
+            aria-label="Built with"
+            class="mb-5 flex flex-wrap gap-2"
+          >
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              NLP
+            </li>
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              Computer Vision
+            </li>
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              Generative Models
+            </li>
+          </ul>
+          <a
+            class="label-mono relative z-10 mt-auto inline-flex min-h-11 items-center gap-2 text-foreground hover:text-primary"
+            href="https://github.com/Farzad-R/CAIS"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            View project
+            <span
+              class="sr-only"
+            >
+              : CAIS Workshop Code (opens in a new tab)
+            </span>
+            <svg
+              aria-hidden="true"
+              class="size-4"
+            />
+          </a>
+        </li>
+        <li
+          class="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-colors duration-150 hover:border-input"
+        >
+          <p
+            class="label-mono mb-4 flex flex-wrap items-center gap-x-2 text-muted-foreground"
+          >
+            <span
+              class="text-primary"
+            >
+              Previous Project
+            </span>
+            <span
+              aria-hidden="true"
+            >
+              ·
+            </span>
+            <span>
+              Winter 2020
+            </span>
+          </p>
+          <h3
+            class="mb-2 text-xl"
+          >
+            Digit Recognition
+          </h3>
+          <p
+            class="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground"
+          >
+            A multi-session club project that trained a model on the MNIST handwritten-digit dataset, aiming to serve it on a web page where you draw a digit for it to read.
+          </p>
+          <ul
+            aria-label="Built with"
+            class="mb-5 flex flex-wrap gap-2"
+          >
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              MNIST
+            </li>
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              Flask
+            </li>
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              Python
+            </li>
+          </ul>
+          <a
+            class="label-mono relative z-10 mt-auto inline-flex min-h-11 items-center gap-2 text-foreground hover:text-primary"
+            href="https://github.com/Itzaek/DigitRecognition"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            View project
+            <span
+              class="sr-only"
+            >
+              : Digit Recognition (opens in a new tab)
+            </span>
+            <svg
+              aria-hidden="true"
+              class="size-4"
+            />
+          </a>
+        </li>
+        <li
+          class="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-colors duration-150 hover:border-input"
+        >
+          <p
+            class="label-mono mb-4 flex flex-wrap items-center gap-x-2 text-muted-foreground"
+          >
+            <span
+              class="text-primary"
+            >
+              Previous Project
+            </span>
+            <span
+              aria-hidden="true"
+            >
+              ·
+            </span>
+            <span>
+              Fall 2019
+            </span>
+          </p>
+          <h3
+            class="mb-2 text-xl"
+          >
+            Rock-Paper-Scissors AI
+          </h3>
+          <p
+            class="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground"
+          >
+            The club-wide project for Fall 2019, built by 17 members: a Python AI designed to beat real human players at Rock, Paper, Scissors.
+          </p>
+          <ul
+            aria-label="Built with"
+            class="mb-5 flex flex-wrap gap-2"
+          >
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              Python
+            </li>
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              Game AI
+            </li>
+          </ul>
+          <a
+            class="label-mono relative z-10 mt-auto inline-flex min-h-11 items-center gap-2 text-foreground hover:text-primary"
+            href="https://github.com/carletonai/Rock-Paper-Scissors-Project"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            View project
+            <span
+              class="sr-only"
+            >
+              : Rock-Paper-Scissors AI (opens in a new tab)
+            </span>
+            <svg
+              aria-hidden="true"
+              class="size-4"
+            />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section
+    aria-labelledby="hackathon-projects"
+    class="relative py-16 sm:py-20 border-t border-border"
+  >
+    <div
+      class="mx-auto w-full max-w-6xl px-4 sm:px-6"
+    >
+      <div
+        class="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-end sm:justify-between"
+      >
+        <div>
+          <p
+            class="label-mono mb-3 text-primary"
+          >
+            Hackathons
+          </p>
           <h2
-            class="text-2xl md:text-3xl font-bold mb-2 text-glow"
+            class="text-3xl leading-tight sm:text-4xl"
             id="hackathon-projects"
           >
             Built at CAIS Hackathons
           </h2>
           <p
-            class="text-muted-foreground mb-8"
+            class="mt-3 text-muted-foreground"
           >
             Winning projects from the hackathons we have hosted.
           </p>
-          <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            <div
-              class="group bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5 transition-all duration-200 flex flex-col"
-            >
-              <div
-                class="mb-3 flex flex-wrap items-center gap-2"
-              >
-                <span
-                  class="w-fit px-2.5 py-1 text-xs font-medium rounded-full bg-brand/10 text-primary border border-primary/20"
-                >
-                  CAIS Hackathon 2.0 · 1st Place
-                </span>
-                <span
-                  class="text-xs text-muted-foreground"
-                >
-                  March 2026
-                </span>
-              </div>
-              <h3
-                class="text-lg font-semibold mb-2 group-hover:text-primary transition-colors"
-              >
-                ThinkFirst
-              </h3>
-              <p
-                class="text-muted-foreground text-sm leading-relaxed flex-1 mb-4"
-              >
-                An AI tutor that helps students understand concepts instead of handing them the answers.
-              </p>
-              <div
-                class="flex flex-wrap gap-2 mb-5"
-              >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  AI Tutor
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  Education
-                </span>
-              </div>
-            </div>
-            <div
-              class="group bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5 transition-all duration-200 flex flex-col"
-            >
-              <div
-                class="mb-3 flex flex-wrap items-center gap-2"
-              >
-                <span
-                  class="w-fit px-2.5 py-1 text-xs font-medium rounded-full bg-brand/10 text-primary border border-primary/20"
-                >
-                  CAIS Hackathon 2.0 · 2nd Place
-                </span>
-                <span
-                  class="text-xs text-muted-foreground"
-                >
-                  March 2026
-                </span>
-              </div>
-              <h3
-                class="text-lg font-semibold mb-2 group-hover:text-primary transition-colors"
-              >
-                CUCognitive
-              </h3>
-              <p
-                class="text-muted-foreground text-sm leading-relaxed flex-1 mb-4"
-              >
-                A web app that tracks drowsiness through eye movement to help students study and manage their energy.
-              </p>
-              <div
-                class="flex flex-wrap gap-2 mb-5"
-              >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  Computer Vision
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  Web App
-                </span>
-              </div>
-            </div>
-            <div
-              class="group bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5 transition-all duration-200 flex flex-col"
-            >
-              <div
-                class="mb-3 flex flex-wrap items-center gap-2"
-              >
-                <span
-                  class="w-fit px-2.5 py-1 text-xs font-medium rounded-full bg-brand/10 text-primary border border-primary/20"
-                >
-                  CAIS Hackathon 2.0 · 3rd Place
-                </span>
-                <span
-                  class="text-xs text-muted-foreground"
-                >
-                  March 2026
-                </span>
-              </div>
-              <h3
-                class="text-lg font-semibold mb-2 group-hover:text-primary transition-colors"
-              >
-                Procrastination Bot
-              </h3>
-              <p
-                class="text-muted-foreground text-sm leading-relaxed flex-1 mb-4"
-              >
-                An AI agent that uses retrieval-augmented generation to track deadlines and break assignments into manageable tasks.
-              </p>
-              <div
-                class="flex flex-wrap gap-2 mb-5"
-              >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  RAG
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  Agents
-                </span>
-              </div>
-            </div>
-            <div
-              class="group bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5 transition-all duration-200 flex flex-col"
-            >
-              <div
-                class="mb-3 flex flex-wrap items-center gap-2"
-              >
-                <span
-                  class="w-fit px-2.5 py-1 text-xs font-medium rounded-full bg-brand/10 text-primary border border-primary/20"
-                >
-                  CAIS Hackathon 2023 · Best Application Project
-                </span>
-                <span
-                  class="text-xs text-muted-foreground"
-                >
-                  March 2023
-                </span>
-              </div>
-              <h3
-                class="text-lg font-semibold mb-2 group-hover:text-primary transition-colors"
-              >
-                ChatRoller
-              </h3>
-              <p
-                class="text-muted-foreground text-sm leading-relaxed flex-1 mb-4"
-              >
-                Real-time sentiment analysis for YouTube livestream chat, by Ryan Diep and Mika Toktamyssov, built with Node.js, the Cohere API and the YouTube Data API.
-              </p>
-              <div
-                class="flex flex-wrap gap-2 mb-5"
-              >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  Node.js
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  Cohere
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  Sentiment Analysis
-                </span>
-              </div>
-              <a
-                class="inline-flex min-h-11 items-center gap-1 text-sm text-primary hover:text-primary hover:underline font-medium transition-colors"
-                href="https://devpost.com/software/chatroller"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                View Project 
-                <svg
-                  class="w-3 h-3"
-                />
-              </a>
-            </div>
-            <div
-              class="group bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5 transition-all duration-200 flex flex-col"
-            >
-              <div
-                class="mb-3 flex flex-wrap items-center gap-2"
-              >
-                <span
-                  class="w-fit px-2.5 py-1 text-xs font-medium rounded-full bg-brand/10 text-primary border border-primary/20"
-                >
-                  CAIS Hackathon 2023 · Best Fundamental Project
-                </span>
-                <span
-                  class="text-xs text-muted-foreground"
-                >
-                  March 2023
-                </span>
-              </div>
-              <h3
-                class="text-lg font-semibold mb-2 group-hover:text-primary transition-colors"
-              >
-                WLIT: What Language Is This?
-              </h3>
-              <p
-                class="text-muted-foreground text-sm leading-relaxed flex-1 mb-4"
-              >
-                A machine learning language detector that identifies 11 languages, by Ryan Guo, Sahith Nulu, Roshan Dewmina Silva and Ethan Huynh.
-              </p>
-              <div
-                class="flex flex-wrap gap-2 mb-5"
-              >
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  scikit-learn
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  spaCy
-                </span>
-                <span
-                  class="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
-                >
-                  NLP
-                </span>
-              </div>
-              <a
-                class="inline-flex min-h-11 items-center gap-1 text-sm text-primary hover:text-primary hover:underline font-medium transition-colors"
-                href="https://devpost.com/software/wlit"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                View Project 
-                <svg
-                  class="w-3 h-3"
-                />
-              </a>
-            </div>
-          </div>
-        </section>
+        </div>
       </div>
+      <ul
+        class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+      >
+        <li
+          class="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-colors duration-150 hover:border-input"
+        >
+          <p
+            class="label-mono mb-4 flex flex-wrap items-center gap-x-2 text-muted-foreground"
+          >
+            <span
+              class="text-primary"
+            >
+              CAIS Hackathon 2.0 · 1st Place
+            </span>
+            <span
+              aria-hidden="true"
+            >
+              ·
+            </span>
+            <span>
+              March 2026
+            </span>
+          </p>
+          <h3
+            class="mb-2 text-xl"
+          >
+            ThinkFirst
+          </h3>
+          <p
+            class="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground"
+          >
+            An AI tutor that helps students understand concepts instead of handing them the answers.
+          </p>
+          <ul
+            aria-label="Built with"
+            class="mb-5 flex flex-wrap gap-2"
+          >
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              AI Tutor
+            </li>
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              Education
+            </li>
+          </ul>
+        </li>
+        <li
+          class="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-colors duration-150 hover:border-input"
+        >
+          <p
+            class="label-mono mb-4 flex flex-wrap items-center gap-x-2 text-muted-foreground"
+          >
+            <span
+              class="text-primary"
+            >
+              CAIS Hackathon 2.0 · 2nd Place
+            </span>
+            <span
+              aria-hidden="true"
+            >
+              ·
+            </span>
+            <span>
+              March 2026
+            </span>
+          </p>
+          <h3
+            class="mb-2 text-xl"
+          >
+            CUCognitive
+          </h3>
+          <p
+            class="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground"
+          >
+            A web app that tracks drowsiness through eye movement to help students study and manage their energy.
+          </p>
+          <ul
+            aria-label="Built with"
+            class="mb-5 flex flex-wrap gap-2"
+          >
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              Computer Vision
+            </li>
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              Web App
+            </li>
+          </ul>
+        </li>
+        <li
+          class="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-colors duration-150 hover:border-input"
+        >
+          <p
+            class="label-mono mb-4 flex flex-wrap items-center gap-x-2 text-muted-foreground"
+          >
+            <span
+              class="text-primary"
+            >
+              CAIS Hackathon 2.0 · 3rd Place
+            </span>
+            <span
+              aria-hidden="true"
+            >
+              ·
+            </span>
+            <span>
+              March 2026
+            </span>
+          </p>
+          <h3
+            class="mb-2 text-xl"
+          >
+            Procrastination Bot
+          </h3>
+          <p
+            class="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground"
+          >
+            An AI agent that uses retrieval-augmented generation to track deadlines and break assignments into manageable tasks.
+          </p>
+          <ul
+            aria-label="Built with"
+            class="mb-5 flex flex-wrap gap-2"
+          >
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              RAG
+            </li>
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              Agents
+            </li>
+          </ul>
+        </li>
+        <li
+          class="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-colors duration-150 hover:border-input"
+        >
+          <p
+            class="label-mono mb-4 flex flex-wrap items-center gap-x-2 text-muted-foreground"
+          >
+            <span
+              class="text-primary"
+            >
+              CAIS Hackathon 2023 · Best Application Project
+            </span>
+            <span
+              aria-hidden="true"
+            >
+              ·
+            </span>
+            <span>
+              March 2023
+            </span>
+          </p>
+          <h3
+            class="mb-2 text-xl"
+          >
+            ChatRoller
+          </h3>
+          <p
+            class="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground"
+          >
+            Real-time sentiment analysis for YouTube livestream chat, by Ryan Diep and Mika Toktamyssov, built with Node.js, the Cohere API and the YouTube Data API.
+          </p>
+          <ul
+            aria-label="Built with"
+            class="mb-5 flex flex-wrap gap-2"
+          >
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              Node.js
+            </li>
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              Cohere
+            </li>
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              Sentiment Analysis
+            </li>
+          </ul>
+          <a
+            class="label-mono relative z-10 mt-auto inline-flex min-h-11 items-center gap-2 text-foreground hover:text-primary"
+            href="https://devpost.com/software/chatroller"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            View project
+            <span
+              class="sr-only"
+            >
+              : ChatRoller (opens in a new tab)
+            </span>
+            <svg
+              aria-hidden="true"
+              class="size-4"
+            />
+          </a>
+        </li>
+        <li
+          class="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-colors duration-150 hover:border-input"
+        >
+          <p
+            class="label-mono mb-4 flex flex-wrap items-center gap-x-2 text-muted-foreground"
+          >
+            <span
+              class="text-primary"
+            >
+              CAIS Hackathon 2023 · Best Fundamental Project
+            </span>
+            <span
+              aria-hidden="true"
+            >
+              ·
+            </span>
+            <span>
+              March 2023
+            </span>
+          </p>
+          <h3
+            class="mb-2 text-xl"
+          >
+            WLIT: What Language Is This?
+          </h3>
+          <p
+            class="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground"
+          >
+            A machine learning language detector that identifies 11 languages, by Ryan Guo, Sahith Nulu, Roshan Dewmina Silva and Ethan Huynh.
+          </p>
+          <ul
+            aria-label="Built with"
+            class="mb-5 flex flex-wrap gap-2"
+          >
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              scikit-learn
+            </li>
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              spaCy
+            </li>
+            <li
+              class="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+            >
+              NLP
+            </li>
+          </ul>
+          <a
+            class="label-mono relative z-10 mt-auto inline-flex min-h-11 items-center gap-2 text-foreground hover:text-primary"
+            href="https://devpost.com/software/wlit"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            View project
+            <span
+              class="sr-only"
+            >
+              : WLIT: What Language Is This? (opens in a new tab)
+            </span>
+            <svg
+              aria-hidden="true"
+              class="size-4"
+            />
+          </a>
+        </li>
+      </ul>
     </div>
-  </div>
+  </section>
 </DocumentFragment>
 `;

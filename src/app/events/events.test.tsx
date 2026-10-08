@@ -4,22 +4,14 @@ import { MemoryRouter } from "react-router-dom";
 import eventsData from "@/data/events.json";
 import EventsPage from "./events";
 
-// Which events are upcoming, and where the calendar opens, depend on the date.
+// Which events are upcoming, and where the calendar opens, depend on the date:
+// Ottawa, the afternoon before Intro to Agentic AI.
 beforeEach(() => {
-  jest.useFakeTimers({ now: new Date(2026, 8, 22) });
+  jest.useFakeTimers({ now: new Date("2026-10-08T16:00:00-04:00") });
 });
 
 afterEach(() => {
   jest.useRealTimers();
-});
-
-test("renders EventsPage correctly", () => {
-  const { asFragment } = render(
-    <MemoryRouter>
-      <EventsPage />
-    </MemoryRouter>,
-  );
-  expect(asFragment()).toMatchSnapshot();
 });
 
 const renderEvents = () => {
@@ -35,12 +27,24 @@ const renderEvents = () => {
 const cardTitle = (name: string) =>
   screen.queryByRole("heading", { level: 3, name });
 
+test("leads with the next event, then what follows it", () => {
+  renderEvents();
+  const upcoming = screen.getByRole("region", { name: "Upcoming" });
+  expect(
+    within(upcoming).getByRole("article", { name: /Intro to Agentic AI/ }),
+  ).toHaveTextContent("Next up · Tomorrow · 6:00 PM");
+  expect(
+    within(upcoming).getByRole("link", { name: "Grok Bot Meetup – Ottawa" }),
+  ).toHaveAttribute("href", "/events/67-grok-bot-meetup-ottawa");
+});
+
 test("offers only the event types that have events", () => {
   renderEvents();
 
   const types = within(screen.getByRole("group", { name: "Filter by type" }))
     .getAllByRole("button")
-    .map((button) => button.textContent);
+    .map((button) => button.textContent)
+    .filter((label) => label !== "Has code or video");
 
   expect(types[0]).toBe("All");
   for (const gone of ["Panel", "Symposium", "TBA"]) {
@@ -51,7 +55,7 @@ test("offers only the event types that have events", () => {
   }
 });
 
-test("filters both upcoming and past events by tag", async () => {
+test("filters past events by tag", async () => {
   const user = renderEvents();
 
   const freeFood = () =>
@@ -61,12 +65,34 @@ test("filters both upcoming and past events by tag", async () => {
     );
   await user.click(freeFood());
 
-  // Re-queried: the framer-motion mock remounts the filter row on render.
   expect(freeFood()).toHaveAttribute("aria-pressed", "true");
-  expect(cardTitle("CAIS Icebreaker")).toBeInTheDocument();
-  expect(cardTitle("FED Meet & Greet")).toBeInTheDocument();
-  expect(cardTitle("Intro to Agentic AI")).not.toBeInTheDocument();
-  expect(cardTitle("Tech Club Expo")).not.toBeInTheDocument();
+  const past = screen.getByRole("region", { name: "Past events" });
+  expect(within(past).getByRole("status")).toHaveTextContent("2 events match");
+  expect(
+    within(past).getByRole("heading", { name: "CAIS Icebreaker" }),
+  ).toBeInTheDocument();
+  expect(
+    within(past).getByRole("heading", { name: "FED Meet & Greet" }),
+  ).toBeInTheDocument();
+  expect(
+    within(past).queryByRole("heading", { name: "Tech Club Expo" }),
+  ).not.toBeInTheDocument();
+});
+
+test("narrows to workshops whose code or video is online", async () => {
+  const user = renderEvents();
+  await user.click(screen.getByRole("button", { name: /Has code or video/ }));
+
+  const past = screen.getByRole("region", { name: "Past events" });
+  expect(
+    within(past).getByRole("link", {
+      name: /Code on GitHub for Machine Learning Workshop at Hack the Hill III/,
+    }),
+  ).toHaveAttribute(
+    "href",
+    "https://github.com/carletonai/cais-workshop-hth-iii",
+  );
+  expect(cardTitle("Volunteer Meeting")).not.toBeInTheDocument();
 });
 
 test("says so when the filters leave nothing to show", async () => {
@@ -76,45 +102,29 @@ test("says so when the filters leave nothing to show", async () => {
   await user.click(screen.getByRole("button", { name: "free-food" }));
 
   expect(
-    screen.getByText("No upcoming events match these filters."),
-  ).toBeInTheDocument();
-  expect(
     screen.getByText("No past events match these filters."),
   ).toBeInTheDocument();
 });
 
-test("shows the latest past events as cards and files the rest by year", async () => {
-  const user = renderEvents();
+test("files earlier years as rows that open each event's page", () => {
+  renderEvents();
 
-  const archive = screen.getByRole("region", { name: "Event Archive" });
-  const years = within(archive).getAllByText(/^\d{4}–\d{2}$/);
-  expect(years.length).toBeGreaterThan(1);
-  expect(within(archive).getByText("2019–20")).toBeInTheDocument();
+  const past = screen.getByRole("region", { name: "Past events" });
+  expect(within(past).getByText("2019–20")).toBeInTheDocument();
+  expect(within(past).getByText("2021–22")).toBeInTheDocument();
 
-  // An archived workshop is not also a card, and opens its full details.
+  // An archived workshop is a row, not a card, and links to its own page.
   expect(cardTitle("Linear Regression")).not.toBeInTheDocument();
-  await user.click(within(archive).getByText("2021–22"));
-  await user.click(
-    within(archive).getByRole("button", { name: /Linear Regression/ }),
-  );
-  const details = screen.getByRole("dialog", { name: "Linear Regression" });
-  expect(
-    within(details)
-      .getByRole("button", { name: /Watch the recording/ })
-      .closest("a"),
-  ).toHaveAttribute("href", "https://www.youtube.com/watch?v=jAVnWNh_uAU");
+  const row = within(past).getByRole("link", { name: /Linear Regression/ });
+  expect(row.getAttribute("href")).toMatch(/^\/events\/\d+-linear-regression$/);
+  expect(row).toHaveAccessibleName(/recording online/);
 });
 
-test("opens a card's full details, links included", async () => {
-  const user = renderEvents();
-
-  await user.click(
-    screen.getByRole("button", { name: "Details: CAIS Hackathon 2.0" }),
-  );
-  const details = screen.getByRole("dialog", { name: "CAIS Hackathon 2.0" });
+test("shows this year's past events as cards", () => {
+  renderEvents();
+  expect(cardTitle("Volunteer Meeting")).toBeInTheDocument();
+  expect(cardTitle("Intro to AI")).toBeInTheDocument();
   expect(
-    within(details)
-      .getByRole("button", { name: /Event page/ })
-      .closest("a"),
-  ).toHaveAttribute("href", expect.stringContaining("linkedin.com"));
+    cardTitle("Machine Learning Workshop at Hack the Hill III"),
+  ).toBeInTheDocument();
 });

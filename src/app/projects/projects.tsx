@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { ArrowRightIcon, ExternalLinkIcon } from "lucide-react";
+import { PageHeader } from "@/components/brand/PageHeader";
+import { Section, SectionHeader } from "@/components/brand/Section";
 import { Button } from "@/components/ui/button";
 import projectsData from "@/data/projects.json";
-import { ArrowRightIcon, ExternalLinkIcon } from "lucide-react";
+import { DISCORD_URL } from "@/lib/links";
 
 interface Project {
   id?: string;
@@ -34,68 +36,44 @@ const SECTIONS = [
   },
 ].filter((section) => section.projects.length > 0);
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring" as const, stiffness: 100, damping: 15 },
-  },
-};
-
 const linkClass =
-  "inline-flex min-h-11 items-center gap-1 text-sm text-primary hover:text-primary hover:underline font-medium transition-colors";
+  "label-mono relative z-10 mt-auto inline-flex min-h-11 items-center gap-2 text-foreground hover:text-primary";
 
 const ProjectCard = ({ project }: { project: Project }) => (
-  <motion.div
-    variants={item}
-    className="group bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5 transition-all duration-200 flex flex-col"
-  >
+  <li className="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-colors duration-150 hover:border-input">
     {(project.status || project.period) && (
-      <div className="mb-3 flex flex-wrap items-center gap-2">
+      <p className="label-mono mb-4 flex flex-wrap items-center gap-x-2 text-muted-foreground">
         {project.status && (
-          <span className="w-fit px-2.5 py-1 text-xs font-medium rounded-full bg-brand/10 text-primary border border-primary/20">
+          <span className="text-primary">
             {project.hackathon
               ? `${project.hackathon} · ${project.status}`
               : project.status}
           </span>
         )}
-        {project.period && (
-          <span className="text-xs text-muted-foreground">
-            {project.period}
-          </span>
-        )}
-      </div>
+        {project.status && project.period && <span aria-hidden="true">·</span>}
+        {project.period && <span>{project.period}</span>}
+      </p>
     )}
-    <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
-      {project.title}
-    </h3>
-    <p className="text-muted-foreground text-sm leading-relaxed flex-1 mb-4">
+    <h3 className="mb-2 text-xl">{project.title}</h3>
+    <p className="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground">
       {project.description}
     </p>
     {project.tags && project.tags.length > 0 && (
-      <div className="flex flex-wrap gap-2 mb-5">
+      <ul aria-label="Built with" className="mb-5 flex flex-wrap gap-2">
         {project.tags.map((tag) => (
-          <span
+          <li
             key={tag}
-            className="px-2 py-1 text-xs rounded-full bg-background/60 text-muted-foreground border border-border/40"
+            className="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
           >
             {tag}
-          </span>
+          </li>
         ))}
-      </div>
+      </ul>
     )}
     {project.link?.startsWith("/") ? (
       <Link to={project.link} className={linkClass}>
-        View Project <ArrowRightIcon className="w-3 h-3" />
+        View project <span className="sr-only">: {project.title}</span>
+        <ArrowRightIcon aria-hidden="true" className="size-4" />
       </Link>
     ) : (
       project.link && (
@@ -105,97 +83,63 @@ const ProjectCard = ({ project }: { project: Project }) => (
           rel="noopener noreferrer"
           className={linkClass}
         >
-          View Project <ExternalLinkIcon className="w-3 h-3" />
+          View project
+          <span className="sr-only">
+            : {project.title} (opens in a new tab)
+          </span>
+          <ExternalLinkIcon aria-hidden="true" className="size-4" />
         </a>
       )
     )}
-  </motion.div>
+  </li>
 );
 
 const ProjectsPage = () => (
-  <div className="min-h-screen bg-background relative overflow-hidden">
-    <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-brand/20 blur-[120px] pointer-events-none" />
-    <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-brand/10 blur-[120px] pointer-events-none" />
-    <div className="absolute top-2/3 left-1/3 w-72 h-72 rounded-full bg-brand/15 blur-[120px] pointer-events-none" />
-    <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-background pointer-events-none" />
-    <div className="absolute inset-0 bg-glow opacity-20 pointer-events-none" />
-    <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
-
-    <div className="relative z-10 container mx-auto px-4 pt-28 pb-24">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-16 max-w-2xl mx-auto"
-      >
-        <p className="text-sm font-mono text-primary mb-4 tracking-widest uppercase">
-          What We Build
-        </p>
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary/75 mb-4">
-          Projects
-        </h1>
-        <p className="text-lg text-muted-foreground">
-          Innovative AI and ML projects developed by CAIS members.
-        </p>
-      </motion.div>
-
-      {SECTIONS.length > 0 ? (
-        <div className="space-y-20">
-          {SECTIONS.map((section) => (
-            <section
-              key={section.id}
-              aria-labelledby={section.id}
-              className="max-w-5xl mx-auto"
-            >
-              <h2
-                id={section.id}
-                className="text-2xl md:text-3xl font-bold mb-2 text-glow"
-              >
-                {section.title}
-              </h2>
-              <p className="text-muted-foreground mb-8">
-                {section.description}
-              </p>
-              <motion.div
-                variants={container}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, margin: "-50px" }}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-              >
-                {section.projects.map((project) => (
-                  <ProjectCard
-                    key={project.id ?? project.title}
-                    project={project}
-                  />
-                ))}
-              </motion.div>
-            </section>
-          ))}
-        </div>
-      ) : (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="flex flex-col items-center justify-center py-16 gap-4 bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl max-w-2xl mx-auto"
+  <>
+    <PageHeader
+      label="Projects"
+      title="Projects"
+      lede="AI and machine learning projects built by CAIS members, from club projects to hackathon winners."
+    />
+    {SECTIONS.length > 0 ? (
+      SECTIONS.map((section, index) => (
+        <Section
+          key={section.id}
+          labelledBy={section.id}
+          className={index > 0 ? "border-t border-border" : undefined}
         >
-          <p className="text-muted-foreground text-center">
+          <SectionHeader
+            id={section.id}
+            label={index === 0 ? "What we build" : "Hackathons"}
+            title={section.title}
+            lede={section.description}
+          />
+          <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {section.projects.map((project) => (
+              <ProjectCard
+                key={project.id ?? project.title}
+                project={project}
+              />
+            ))}
+          </ul>
+        </Section>
+      ))
+    ) : (
+      <Section>
+        <div className="flex flex-col items-center gap-4 rounded-2xl border border-border bg-card py-16">
+          <p className="text-center text-muted-foreground">
             Projects coming soon. Want to start one?
           </p>
-          <Button asChild variant="default" size="lg">
-            <a
-              href="https://discord.gg/gCs3v653de"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+          <Button asChild size="lg">
+            <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer">
               Join our Discord
+              <span className="sr-only"> (opens in a new tab)</span>
             </a>
           </Button>
-        </motion.div>
-      )}
-    </div>
-  </div>
+        </div>
+      </Section>
+    )}
+  </>
 );
 
 export default ProjectsPage;

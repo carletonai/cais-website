@@ -1,14 +1,14 @@
 import { type ReactNode, useRef } from "react";
+import { Link } from "react-router-dom";
 import {
   ArrowRightIcon,
   CalendarIcon,
   ClockIcon,
-  CodeIcon,
-  ExternalLinkIcon,
   MapPinIcon,
-  PlayCircleIcon,
   RepeatIcon,
 } from "lucide-react";
+import { EventMeta } from "@/components/events/EventMeta";
+import { ResourceLinks, RsvpButton } from "@/components/events/EventLinks";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -20,7 +20,8 @@ import {
   type ClubEvent,
   type Meeting,
   eventDate,
-  isUpcoming,
+  eventPath,
+  eventStatus,
 } from "@/lib/events";
 
 export type CalendarEntry =
@@ -57,97 +58,31 @@ const Fact = ({
 );
 
 const EventDetails = ({ event }: { event: ClubEvent }) => {
-  const upcoming = isUpcoming(event);
+  const now = new Date();
+  const status = eventStatus(event, now);
 
   return (
     <>
-      {event.poster && (
-        <img
-          src={event.poster}
-          alt={`Poster for ${event.title}`}
-          className="mx-auto mb-5 max-h-72 rounded-lg"
-        />
-      )}
-      <p className="mb-2 flex flex-wrap items-center gap-2 text-xs font-medium uppercase tracking-wide">
-        <span className="rounded-full bg-brand/20 px-2 py-0.5 text-primary">
-          {event.type}
-        </span>
-        <span className="text-muted-foreground">
-          {upcoming ? "Upcoming" : "Past event"}
-        </span>
+      <p className="label-mono mb-3 text-muted-foreground">
+        <span className="text-primary">{event.type}</span> · {status.label}
       </p>
-      <DialogTitle className="pr-10 text-xl leading-snug">
+      <DialogTitle className="pr-10 text-2xl leading-tight">
         {event.title}
       </DialogTitle>
-      <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
-        <Fact icon={CalendarIcon}>{longDate.format(eventDate(event))}</Fact>
-        {event.time && <Fact icon={ClockIcon}>{event.time}</Fact>}
-        {event.location && <Fact icon={MapPinIcon}>{event.location}</Fact>}
-      </ul>
+      <EventMeta event={event} on="card" withYear className="mt-4" />
       <DialogDescription className="mt-4 text-base text-foreground">
         {event.description}
       </DialogDescription>
-      <div className="mt-4 flex flex-wrap gap-2">
-        {event.tags.map((tag) => (
-          <span
-            key={tag}
-            className="rounded-full bg-brand/10 px-2 py-1 text-xs text-primary"
-          >
-            {tag}
-          </span>
-        ))}
+      <div className="mt-5 flex flex-wrap gap-2">
+        <RsvpButton event={event} now={now} />
+        <Button asChild variant="outline" size="sm">
+          <Link to={eventPath(event)}>
+            Full details
+            <ArrowRightIcon aria-hidden="true" />
+          </Link>
+        </Button>
       </div>
-      {((upcoming && event.rsvpLink) ||
-        event.recording ||
-        event.materials ||
-        event.page) && (
-        <div className="mt-5 flex flex-wrap gap-3">
-          {upcoming && event.rsvpLink && (
-            <Button asChild>
-              <a
-                href={event.rsvpLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                RSVP
-                <ArrowRightIcon />
-              </a>
-            </Button>
-          )}
-          {event.recording && (
-            <Button asChild variant="outline">
-              <a
-                href={event.recording}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <PlayCircleIcon />
-                Watch the recording
-              </a>
-            </Button>
-          )}
-          {event.page && (
-            <Button asChild variant="outline">
-              <a href={event.page} target="_blank" rel="noopener noreferrer">
-                <ExternalLinkIcon />
-                Event page
-              </a>
-            </Button>
-          )}
-          {event.materials && (
-            <Button asChild variant="outline">
-              <a
-                href={event.materials}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <CodeIcon />
-                Workshop materials
-              </a>
-            </Button>
-          )}
-        </div>
-      )}
+      <ResourceLinks event={event} className="mt-3" />
     </>
   );
 };

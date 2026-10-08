@@ -1,62 +1,80 @@
+import { FaDiscord, FaInstagram } from "react-icons/fa";
+import { Section } from "@/components/brand/Section";
+import { Ring } from "@/components/brand/Ring";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { DISCORD_URL, INSTAGRAM_URL } from "@/lib/links";
 
+const steps = [
+  {
+    title: "Join the Discord",
+    detail: "Where events are announced first and questions get answered.",
+  },
+  {
+    title: "Follow @carletonaisociety",
+    detail: "Every event gets a poster on Instagram.",
+  },
+  {
+    title: "Come to an event",
+    detail: "All years are welcome, and no experience is needed.",
+  },
+];
+
+/** How to join, on the posters' cream ground. */
 export function JoinCTA() {
   return (
-    <section className="py-24 relative">
-      <div className="container mx-auto px-4 sm:px-6 text-center relative z-10">
-        <motion.div
-          className={cn(
-            "max-w-3xl mx-auto relative rounded-lg p-6 sm:p-10",
-            "bg-card/50 backdrop-blur-xs",
-            "border border-primary/10",
-            "transition-all duration-200 ease-out",
-            "hover:border-primary/30 hover:bg-brand/5",
-            "hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5",
-          )}
-        >
-          <div className="relative z-50">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-            >
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-glow">
-                Join Our Community
-              </h2>
-              <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-6 sm:mb-8">
-                Whether you&apos;re just starting your AI journey or you&apos;re
-                an experienced practitioner, CAIS offers a supportive community
-                to learn, grow, and innovate together.
-              </p>
-            </motion.div>
-            <motion.div
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.4 }}
-            >
-              <Button
-                asChild
-                size="lg"
-                className="w-full sm:w-auto min-w-[160px] h-11 text-base bg-brand/20 hover:bg-brand/30 text-primary transition-colors duration-200"
-              >
-                <Link to="/contact">Join Now</Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto min-w-[160px] h-11 text-base glass hover:bg-brand/5 hover:border-primary/30 transition-all duration-200"
-              >
-                <Link to="/events">View Events</Link>
-              </Button>
-            </motion.div>
+    <Section
+      surface="paper"
+      labelledBy="join-heading"
+      className="overflow-hidden"
+    >
+      <Ring className="absolute -bottom-40 -right-32 hidden w-[28rem] md:block" />
+      <div className="relative grid gap-10 md:grid-cols-[1fr_1fr] md:pr-40 lg:pr-56">
+        <div>
+          <p className="label-mono text-primary">Get involved</p>
+          <h2 id="join-heading" className="font-display mt-3 text-title">
+            Join CAIS
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            There is no form and no fee. Three steps and you are in.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button asChild size="lg">
+              <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer">
+                <FaDiscord aria-hidden="true" />
+                Join the Discord
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
+                <FaInstagram aria-hidden="true" />
+                Follow on Instagram
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+            </Button>
           </div>
-        </motion.div>
+        </div>
+        <ol className="space-y-6">
+          {steps.map(({ title, detail }, i) => (
+            <li
+              key={title}
+              // Each step draws the line down to the next one's bullet.
+              className="relative flex gap-5 [&:not(:last-child)]:before:absolute [&:not(:last-child)]:before:-bottom-6 [&:not(:last-child)]:before:left-[15px] [&:not(:last-child)]:before:top-[33px] [&:not(:last-child)]:before:w-[3px] [&:not(:last-child)]:before:bg-circuit"
+            >
+              <span
+                aria-hidden="true"
+                className="relative flex size-[33px] shrink-0 items-center justify-center rounded-full border-4 border-mark bg-background font-mono text-sm font-medium"
+              >
+                {i + 1}
+              </span>
+              <div className="pt-0.5">
+                <h3 className="text-lg">{title}</h3>
+                <p className="mt-1 text-muted-foreground">{detail}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
       </div>
-    </section>
+    </Section>
   );
 }

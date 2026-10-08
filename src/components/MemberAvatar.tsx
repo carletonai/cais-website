@@ -40,7 +40,7 @@ const MemberAvatar = ({
   return (
     <div
       aria-hidden="true"
-      className={`${className} flex select-none items-center justify-center bg-brand/15 font-semibold tracking-wide text-primary ${monogramClassName}`}
+      className={`${className} flex select-none items-center justify-center tracking-wide ${monogramClassName}`}
     >
       {initials(name)}
     </div>

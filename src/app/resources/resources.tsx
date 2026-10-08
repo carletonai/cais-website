@@ -31,6 +31,8 @@ interface GameState {
   data: unknown;
 }
 
+const BOOTED_KEY = "cais-terminal-booted";
+
 const INITIAL_MESSAGE = `Welcome to CAIS Resources Terminal v2.0.0
 Type 'help' to see available commands or press 'Tab' for auto-completion.
 Try 'theme' to customize your experience!
@@ -725,6 +727,19 @@ const Resources = () => {
       if (hasBooted.current || !isBooting) return;
       hasBooted.current = true;
 
+      // The boot plays once per visit, and never with reduced motion.
+      let seen = false;
+      try {
+        seen = sessionStorage.getItem(BOOTED_KEY) === "1";
+        sessionStorage.setItem(BOOTED_KEY, "1");
+      } catch {
+        // Storage can be unavailable (private mode); just play it.
+      }
+      const quick =
+        seen || window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+      const pause = (ms: number) =>
+        new Promise((resolve) => setTimeout(resolve, quick ? 0 : ms));
+
       setCommands([]);
 
       setCommands([
@@ -736,7 +751,7 @@ const Resources = () => {
         },
       ]);
 
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await pause(2000);
 
       const bootMessages = ANIMATIONS.boot(theme, true);
       for (let i = 1; i < bootMessages.length; i++) {
@@ -749,7 +764,7 @@ const Resources = () => {
             isSystem: true,
           },
         ]);
-        await new Promise((resolve) => setTimeout(resolve, 800));
+        await pause(800);
       }
 
       setCommands((prev) => [
@@ -766,6 +781,11 @@ const Resources = () => {
 
     bootSequence();
   }, [theme, isBooting, scrollToBottom]);
+
+  // Ready to type the moment the boot ends.
+  useEffect(() => {
+    if (!isBooting) inputRef.current?.focus({ preventScroll: true });
+  }, [isBooting]);
 
   useHotkeys("ctrl+l", (e: KeyboardEvent) => {
     e.preventDefault();
@@ -1291,8 +1311,6 @@ ${event.rsvpLink ? `\nRSVP Link: ${event.rsvpLink}` : ""}
         )}
       </AnimatePresence>
 
-      <div className="absolute inset-0 bg-glow opacity-30" />
-      <div className="absolute inset-0 bg-grid opacity-20" />
       <div
         className={cn(
           "absolute inset-0 bg-gradient-to-b",
@@ -1302,22 +1320,20 @@ ${event.rsvpLink ? `\nRSVP Link: ${event.rsvpLink}` : ""}
         )}
       />
 
-      <div className="container mx-auto px-4 py-16 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1
-            className={cn(
-              "text-4xl sm:text-5xl font-bold mb-8 text-center bg-clip-text text-transparent",
-              "bg-gradient-to-r",
-              THEMES[theme].gradient,
-            )}
-          >
+      <div className="container mx-auto px-4 py-12 relative z-10">
+        <div className="mx-auto max-w-4xl">
+          <p className="label-mono text-muted-foreground">
+            Carleton AI Society <span aria-hidden="true">/</span>{" "}
+            <span className="text-primary">Resources</span>
+          </p>
+          <h1 className="font-display mt-3 text-[clamp(2rem,1.4rem+3vw,3.5rem)] leading-none">
             CAIS Resources Terminal
           </h1>
-        </motion.div>
+          <p className="mt-3 text-muted-foreground">
+            Learning resources, events and club links, one command away. Type{" "}
+            <code className="font-mono text-foreground">help</code> to start.
+          </p>
+        </div>
 
         <motion.div
           initial={{ opacity: 0 }}
@@ -1362,6 +1378,8 @@ ${event.rsvpLink ? `\nRSVP Link: ${event.rsvpLink}` : ""}
                   : "rgba(136, 136, 136, 0.5) rgba(255, 255, 255, 0.05)",
             }}
             ref={terminalEndRef}
+            role="log"
+            aria-label="Terminal output"
             onClick={() => inputRef.current?.focus()}
           >
             {commands.map((cmd, i) => (
@@ -1417,6 +1435,8 @@ ${event.rsvpLink ? `\nRSVP Link: ${event.rsvpLink}` : ""}
                   isBooting ? "Initializing..." : "Type a command..."
                 }
                 spellCheck={false}
+                aria-label="Terminal command"
+                autoComplete="off"
                 autoFocus
                 ref={inputRef}
                 disabled={isBooting}

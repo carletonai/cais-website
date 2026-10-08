@@ -18,8 +18,10 @@ test("brings the About content onto the home page as a linkable section", () => 
   ]) {
     expect(screen.getByRole("heading", { name: pillar })).toBeInTheDocument();
   }
-  // Button renders its link child with role="button".
-  expect(
-    screen.getByRole("button", { name: "Meet the Team" }).closest("a"),
-  ).toHaveAttribute("href", "/team");
+  // Styled as a button, but still a link to assistive tech.
+  expect(screen.getByRole("link", { name: /Meet the team/ })).toHaveAttribute(
+    "href",
+    "/team",
+  );
+  expect(screen.queryByRole("button")).not.toBeInTheDocument();
 });

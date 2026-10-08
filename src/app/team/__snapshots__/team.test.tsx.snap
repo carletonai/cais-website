@@ -2,629 +2,409 @@
 
 exports[`renders TeamPage correctly 1`] = `
 <DocumentFragment>
-  <div
-    class="min-h-screen bg-background relative overflow-hidden"
+  <header
+    class="relative overflow-hidden border-b border-border bg-dots"
+  >
+    <svg
+      aria-hidden="true"
+      class="pointer-events-none absolute -right-20 -top-32 w-48 lg:-right-16 lg:-top-40 lg:w-[26rem]"
+      focusable="false"
+      viewBox="0 0 100 100"
+    >
+      <circle
+        class="ring-draw"
+        cx="50"
+        cy="50"
+        fill="none"
+        pathLength="1"
+        r="44.5"
+        stroke="var(--color-mark)"
+        stroke-width="11"
+        transform="rotate(-90 50 50)"
+      />
+    </svg>
+    <div
+      class="relative mx-auto w-full max-w-6xl px-4 pb-12 pt-14 sm:px-6 sm:pb-16 sm:pt-20"
+    >
+      <p
+        class="label-mono mb-4 text-muted-foreground"
+      >
+        Carleton AI Society 
+        <span
+          aria-hidden="true"
+        >
+          /
+        </span>
+         
+        <span
+          class="text-primary"
+        >
+          Team
+        </span>
+      </p>
+      <h1
+        class="font-display max-w-[14ch] text-title"
+      >
+        Current Team
+      </h1>
+      <p
+        class="mt-5 text-lg text-muted-foreground"
+      >
+        The passionate individuals driving innovation and fostering AI education at Carleton University.
+      </p>
+    </div>
+  </header>
+  <section
+    aria-labelledby="exec-heading"
+    class="relative py-16 sm:py-20"
   >
     <div
-      class="absolute inset-0 bg-glow opacity-30"
-    />
-    <div
-      class="absolute inset-0 bg-grid opacity-20"
-    />
-    <div
-      class="fixed inset-0 bg-gradient-to-b from-black/0 via-brand/10 to-background pointer-events-none"
-    />
-    <div
-      aria-hidden="true"
-      class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-brand)_0%,_transparent_70%)] blur-3xl"
-    />
-    <section
-      class="relative z-10 px-6 lg:px-14 pt-20 pb-16"
+      class="mx-auto w-full max-w-6xl px-4 sm:px-6"
     >
       <div
-        class="text-center max-w-4xl mx-auto"
+        class="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-end sm:justify-between"
       >
-        <h1
-          class="text-4xl md:text-6xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary/75 mb-6"
-        >
-          Current Team
-        </h1>
-        <p
-          class="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto"
-        >
-          The passionate individuals driving innovation and fostering AI education at Carleton University
-        </p>
-      </div>
-    </section>
-    <div
-      class="relative z-10"
-    >
-      <div
-        class="px-6 lg:px-14 pb-24 relative"
-      >
-        <div
-          aria-hidden="true"
-          class="absolute inset-0 pointer-events-none"
-        >
-          <div
-            class="absolute left-[20%] top-[30%] h-[40vh] w-[40vh] rounded-full bg-brand/30 blur-[100px]"
-          />
-          <div
-            class="absolute right-[10%] top-[20%] h-[30vh] w-[30vh] rounded-full bg-purple-900/30 blur-[80px]"
-          />
+        <div>
+          <p
+            class="label-mono mb-3 text-primary"
+          >
+            2026–27
+          </p>
+          <h2
+            class="text-3xl leading-tight sm:text-4xl"
+            id="exec-heading"
+          >
+            Executive team
+          </h2>
         </div>
         <div
-          aria-hidden="true"
-          class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-brand)_0%,_transparent_70%)] blur-3xl pointer-events-none"
-        />
-        <div
-          class="space-y-48 relative z-10"
+          class="shrink-0"
         >
-          <div>
-            <h2
-              class="text-4xl font-bold mb-24 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-neutral-400"
-            >
-              Executive Team
-            </h2>
-            <div
-              class="relative"
-            >
-              <div
-                class="absolute inset-0 flex justify-center"
-              >
-                <div
-                  class="relative h-full w-px bg-gradient-to-b from-primary/50 via-primary/10 to-transparent"
-                >
-                  <div
-                    class="absolute top-0 w-px h-full origin-top bg-brand"
-                  />
-                  <div
-                    class="absolute w-4 h-4 -translate-x-[7px] bg-brand rounded-full"
-                    style="top: 0%;"
-                  >
-                    <div
-                      class="absolute inset-0 animate-pulse rounded-full bg-brand blur-md"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                class="space-y-32 relative"
-              >
-                <div
-                  class="relative grid grid-cols-[1fr,2px,1fr] w-full px-16 group"
-                >
-                  <div
-                    class="pr-16"
-                  >
-                    <div
-                      class="flex justify-end"
-                    >
-                      <div
-                        class="max-w-md text-right"
-                      >
-                        <h3
-                          class="text-2xl font-semibold text-foreground"
-                        >
-                          Jeremy Friesen
-                        </h3>
-                        <p
-                          class="mt-2 text-lg text-primary"
-                        >
-                          President
-                        </p>
-                        <p
-                          class="mt-4 text-base text-muted-foreground"
-                        >
-                          Favorite Hobby: Golf
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="relative"
-                  />
-                  <div
-                    class="pl-16"
-                  >
-                    <div>
-                      <div
-                        class="relative w-[280px] rounded-3xl bg-neutral-900/90 p-6 transition-all duration-300 hover:bg-neutral-800/90 hover:-translate-y-1 border border-transparent hover:border-primary/20"
-                      >
-                        <div
-                          class="absolute inset-0 rounded-3xl bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
-                        />
-                        <div
-                          class="flex flex-col items-center"
-                        >
-                          <div
-                            class="relative mb-4"
-                          >
-                            <div
-                              class="h-48 w-48 overflow-hidden rounded-3xl border-2 border-neutral-800 transition-colors duration-300 group-hover:border-primary/50"
-                            >
-                              <div
-                                aria-hidden="true"
-                                class="h-full w-full object-cover flex select-none items-center justify-center bg-brand/15 font-semibold tracking-wide text-primary text-6xl"
-                              >
-                                JF
-                              </div>
-                            </div>
-                          </div>
-                          <a
-                            aria-label="Jeremy Friesen on LinkedIn"
-                            class="relative z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-3 text-muted-foreground transition-colors hover:bg-neutral-800 hover:text-primary"
-                            href="https://www.linkedin.com/in/jeremyfriesen1/"
-                            rel="noopener noreferrer"
-                            target="_blank"
-                          >
-                            <svg
-                              class="h-6 w-6"
-                              fill="currentColor"
-                              height="1em"
-                              stroke="currentColor"
-                              stroke-width="0"
-                              viewBox="0 0 448 512"
-                              width="1em"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
-                              />
-                            </svg>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="relative grid grid-cols-[1fr,2px,1fr] w-full px-16 group"
-                >
-                  <div
-                    class="pr-16"
-                  >
-                    <div
-                      class="flex justify-end"
-                    >
-                      <div
-                        class="relative w-[280px] rounded-3xl bg-neutral-900/90 p-6 transition-all duration-300 hover:bg-neutral-800/90 hover:-translate-y-1 border border-transparent hover:border-primary/20"
-                      >
-                        <div
-                          class="absolute inset-0 rounded-3xl bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
-                        />
-                        <div
-                          class="flex flex-col items-center"
-                        >
-                          <div
-                            class="relative mb-4"
-                          >
-                            <div
-                              class="h-48 w-48 overflow-hidden rounded-3xl border-2 border-neutral-800 transition-colors duration-300 group-hover:border-primary/50"
-                            >
-                              <div
-                                aria-hidden="true"
-                                class="h-full w-full object-cover flex select-none items-center justify-center bg-brand/15 font-semibold tracking-wide text-primary text-6xl"
-                              >
-                                MA
-                              </div>
-                            </div>
-                          </div>
-                          <a
-                            aria-label="Marc Aoun on LinkedIn"
-                            class="relative z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-3 text-muted-foreground transition-colors hover:bg-neutral-800 hover:text-primary"
-                            href="https://www.linkedin.com/in/marc-aoun-263b981ab/"
-                            rel="noopener noreferrer"
-                            target="_blank"
-                          >
-                            <svg
-                              class="h-6 w-6"
-                              fill="currentColor"
-                              height="1em"
-                              stroke="currentColor"
-                              stroke-width="0"
-                              viewBox="0 0 448 512"
-                              width="1em"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
-                              />
-                            </svg>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="relative"
-                  />
-                  <div
-                    class="pl-16"
-                  >
-                    <div>
-                      <div
-                        class="max-w-md"
-                      >
-                        <h3
-                          class="text-2xl font-semibold text-foreground"
-                        >
-                          Marc Aoun
-                        </h3>
-                        <p
-                          class="mt-2 text-lg text-primary"
-                        >
-                          VP Academics
-                        </p>
-                        <p
-                          class="mt-4 text-base text-muted-foreground"
-                        >
-                          Favorite Hobby: Soccer
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="relative grid grid-cols-[1fr,2px,1fr] w-full px-16 group"
-                >
-                  <div
-                    class="pr-16"
-                  >
-                    <div
-                      class="flex justify-end"
-                    >
-                      <div
-                        class="max-w-md text-right"
-                      >
-                        <h3
-                          class="text-2xl font-semibold text-foreground"
-                        >
-                          Sofia Alhennawi
-                        </h3>
-                        <p
-                          class="mt-2 text-lg text-primary"
-                        >
-                          VP Community
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="relative"
-                  />
-                  <div
-                    class="pl-16"
-                  >
-                    <div>
-                      <div
-                        class="relative w-[280px] rounded-3xl bg-neutral-900/90 p-6 transition-all duration-300 hover:bg-neutral-800/90 hover:-translate-y-1 border border-transparent hover:border-primary/20"
-                      >
-                        <div
-                          class="absolute inset-0 rounded-3xl bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
-                        />
-                        <div
-                          class="flex flex-col items-center"
-                        >
-                          <div
-                            class="relative mb-4"
-                          >
-                            <div
-                              class="h-48 w-48 overflow-hidden rounded-3xl border-2 border-neutral-800 transition-colors duration-300 group-hover:border-primary/50"
-                            >
-                              <div
-                                aria-hidden="true"
-                                class="h-full w-full object-cover flex select-none items-center justify-center bg-brand/15 font-semibold tracking-wide text-primary text-6xl"
-                              >
-                                SA
-                              </div>
-                            </div>
-                          </div>
-                          <a
-                            aria-label="Sofia Alhennawi on LinkedIn"
-                            class="relative z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-3 text-muted-foreground transition-colors hover:bg-neutral-800 hover:text-primary"
-                            href="https://www.linkedin.com/in/sofia-alhennawi-b6aa19344/"
-                            rel="noopener noreferrer"
-                            target="_blank"
-                          >
-                            <svg
-                              class="h-6 w-6"
-                              fill="currentColor"
-                              height="1em"
-                              stroke="currentColor"
-                              stroke-width="0"
-                              viewBox="0 0 448 512"
-                              width="1em"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
-                              />
-                            </svg>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="relative grid grid-cols-[1fr,2px,1fr] w-full px-16 group"
-                >
-                  <div
-                    class="pr-16"
-                  >
-                    <div
-                      class="flex justify-end"
-                    >
-                      <div
-                        class="relative w-[280px] rounded-3xl bg-neutral-900/90 p-6 transition-all duration-300 hover:bg-neutral-800/90 hover:-translate-y-1 border border-transparent hover:border-primary/20"
-                      >
-                        <div
-                          class="absolute inset-0 rounded-3xl bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
-                        />
-                        <div
-                          class="flex flex-col items-center"
-                        >
-                          <div
-                            class="relative mb-4"
-                          >
-                            <div
-                              class="h-48 w-48 overflow-hidden rounded-3xl border-2 border-neutral-800 transition-colors duration-300 group-hover:border-primary/50"
-                            >
-                              <div
-                                aria-hidden="true"
-                                class="h-full w-full object-cover flex select-none items-center justify-center bg-brand/15 font-semibold tracking-wide text-primary text-6xl"
-                              >
-                                NO
-                              </div>
-                            </div>
-                          </div>
-                          <a
-                            aria-label="Nnaya Oluigbo on LinkedIn"
-                            class="relative z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-3 text-muted-foreground transition-colors hover:bg-neutral-800 hover:text-primary"
-                            href="https://www.linkedin.com/in/chizurum-oluigbo/"
-                            rel="noopener noreferrer"
-                            target="_blank"
-                          >
-                            <svg
-                              class="h-6 w-6"
-                              fill="currentColor"
-                              height="1em"
-                              stroke="currentColor"
-                              stroke-width="0"
-                              viewBox="0 0 448 512"
-                              width="1em"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
-                              />
-                            </svg>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="relative"
-                  />
-                  <div
-                    class="pl-16"
-                  >
-                    <div>
-                      <div
-                        class="max-w-md"
-                      >
-                        <h3
-                          class="text-2xl font-semibold text-foreground"
-                        >
-                          Nnaya Oluigbo
-                        </h3>
-                        <p
-                          class="mt-2 text-lg text-primary"
-                        >
-                          VP Events
-                        </p>
-                        <p
-                          class="mt-4 text-base text-muted-foreground"
-                        >
-                          Favorite Hobby: Reading
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="relative grid grid-cols-[1fr,2px,1fr] w-full px-16 group"
-                >
-                  <div
-                    class="pr-16"
-                  >
-                    <div
-                      class="flex justify-end"
-                    >
-                      <div
-                        class="max-w-md text-right"
-                      >
-                        <h3
-                          class="text-2xl font-semibold text-foreground"
-                        >
-                          Alexander James Rigas
-                        </h3>
-                        <p
-                          class="mt-2 text-lg text-primary"
-                        >
-                          VP Finance
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="relative"
-                  />
-                  <div
-                    class="pl-16"
-                  >
-                    <div>
-                      <div
-                        class="relative w-[280px] rounded-3xl bg-neutral-900/90 p-6 transition-all duration-300 hover:bg-neutral-800/90 hover:-translate-y-1 border border-transparent hover:border-primary/20"
-                      >
-                        <div
-                          class="absolute inset-0 rounded-3xl bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
-                        />
-                        <div
-                          class="flex flex-col items-center"
-                        >
-                          <div
-                            class="relative mb-4"
-                          >
-                            <div
-                              class="h-48 w-48 overflow-hidden rounded-3xl border-2 border-neutral-800 transition-colors duration-300 group-hover:border-primary/50"
-                            >
-                              <div
-                                aria-hidden="true"
-                                class="h-full w-full object-cover flex select-none items-center justify-center bg-brand/15 font-semibold tracking-wide text-primary text-6xl"
-                              >
-                                AR
-                              </div>
-                            </div>
-                          </div>
-                          <a
-                            aria-label="Alexander James Rigas on LinkedIn"
-                            class="relative z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-3 text-muted-foreground transition-colors hover:bg-neutral-800 hover:text-primary"
-                            href="https://www.linkedin.com/in/alexanderrigas/"
-                            rel="noopener noreferrer"
-                            target="_blank"
-                          >
-                            <svg
-                              class="h-6 w-6"
-                              fill="currentColor"
-                              height="1em"
-                              stroke="currentColor"
-                              stroke-width="0"
-                              viewBox="0 0 448 512"
-                              width="1em"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
-                              />
-                            </svg>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="relative grid grid-cols-[1fr,2px,1fr] w-full px-16 group"
-                >
-                  <div
-                    class="pr-16"
-                  >
-                    <div
-                      class="flex justify-end"
-                    >
-                      <div
-                        class="relative w-[280px] rounded-3xl bg-neutral-900/90 p-6 transition-all duration-300 hover:bg-neutral-800/90 hover:-translate-y-1 border border-transparent hover:border-primary/20"
-                      >
-                        <div
-                          class="absolute inset-0 rounded-3xl bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
-                        />
-                        <div
-                          class="flex flex-col items-center"
-                        >
-                          <div
-                            class="relative mb-4"
-                          >
-                            <div
-                              class="h-48 w-48 overflow-hidden rounded-3xl border-2 border-neutral-800 transition-colors duration-300 group-hover:border-primary/50"
-                            >
-                              <div
-                                aria-hidden="true"
-                                class="h-full w-full object-cover flex select-none items-center justify-center bg-brand/15 font-semibold tracking-wide text-primary text-6xl"
-                              >
-                                AZ
-                              </div>
-                            </div>
-                          </div>
-                          <a
-                            aria-label="Abdulrahman Zrein on LinkedIn"
-                            class="relative z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-3 text-muted-foreground transition-colors hover:bg-neutral-800 hover:text-primary"
-                            href="https://www.linkedin.com/in/abdulrahmanzrein/"
-                            rel="noopener noreferrer"
-                            target="_blank"
-                          >
-                            <svg
-                              class="h-6 w-6"
-                              fill="currentColor"
-                              height="1em"
-                              stroke="currentColor"
-                              stroke-width="0"
-                              viewBox="0 0 448 512"
-                              width="1em"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
-                              />
-                            </svg>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="relative"
-                  />
-                  <div
-                    class="pl-16"
-                  >
-                    <div>
-                      <div
-                        class="max-w-md"
-                      >
-                        <h3
-                          class="text-2xl font-semibold text-foreground"
-                        >
-                          Abdulrahman Zrein
-                        </h3>
-                        <p
-                          class="mt-2 text-lg text-primary"
-                        >
-                          VP Projects/Technology
-                        </p>
-                        <p
-                          class="mt-4 text-base text-muted-foreground"
-                        >
-                          Favorite Hobby: Skiing
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <a
+            class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-semibold transition-[background-color,border-color] duration-150 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-transparent text-foreground hover:border-foreground hover:bg-accent h-11 px-5 py-2"
+            data-discover="true"
+            href="/team/past"
+          >
+            Meet our past teams
+            <svg
+              aria-hidden="true"
+            />
+          </a>
+        </div>
+      </div>
+      <ul
+        class="grid grid-cols-1 gap-5 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+      >
+        <li
+          class="flex flex-col items-center rounded-2xl border border-border bg-card p-6 text-center"
+        >
+          <div
+            aria-hidden="true"
+            class="size-24 rounded-full border-4 border-mark bg-background object-cover flex select-none items-center justify-center tracking-wide font-heading text-3xl font-bold text-foreground"
+          >
+            JF
           </div>
-        </div>
-      </div>
+          <h3
+            class="mt-4 text-lg leading-snug"
+          >
+            Jeremy Friesen
+          </h3>
+          <p
+            class="label-mono mt-2 text-primary"
+          >
+            President
+          </p>
+          <p
+            class="mt-3 text-sm text-muted-foreground"
+          >
+            Favorite Hobby: Golf
+          </p>
+          <a
+            class="mt-3 inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            href="https://www.linkedin.com/in/jeremyfriesen1/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <svg
+              aria-hidden="true"
+              class="size-4"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 448 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+              />
+            </svg>
+            LinkedIn
+            <span
+              class="sr-only"
+            >
+              : Jeremy Friesen (opens in a new tab)
+            </span>
+          </a>
+        </li>
+        <li
+          class="flex flex-col items-center rounded-2xl border border-border bg-card p-6 text-center"
+        >
+          <div
+            aria-hidden="true"
+            class="size-24 rounded-full border-4 border-mark bg-background object-cover flex select-none items-center justify-center tracking-wide font-heading text-3xl font-bold text-foreground"
+          >
+            MA
+          </div>
+          <h3
+            class="mt-4 text-lg leading-snug"
+          >
+            Marc Aoun
+          </h3>
+          <p
+            class="label-mono mt-2 text-primary"
+          >
+            VP Academics
+          </p>
+          <p
+            class="mt-3 text-sm text-muted-foreground"
+          >
+            Favorite Hobby: Soccer
+          </p>
+          <a
+            class="mt-3 inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            href="https://www.linkedin.com/in/marc-aoun-263b981ab/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <svg
+              aria-hidden="true"
+              class="size-4"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 448 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+              />
+            </svg>
+            LinkedIn
+            <span
+              class="sr-only"
+            >
+              : Marc Aoun (opens in a new tab)
+            </span>
+          </a>
+        </li>
+        <li
+          class="flex flex-col items-center rounded-2xl border border-border bg-card p-6 text-center"
+        >
+          <div
+            aria-hidden="true"
+            class="size-24 rounded-full border-4 border-mark bg-background object-cover flex select-none items-center justify-center tracking-wide font-heading text-3xl font-bold text-foreground"
+          >
+            SA
+          </div>
+          <h3
+            class="mt-4 text-lg leading-snug"
+          >
+            Sofia Alhennawi
+          </h3>
+          <p
+            class="label-mono mt-2 text-primary"
+          >
+            VP Community
+          </p>
+          <a
+            class="mt-3 inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            href="https://www.linkedin.com/in/sofia-alhennawi-b6aa19344/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <svg
+              aria-hidden="true"
+              class="size-4"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 448 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+              />
+            </svg>
+            LinkedIn
+            <span
+              class="sr-only"
+            >
+              : Sofia Alhennawi (opens in a new tab)
+            </span>
+          </a>
+        </li>
+        <li
+          class="flex flex-col items-center rounded-2xl border border-border bg-card p-6 text-center"
+        >
+          <div
+            aria-hidden="true"
+            class="size-24 rounded-full border-4 border-mark bg-background object-cover flex select-none items-center justify-center tracking-wide font-heading text-3xl font-bold text-foreground"
+          >
+            NO
+          </div>
+          <h3
+            class="mt-4 text-lg leading-snug"
+          >
+            Nnaya Oluigbo
+          </h3>
+          <p
+            class="label-mono mt-2 text-primary"
+          >
+            VP Events
+          </p>
+          <p
+            class="mt-3 text-sm text-muted-foreground"
+          >
+            Favorite Hobby: Reading
+          </p>
+          <a
+            class="mt-3 inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            href="https://www.linkedin.com/in/chizurum-oluigbo/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <svg
+              aria-hidden="true"
+              class="size-4"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 448 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+              />
+            </svg>
+            LinkedIn
+            <span
+              class="sr-only"
+            >
+              : Nnaya Oluigbo (opens in a new tab)
+            </span>
+          </a>
+        </li>
+        <li
+          class="flex flex-col items-center rounded-2xl border border-border bg-card p-6 text-center"
+        >
+          <div
+            aria-hidden="true"
+            class="size-24 rounded-full border-4 border-mark bg-background object-cover flex select-none items-center justify-center tracking-wide font-heading text-3xl font-bold text-foreground"
+          >
+            AR
+          </div>
+          <h3
+            class="mt-4 text-lg leading-snug"
+          >
+            Alexander James Rigas
+          </h3>
+          <p
+            class="label-mono mt-2 text-primary"
+          >
+            VP Finance
+          </p>
+          <a
+            class="mt-3 inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            href="https://www.linkedin.com/in/alexanderrigas/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <svg
+              aria-hidden="true"
+              class="size-4"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 448 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+              />
+            </svg>
+            LinkedIn
+            <span
+              class="sr-only"
+            >
+              : Alexander James Rigas (opens in a new tab)
+            </span>
+          </a>
+        </li>
+        <li
+          class="flex flex-col items-center rounded-2xl border border-border bg-card p-6 text-center"
+        >
+          <div
+            aria-hidden="true"
+            class="size-24 rounded-full border-4 border-mark bg-background object-cover flex select-none items-center justify-center tracking-wide font-heading text-3xl font-bold text-foreground"
+          >
+            AZ
+          </div>
+          <h3
+            class="mt-4 text-lg leading-snug"
+          >
+            Abdulrahman Zrein
+          </h3>
+          <p
+            class="label-mono mt-2 text-primary"
+          >
+            VP Projects/Technology
+          </p>
+          <p
+            class="mt-3 text-sm text-muted-foreground"
+          >
+            Favorite Hobby: Skiing
+          </p>
+          <a
+            class="mt-3 inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            href="https://www.linkedin.com/in/abdulrahmanzrein/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <svg
+              aria-hidden="true"
+              class="size-4"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 448 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+              />
+            </svg>
+            LinkedIn
+            <span
+              class="sr-only"
+            >
+              : Abdulrahman Zrein (opens in a new tab)
+            </span>
+          </a>
+        </li>
+      </ul>
     </div>
-    <div
-      class="relative z-10 flex justify-center pb-24"
-    >
-      <a
-        class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 rounded-md px-8 group/btn"
-        data-discover="true"
-        href="/team/past"
-        role="button"
-        tabindex="0"
-      >
-        Meet our past teams
-        <svg
-          class="group-hover/btn:translate-x-1 transition-transform"
-        />
-      </a>
-    </div>
-  </div>
+  </section>
 </DocumentFragment>
 `;

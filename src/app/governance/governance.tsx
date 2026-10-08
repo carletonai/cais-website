@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { PageHeader } from "@/components/brand/PageHeader";
+import { Section, SectionHeader } from "@/components/brand/Section";
 import {
   ArrowRightIcon,
   FileTextIcon,
@@ -62,110 +63,76 @@ const SECTIONS = [
   },
 ];
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring" as const, stiffness: 100, damping: 15 },
-  },
-};
-
-const Governance = () => {
-  return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-brand/20 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-brand/10 blur-[120px] pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-background pointer-events-none" />
-      <div className="absolute inset-0 bg-glow opacity-20 pointer-events-none" />
-      <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
-
-      <div className="relative z-10 container mx-auto px-4 pt-28 pb-24">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16 max-w-2xl mx-auto"
-        >
-          <p className="text-sm font-mono text-primary mb-4 tracking-widest uppercase">
-            Club Structure
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary/75 mb-4">
-            Governance
-          </h1>
-          <p className="text-lg text-muted-foreground">
-            CAIS is led by a six-person executive team, each responsible for a
-            key area of the club.
-          </p>
-        </motion.div>
-
-        <nav
-          aria-label="Team pages"
-          className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-5xl mx-auto mb-16"
-        >
-          {SECTIONS.map(({ icon: Icon, title, description, to, href }) => {
-            const body = (
-              <>
-                <span className="flex items-center gap-2 font-semibold text-foreground">
-                  <Icon className="h-5 w-5 text-primary" />
-                  {title}
-                  <ArrowRightIcon className="ml-auto h-4 w-4 text-primary transition-transform group-hover:translate-x-1" />
-                </span>
-                <span className="mt-2 block text-sm text-muted-foreground">
-                  {description}
-                </span>
-              </>
-            );
-            const className =
-              "group block rounded-xl border border-primary/20 bg-card/60 p-5 transition-colors hover:border-primary/50 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring";
-
-            return to ? (
-              <Link key={title} to={to} className={className}>
-                {body}
-              </Link>
-            ) : (
-              <a key={title} href={href} className={className}>
-                {body}
-              </a>
-            );
-          })}
-        </nav>
-
-        <h2 className="sr-only">Executive roles</h2>
-
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
-        >
-          {ROLES.map(({ title, description }) => (
-            <motion.div
-              key={title}
-              variants={item}
-              className="bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5 transition-all duration-200"
-            >
-              <h3 className="text-lg font-semibold text-primary mb-3">
+const Governance = () => (
+  <>
+    <PageHeader
+      label="Team / Governance"
+      title="Governance"
+      lede="CAIS is led by a six-person executive team, each responsible for a key area of the club."
+    >
+      <nav
+        aria-label="Team pages"
+        className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-3"
+      >
+        {SECTIONS.map(({ icon: Icon, title, description, to, href }) => {
+          const body = (
+            <>
+              <span className="flex items-center gap-2 font-semibold text-foreground">
+                <Icon aria-hidden="true" className="size-5 text-primary" />
                 {title}
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
+                <ArrowRightIcon
+                  aria-hidden="true"
+                  className="ml-auto size-4 transition-transform group-hover:translate-x-1"
+                />
+              </span>
+              <span className="mt-2 block text-sm text-muted-foreground">
                 {description}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </div>
-  );
-};
+              </span>
+            </>
+          );
+          const className =
+            "group block rounded-2xl border border-border bg-card p-5 transition-colors hover:border-input";
+
+          return to ? (
+            <Link key={title} to={to} className={className}>
+              {body}
+            </Link>
+          ) : (
+            <a key={title} href={href} className={className}>
+              {body}
+            </a>
+          );
+        })}
+      </nav>
+    </PageHeader>
+
+    <Section labelledBy="roles-heading">
+      <SectionHeader
+        id="roles-heading"
+        label="Club structure"
+        title="Executive roles"
+      />
+      <ol className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {ROLES.map(({ title, description }, i) => (
+          <li
+            key={title}
+            className="rounded-2xl border border-border bg-card p-6"
+          >
+            <p
+              aria-hidden="true"
+              className="font-mono text-sm text-muted-foreground"
+            >
+              {String(i + 1).padStart(2, "0")}
+            </p>
+            <h3 className="mt-2 text-xl">{title}</h3>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              {description}
+            </p>
+          </li>
+        ))}
+      </ol>
+    </Section>
+  </>
+);
 
 export default Governance;

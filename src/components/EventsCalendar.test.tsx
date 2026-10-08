@@ -1,5 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { MemoryRouter } from "react-router-dom";
 import { type Meeting } from "@/lib/events";
 import { EventsCalendar } from "./EventsCalendar";
 
@@ -47,7 +48,9 @@ const execMeeting: Meeting = {
 const setup = (meetings: Meeting[] = []) => {
   const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
   render(
-    <EventsCalendar events={[workshop, icebreaker]} meetings={meetings} />,
+    <MemoryRouter>
+      <EventsCalendar events={[workshop, icebreaker]} meetings={meetings} />
+    </MemoryRouter>,
   );
   return user;
 };
@@ -167,10 +170,13 @@ test("opens an event's details from its day in the grid", async () => {
   );
 
   const details = screen.getByRole("dialog", { name: "CAIS Icebreaker" });
-  expect(details).toHaveTextContent("Thursday, September 24, 2026");
-  expect(details).toHaveTextContent("6:00 PM - 8:00 PM");
+  expect(details).toHaveTextContent("Thu, Sep 24, 2026");
+  expect(details).toHaveTextContent("6:00–8:00 PM");
   expect(details).toHaveTextContent("Southam Hall 402");
-  expect(details).toHaveTextContent("Upcoming");
+  expect(details).toHaveTextContent("In 2 days");
+  expect(
+    within(details).getByRole("link", { name: /Full details/ }),
+  ).toHaveAttribute("href", "/events/13-cais-icebreaker");
   expect(details).toHaveAccessibleDescription(
     "Come find out who we are and what we actually do.",
   );
@@ -192,7 +198,7 @@ test("opens a past event's details from the agenda, without an RSVP", async () =
   await user.click(agendaRow);
 
   const details = screen.getByRole("dialog", { name: "Training an AI Model!" });
-  expect(details).toHaveTextContent("Thursday, February 26, 2026");
+  expect(details).toHaveTextContent("Thu, Feb 26, 2026");
   expect(details).toHaveTextContent("Past event");
   expect(
     within(details).queryByRole("link", { name: /RSVP/ }),
@@ -222,7 +228,9 @@ test("picks a year, then a month, to reach events from other years", async () =>
     date: "2021-10-13",
   };
   render(
-    <EventsCalendar events={[older, workshop, icebreaker]} meetings={[]} />,
+    <MemoryRouter>
+      <EventsCalendar events={[older, workshop, icebreaker]} meetings={[]} />
+    </MemoryRouter>,
   );
 
   const shortcuts = screen.getByRole("navigation", {

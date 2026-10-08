@@ -1,3 +1,7 @@
+// Tests run on Ottawa time, like the club: "today", "tomorrow" and which day
+// an event falls on must not depend on where the tests run (CI is in UTC).
+process.env.TZ = "America/Toronto";
+
 module.exports = {
   testEnvironment: "jsdom",
   transform: {

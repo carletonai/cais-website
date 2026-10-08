@@ -3,14 +3,26 @@ import userEvent from "@testing-library/user-event";
 import { EventPoster } from "./EventPoster";
 
 const withoutPoster = {
-  image: "/assets/events/neural-networks.svg",
-  title: "Training an AI Model!",
+  event: {
+    id: "12",
+    title: "Training an AI Model!",
+    date: "2026-02-26",
+    time: "6:00 PM - 7:00 PM",
+    location: "Tory Building 210",
+    description: "",
+    type: "Workshop",
+    image: "/assets/events/neural-networks.svg",
+    tags: [],
+  },
 };
 
 const withPoster = {
-  ...withoutPoster,
-  poster: "/assets/events/icebreaker-2026.jpg",
-  title: "CAIS Icebreaker",
+  event: {
+    ...withoutPoster.event,
+    id: "13",
+    poster: "/assets/events/icebreaker-2026.jpg",
+    title: "CAIS Icebreaker",
+  },
 };
 
 test("offers no enlarge control when the event has no poster", () => {

@@ -8,7 +8,7 @@
 
 ## Prerequisites
 
-- Node.js 18 or later
+- Node.js 20.19 or later
 - pnpm (recommended for better performance and disk space efficiency)
 
 ## Getting Started
@@ -75,9 +75,9 @@ for large text (>=24px, or >=18.66px bold). The one exception is the brand-red
 text colour (`primary`), which is held to **AA** (4.5:1, 3:1 large): no red that
 still looks red can reach 7:1 on the site's near-black background.
 
-Most text sits on a stack of gradients, blurred blooms and grid overlays rather
-than on a flat colour, so contrast cannot be checked by reading Tailwind classes.
-`pnpm test:contrast` measures it from rendered pixels instead — it screenshots
+Text sits on dot grids, poster images and two surfaces (ink and cream "paper"),
+so contrast cannot be checked by reading Tailwind classes. `pnpm test:contrast`
+measures it from rendered pixels instead — it screenshots
 each page twice (once normally, once with glyphs made transparent), diffs the
 two to find the pixels each glyph covers, and evaluates the specified text
 colour against the real backdrop at those pixels.
@@ -92,18 +92,40 @@ It needs Playwright's chromium (`npx playwright install chromium`); set
 `PLAYWRIGHT_CHROMIUM_PATH` to reuse a browser you already have. The script exits
 non-zero when anything fails, so it can gate CI.
 
+On a cream `data-surface="paper"` section the same token names are re-scoped
+(src/app/globals.css), and `primary` is dark enough there to clear 7:1. Keep
+text off the red rings: the audit hides SVG artwork, so it cannot see them.
+
 Two colour roles keep this working, and they are not interchangeable:
 
 - `primary` is the brand red as **ink**: the buttons' hue, lifted just enough to
   clear 4.5:1 on every surface. Use it for text and icons.
-- `brand` is the brand red as a **fill** — solid buttons, tinted chips,
-  decorative blooms. It is dark enough that `foreground` on top of it clears
-  7:1. A saturated red cannot do both jobs at once on a near-black ground.
+- `brand` is the brand red as a **fill** — solid buttons. It is dark enough that
+  white on top of it clears 7:1. A saturated red cannot do both jobs at once on
+  a near-black ground.
+- `mark` is the posters' red for rings and bullets: graphics only, never text.
 
-Putting text on `bg-primary`, or a bloom on `primary`, is what previously made
-whole pages unreadable. When adding decorative layers, keep their alpha low:
-they sit behind body copy, and lifting the backdrop luminance breaks the
-guarantee every ink colour depends on.
+Putting text on `bg-primary` or `mark` is what makes pages unreadable.
+
+## Adding an event
+
+Events live in `src/data/events.json`; the newest go at the end.
+
+- `time`: write `"6:00 PM - 7:00 PM"` (or a start time alone, `"6:00 PM"`). The
+  site turns that into exact Ottawa times for countdowns, "happening now", and
+  calendar files. Anything else (`""`, `"TBA"`) is shown as written and treated
+  as an all-day event.
+- `id`: never reuse or change one. Each event's page lives at
+  `/events/<id>-<title>` (e.g. `/events/66-intro-to-agentic-ai`), and that link
+  ends up in chats and calendars; the id is what keeps it working if the title
+  changes.
+- `poster`: put the image in `public/assets/events/` (about 1236px wide, JPEG).
+  Images must be on this site: the production CSP blocks any other origin.
+- `rsvpLink`, `materials`, `recording`, `page`: https links. They show up on the
+  event's card and page with labels like "Code on GitHub" or "Register on Luma".
+
+The build writes a page, a link preview (using the poster) and an `.ics` file
+for every event, plus `/events.ics`, the calendar people subscribe to.
 
 ## Contributing
 

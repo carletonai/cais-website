@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import {
+  ArrowRightIcon,
+  BrainIcon,
+  CalendarIcon,
+  CodeIcon,
+  UsersIcon,
+} from "lucide-react";
+import { Section, SectionHeader } from "@/components/brand/Section";
 import { Button } from "@/components/ui/button";
-import { BrainIcon, UsersIcon, CalendarIcon, CodeIcon } from "lucide-react";
+import { allEvents, clubNumbers } from "@/lib/events";
+import projectsData from "@/data/projects.json";
 
 const pillars = [
   {
@@ -9,123 +17,100 @@ const pillars = [
     title: "Learn AI",
     description:
       "Hands-on workshops and sessions covering machine learning fundamentals, deep learning, and the latest AI research.",
+    to: "/events",
+    cta: "Upcoming workshops",
   },
   {
     icon: CodeIcon,
     title: "Build Projects",
     description:
       "Collaborate on real AI and ML projects with fellow students, from idea to working prototype.",
+    to: "/projects",
+    cta: "See the projects",
   },
   {
     icon: UsersIcon,
     title: "Grow Your Network",
     description:
       "Connect with students, alumni, and industry professionals who share a passion for artificial intelligence.",
+    to: "/contact",
+    cta: "Find us online",
   },
   {
     icon: CalendarIcon,
     title: "Attend Events",
     description:
       "Workshops, hackathons, and social meetups throughout the academic year.",
+    to: "/events",
+    cta: "Browse events",
   },
 ];
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-  },
-};
+/** Counted from the site's data, so each one can be checked. */
+const numbers = (() => {
+  const { events, since, workshops, withResources } = clubNumbers(allEvents);
+  return [
+    { value: events, label: `events since ${since}` },
+    { value: workshops, label: "workshops" },
+    { value: withResources, label: "with code or video online" },
+    { value: projectsData.projects.length, label: "member projects" },
+  ];
+})();
 
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring" as const, stiffness: 100, damping: 15 },
-  },
-};
-
-/** What used to be the /about page, now the home page's "About CAIS" section. */
+/** The home page's "About CAIS" section, which /#about and /about land on. */
 export function AboutSection() {
   return (
-    <section
-      id="about"
-      aria-labelledby="about-heading"
-      className="relative scroll-mt-24 py-16"
-    >
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center mb-12 max-w-3xl mx-auto"
-        >
-          <p className="text-sm font-mono text-primary mb-4 tracking-widest uppercase">
-            About CAIS
-          </p>
-          <h2
-            id="about-heading"
-            tabIndex={-1}
-            className="text-3xl sm:text-4xl font-bold mb-4 text-glow outline-hidden"
-          >
-            What We Do
-          </h2>
-          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-            A student-run club at Carleton University for anyone curious about
-            artificial intelligence and machine learning — from total beginners
-            to seasoned researchers.
-          </p>
-        </motion.div>
+    <Section id="about" labelledBy="about-heading" className="scroll-mt-20">
+      <SectionHeader
+        id="about-heading"
+        focusable
+        label="About CAIS"
+        title="What we do"
+        lede="A student-run club at Carleton University for anyone curious about artificial intelligence and machine learning — from total beginners to seasoned researchers."
+        action={
+          <Button asChild variant="outline">
+            <Link to="/team">
+              Meet the team
+              <ArrowRightIcon aria-hidden="true" />
+            </Link>
+          </Button>
+        }
+      />
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
-        >
-          {pillars.map(({ icon: Icon, title, description }) => (
-            <motion.div
-              key={title}
-              variants={item}
-              className="group bg-card/50 backdrop-blur-xs border border-primary/10 rounded-xl p-6 hover:border-primary/30 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-brand/5 transition-all duration-200"
+      <ul className="grid gap-4 sm:grid-cols-2">
+        {pillars.map(({ icon: Icon, title, description, to, cta }) => (
+          <li
+            key={title}
+            className="group relative flex flex-col rounded-2xl border border-border bg-card p-6 transition-colors duration-150 hover:border-input has-[a:focus-visible]:outline-3 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-ring has-[a:focus-visible]:outline-solid"
+          >
+            <Icon aria-hidden="true" className="size-6 text-primary" />
+            <h3 className="mt-4 text-xl">{title}</h3>
+            <p className="mt-2 text-muted-foreground">{description}</p>
+            <Link
+              to={to}
+              className="label-mono mt-5 inline-flex items-center gap-2 text-foreground after:absolute after:inset-0 focus-visible:outline-none"
             >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="p-2 rounded-lg bg-brand/10 group-hover:bg-brand/20 transition-colors">
-                  <Icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold">{title}</h3>
-              </div>
-              <p className="text-muted-foreground leading-relaxed">
-                {description}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
+              {cta}
+              <span className="sr-only">: {title}</span>
+              <ArrowRightIcon
+                aria-hidden="true"
+                className="size-4 transition-transform duration-150 group-hover:translate-x-1"
+              />
+            </Link>
+          </li>
+        ))}
+      </ul>
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-4 mt-12"
-        >
-          <Button asChild size="lg" variant="default">
-            <Link to="/team">Meet the Team</Link>
-          </Button>
-          <Button
-            asChild
-            size="lg"
-            variant="outline"
-            className="hover:bg-brand/5 hover:border-primary/50 transition-all duration-300"
-          >
-            <Link to="/contact">Get in Touch</Link>
-          </Button>
-        </motion.div>
-      </div>
-    </section>
+      <dl className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border lg:grid-cols-4">
+        {numbers.map(({ value, label }) => (
+          <div key={label} className="flex flex-col bg-background p-6">
+            <dt className="label-mono order-2 mt-2 text-muted-foreground">
+              {label}
+            </dt>
+            <dd className="font-display text-5xl tabular-nums">{value}</dd>
+          </div>
+        ))}
+      </dl>
+    </Section>
   );
 }

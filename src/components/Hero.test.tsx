@@ -1,63 +1,54 @@
-import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom";
-import { BrowserRouter } from "react-router-dom";
+import { render, screen, within } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import Hero from "./Hero";
 
-const mockProps = {
-  description: "Test Description",
-  logoSrc: "/test-logo.png",
-  primaryAction: {
-    text: "Primary Action",
-    to: "/primary",
-  },
-  secondaryAction: {
-    text: "Secondary Action",
-    to: "/secondary",
-  },
-};
+// Ottawa, the afternoon before Intro to Agentic AI (Fri Oct 9, 6 PM).
+beforeEach(() => {
+  jest.useFakeTimers({ now: new Date("2026-10-08T16:00:00-04:00") });
+});
+afterEach(() => jest.useRealTimers());
 
-const renderHero = (props = mockProps) => {
-  return render(
-    <BrowserRouter>
-      <Hero {...props} />
-    </BrowserRouter>,
+const renderHero = () =>
+  render(
+    <MemoryRouter>
+      <Hero />
+    </MemoryRouter>,
   );
-};
 
-describe("Hero Component", () => {
-  it("renders title and description", async () => {
+describe("Hero", () => {
+  it("names the club in full, without cutting the pitch off", () => {
     renderHero();
-
     expect(
-      screen.getByRole("heading", { name: /Carleton\s+AI\s+Society/i }),
+      screen.getByRole("heading", {
+        level: 1,
+        name: /Carleton\s*AI\s*Society/,
+      }),
     ).toBeInTheDocument();
-
-    const description = await screen.findByText(mockProps.description);
-    expect(description).toBeInTheDocument();
+    expect(
+      screen.getByText(/A student club for anyone interested in AI/),
+    ).toHaveTextContent(/share your interests\.$/);
   });
 
-  it("renders the logo with correct attributes", () => {
+  it("offers joining and the events as links", () => {
     renderHero();
-    const logo = screen.getByRole("img") as HTMLImageElement;
-    expect(logo).toBeInTheDocument();
-    expect(logo.src).toContain(mockProps.logoSrc);
-    expect(logo.alt).toBe("CAIS Logo");
+    expect(
+      screen.getByRole("link", { name: /Join the Discord/ }),
+    ).toHaveAttribute("href", "https://discord.gg/gCs3v653de");
+    expect(
+      screen.getByRole("link", { name: /See all events/ }),
+    ).toHaveAttribute("href", "/events");
   });
 
-  it("renders action buttons with correct text and links", () => {
+  it("puts the next event in the first screen", () => {
     renderHero();
-    const primaryButton = screen.getByText(mockProps.primaryAction.text);
-    const secondaryButton = screen.getByText(mockProps.secondaryAction.text);
-
-    expect(primaryButton).toBeInTheDocument();
-    expect(secondaryButton).toBeInTheDocument();
-    expect(primaryButton.closest("a")).toHaveAttribute(
-      "href",
-      mockProps.primaryAction.to,
-    );
-    expect(secondaryButton.closest("a")).toHaveAttribute(
-      "href",
-      mockProps.secondaryAction.to,
-    );
+    const ticket = screen.getByRole("article", { name: /Intro to Agentic AI/ });
+    expect(ticket).toHaveTextContent("Next up · Tomorrow · 6:00 PM");
+    expect(ticket).toHaveTextContent("Fri, Oct 9");
+    expect(ticket).toHaveTextContent("6:00–7:00 PM");
+    expect(ticket).toHaveTextContent("CS Seminar Room, Herzberg");
+    expect(ticket).toHaveTextContent(/Starts in 1 day, 2 hours and 0 minutes/);
+    expect(
+      within(ticket).getByRole("link", { name: "Intro to Agentic AI" }),
+    ).toHaveAttribute("href", "/events/66-intro-to-agentic-ai");
   });
 });

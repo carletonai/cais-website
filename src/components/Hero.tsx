@@ -1,246 +1,90 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { SocialIcon } from "react-social-icons";
-import { motion, useReducedMotion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { FaDiscord } from "react-icons/fa";
+import { ArrowRightIcon } from "lucide-react";
+import { Ring } from "@/components/brand/Ring";
+import { NextUp } from "@/components/events/NextUp";
+import { Button } from "@/components/ui/button";
+import { clubNumbers } from "@/lib/events";
+import { DISCORD_URL, SOCIAL_LINKS } from "@/lib/links";
 
-const SOCIAL_LINKS = [
-  {
-    url: "https://www.instagram.com/carletonaisociety/",
-    label: "Instagram",
-    priority: false,
-  },
-  {
-    url: "https://discord.gg/gCs3v653de",
-    label: "Discord",
-    priority: true,
-  },
-  {
-    url: "https://www.linkedin.com/company/carleton-ai",
-    label: "LinkedIn",
-    priority: false,
-  },
-  {
-    url: "https://www.youtube.com/channel/UCWKRnTa68hlHrW6WYCgCNaw",
-    label: "YouTube",
-    priority: false,
-  },
-  {
-    url: "https://github.com/carletonai",
-    label: "GitHub",
-    priority: false,
-  },
-];
+const { since } = clubNumbers();
 
-interface ActionButton {
-  text: string;
-  to: string;
-}
-
-interface HeroProps {
-  description: string;
-  logoSrc: string;
-  primaryAction?: ActionButton;
-  secondaryAction?: ActionButton;
-}
-
-const animations = {
-  container: {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 },
-    },
-  },
-  item: {
-    hidden: { opacity: 0, y: 10 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" as const },
-    },
-  },
-};
-
-export default function Hero({
-  description,
-  logoSrc,
-  primaryAction,
-  secondaryAction,
-}: HeroProps) {
-  const prefersReducedMotion = useReducedMotion();
-  const [typedText, setTypedText] = useState("");
-  const [typingSettled, setTypingSettled] = useState(false);
-
-  // 2.3.3 / 2.2.2 — with reduced motion the copy is shown outright rather than
-  // typed out one character at a time.
-  const displayText = prefersReducedMotion ? description : typedText;
-  const isTypingComplete = prefersReducedMotion || typingSettled;
-
-  useEffect(() => {
-    if (prefersReducedMotion) return;
-
-    let cancelled = false;
-    const typeText = async () => {
-      for (let i = 0; i <= description.length; i++) {
-        await new Promise((resolve) => setTimeout(resolve, 30));
-        if (cancelled) return;
-        setTypedText(description.slice(0, i));
-      }
-      setTypingSettled(true);
-    };
-    typeText();
-    return () => {
-      cancelled = true;
-    };
-  }, [description, prefersReducedMotion]);
-
+/**
+ * The first screen answers the two questions students arrive with: what is
+ * this club, and what is on next. Styled after the club's posters.
+ */
+export default function Hero() {
   return (
-    <div className="relative min-h-[85vh] bg-black overflow-hidden">
-      <div className="absolute inset-0 bg-glow opacity-80" />
-      <div className="absolute inset-0 bg-grid opacity-20" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-background" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
-      <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
-
-      <motion.div
-        variants={animations.container}
-        initial="hidden"
-        animate="show"
-        className="relative z-10 container mx-auto px-4 min-h-[85vh] flex flex-col justify-center pb-12 pt-16"
-      >
-        <div className="text-center space-y-8">
-          <motion.img
-            variants={animations.item}
-            src={logoSrc}
-            alt="CAIS Logo"
-            className="h-32 md:h-40 lg:h-48 mx-auto drop-shadow-lg"
-          />
-
-          <motion.div variants={animations.item}>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
-              Carleton{" "}
-              <span className="text-primary font-mono inline-block mx-2 drop-shadow-[0_0_8px_rgba(226,56,63,0.35)]">
-                AI
-              </span>{" "}
-              Society
-            </h1>
-          </motion.div>
-
-          <motion.div
-            variants={animations.item}
-            className="mx-auto max-w-2xl text-center min-h-[3.5rem] h-[3.5rem] sm:min-h-[4.5rem] sm:h-[4.5rem] flex items-center justify-center"
-          >
-            <div className="px-4 sm:px-6">
-              <p className="text-lg leading-8 text-muted-foreground">
-                <span className="relative inline-block w-[80vw] max-w-xl sm:w-auto overflow-hidden text-ellipsis whitespace-nowrap sm:overflow-visible sm:whitespace-normal">
-                  {displayText}
-                  {!isTypingComplete && (
-                    <motion.span
-                      animate={{ opacity: [1, 0] }}
-                      transition={{ duration: 0.8, repeat: Infinity }}
-                      className="text-primary absolute -right-2 sm:relative sm:right-0 sm:ml-0.5"
-                    >
-                      |
-                    </motion.span>
-                  )}
-                </span>
-              </p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            variants={animations.item}
-            className="flex flex-wrap items-center justify-center gap-x-4 gap-y-4"
-          >
-            {SOCIAL_LINKS.filter((link) => link.priority).map(
-              ({ url, label }) => (
-                <Button
-                  key={url}
-                  size="lg"
-                  variant="default"
-                  className={`h-14 px-8 glass-hover group ${
-                    label === "Discord"
-                      ? "bg-brand hover:bg-brand/80 text-brand-foreground font-semibold shadow-md hover:shadow-xl hover:shadow-brand/20 hover:scale-[1.02] transition-all duration-300 ease-out border border-primary/20 relative overflow-hidden text-lg"
-                      : ""
-                  }`}
-                  asChild
-                >
-                  <a href={url} target="_blank" rel="noopener noreferrer">
-                    {label === "Discord" ? (
-                      <>
-                        <FaDiscord className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
-                        Discord
-                      </>
-                    ) : (
-                      <>View on {label}</>
-                    )}
-                  </a>
-                </Button>
-              ),
-            )}
-          </motion.div>
-
-          <motion.div
-            variants={animations.item}
-            className="flex flex-wrap items-center justify-center gap-x-3 gap-y-3"
-          >
-            {SOCIAL_LINKS.filter((link) => !link.priority).map(
-              ({ url, label }) => (
-                <motion.div
-                  key={url}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{
-                    type: "spring" as const,
-                    stiffness: 400,
-                    damping: 10,
-                  }}
-                >
-                  <SocialIcon
-                    url={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Carleton AI Society on ${label}`}
-                    style={{ height: 44, width: 44 }}
-                    bgColor="currentColor"
-                    fgColor="#1a2238"
-                  />
-                </motion.div>
-              ),
-            )}
-          </motion.div>
-
-          {(primaryAction || secondaryAction) && (
-            <motion.div
-              variants={animations.item}
-              className="flex flex-wrap justify-center gap-6"
+    <section
+      aria-labelledby="hero-title"
+      className="relative overflow-hidden border-b border-border bg-dots"
+    >
+      {/* Only where the layout leaves room: text never crosses the ring. */}
+      <Ring
+        draw
+        className="absolute -right-24 -top-24 hidden w-[34rem] lg:block"
+      />
+      <div className="relative mx-auto grid w-full max-w-6xl gap-10 px-4 pb-14 pt-10 sm:px-6 sm:pt-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center lg:gap-12 lg:pb-24 lg:pt-20">
+        <div>
+          <p className="label-mono text-muted-foreground">
+            Carleton University <span aria-hidden="true">·</span> Since {since}
+          </p>
+          <h1 id="hero-title" className="font-display mt-5 text-display">
+            <span className="block">Carleton</span>
+            <span className="block">
+              <span className="text-primary">AI</span> Society
+            </span>
+          </h1>
+          <p className="mt-6 max-w-[34ch] text-lg text-muted-foreground sm:text-xl">
+            A student club for anyone interested in AI and machine learning.
+            Join us to learn, build projects, and meet others who share your
+            interests.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button asChild className="sm:h-12 sm:px-7 sm:text-base">
+              <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer">
+                <FaDiscord aria-hidden="true" />
+                Join the Discord
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="sm:h-12 sm:px-7 sm:text-base"
             >
-              {primaryAction && (
-                <Button
-                  asChild
-                  variant="outline"
-                  size="default"
-                  className="h-11 px-6 glass-hover hover:bg-brand/5 hover:border-primary/50 transition-all duration-300"
+              <Link to="/events">
+                See all events
+                <ArrowRightIcon aria-hidden="true" />
+              </Link>
+            </Button>
+          </div>
+          {/* On phones the footer carries these; the ticket matters more. */}
+          <ul
+            className="mt-8 hidden flex-wrap gap-1 sm:flex"
+            aria-label="CAIS elsewhere"
+          >
+            {SOCIAL_LINKS.filter(({ label }) =>
+              ["Instagram", "LinkedIn", "YouTube", "GitHub"].includes(label),
+            ).map(({ label, url, icon: Icon }) => (
+              <li key={label}>
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex size-11 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
                 >
-                  <Link to={primaryAction.to}>{primaryAction.text}</Link>
-                </Button>
-              )}
-              {secondaryAction && (
-                <Button
-                  asChild
-                  variant="outline"
-                  size="default"
-                  className="h-11 px-6 glass-hover hover:bg-brand/5 hover:border-primary/50 transition-all duration-300"
-                >
-                  <Link to={secondaryAction.to}>{secondaryAction.text}</Link>
-                </Button>
-              )}
-            </motion.div>
-          )}
+                  <Icon aria-hidden="true" className="size-5" />
+                  <span className="sr-only">
+                    CAIS on {label} (opens in a new tab)
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
-      </motion.div>
-    </div>
+        <NextUp ring={false} />
+      </div>
+    </section>
   );
 }

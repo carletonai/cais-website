@@ -1,55 +1,35 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import { ArrowRightIcon } from "lucide-react";
-import TeamDisplay from "@/components/TeamDisplay";
+import { PageHeader } from "@/components/brand/PageHeader";
+import { Section, SectionHeader } from "@/components/brand/Section";
+import { MemberGrid } from "@/components/MemberCard";
 import { Button } from "@/components/ui/button";
+import teamData from "@/data/team.json";
 
-const TeamPage = () => {
-  return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
-      <div className="absolute inset-0 bg-glow opacity-30" />
-      <div className="absolute inset-0 bg-grid opacity-20" />
-      <div className="fixed inset-0 bg-gradient-to-b from-black/0 via-brand/10 to-background pointer-events-none" />
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.1 }}
-        transition={{ duration: 1 }}
-        aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-brand)_0%,_transparent_70%)] blur-3xl"
+const TeamPage = () => (
+  <>
+    <PageHeader
+      label="Team"
+      title="Current Team"
+      lede="The passionate individuals driving innovation and fostering AI education at Carleton University."
+    />
+    <Section labelledBy="exec-heading">
+      <SectionHeader
+        id="exec-heading"
+        label="2026–27"
+        title="Executive team"
+        action={
+          <Button asChild variant="outline">
+            <Link to="/team/past">
+              Meet our past teams
+              <ArrowRightIcon aria-hidden="true" />
+            </Link>
+          </Button>
+        }
       />
-
-      <section className="relative z-10 px-6 lg:px-14 pt-20 pb-16">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-4xl mx-auto"
-        >
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary/75 mb-6">
-            Current Team
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            The passionate individuals driving innovation and fostering AI
-            education at Carleton University
-          </p>
-        </motion.div>
-      </section>
-
-      <div className="relative z-10">
-        <TeamDisplay />
-      </div>
-
-      <div className="relative z-10 flex justify-center pb-24">
-        <Button asChild size="lg" variant="outline" className="group/btn">
-          <Link to="/team/past">
-            Meet our past teams
-            <ArrowRightIcon className="group-hover/btn:translate-x-1 transition-transform" />
-          </Link>
-        </Button>
-      </div>
-    </div>
-  );
-};
+      <MemberGrid members={teamData.members} />
+    </Section>
+  </>
+);
 
 export default TeamPage;
