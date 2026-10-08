@@ -329,11 +329,18 @@ const GAMES = {
   tic: "Tic Tac Toe vs AI (coming soon)",
 };
 
+/** Counted from the site's own data, so every number is one we can stand behind. */
 const STATS = {
-  members: 150,
-  projects: 25,
-  papers: 42,
-  coffee: 1337,
+  events: eventsData.events.length,
+  since: Math.min(
+    ...eventsData.events.map((event) => Number(event.date.slice(0, 4))),
+  ),
+  workshops: eventsData.events.filter((event) => event.type === "Workshop")
+    .length,
+  withCode: eventsData.events.filter((event) => event.materials).length,
+  recordings: eventsData.events.filter((event) => event.recording).length,
+  projects: projectsData.projects.length,
+  exec: teamData.members.length,
 };
 
 // Add cool animations
@@ -464,8 +471,12 @@ Keyboard Shortcuts:
 `;
 
 const makeLinksClickable = (text: string): React.ReactNode => {
+  // Every group is a whole link: split() splices each capture into its
+  // output, so a nested group would repeat part of the text. Email addresses
+  // come before @handles, and a handle only counts at the start of a word, so
+  // the "@gmail" in info.carletonai@gmail.com is not linked to Instagram.
   const urlPattern =
-    /(https?:\/\/[^\s]+)|(\b\w+:\/\/[^\s]+)|(www\.[^\s]+)|(@\w+)|(\/(company|carleton-ai)\/[^\s]+)/g;
+    /(https?:\/\/[^\s]+)|(\b\w+:\/\/[^\s]+)|(www\.[^\s]+)|([\w.+-]+@[\w-]+(?:\.[\w-]+)+)|(?<![\w.])(@\w+)|(\/company\/[^\s]+)/g;
 
   const parts = text.split(urlPattern);
 
@@ -478,20 +489,19 @@ const makeLinksClickable = (text: string): React.ReactNode => {
           if (part.startsWith("www.")) {
             href = "https://" + part;
           }
-          if (part.startsWith("@")) {
+          if (/^[\w.+-]+@/.test(part)) {
+            href = "mailto:" + part;
+          } else if (part.startsWith("@")) {
             href = "https://instagram.com/" + part.slice(1);
           }
           if (part.startsWith("/company/")) {
             href = "https://linkedin.com" + part;
           }
-          if (part.startsWith("/carleton-ai")) {
-            href = "https://github.com" + part;
-          }
 
           const sanitizeUrl = (candidate: string): string | null => {
             try {
               const parsed = new URL(candidate, "https://example.com");
-              if (parsed.protocol === "http:" || parsed.protocol === "https:") {
+              if (["http:", "https:", "mailto:"].includes(parsed.protocol)) {
                 return parsed.href;
               }
               return null;
@@ -878,7 +888,12 @@ const Resources = () => {
         };
         break;
       case "ascii":
-        const art = args[0] && ASCII_ART[args[0] as keyof typeof ASCII_ART];
+        // Own keys only: "ascii __proto__" would otherwise render
+        // Object.prototype and take the whole app down with it.
+        const art =
+          args[0] && Object.hasOwn(ASCII_ART, args[0])
+            ? ASCII_ART[args[0] as keyof typeof ASCII_ART]
+            : undefined;
         output = {
           content: art || "Available art: " + Object.keys(ASCII_ART).join(", "),
           isAscii: true,
@@ -886,7 +901,7 @@ const Resources = () => {
         break;
       case "theme":
         const newTheme = args[0] as keyof typeof THEMES;
-        if (THEMES[newTheme]) {
+        if (newTheme && Object.hasOwn(THEMES, newTheme)) {
           setTheme(newTheme);
           output = {
             content: `Theme changed to ${newTheme}`,
@@ -933,10 +948,14 @@ const Resources = () => {
           content: (
             <div className="space-y-2">
               <div className="text-xl font-bold">CAIS Stats 📊</div>
-              <div>Members: {STATS.members} 👥</div>
-              <div>Active Projects: {STATS.projects} 🚀</div>
-              <div>Published Papers: {STATS.papers} 📑</div>
-              <div>Cups of Coffee: {STATS.coffee} ☕</div>
+              <div>
+                Events since {STATS.since}: {STATS.events} 📅
+              </div>
+              <div>Workshops: {STATS.workshops} 🧠</div>
+              <div>Workshops with code online: {STATS.withCode} 💻</div>
+              <div>Recorded sessions: {STATS.recordings} 🎥</div>
+              <div>Projects: {STATS.projects} 🚀</div>
+              <div>Exec team this year: {STATS.exec} 👥</div>
             </div>
           ),
           isSystem: true,
@@ -944,7 +963,7 @@ const Resources = () => {
         break;
       case "game":
         const game = args[0];
-        if (game && GAMES[game as keyof typeof GAMES]) {
+        if (game && Object.hasOwn(GAMES, game)) {
           startGame(game as keyof typeof GAMES);
           output = {
             content: `Starting ${GAMES[game as keyof typeof GAMES]}...`,

@@ -51,6 +51,48 @@ describe("terminal commands", () => {
     ).toBeInTheDocument();
   });
 
+  it("links the club's email as an email, not as an Instagram handle", async () => {
+    await run("contact");
+    await screen.findByText(/Email:/);
+    const hrefs = screen
+      .getAllByRole("link")
+      .map((link) => link.getAttribute("href"));
+    expect(hrefs).not.toContain("https://instagram.com/gmail");
+    expect(hrefs).toContain("mailto:info.carletonai@gmail.com");
+    expect(hrefs).toContain("https://www.instagram.com/carletonaisociety/");
+  });
+
+  it("links handles and LinkedIn paths without repeating their text", async () => {
+    await run("join");
+    expect(
+      await screen.findByRole("link", { name: "@carletonaisociety" }),
+    ).toHaveAttribute("href", "https://instagram.com/carletonaisociety");
+    const linkedin = screen.getByRole("link", {
+      name: "/company/carleton-ai",
+    });
+    expect(linkedin).toHaveAttribute(
+      "href",
+      "https://linkedin.com/company/carleton-ai",
+    );
+    expect(linkedin.nextSibling?.textContent ?? "").not.toMatch(/^company/);
+  });
+
+  it.each(["ascii __proto__", "theme constructor", "game __proto__"])(
+    "treats %s as an unknown name instead of an object key",
+    async (command) => {
+      await run(command);
+      expect(
+        await screen.findByText(/Available (art|themes|games)/),
+      ).toBeInTheDocument();
+    },
+  );
+
+  it("reports only numbers counted from the site's data", async () => {
+    await run("stats");
+    expect(await screen.findByText(/Projects: 11/)).toBeInTheDocument();
+    expect(screen.queryByText(/Papers|Coffee/)).not.toBeInTheDocument();
+  });
+
   it("rejects event numbers that do not exist instead of crashing", async () => {
     await run("event 0");
     expect(

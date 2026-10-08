@@ -71,18 +71,22 @@ const render = (route) => {
   const t = escape(fullTitle);
   const d = escape(description);
 
-  return template
-    .replace(/<title>[^<]*<\/title>/, `<title>${t}</title>`)
-    .replace(/(<meta name="description" content=")[^"]*(")/, `$1${d}$2`)
-    .replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`)
-    .replace(/(<meta property="og:title" content=")[^"]*(")/, `$1${t}$2`)
-    .replace(/(<meta property="og:description" content=")[^"]*(")/, `$1${d}$2`)
-    .replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${url}$2`)
-    .replace(/(<meta name="twitter:title" content=")[^"]*(")/, `$1${t}$2`)
-    .replace(
-      /(<meta name="twitter:description" content=")[^"]*(")/,
-      `$1${d}$2`,
-    );
+  // Replacer functions, not strings: a replacement string would read "$2",
+  // "$&" or "$'" in a title or description as a pattern, not as text.
+  const set = (html, pattern, value) =>
+    html.replace(pattern, (_, open, close) => `${open}${value}${close}`);
+
+  let html = template.replace(
+    /<title>[^<]*<\/title>/,
+    () => `<title>${t}</title>`,
+  );
+  html = set(html, /(<meta name="description" content=")[^"]*(")/, d);
+  html = set(html, /(<link rel="canonical" href=")[^"]*(")/, url);
+  html = set(html, /(<meta property="og:title" content=")[^"]*(")/, t);
+  html = set(html, /(<meta property="og:description" content=")[^"]*(")/, d);
+  html = set(html, /(<meta property="og:url" content=")[^"]*(")/, url);
+  html = set(html, /(<meta name="twitter:title" content=")[^"]*(")/, t);
+  return set(html, /(<meta name="twitter:description" content=")[^"]*(")/, d);
 };
 
 for (const route of routes) {
