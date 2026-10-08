@@ -19,8 +19,7 @@
     "check": "npm run typecheck && npm run lint:check && npm run format:check",
     "lint": "eslint . --fix",
     "format": "prettier --write .",
-    "fix": "npm run lint && npm run format",
-    "push": "git commit --allow-empty -m \"SKIP CI commit [skip ci]\" && git push origin master"
+    "fix": "npm run lint && npm run format"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.8",

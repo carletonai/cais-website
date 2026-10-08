@@ -11,32 +11,46 @@ on:
 permissions:
   contents: read
 
+# A newer push to the same branch or PR supersedes the run in progress.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
+    name: Check, build and test
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
+      # Actions are pinned to full commit SHAs (tags can be moved); Dependabot
+      # keeps the SHA and the version comment up to date together.
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Nothing after checkout needs git credentials, so do not leave the
+          # token in .git/config where install scripts could read it.
+          persist-credentials: false
 
       # pnpm must be installed before setup-node so that cache: "pnpm"
       # can resolve the store location.
       - name: Install pnpm
         # Version comes from the "packageManager" field in package.json.
-        uses: pnpm/action-setup@v6
+        uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
 
       - name: Set up Node.js
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: "22"
           cache: "pnpm"
 
       - name: Install dependencies
         run: |
-          for i in {1..3}; do
-            pnpm install && break
+          for i in 1 2 3; do
+            pnpm install --frozen-lockfile && exit 0
             sleep 10
           done
+          exit 1
         env:
           NPM_CONFIG_REGISTRY: "https://registry.npmjs.org/"
 
