@@ -179,6 +179,13 @@ exports[`renders EventsPage correctly 1`] = `
             class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 shrink-0 rounded-full px-4"
             type="button"
           >
+            networking
+          </button>
+          <button
+            aria-pressed="false"
+            class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 shrink-0 rounded-full px-4"
+            type="button"
+          >
             hackathon
           </button>
           <button
@@ -186,7 +193,7 @@ exports[`renders EventsPage correctly 1`] = `
             class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 shrink-0 rounded-full px-4"
             type="button"
           >
-            networking
+            planning
           </button>
           <button
             aria-pressed="false"
@@ -201,13 +208,6 @@ exports[`renders EventsPage correctly 1`] = `
             type="button"
           >
             educational
-          </button>
-          <button
-            aria-pressed="false"
-            class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 shrink-0 rounded-full px-4"
-            type="button"
-          >
-            planning
           </button>
         </div>
         <p
@@ -377,7 +377,7 @@ exports[`renders EventsPage correctly 1`] = `
               <p
                 class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
               >
-                A practical introduction to machine learning at uOttawa's Hack the Hill III hackathon: the core ideas behind models, and how to bring ML into a hackathon project.
+                A practical introduction to machine learning at uOttawa's Hack the Hill III hackathon: the core ideas behind models, and how to bring ML into a hackathon project. The demos set a hand-written rule against a model that learns its own, then train a small PyTorch neural network on a heart-failure clinical dataset.
               </p>
               <div
                 class="flex items-center justify-between"
@@ -413,17 +413,129 @@ exports[`renders EventsPage correctly 1`] = `
           <div
             class="group relative bg-card rounded-xl overflow-hidden border border-border/50 hover:border-primary/50 transition-colors"
           >
-            <div
-              class="aspect-video relative overflow-hidden"
+            <button
+              aria-expanded="false"
+              aria-haspopup="dialog"
+              aria-label="Enlarge poster for Intro to AI"
+              class="aspect-video relative block w-full cursor-zoom-in overflow-hidden focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset"
+              data-state="closed"
+              type="button"
             >
               <div
-                class="absolute inset-0 bg-cover bg-center transform group-hover:scale-110 transition-transform duration-500"
-                style="background-image: url("/assets/events/neural-networks.svg");"
+                aria-hidden="true"
+                class="absolute inset-0 scale-110 bg-cover bg-center opacity-40 blur-xl"
+                style="background-image: url("/assets/events/intro-to-ai-2026.jpg");"
+              />
+              <div
+                class="absolute inset-0 bg-contain bg-center bg-no-repeat transform group-hover:scale-105 transition-transform duration-500"
+                style="background-image: url("/assets/events/intro-to-ai-2026.jpg");"
               />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
               />
+              <span
+                class="absolute right-3 top-3 rounded-full bg-background/70 p-2 text-primary opacity-80 transition-opacity group-hover:opacity-100"
+              >
+                <svg
+                  class="h-4 w-4"
+                />
+              </span>
+            </button>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2026-10-02
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  Herzberg 5345
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors"
+              >
+                Intro to AI
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
+              >
+                Come find out how the AI you use every day actually works. The first workshop in a series that goes from AI basics to machine learning and then deep learning. No prerequisites: all years welcome, no experience needed.
+              </p>
+              <div
+                class="flex items-center justify-between"
+              >
+                <div
+                  class="flex gap-2 flex-wrap"
+                >
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    beginner-friendly
+                  </span>
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    technical
+                  </span>
+                </div>
+                <div
+                  class="flex shrink-0 items-center"
+                >
+                  <button
+                    aria-label="Details: Intro to AI"
+                    class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-3"
+                    type="button"
+                  >
+                    Details
+                  </button>
+                </div>
+              </div>
             </div>
+          </div>
+          <div
+            class="group relative bg-card rounded-xl overflow-hidden border border-border/50 hover:border-primary/50 transition-colors"
+          >
+            <button
+              aria-expanded="false"
+              aria-haspopup="dialog"
+              aria-label="Enlarge poster for Volunteer Meeting"
+              class="aspect-video relative block w-full cursor-zoom-in overflow-hidden focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset"
+              data-state="closed"
+              type="button"
+            >
+              <div
+                aria-hidden="true"
+                class="absolute inset-0 scale-110 bg-cover bg-center opacity-40 blur-xl"
+                style="background-image: url("/assets/events/volunteer-meeting-2026.jpg");"
+              />
+              <div
+                class="absolute inset-0 bg-contain bg-center bg-no-repeat transform group-hover:scale-105 transition-transform duration-500"
+                style="background-image: url("/assets/events/volunteer-meeting-2026.jpg");"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+              <span
+                class="absolute right-3 top-3 rounded-full bg-background/70 p-2 text-primary opacity-80 transition-opacity group-hover:opacity-100"
+              >
+                <svg
+                  class="h-4 w-4"
+                />
+              </span>
+            </button>
             <div
               class="p-6"
             >
@@ -444,35 +556,244 @@ exports[`renders EventsPage correctly 1`] = `
                   <svg
                     class="w-4 h-4"
                   />
-                  TBA
+                  Richcraft Hall 3228
                 </span>
               </div>
               <h3
                 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors"
               >
-                Tentative Event
+                Volunteer Meeting
               </h3>
               <p
                 class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
               >
-                More details soon!
+                Come help run the club behind the scenes.
               </p>
               <div
                 class="flex items-center justify-between"
               >
                 <div
                   class="flex gap-2 flex-wrap"
-                />
+                >
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    planning
+                  </span>
+                </div>
                 <div
                   class="flex shrink-0 items-center"
                 >
                   <button
-                    aria-label="Details: Tentative Event"
+                    aria-label="Details: Volunteer Meeting"
                     class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-3"
                     type="button"
                   >
                     Details
                   </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="group relative bg-card rounded-xl overflow-hidden border border-border/50 hover:border-primary/50 transition-colors"
+          >
+            <button
+              aria-expanded="false"
+              aria-haspopup="dialog"
+              aria-label="Enlarge poster for Intro to Agentic AI"
+              class="aspect-video relative block w-full cursor-zoom-in overflow-hidden focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset"
+              data-state="closed"
+              type="button"
+            >
+              <div
+                aria-hidden="true"
+                class="absolute inset-0 scale-110 bg-cover bg-center opacity-40 blur-xl"
+                style="background-image: url("/assets/events/intro-to-agentic-ai-2026.jpg");"
+              />
+              <div
+                class="absolute inset-0 bg-contain bg-center bg-no-repeat transform group-hover:scale-105 transition-transform duration-500"
+                style="background-image: url("/assets/events/intro-to-agentic-ai-2026.jpg");"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+              <span
+                class="absolute right-3 top-3 rounded-full bg-background/70 p-2 text-primary opacity-80 transition-opacity group-hover:opacity-100"
+              >
+                <svg
+                  class="h-4 w-4"
+                />
+              </span>
+            </button>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2026-10-09
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  CS Seminar Room, Herzberg
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors"
+              >
+                Intro to Agentic AI
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
+              >
+                Learn how AI agents plan, use tools, and get work done.
+              </p>
+              <div
+                class="flex items-center justify-between"
+              >
+                <div
+                  class="flex gap-2 flex-wrap"
+                >
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    technical
+                  </span>
+                </div>
+                <div
+                  class="flex shrink-0 items-center"
+                >
+                  <button
+                    aria-label="Details: Intro to Agentic AI"
+                    class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-3"
+                    type="button"
+                  >
+                    Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="group relative bg-card rounded-xl overflow-hidden border border-border/50 hover:border-primary/50 transition-colors"
+          >
+            <button
+              aria-expanded="false"
+              aria-haspopup="dialog"
+              aria-label="Enlarge poster for Grok Bot Meetup – Ottawa"
+              class="aspect-video relative block w-full cursor-zoom-in overflow-hidden focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset"
+              data-state="closed"
+              type="button"
+            >
+              <div
+                aria-hidden="true"
+                class="absolute inset-0 scale-110 bg-cover bg-center opacity-40 blur-xl"
+                style="background-image: url("/assets/events/grok-bot-ottawa-2026.jpg");"
+              />
+              <div
+                class="absolute inset-0 bg-contain bg-center bg-no-repeat transform group-hover:scale-105 transition-transform duration-500"
+                style="background-image: url("/assets/events/grok-bot-ottawa-2026.jpg");"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"
+              />
+              <span
+                class="absolute right-3 top-3 rounded-full bg-background/70 p-2 text-primary opacity-80 transition-opacity group-hover:opacity-100"
+              >
+                <svg
+                  class="h-4 w-4"
+                />
+              </span>
+            </button>
+            <div
+              class="p-6"
+            >
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground mb-3"
+              >
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  2026-10-17
+                </span>
+                <span
+                  class="inline-flex items-center gap-1"
+                >
+                  <svg
+                    class="w-4 h-4"
+                  />
+                  Nicol Building
+                </span>
+              </div>
+              <h3
+                class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors"
+              >
+                Grok Bot Meetup – Ottawa
+              </h3>
+              <p
+                class="text-muted-foreground mb-4 line-clamp-none md:line-clamp-4"
+              >
+                An evening on AI agents that do real work, hosted by Builders Collective Ottawa with CAIS, ARC, CCSS, ColorStack and SISSA: Grok Bot 101, live demos, builder showcases and networking. Food provided, plus free Grok Bot credits. Bring a laptop; registration is on Luma and subject to approval.
+              </p>
+              <div
+                class="flex items-center justify-between"
+              >
+                <div
+                  class="flex gap-2 flex-wrap"
+                >
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    networking
+                  </span>
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    free-food
+                  </span>
+                  <span
+                    class="px-2 py-1 text-xs rounded-full bg-brand/10 text-primary"
+                  >
+                    technical
+                  </span>
+                </div>
+                <div
+                  class="flex shrink-0 items-center"
+                >
+                  <button
+                    aria-label="Details: Grok Bot Meetup – Ottawa"
+                    class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-3"
+                    type="button"
+                  >
+                    Details
+                  </button>
+                  <a
+                    class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-3 group/btn"
+                    href="https://luma.com/phs5tofz"
+                    rel="noopener noreferrer"
+                    role="button"
+                    tabindex="0"
+                    target="_blank"
+                  >
+                    RSVP
+                    <svg
+                      class="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform"
+                    />
+                  </a>
                 </div>
               </div>
             </div>
@@ -2472,7 +2793,7 @@ exports[`renders EventsPage correctly 1`] = `
               <h3
                 aria-live="polite"
                 class="whitespace-nowrap text-lg font-semibold sm:text-2xl"
-                id="_r_6_"
+                id="_r_i_"
               >
                 September 2026
               </h3>
@@ -2535,7 +2856,7 @@ exports[`renders EventsPage correctly 1`] = `
                 </button>
                 <button
                   aria-current="true"
-                  aria-label="2026, 16 events"
+                  aria-label="2026, 19 events"
                   class="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 forced-colors:focus-visible:outline-2 forced-colors:focus-visible:outline-[Highlight] forced-colors:focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-brand text-brand-foreground hover:bg-brand/90 h-11 rounded-full px-4"
                   type="button"
                 >
@@ -2664,18 +2985,18 @@ exports[`renders EventsPage correctly 1`] = `
                   <span
                     class="rounded-full px-1.5 text-xs bg-current/20"
                   >
-                    1
+                    4
                   </span>
                   <span
                     class="sr-only"
                   >
-                     event
+                     events
                   </span>
                 </button>
               </div>
             </nav>
             <table
-              aria-labelledby="_r_6_"
+              aria-labelledby="_r_i_"
               class="w-full table-fixed border-collapse"
             >
               <thead>

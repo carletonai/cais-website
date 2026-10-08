@@ -522,7 +522,6 @@
       "description": "Beginner workshop on implementing neural networks and a demo on how to build your own model.",
       "type": "Workshop",
       "image": "/assets/events/neural-networks.svg",
-      "rsvpLink": "https://forms.google.com/...",
       "tags": ["hands-on", "technical"]
     },
     {
@@ -534,7 +533,6 @@
       "description": "Learn how to use AI APIs to implement AI in your projects.",
       "type": "Workshop",
       "image": "/assets/events/neural-networks.svg",
-      "rsvpLink": "https://forms.google.com/...",
       "tags": ["hands-on", "technical"]
     },
     {
@@ -546,7 +544,6 @@
       "description": "Meet the CAIS executive team, learn about the club, and connect with students interested in AI.",
       "type": "Social",
       "image": "/assets/events/neural-networks.svg",
-      "rsvpLink": "https://forms.google.com/...",
       "tags": ["beginner-friendly", "networking", "social"]
     },
     {
@@ -569,7 +566,6 @@
       "description": "An introductory workshop covering core AI concepts and real-world applications.",
       "type": "Workshop",
       "image": "/assets/events/neural-networks.svg",
-      "rsvpLink": "https://forms.google.com/...",
       "tags": ["beginner-friendly", "educational"]
     },
     {
@@ -581,7 +577,6 @@
       "description": "A workshop comparing vibe coding and prompt engineering in modern AI development.",
       "type": "Workshop",
       "image": "/assets/events/neural-networks.svg",
-      "rsvpLink": "https://forms.google.com/...",
       "tags": ["technical", "discussion"]
     },
     {
@@ -593,7 +588,6 @@
       "description": "An introduction to large language models and how they power modern AI systems.",
       "type": "Workshop",
       "image": "/assets/events/neural-networks.svg",
-      "rsvpLink": "https://forms.google.com/...",
       "tags": ["beginner-friendly", "technical"]
     },
     {
@@ -605,7 +599,6 @@
       "description": "Learn how AI chatbots work using RAG and semantic search in LLM applications.",
       "type": "Workshop",
       "image": "/assets/events/neural-networks.svg",
-      "rsvpLink": "https://forms.google.com/...",
       "tags": ["hands-on", "technical"],
       "materials": "https://github.com/carletonai/chatbot"
     },
@@ -618,7 +611,6 @@
       "description": "Train your first machine learning model using Python in a hands-on session.",
       "type": "Workshop",
       "image": "/assets/events/neural-networks.svg",
-      "rsvpLink": "https://forms.google.com/...",
       "tags": ["hands-on", "beginner-friendly", "technical"],
       "materials": "https://github.com/carletonai/model"
     },
@@ -718,22 +710,61 @@
       "date": "2026-09-26",
       "time": "3:00 PM - 4:00 PM",
       "location": "Room C040, uOttawa (Hack the Hill III)",
-      "description": "A practical introduction to machine learning at uOttawa's Hack the Hill III hackathon: the core ideas behind models, and how to bring ML into a hackathon project.",
+      "description": "A practical introduction to machine learning at uOttawa's Hack the Hill III hackathon: the core ideas behind models, and how to bring ML into a hackathon project. The demos set a hand-written rule against a model that learns its own, then train a small PyTorch neural network on a heart-failure clinical dataset.",
       "type": "Workshop",
       "image": "/assets/events/neural-networks.svg",
       "tags": ["beginner-friendly", "technical"],
-      "page": "https://hackthehill.com"
+      "page": "https://hackthehill.com",
+      "materials": "https://github.com/carletonai/cais-workshop-hth-iii"
     },
     {
-      "id": "18",
-      "title": "Tentative Event",
-      "date": "2026-10-06",
-      "time": "TBA",
-      "location": "TBA",
-      "description": "More details soon!",
-      "type": "TBA",
+      "id": "64",
+      "title": "Intro to AI",
+      "date": "2026-10-02",
+      "time": "5:00 PM - 6:00 PM",
+      "location": "Herzberg 5345",
+      "description": "Come find out how the AI you use every day actually works. The first workshop in a series that goes from AI basics to machine learning and then deep learning. No prerequisites: all years welcome, no experience needed.",
+      "type": "Workshop",
       "image": "/assets/events/neural-networks.svg",
-      "tags": []
+      "poster": "/assets/events/intro-to-ai-2026.jpg",
+      "tags": ["beginner-friendly", "technical"]
+    },
+    {
+      "id": "65",
+      "title": "Volunteer Meeting",
+      "date": "2026-10-06",
+      "time": "7:30 PM - 8:30 PM",
+      "location": "Richcraft Hall 3228",
+      "description": "Come help run the club behind the scenes.",
+      "type": "Social",
+      "image": "/assets/events/ml-workshop.svg",
+      "poster": "/assets/events/volunteer-meeting-2026.jpg",
+      "tags": ["planning"]
+    },
+    {
+      "id": "66",
+      "title": "Intro to Agentic AI",
+      "date": "2026-10-09",
+      "time": "6:00 PM - 7:00 PM",
+      "location": "CS Seminar Room, Herzberg",
+      "description": "Learn how AI agents plan, use tools, and get work done.",
+      "type": "Workshop",
+      "image": "/assets/events/neural-networks.svg",
+      "poster": "/assets/events/intro-to-agentic-ai-2026.jpg",
+      "tags": ["technical"]
+    },
+    {
+      "id": "67",
+      "title": "Grok Bot Meetup – Ottawa",
+      "date": "2026-10-17",
+      "time": "6:00 PM - 10:00 PM",
+      "location": "Nicol Building",
+      "description": "An evening on AI agents that do real work, hosted by Builders Collective Ottawa with CAIS, ARC, CCSS, ColorStack and SISSA: Grok Bot 101, live demos, builder showcases and networking. Food provided, plus free Grok Bot credits. Bring a laptop; registration is on Luma and subject to approval.",
+      "type": "Social",
+      "image": "/assets/events/ml-workshop.svg",
+      "poster": "/assets/events/grok-bot-ottawa-2026.jpg",
+      "rsvpLink": "https://luma.com/phs5tofz",
+      "tags": ["networking", "free-food", "technical"]
     }
   ]
 }

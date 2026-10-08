@@ -65,7 +65,7 @@ test("filters both upcoming and past events by tag", async () => {
   expect(freeFood()).toHaveAttribute("aria-pressed", "true");
   expect(cardTitle("CAIS Icebreaker")).toBeInTheDocument();
   expect(cardTitle("FED Meet & Greet")).toBeInTheDocument();
-  expect(cardTitle("Tentative Event")).not.toBeInTheDocument();
+  expect(cardTitle("Intro to Agentic AI")).not.toBeInTheDocument();
   expect(cardTitle("Tech Club Expo")).not.toBeInTheDocument();
 });
 
