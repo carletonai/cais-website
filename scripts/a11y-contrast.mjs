@@ -100,6 +100,11 @@ const collect = () => {
     Math.abs(c.b - red.b) < 3;
 
   const out = [];
+  /* Fixed and sticky elements, like the navigation bar, paint over the page. */
+  const overlays = [...document.body.querySelectorAll("*")]
+    .filter((node) => /^(fixed|sticky)$/.test(getComputedStyle(node).position))
+    .map((node) => ({ node, box: node.getBoundingClientRect() }))
+    .filter(({ box }) => box.width > 0 && box.height > 0);
   const w = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT);
   const path = (el) => {
     const p = [];
@@ -128,6 +133,10 @@ const collect = () => {
     if (!own) continue;
     const cs = getComputedStyle(el);
     if (cs.visibility === "hidden" || cs.display === "none") continue;
+    // Closed <details> content keeps its boxes but is never painted, so it
+    // would be measured against whatever happens to sit where it would be.
+    if (el.checkVisibility && !el.checkVisibility({ visibilityProperty: true }))
+      continue;
 
     let alpha = 1;
     for (let n = el; n && n.nodeType === 1; n = n.parentElement) {
@@ -142,6 +151,20 @@ const collect = () => {
       r.top > innerHeight ||
       r.right < 0 ||
       r.left > innerWidth
+    )
+      continue;
+    // Text passing under the fixed navigation bar is covered, not shown: the
+    // screenshot holds the bar there. The scroll steps overlap by more than
+    // the bar's height, so that text is measured in the previous viewport.
+    if (
+      overlays.some(
+        ({ node, box }) =>
+          !node.contains(el) &&
+          r.top < box.bottom &&
+          r.bottom > box.top &&
+          r.left < box.right &&
+          r.right > box.left,
+      )
     )
       continue;
 
