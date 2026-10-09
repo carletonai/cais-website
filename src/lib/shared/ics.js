@@ -4,7 +4,12 @@
  * subscribe to. Built at deploy time by scripts/prerender-routes.mjs and
  * linked from the site; nothing is generated in the browser.
  */
-import { CLUB_TIME_ZONE, eventPath, eventWindow } from "./event-time.js";
+import {
+  CLUB_TIME_ZONE,
+  addDays,
+  eventPath,
+  eventWindow,
+} from "./event-time.js";
 
 /** @typedef {import("./event-time.js").EventLike} EventLike */
 
@@ -59,11 +64,9 @@ const utcStamp = (/** @type {Date} */ date) =>
 /** 20261009 */
 const dateStamp = (/** @type {string} */ date) => date.replace(/-/g, "");
 
-/** The YYYY-MM-DD after `date`. */
-const nextDay = (/** @type {string} */ date) => {
-  const [y, m, d] = date.split("-").map(Number);
-  return new Date(Date.UTC(y, m - 1, d + 1)).toISOString().slice(0, 10);
-};
+/** The day after an all-day event's last day: iCalendar ends are exclusive. */
+const dayAfter = (/** @type {Pick<EventLike, "date" | "endDate">} */ e) =>
+  addDays(e.endDate && e.endDate > e.date ? e.endDate : e.date, 1);
 
 /**
  * The event's description plus where to find more, for calendar apps.
@@ -95,7 +98,7 @@ const vevent = (event, { now, feed }) => {
   if (window.allDay) {
     lines.push(
       `DTSTART;VALUE=DATE:${dateStamp(event.date)}`,
-      `DTEND;VALUE=DATE:${dateStamp(nextDay(event.date))}`,
+      `DTEND;VALUE=DATE:${dateStamp(dayAfter(event))}`,
     );
   } else {
     lines.push(`DTSTART:${utcStamp(window.start)}`);
@@ -170,7 +173,7 @@ export const feedEvents = (events, now) => {
 const googleDates = (/** @type {EventLike} */ event) => {
   const window = eventWindow(event);
   if (window.allDay)
-    return `${dateStamp(event.date)}/${dateStamp(nextDay(event.date))}`;
+    return `${dateStamp(event.date)}/${dateStamp(dayAfter(event))}`;
   return `${utcStamp(window.start)}/${utcStamp(window.end)}`;
 };
 
@@ -195,7 +198,7 @@ export const outlookCalendarUrl = (/** @type {EventLike} */ event) => {
     rru: "addevent",
     subject: event.title,
     startdt: window.allDay ? event.date : window.start.toISOString(),
-    enddt: window.allDay ? nextDay(event.date) : window.end.toISOString(),
+    enddt: window.allDay ? dayAfter(event) : window.end.toISOString(),
     location: event.location,
     body: calendarDetails(event),
     ...(window.allDay && { allday: "true" }),

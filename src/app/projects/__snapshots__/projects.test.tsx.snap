@@ -50,7 +50,7 @@ exports[`renders ProjectsPage correctly 1`] = `
       <p
         class="mt-5 text-lg text-muted-foreground"
       >
-        AI and machine learning projects built by CAIS members, from club projects to hackathon winners.
+        AI and machine learning projects from CAIS: club projects, and winning entries from the hackathons we have hosted.
       </p>
     </div>
   </header>
@@ -74,7 +74,7 @@ exports[`renders ProjectsPage correctly 1`] = `
             class="text-3xl leading-tight sm:text-4xl"
             id="club-projects"
           >
-            Club Projects
+            Club projects
           </h2>
           <p
             class="mt-3 text-muted-foreground"
@@ -516,7 +516,7 @@ exports[`renders ProjectsPage correctly 1`] = `
             class="text-3xl leading-tight sm:text-4xl"
             id="hackathon-projects"
           >
-            Built at CAIS Hackathons
+            Built at CAIS hackathons
           </h2>
           <p
             class="mt-3 text-muted-foreground"

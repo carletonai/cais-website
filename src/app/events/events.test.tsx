@@ -44,7 +44,7 @@ test("offers only the event types that have events", () => {
   const types = within(screen.getByRole("group", { name: "Filter by type" }))
     .getAllByRole("button")
     .map((button) => button.textContent)
-    .filter((label) => label !== "Has code or video");
+    .filter((label) => label !== "Slides, code or video");
 
   expect(types[0]).toBe("All");
   for (const gone of ["Panel", "Symposium", "TBA"]) {
@@ -81,7 +81,9 @@ test("filters past events by tag", async () => {
 
 test("narrows to workshops whose code or video is online", async () => {
   const user = renderEvents();
-  await user.click(screen.getByRole("button", { name: /Has code or video/ }));
+  await user.click(
+    screen.getByRole("button", { name: /Slides, code or video/ }),
+  );
 
   const past = screen.getByRole("region", { name: "Past events" });
   expect(

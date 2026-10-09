@@ -8,7 +8,7 @@ const ContactPage = () => (
     <PageHeader
       label="Contact"
       title="Contact Us"
-      lede="Find us on your platform of choice or drop us an email. The Discord is the quickest way to reach the exec team."
+      lede="Find us on your platform of choice or drop us an email."
     />
     <Section>
       <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">

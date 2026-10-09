@@ -66,8 +66,8 @@ export function NextUp({
           Nothing on the calendar yet
         </Heading>
         <p className="mt-4 text-muted-foreground">
-          New events are announced on Instagram and Discord first. Subscribe and
-          they will land in your calendar on their own.
+          New events are announced on Instagram and Discord. Subscribe and they
+          will land in your calendar on their own.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <SubscribeButton variant="default" />

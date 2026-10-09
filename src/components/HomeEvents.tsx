@@ -45,7 +45,7 @@ export function CatchUp() {
         id="catch-up"
         label="Code & recordings"
         title="Missed a workshop?"
-        lede="The code, notebooks and recordings from past sessions are online. Pick up where the room left off."
+        lede="Code, notebooks and recordings from many past sessions are online. Pick up where the room left off."
         action={
           <Button asChild variant="outline">
             <Link to="/events#past-events">

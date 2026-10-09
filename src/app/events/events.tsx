@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDownIcon, CodeIcon, PlayIcon } from "lucide-react";
+import {
+  ChevronDownIcon,
+  CodeIcon,
+  FileTextIcon,
+  PlayIcon,
+} from "lucide-react";
 import { PageHeader } from "@/components/brand/PageHeader";
 import { Section, SectionHeader } from "@/components/brand/Section";
 import { EventCard } from "@/components/events/EventCard";
@@ -15,6 +20,7 @@ import {
   allEvents,
   eventPath,
   formatShortDate,
+  isPdf,
   pastEvents,
   upcomingEvents,
 } from "@/lib/events";
@@ -96,13 +102,20 @@ function ArchiveRow({ event }: { event: ClubEvent }) {
         </span>
         <span className="col-span-2 font-medium sm:col-span-1">
           {event.title}
-          {event.materials && (
-            <CodeIcon
-              aria-label="code online"
-              role="img"
-              className="ml-2 inline size-4 align-[-2px] text-primary"
-            />
-          )}
+          {event.materials &&
+            (isPdf(event.materials) ? (
+              <FileTextIcon
+                aria-label="slides online"
+                role="img"
+                className="ml-2 inline size-4 align-[-2px] text-primary"
+              />
+            ) : (
+              <CodeIcon
+                aria-label="code online"
+                role="img"
+                className="ml-2 inline size-4 align-[-2px] text-primary"
+              />
+            ))}
           {event.recording && (
             <PlayIcon
               aria-label="recording online"
@@ -143,7 +156,7 @@ const EventsPage = () => {
       <PageHeader
         label="Events"
         title="Events"
-        lede="Workshops, talks and socials for anyone interested in AI and machine learning. Every one of them since 2019 is here."
+        lede="Workshops, talks and socials for anyone interested in AI and machine learning, with past events on record back to 2019."
       >
         <div className="mt-8 flex flex-wrap gap-3">
           <SubscribeButton variant="default" />
@@ -201,7 +214,7 @@ const EventsPage = () => {
               onClick={() => setOnlyResources((on) => !on)}
             >
               <CodeIcon aria-hidden="true" />
-              Has code or video
+              Slides, code or video
             </Chip>
           </div>
           <div

@@ -2,6 +2,7 @@ import {
   ArrowUpRightIcon,
   CodeIcon,
   ExternalLinkIcon,
+  FileTextIcon,
   NotebookPenIcon,
   PlayIcon,
 } from "lucide-react";
@@ -58,7 +59,9 @@ export function ResourceLinks({
         const Icon =
           link.label === "Notebook on Kaggle"
             ? NotebookPenIcon
-            : ICONS[link.kind];
+            : link.label === "Slides (PDF)"
+              ? FileTextIcon
+              : ICONS[link.kind];
         return (
           <li key={link.kind}>
             <Button asChild variant="outline" size="sm">

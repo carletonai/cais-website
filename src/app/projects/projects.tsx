@@ -24,13 +24,13 @@ const projects = projectsData.projects as Project[];
 const SECTIONS = [
   {
     id: "club-projects",
-    title: "Club Projects",
+    title: "Club projects",
     description: "Built by CAIS members, from our first year to now.",
     projects: projects.filter((project) => !project.hackathon),
   },
   {
     id: "hackathon-projects",
-    title: "Built at CAIS Hackathons",
+    title: "Built at CAIS hackathons",
     description: "Winning projects from the hackathons we have hosted.",
     projects: projects.filter((project) => project.hackathon),
   },
@@ -99,7 +99,7 @@ const ProjectsPage = () => (
     <PageHeader
       label="Projects"
       title="Projects"
-      lede="AI and machine learning projects built by CAIS members, from club projects to hackathon winners."
+      lede="AI and machine learning projects from CAIS: club projects, and winning entries from the hackathons we have hosted."
     />
     {SECTIONS.length > 0 ? (
       SECTIONS.map((section, index) => (

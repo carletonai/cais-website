@@ -84,3 +84,15 @@ describe("links", () => {
     expect(url.searchParams.get("ctz")).toBe("America/Toronto");
   });
 });
+
+describe("multi-day events in calendars", () => {
+  it("end the day after their last day", () => {
+    const hackathon = eventsData.events.find((event) => event.id === "62")!;
+    const text = unfold(vcalendar([hackathon], { now }));
+    expect(text).toContain("DTSTART;VALUE=DATE:20260321");
+    expect(text).toContain("DTEND;VALUE=DATE:20260323");
+    expect(
+      new URL(googleCalendarUrl(hackathon)).searchParams.get("dates"),
+    ).toBe("20260321/20260323");
+  });
+});

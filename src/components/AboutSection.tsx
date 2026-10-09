@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { Section, SectionHeader } from "@/components/brand/Section";
 import { Button } from "@/components/ui/button";
-import { allEvents, clubNumbers } from "@/lib/events";
+import { allEvents, clubNumbers, pastEvents } from "@/lib/events";
 import projectsData from "@/data/projects.json";
 
 const pillars = [
@@ -22,7 +22,7 @@ const pillars = [
   },
   {
     icon: CodeIcon,
-    title: "Build Projects",
+    title: "Build projects",
     description:
       "Collaborate on real AI and ML projects with fellow students, from idea to working prototype.",
     to: "/projects",
@@ -30,7 +30,7 @@ const pillars = [
   },
   {
     icon: UsersIcon,
-    title: "Grow Your Network",
+    title: "Grow your network",
     description:
       "Connect with students, alumni, and industry professionals who share a passion for artificial intelligence.",
     to: "/contact",
@@ -38,7 +38,7 @@ const pillars = [
   },
   {
     icon: CalendarIcon,
-    title: "Attend Events",
+    title: "Attend events",
     description:
       "Workshops, hackathons, and social meetups throughout the academic year.",
     to: "/events",
@@ -46,19 +46,26 @@ const pillars = [
   },
 ];
 
-/** Counted from the site's data, so each one can be checked. */
-const numbers = (() => {
-  const { events, since, workshops, withResources } = clubNumbers(allEvents);
+/** Counted from the site's data, so each one can be checked. Only events
+ *  that have happened count. */
+const numbersAt = (now: Date) => {
+  const { events, since, workshops, withResources } = clubNumbers(
+    pastEvents(allEvents, now),
+  );
   return [
     { value: events, label: `events since ${since}` },
     { value: workshops, label: "workshops" },
-    { value: withResources, label: "with code or video online" },
-    { value: projectsData.projects.length, label: "member projects" },
+    { value: withResources, label: "with slides, code or video online" },
+    {
+      value: projectsData.projects.length,
+      label: "club & hackathon projects",
+    },
   ];
-})();
+};
 
 /** The home page's "About CAIS" section, which /#about and /about land on. */
 export function AboutSection() {
+  const numbers = numbersAt(new Date());
   return (
     <Section id="about" labelledBy="about-heading" className="scroll-mt-20">
       <SectionHeader

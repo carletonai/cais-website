@@ -52,7 +52,7 @@ test("finds people from past teams", async () => {
   await user.type(screen.getByRole("combobox"), "hamzah");
   expect(
     screen.getByRole("option", { name: /Hamzah Hamad/ }),
-  ).toHaveTextContent("President · 2025-2026");
+  ).toHaveTextContent("President · 2025–26");
 });
 
 test("says when nothing matches", async () => {

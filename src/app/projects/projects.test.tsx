@@ -46,7 +46,7 @@ test("lists hackathon winners apart from club projects", () => {
   renderProjectsPage();
 
   const hackathons = screen.getByRole("region", {
-    name: "Built at CAIS Hackathons",
+    name: "Built at CAIS hackathons",
   });
   expect(
     within(hackathons).getByText("CAIS Hackathon 2.0 · 1st Place"),
@@ -55,7 +55,7 @@ test("lists hackathon winners apart from club projects", () => {
     within(hackathons).queryByRole("heading", { name: "CuMind" }),
   ).not.toBeInTheDocument();
   expect(
-    within(screen.getByRole("region", { name: "Club Projects" })).getByRole(
+    within(screen.getByRole("region", { name: "Club projects" })).getByRole(
       "heading",
       { name: "CuMind" },
     ),

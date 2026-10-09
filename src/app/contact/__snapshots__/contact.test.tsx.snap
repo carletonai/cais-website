@@ -50,7 +50,7 @@ exports[`renders ContactPage correctly 1`] = `
       <p
         class="mt-5 text-lg text-muted-foreground"
       >
-        Find us on your platform of choice or drop us an email. The Discord is the quickest way to reach the exec team.
+        Find us on your platform of choice or drop us an email.
       </p>
     </div>
   </header>

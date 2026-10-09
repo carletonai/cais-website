@@ -12,9 +12,9 @@ test("brings the About content onto the home page as a linkable section", () => 
   expect(container.querySelector("section#about")).toBeInTheDocument();
   for (const pillar of [
     "Learn AI",
-    "Build Projects",
-    "Grow Your Network",
-    "Attend Events",
+    "Build projects",
+    "Grow your network",
+    "Attend events",
   ]) {
     expect(screen.getByRole("heading", { name: pillar })).toBeInTheDocument();
   }

@@ -7,15 +7,17 @@ import { DISCORD_URL, INSTAGRAM_URL } from "@/lib/links";
 const steps = [
   {
     title: "Join the Discord",
-    detail: "Where events are announced first and questions get answered.",
+    detail:
+      "The club's chat: meet other members and ask the exec team questions.",
   },
   {
     title: "Follow @carletonaisociety",
-    detail: "Every event gets a poster on Instagram.",
+    detail: "Event posters and announcements go up on Instagram.",
   },
   {
     title: "Come to an event",
-    detail: "All years are welcome, and no experience is needed.",
+    detail:
+      "Workshops, talks and socials, for total beginners and seasoned researchers alike.",
   },
 ];
 
@@ -30,12 +32,12 @@ export function JoinCTA() {
       <Ring className="absolute -bottom-40 -right-32 hidden w-[28rem] md:block" />
       <div className="relative grid gap-10 md:grid-cols-[1fr_1fr] md:pr-40 lg:pr-56">
         <div>
-          <p className="label-mono text-primary">Get involved</p>
+          <p className="label-mono text-primary">Join the community</p>
           <h2 id="join-heading" className="font-display mt-3 text-title">
-            Join CAIS
+            Get involved
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            There is no form and no fee. Three steps and you are in.
+            Three ways to get started.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild size="lg">

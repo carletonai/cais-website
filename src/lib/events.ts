@@ -12,6 +12,7 @@ export {
   eventPath,
   eventSlug,
   eventWindow,
+  formatDateRange,
   formatEventDate,
   formatShortDate,
   formatTimeRange,
@@ -37,6 +38,8 @@ export interface ClubEvent {
   materials?: string;
   recording?: string;
   page?: string;
+  /** YYYY-MM-DD, the last day of an event that runs over several days. */
+  endDate?: string;
 }
 
 export const allEvents: readonly ClubEvent[] = eventsData.events;
@@ -145,11 +148,13 @@ export const eventStatus = (
     const until = window.allDay ? null : formatEnd(event);
     return {
       phase: "live",
-      label: window.allDay
-        ? "Happening today"
-        : until
-          ? `Happening now · until ${until}`
-          : `Happening now · started ${start}`,
+      label: window.multiDay
+        ? `On now · until ${formatEventDate(event.endDate!)}`
+        : window.allDay
+          ? "Happening today"
+          : until
+            ? `Happening now · until ${until}`
+            : `Happening now · started ${start}`,
       startsIn,
     };
   }
@@ -200,6 +205,9 @@ export interface ResourceLink {
   label: string;
 }
 
+/** Slide decks are linked as PDFs; they are not code. */
+export const isPdf = (href: string) => /\.pdf($|[?#])/i.test(href);
+
 const host = (href: string) => {
   try {
     return new URL(href).hostname.replace(/^www\./, "");
@@ -221,7 +229,9 @@ export const resourceLinks = (event: ClubEvent): ResourceLink[] => {
           ? "Code on GitHub"
           : where === "kaggle.com"
             ? "Notebook on Kaggle"
-            : "Workshop materials",
+            : isPdf(event.materials)
+              ? "Slides (PDF)"
+              : "Workshop materials",
     });
   }
   if (event.recording) {

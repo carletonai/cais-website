@@ -16,8 +16,8 @@ const COLUMNS = [
     title: "The club",
     links: [
       { label: "Governance", to: "/governance" },
-      { label: "Current team", to: "/team" },
-      { label: "Past teams", to: "/team/past" },
+      { label: "Current Team", to: "/team" },
+      { label: "Past Teams", to: "/team/past" },
       { label: "Constitution (PDF)", href: CONSTITUTION_URL },
     ],
   },
@@ -95,7 +95,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Carleton Artificial Intelligence
             Society
           </p>
-          <p className="font-mono text-xs">
+          <p className="hidden font-mono text-xs sm:block [@media(hover:none)]:hidden">
             Press <kbd className="rounded border border-border px-1.5">/</kbd>{" "}
             to search
           </p>

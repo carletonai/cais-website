@@ -15,6 +15,7 @@ import {
   type ClubEvent,
   type Meeting,
   eventDate,
+  formatTimeRange,
   meetsOn,
   upcomingEvents,
 } from "@/lib/events";
@@ -376,7 +377,7 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
                         {event.time && (
                           <span className="inline-flex items-center gap-1">
                             <ClockIcon className="h-4 w-4" />
-                            {event.time}
+                            {formatTimeRange(event.time)}
                           </span>
                         )}
                         {event.location && (

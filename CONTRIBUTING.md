@@ -115,6 +115,9 @@ Events live in `src/data/events.json`; the newest go at the end.
   site turns that into exact Ottawa times for countdowns, "happening now", and
   calendar files. Anything else (`""`, `"TBA"`) is shown as written and treated
   as an all-day event.
+- `endDate`: only for events that run over several days (a competition, a
+  weekend hackathon): the last day, `YYYY-MM-DD`. The event then shows as a date
+  range and spans those days in calendars.
 - `id`: never reuse or change one. Each event's page lives at
   `/events/<id>-<title>` (e.g. `/events/66-intro-to-agentic-ai`), and that link
   ends up in chats and calendars; the id is what keeps it working if the title

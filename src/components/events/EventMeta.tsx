@@ -1,6 +1,6 @@
 import {
   type ClubEvent,
-  formatEventDate,
+  formatDateRange,
   formatTimeRange,
   weekdayOf,
 } from "@/lib/events";
@@ -34,7 +34,7 @@ export function WeekdayStrip({ date }: { date: string }) {
 }
 
 type EventMetaProps = {
-  event: Pick<ClubEvent, "date" | "time" | "location">;
+  event: Pick<ClubEvent, "date" | "time" | "location" | "endDate">;
   size?: "sm" | "lg";
   /** Add the year, for events outside the current season. */
   withYear?: boolean;
@@ -63,7 +63,7 @@ export function EventMeta({
       label: "Date",
       value: (
         <time dateTime={event.date}>
-          {formatEventDate(event.date, { year: withYear })}
+          {formatDateRange(event, { year: withYear })}
         </time>
       ),
     },
@@ -116,7 +116,9 @@ export function EventMeta({
           <span className={key === "place" ? undefined : "whitespace-nowrap"}>
             {value}
           </span>
-          {key === "date" && weekdays && <WeekdayStrip date={event.date} />}
+          {key === "date" && weekdays && !event.endDate && (
+            <WeekdayStrip date={event.date} />
+          )}
         </li>
       ))}
     </ul>

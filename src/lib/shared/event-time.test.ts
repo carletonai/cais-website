@@ -145,3 +145,25 @@ describe("slugs", () => {
     expect(idFromSlug("intro-to-agentic-ai")).toBeNull();
   });
 });
+
+describe("multi-day events", () => {
+  const hackathon = {
+    date: "2026-03-21",
+    endDate: "2026-03-22",
+    time: "10:00 AM - 4:30 PM (Mar 21); 10:00 AM - 1:00 PM (Mar 22)",
+  };
+
+  it("run whole days, first to last", () => {
+    const window = eventWindow(hackathon);
+    expect(window.multiDay).toBe(true);
+    expect(window.start.toISOString()).toBe("2026-03-21T04:00:00.000Z");
+    expect(window.end.toISOString()).toBe("2026-03-23T04:00:00.000Z");
+  });
+
+  it("read as a date range", () => {
+    expect(formatWhen(hackathon)).toBe("Sat, Mar 21 – Sun, Mar 22");
+    expect(
+      formatWhen({ ...hackathon, endDate: "2027-01-03" }, { year: true }),
+    ).toBe("Sat, Mar 21, 2026 – Sun, Jan 3, 2027");
+  });
+});

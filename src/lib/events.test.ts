@@ -118,3 +118,15 @@ test("clubNumbers counts only what the data holds", () => {
     allEvents.filter((e) => e.type === "Workshop").length,
   );
 });
+
+test("labels slide decks as slides, not code", () => {
+  const coffee = allEvents.find((e) => e.id === "39")!;
+  expect(resourceLinks(coffee)[0].label).toBe("Slides (PDF)");
+});
+
+test("says a multi-day event is on until its last day", () => {
+  const hackathon = allEvents.find((e) => e.id === "62")!;
+  expect(eventStatus(hackathon, at("2026-03-22T14:00:00Z")).label).toBe(
+    "On now · until Sun, Mar 22",
+  );
+});

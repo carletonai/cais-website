@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import oldTeamsData from "@/data/old-teams.json";
+import { seasonLabel } from "@/lib/utils";
 import PastTeamsPage from "./past-teams";
 
 test("lists every past team under its own year heading", () => {
@@ -15,7 +16,7 @@ test("lists every past team under its own year heading", () => {
   ).toBeInTheDocument();
   for (const team of oldTeamsData.teams) {
     expect(
-      screen.getByRole("heading", { level: 2, name: team.year }),
+      screen.getByRole("heading", { level: 2, name: seasonLabel(team.year) }),
     ).toBeInTheDocument();
   }
 });

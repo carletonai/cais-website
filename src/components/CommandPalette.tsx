@@ -22,7 +22,7 @@ import {
 } from "@/lib/events";
 import { webcalFeedUrl } from "@/lib/shared/ics.js";
 import { CONSTITUTION_URL, SOCIAL_LINKS } from "@/lib/links";
-import { cn } from "@/lib/utils";
+import { cn, seasonLabel } from "@/lib/utils";
 
 type Group =
   "Pages" | "Actions" | "Upcoming" | "Events" | "Projects" | "People";
@@ -46,8 +46,8 @@ const PAGES: Item[] = [
   ["Home", "/", "about join what we do"],
   ["Events", "/events", "workshops talks socials calendar"],
   ["Projects", "/projects", "build code hackathon"],
-  ["Current team", "/team", "exec executives people"],
-  ["Past teams", "/team/past", "alumni history"],
+  ["Current Team", "/team", "exec executives people"],
+  ["Past Teams", "/team/past", "alumni history"],
   ["Governance", "/governance", "constitution roles elections"],
   ["Contact", "/contact", "email socials reach"],
   ["CAIS Terminal", "/resources", "resources learning cli"],
@@ -129,7 +129,7 @@ const buildItems = (now: Date): Item[] => {
         id: `person:${team.year}:${member.name}`,
         group: "People" as const,
         title: member.name,
-        detail: `${member.title} · ${team.year}`,
+        detail: `${member.title} · ${seasonLabel(team.year)}`,
         href: "/team/past",
         icon: UserIcon,
       })),

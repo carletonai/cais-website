@@ -16,7 +16,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { type ClubEvent, eventPath, formatWhen } from "@/lib/events";
+import {
+  type ClubEvent,
+  eventPath,
+  eventWindow,
+  formatWhen,
+} from "@/lib/events";
 import {
   FEED_PATH,
   SITE_URL,
@@ -104,7 +109,7 @@ function SubscribeChoices() {
           href={webcalFeedUrl()}
           icon={Rss}
           title="Apple Calendar or Outlook"
-          detail="Subscribe once; new events appear on their own"
+          detail="Subscribe once; events added here appear on their own"
         />
         <Choice
           href={googleSubscribeUrl()}
@@ -144,11 +149,11 @@ export function SubscribeButton({
       </DialogTrigger>
       <DialogContent className="w-[calc(100%-2rem)] max-w-md">
         <DialogTitle className="pr-10 text-2xl">
-          Never miss a CAIS event
+          Get CAIS events in your calendar
         </DialogTitle>
         <DialogDescription className="mb-5 mt-2">
-          Subscribe to our calendar and every workshop, talk and social shows up
-          in yours, updated as we announce them.
+          Subscribe and the events on this site show up in your calendar, and
+          stay in sync as we add them here.
         </DialogDescription>
         <SubscribeChoices />
       </DialogContent>
@@ -186,7 +191,11 @@ export function AddToCalendarButton({
             href={icsPath(event)}
             icon={DownloadIcon}
             title="Apple Calendar, Outlook or other apps"
-            detail="Downloads an .ics file with a reminder an hour before"
+            detail={
+              eventWindow(event).allDay
+                ? "Downloads an .ics file to open in your calendar app"
+                : "Downloads an .ics file with a reminder an hour before"
+            }
           />
           <Choice
             href={googleCalendarUrl(event)}
@@ -206,8 +215,8 @@ export function AddToCalendarButton({
         <div className="mt-6 border-t border-border pt-5">
           <p className="font-semibold">Want every event?</p>
           <p className="mb-3 text-sm text-muted-foreground">
-            Subscribe once and new CAIS events land in your calendar on their
-            own.
+            Subscribe once and events added to this site appear in your calendar
+            on their own.
           </p>
           <SubscribeChoices />
         </div>

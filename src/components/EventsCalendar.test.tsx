@@ -80,7 +80,7 @@ test("marks today", () => {
 test("lists the month's events with their time and place", () => {
   setup();
 
-  const agenda = screen.getByText("6:00 PM - 8:00 PM").closest("li")!;
+  const agenda = screen.getByText("6:00–8:00 PM").closest("li")!;
   expect(agenda).toHaveTextContent("CAIS Icebreaker");
   expect(agenda).toHaveTextContent("Southam Hall 402");
   expect(screen.queryByText("Training an AI Model!")).not.toBeInTheDocument();

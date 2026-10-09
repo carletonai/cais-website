@@ -1,3 +1,4 @@
+import { seasonLabel } from "@/lib/utils";
 import { type Member, MemberGrid } from "./MemberCard";
 
 interface OldTeamsRowProps {
@@ -13,7 +14,7 @@ const OldTeamsRow = ({ teams }: OldTeamsRowProps) => (
           id={`team-${team.year}`}
           className="font-display mb-6 border-b border-border pb-3 text-3xl"
         >
-          {team.year}
+          {seasonLabel(team.year)}
         </h2>
         <MemberGrid members={team.members} />
       </section>

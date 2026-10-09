@@ -25,6 +25,7 @@ export const CLUB_TIME_ZONE = "America/Toronto";
  * @property {string} [materials]
  * @property {string} [recording]
  * @property {string} [page]
+ * @property {string} [endDate] YYYY-MM-DD, last day of a multi-day event
  */
 
 /**
@@ -32,6 +33,7 @@ export const CLUB_TIME_ZONE = "America/Toronto";
  * @property {Date} start first instant (local midnight for all-day events)
  * @property {Date} end when the event is over
  * @property {boolean} allDay no usable clock time; `time` is shown verbatim
+ * @property {boolean} multiDay runs from `date` through `endDate`
  * @property {boolean} endKnown false when only a start time was announced
  * @property {number | null} startMin minutes after midnight, Ottawa time
  * @property {number | null} endMin
@@ -147,18 +149,41 @@ export const clubInstant = (date, minuteOfDay) => {
  *  calendar files. */
 const ASSUMED_MINUTES = 60;
 
+/** The YYYY-MM-DD `days` after `date`. */
+export const addDays = (
+  /** @type {string} */ date,
+  /** @type {number} */ days,
+) => {
+  const { y, m, d } = ymd(date);
+  return new Date(Date.UTC(y, m - 1, d + days)).toISOString().slice(0, 10);
+};
+
 /**
  * When an event starts and ends.
- * @param {Pick<EventLike, "date" | "time">} event
+ * @param {Pick<EventLike, "date" | "time" | "endDate">} event
  * @returns {EventWindow}
  */
 export const eventWindow = (event) => {
+  // A multi-day event (a competition, a weekend hackathon) runs whole days,
+  // from its first day through its last; its time text is shown as written.
+  if (event.endDate && event.endDate > event.date) {
+    return {
+      start: clubInstant(event.date, 0),
+      end: clubInstant(addDays(event.endDate, 1), 0),
+      allDay: true,
+      multiDay: true,
+      endKnown: true,
+      startMin: null,
+      endMin: null,
+    };
+  }
   const clock = parseClockTimes(event.time);
   if (!clock) {
     return {
       start: clubInstant(event.date, 0),
       end: clubInstant(event.date, 24 * 60),
       allDay: true,
+      multiDay: false,
       endKnown: false,
       startMin: null,
       endMin: null,
@@ -176,6 +201,7 @@ export const eventWindow = (event) => {
     start: clubInstant(event.date, startMin),
     end: clubInstant(event.date, endMin ?? startMin + ASSUMED_MINUTES),
     allDay: false,
+    multiDay: false,
     endKnown: endMin !== null,
     startMin,
     endMin,
@@ -231,12 +257,28 @@ export const formatTimeRange = (text) => {
 
 /** "Fri, Oct 9 · 6:00–7:00 PM" */
 export const formatWhen = (
-  /** @type {Pick<EventLike, "date" | "time">} */ event,
+  /** @type {Pick<EventLike, "date" | "time" | "endDate">} */ event,
   /** @type {{ year?: boolean }} */ options = {},
 ) => {
+  const date = formatDateRange(event, options);
+  if (event.endDate && event.endDate > event.date) return date;
   const time = formatTimeRange(event.time);
-  const date = formatEventDate(event.date, options);
   return time ? `${date} · ${time}` : date;
+};
+
+/** "Fri, Oct 9", or for a multi-day event "Sat, Mar 21 – Sun, Mar 22". */
+export const formatDateRange = (
+  /** @type {Pick<EventLike, "date" | "endDate">} */ event,
+  /** @type {{ year?: boolean }} */ options = {},
+) => {
+  if (!event.endDate || event.endDate <= event.date) {
+    return formatEventDate(event.date, options);
+  }
+  const sameYear = event.date.slice(0, 4) === event.endDate.slice(0, 4);
+  const first = formatEventDate(event.date, {
+    year: options.year && !sameYear,
+  });
+  return `${first} – ${formatEventDate(event.endDate, options)}`;
 };
 
 /** The start time on its own, "6:00 PM", when there is one. */
