@@ -131,7 +131,9 @@ export function NextUp({
             {event.title}
           </Link>
         </Heading>
-        <p className="mt-3 text-muted-foreground">{event.description}</p>
+        <p className="mt-3 line-clamp-3 text-muted-foreground">
+          {event.description}
+        </p>
       </div>
 
       <EventMeta event={event} size="lg" weekdays className="mt-6" />

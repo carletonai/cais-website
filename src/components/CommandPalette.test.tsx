@@ -60,3 +60,11 @@ test("says when nothing matches", async () => {
   await user.type(screen.getByRole("combobox"), "zzzzqx");
   expect(screen.getByRole("status")).toHaveTextContent("Nothing matches");
 });
+
+test("puts the newest of equally good matches first", async () => {
+  const { user } = setup();
+  await user.type(screen.getByRole("combobox"), "agentic");
+  expect(screen.getAllByRole("option")[0]).toHaveTextContent(
+    "Intro to Agentic AI",
+  );
+});

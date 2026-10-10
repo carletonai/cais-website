@@ -34,6 +34,8 @@ interface Item {
   detail?: string;
   /** Extra words that should find this item. */
   keywords?: string;
+  /** Breaks ties between equal matches: later sorts first (event dates). */
+  rank?: string;
   /** An in-site path, or an absolute URL that opens in a new tab. */
   href: string;
   icon: typeof SearchIcon;
@@ -104,6 +106,7 @@ const buildItems = (now: Date): Item[] => {
       event.description,
     ].join(" "),
     href: eventPath(event),
+    rank: event.date,
     icon: CalendarIcon,
   }));
   const projects = projectsData.projects.map((project) => ({
@@ -173,7 +176,14 @@ const search = (items: Item[], query: string) => {
       (item.group === "Upcoming" ? 1 : 0);
     return [{ item, score }];
   });
-  return scored.sort((a, b) => b.score - a.score).map(({ item }) => item);
+  // Equal matches put the newest event first.
+  return scored
+    .sort(
+      (a, b) =>
+        b.score - a.score ||
+        (b.item.rank ?? "").localeCompare(a.item.rank ?? ""),
+    )
+    .map(({ item }) => item);
 };
 
 type CommandPaletteProps = {
