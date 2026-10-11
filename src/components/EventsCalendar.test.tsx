@@ -39,7 +39,7 @@ const execMeeting: Meeting = {
   id: "exec-meeting",
   title: "Exec Meeting",
   date: "2026-09-22",
-  time: "7:30 PM - 8:00 PM",
+  time: "5:30 PM - 6:00 PM",
   location: "Richcraft Hall 3228",
   weekly: true,
 };
@@ -214,8 +214,65 @@ test("opens a meeting's details for the day that was clicked", async () => {
   const details = screen.getByRole("dialog", { name: "Exec Meeting" });
   expect(details).toHaveTextContent("Tuesday, September 29, 2026");
   expect(details).toHaveTextContent("Every Tuesday");
-  expect(details).toHaveTextContent("7:30–8:00 PM");
+  expect(details).toHaveTextContent("5:30–6:00 PM");
   expect(details).toHaveTextContent("Richcraft Hall 3228");
+});
+
+test("marks public holidays on their days and lists them under the month", async () => {
+  const user = setup();
+
+  // September 2026: Labour Day on the 7th, Truth and Reconciliation on the 30th.
+  expect(
+    within(dayCell(7)).getByRole("button", { name: "Labour Day" }),
+  ).toBeInTheDocument();
+  expect(
+    within(dayCell(30)).getByRole("button", {
+      name: "National Day for Truth and Reconciliation",
+    }),
+  ).toBeInTheDocument();
+  expect(within(dayCell(8)).queryByRole("listitem")).not.toBeInTheDocument();
+  expect(
+    within(screen.getByRole("list", { name: "Holidays" })).getAllByRole(
+      "listitem",
+    ),
+  ).toHaveLength(2);
+
+  // A holiday is not an event: October still says it has none.
+  await user.click(screen.getByRole("button", { name: "Next month" }));
+  expect(
+    within(dayCell(12)).getByRole("button", { name: "Thanksgiving" }),
+  ).toBeInTheDocument();
+  expect(
+    screen.getByText("No events scheduled in October 2026."),
+  ).toBeInTheDocument();
+  const row = screen.getByText("National holiday").closest("button")!;
+  expect(row).toHaveTextContent("Thanksgiving");
+  expect(row).toHaveTextContent("Mon, Oct 12");
+});
+
+test("opens a holiday's details, saying where it is a holiday", async () => {
+  const user = setup();
+
+  await user.click(
+    within(dayCell(7)).getByRole("button", { name: "Labour Day" }),
+  );
+  const details = screen.getByRole("dialog", { name: "Labour Day" });
+  expect(details).toHaveTextContent("Monday, September 7, 2026");
+  expect(details).toHaveAccessibleDescription(
+    "A statutory holiday across Canada.",
+  );
+  await user.keyboard("{Escape}");
+
+  // Family Day is Ontario's, and February 2026 has nothing else.
+  for (let i = 0; i < 7; i++) {
+    await user.click(screen.getByRole("button", { name: "Previous month" }));
+  }
+  await user.click(
+    within(dayCell(16)).getByRole("button", { name: "Family Day" }),
+  );
+  expect(
+    screen.getByRole("dialog", { name: "Family Day" }),
+  ).toHaveAccessibleDescription("A statutory holiday in Ontario.");
 });
 
 test("picks a year, then a month, to reach events from other years", async () => {

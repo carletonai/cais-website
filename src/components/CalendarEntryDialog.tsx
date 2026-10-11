@@ -24,11 +24,13 @@ import {
   eventStatus,
   formatTimeRange,
 } from "@/lib/events";
+import { type Holiday } from "@/lib/holidays";
 
 export type CalendarEntry =
   | { kind: "event"; event: ClubEvent }
   /** `date` is the occurrence that was clicked; absent from the summary row. */
-  | { kind: "meeting"; meeting: Meeting; date?: Date };
+  | { kind: "meeting"; meeting: Meeting; date?: Date }
+  | { kind: "holiday"; holiday: Holiday };
 
 const longDate = new Intl.DateTimeFormat("en-CA", {
   weekday: "long",
@@ -123,6 +125,25 @@ const MeetingDetails = ({
   );
 };
 
+const HolidayDetails = ({ holiday }: { holiday: Holiday }) => (
+  <>
+    <p className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+      Holiday
+    </p>
+    <DialogTitle className="pr-10 text-xl leading-snug">
+      {holiday.name}
+    </DialogTitle>
+    <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
+      <Fact icon={CalendarIcon}>{longDate.format(eventDate(holiday))}</Fact>
+    </ul>
+    <DialogDescription className="mt-3 text-sm text-muted-foreground">
+      {holiday.scope === "Ontario"
+        ? "A statutory holiday in Ontario."
+        : "A statutory holiday across Canada."}
+    </DialogDescription>
+  </>
+);
+
 /** Details for whatever was clicked on the events calendar. */
 export function CalendarEntryDialog({
   entry,
@@ -152,8 +173,10 @@ export function CalendarEntryDialog({
         >
           {entry.kind === "event" ? (
             <EventDetails event={entry.event} />
-          ) : (
+          ) : entry.kind === "meeting" ? (
             <MeetingDetails meeting={entry.meeting} date={entry.date} />
+          ) : (
+            <HolidayDetails holiday={entry.holiday} />
           )}
         </DialogContent>
       )}
