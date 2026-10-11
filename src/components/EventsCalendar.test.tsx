@@ -12,7 +12,6 @@ const icebreaker = {
   location: "Southam Hall 402",
   description: "Come find out who we are and what we actually do.",
   type: "Social",
-  image: "/assets/events/neural-networks.svg",
   tags: ["social"],
 };
 

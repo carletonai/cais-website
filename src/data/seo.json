@@ -2,6 +2,13 @@
   "siteName": "Carleton AI Society",
   "siteUrl": "https://carletonai.com",
   "image": "/og-image.png",
+  "sameAs": [
+    "https://www.instagram.com/carletonaisociety/",
+    "https://discord.gg/gCs3v653de",
+    "https://www.linkedin.com/company/carleton-ai",
+    "https://www.youtube.com/channel/UCWKRnTa68hlHrW6WYCgCNaw",
+    "https://github.com/carletonai"
+  ],
   "locale": "en_CA",
   "twitterCard": "summary_large_image",
   "routes": {

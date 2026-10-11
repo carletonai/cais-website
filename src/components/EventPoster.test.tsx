@@ -11,7 +11,6 @@ const withoutPoster = {
     location: "Tory Building 210",
     description: "",
     type: "Workshop",
-    image: "/assets/events/neural-networks.svg",
     tags: [],
   },
 };

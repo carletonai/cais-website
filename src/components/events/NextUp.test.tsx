@@ -11,7 +11,6 @@ const meetup: ClubEvent = {
   location: "Nicol Building",
   description: "An evening on AI agents.",
   type: "Social",
-  image: "",
   tags: [],
   rsvpLink: "https://luma.com/phs5tofz",
 };

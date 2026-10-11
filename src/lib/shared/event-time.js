@@ -117,14 +117,19 @@ const ymd = (date) => {
   return { y, m, d };
 };
 
+// Built once: constructing an Intl.DateTimeFormat costs about twenty times
+// what formatting with one does, and the home page asks for thousands of
+// event instants while it sorts and filters.
+const OFFSET_FORMAT = new Intl.DateTimeFormat("en-US", {
+  timeZone: CLUB_TIME_ZONE,
+  timeZoneName: "longOffset",
+});
+
 /** UTC offset of Ottawa at an instant, in minutes (e.g. -240 in summer). */
 const torontoOffset = (/** @type {number} */ instant) => {
-  const name = new Intl.DateTimeFormat("en-US", {
-    timeZone: CLUB_TIME_ZONE,
-    timeZoneName: "longOffset",
-  })
-    .formatToParts(new Date(instant))
-    .find((p) => p.type === "timeZoneName")?.value;
+  const name = OFFSET_FORMAT.formatToParts(new Date(instant)).find(
+    (p) => p.type === "timeZoneName",
+  )?.value;
   const m = /GMT([+-])(\d{2}):(\d{2})/.exec(name ?? "");
   if (!m) return 0;
   return (m[1] === "-" ? -1 : 1) * (Number(m[2]) * 60 + Number(m[3]));
@@ -158,12 +163,31 @@ export const addDays = (
   return new Date(Date.UTC(y, m - 1, d + days)).toISOString().slice(0, 10);
 };
 
+/** @type {Map<string, EventWindow>} */
+const windows = new Map();
+
 /**
- * When an event starts and ends.
+ * When an event starts and ends. Windows depend only on the three date
+ * fields, so each distinct one is computed once; sorting and filtering ask
+ * for the same event's window many times over.
  * @param {Pick<EventLike, "date" | "time" | "endDate">} event
  * @returns {EventWindow}
  */
 export const eventWindow = (event) => {
+  const key = `${event.date}\u0000${event.time ?? ""}\u0000${event.endDate ?? ""}`;
+  let window = windows.get(key);
+  if (!window) {
+    window = computeWindow(event);
+    windows.set(key, window);
+  }
+  return window;
+};
+
+/**
+ * @param {Pick<EventLike, "date" | "time" | "endDate">} event
+ * @returns {EventWindow}
+ */
+const computeWindow = (event) => {
   // A multi-day event (a competition, a weekend hackathon) runs whole days,
   // from its first day through its last; its time text is shown as written.
   if (event.endDate && event.endDate > event.date) {
