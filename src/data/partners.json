@@ -29,6 +29,20 @@
       "logo": "/assets/partners/colorstack.webp"
     },
     {
+      "id": "arc",
+      "name": "ARC",
+      "blurb": "Co-host of the Grok Bot Meetup, October 2026.",
+      "url": null,
+      "logo": "/assets/partners/arc.webp"
+    },
+    {
+      "id": "sissa",
+      "name": "SISSA",
+      "blurb": "Sprott's information systems students: co-host of the Grok Bot Meetup.",
+      "url": null,
+      "logo": "/assets/partners/sissa.webp"
+    },
+    {
       "id": "builders-collective-ottawa",
       "name": "Builders Collective Ottawa",
       "blurb": "Host of the Grok Bot Meetup, October 2026.",
