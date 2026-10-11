@@ -125,8 +125,10 @@ Events live in `src/data/events.json`; the newest go at the end.
 - `poster`: put the image in `public/assets/events/` (about 1236px wide, JPEG),
   and record its pixel size as `posterWidth` and `posterHeight` so the page
   can hold its space while it loads; the build fails if they are missing or
-  wrong. Images must be on this site: the production CSP blocks any other
-  origin.
+  wrong. Save a 600px-wide copy beside it as `<name>-600.jpg` for the event
+  cards (the tests check it is there), for example with
+  `convert poster.jpg -resize 600x -quality 82 -strip poster-600.jpg`.
+  Images must be on this site: the production CSP blocks any other origin.
 - `rsvpLink`, `materials`, `recording`, `page`: https links. They show up on the
   event's card and page with labels like "Code on GitHub" or "Register on Luma".
 
