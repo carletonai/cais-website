@@ -16,7 +16,7 @@ const event = {
 describe("eventPageMeta", () => {
   it("titles the tab with the event and the preview with its date", () => {
     const meta = eventPageMeta(event);
-    expect(meta.title).toBe("Intro to Agentic AI");
+    expect(meta.title).toBe("Intro to Agentic AI · 2026");
     expect(meta.ogTitle).toBe("Intro to Agentic AI · Fri, Oct 9, 2026");
     expect(meta.image).toBe("/assets/events/intro-to-agentic-ai-2026.jpg");
   });

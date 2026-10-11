@@ -1,5 +1,11 @@
 import eventsData from "@/data/events.json";
-import { feedEvents, googleCalendarUrl, icsPath, vcalendar } from "./ics.js";
+import {
+  feedEvents,
+  googleCalendarUrl,
+  icsPath,
+  outlookCalendarUrl,
+  vcalendar,
+} from "./ics.js";
 
 const agentic = eventsData.events.find((event) => event.id === "66")!;
 const now = new Date("2026-10-08T12:00:00Z");
@@ -58,6 +64,34 @@ describe("vcalendar", () => {
   });
 });
 
+describe("text values", () => {
+  const odd = {
+    id: "1",
+    title: "Semi;colon, comma\\ back",
+    date: "2026-10-09",
+    time: "1:15 PM",
+    location: "Room A; Bldg B",
+    description: "line one\nline two",
+    type: "Social",
+    tags: [],
+  };
+
+  it("escapes what the format reserves", () => {
+    const text = unfold(vcalendar([odd], { now }));
+    expect(text).toContain("SUMMARY:Semi\\;colon\\, comma\\\\ back");
+    expect(text).toContain("LOCATION:Room A\\; Bldg B");
+    expect(text).toContain(
+      "DESCRIPTION:line one\\nline two\\n\\nEnd time not announced.",
+    );
+  });
+
+  it("gives a start-only event an hour rather than no end at all", () => {
+    const text = unfold(vcalendar([odd], { now }));
+    expect(text).toContain("DTSTART:20261009T171500Z");
+    expect(text).toContain("DTEND:20261009T181500Z");
+  });
+});
+
 describe("feedEvents", () => {
   it("holds everything upcoming and the last year", () => {
     const feed = feedEvents(eventsData.events, now);
@@ -66,6 +100,17 @@ describe("feedEvents", () => {
     expect(ids).toContain("67");
     expect(ids).toContain("62"); // March 2026
     expect(ids).not.toContain("19"); // 2019
+  });
+
+  it("keeps an event that ended a year ago to the second, oldest first", () => {
+    // An all-day event on Oct 8, 2025 ends at midnight: 04:00Z on Oct 9.
+    const old = { ...agentic, id: "9", date: "2025-10-08", time: "" };
+    const yearLater = new Date("2026-10-09T04:00:00Z");
+    expect(feedEvents([agentic, old], yearLater).map((e) => e.id)).toEqual([
+      "9",
+      "66",
+    ]);
+    expect(feedEvents([old], new Date(yearLater.getTime() + 1))).toEqual([]);
   });
 });
 
@@ -82,6 +127,21 @@ describe("links", () => {
       "20261009T220000Z/20261009T230000Z",
     );
     expect(url.searchParams.get("ctz")).toBe("America/Toronto");
+  });
+
+  it("prefills Outlook, all day when there is no clock time", () => {
+    const url = new URL(outlookCalendarUrl(agentic));
+    expect(url.hostname).toBe("outlook.live.com");
+    expect(url.searchParams.get("subject")).toBe("Intro to Agentic AI");
+    expect(url.searchParams.get("startdt")).toBe("2026-10-09T22:00:00.000Z");
+    expect(url.searchParams.get("enddt")).toBe("2026-10-09T23:00:00.000Z");
+    expect(url.searchParams.has("allday")).toBe(false);
+
+    const pitchNight = eventsData.events.find((event) => event.id === "61")!;
+    const allDay = new URL(outlookCalendarUrl(pitchNight));
+    expect(allDay.searchParams.get("startdt")).toBe("2026-03-19");
+    expect(allDay.searchParams.get("enddt")).toBe("2026-03-20");
+    expect(allDay.searchParams.get("allday")).toBe("true");
   });
 });
 
