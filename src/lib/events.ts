@@ -31,9 +31,11 @@ export interface ClubEvent {
   location: string;
   description: string;
   type: string;
-  image: string;
   tags: string[];
+  /** Under public/, with its pixel size so the page can reserve the space. */
   poster?: string;
+  posterWidth?: number;
+  posterHeight?: number;
   rsvpLink?: string;
   materials?: string;
   recording?: string;
@@ -107,14 +109,15 @@ export const findEventBySlug = (
   return id ? events.find((event) => event.id === id) : undefined;
 };
 
+const CLUB_DATE = new Intl.DateTimeFormat("en-CA", {
+  timeZone: CLUB_TIME_ZONE,
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+});
+
 /** Today's date in Ottawa, YYYY-MM-DD. */
-const clubToday = (now: Date) =>
-  new Intl.DateTimeFormat("en-CA", {
-    timeZone: CLUB_TIME_ZONE,
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(now);
+const clubToday = (now: Date) => CLUB_DATE.format(now);
 
 const dayNumber = (date: string) => {
   const [y, m, d] = date.split("-").map(Number);

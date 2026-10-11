@@ -122,8 +122,11 @@ Events live in `src/data/events.json`; the newest go at the end.
   `/events/<id>-<title>` (e.g. `/events/66-intro-to-agentic-ai`), and that link
   ends up in chats and calendars; the id is what keeps it working if the title
   changes.
-- `poster`: put the image in `public/assets/events/` (about 1236px wide, JPEG).
-  Images must be on this site: the production CSP blocks any other origin.
+- `poster`: put the image in `public/assets/events/` (about 1236px wide, JPEG),
+  and record its pixel size as `posterWidth` and `posterHeight` so the page
+  can hold its space while it loads; the build fails if they are missing or
+  wrong. Images must be on this site: the production CSP blocks any other
+  origin.
 - `rsvpLink`, `materials`, `recording`, `page`: https links. They show up on the
   event's card and page with labels like "Code on GitHub" or "Register on Luma".
 

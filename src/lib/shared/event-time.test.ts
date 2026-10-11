@@ -31,6 +31,16 @@ describe("parseClockTimes", () => {
   });
 });
 
+describe("eventWindow", () => {
+  it("computes a window once per distinct date, time and end date", () => {
+    const event = { date: "2026-10-09", time: "6:00 PM - 7:00 PM" };
+    expect(eventWindow(event)).toBe(eventWindow({ ...event }));
+    expect(eventWindow(event)).not.toBe(
+      eventWindow({ ...event, endDate: "2026-10-10" }),
+    );
+  });
+});
+
 describe("clubInstant", () => {
   // Ottawa is UTC-4 in summer time and UTC-5 in winter, whatever zone the
   // build machine or the visitor is in.

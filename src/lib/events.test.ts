@@ -18,7 +18,6 @@ const event = (overrides: Partial<ClubEvent> = {}): ClubEvent => ({
   location: "CS Seminar Room, Herzberg",
   description: "",
   type: "Workshop",
-  image: "",
   tags: [],
   ...overrides,
 });

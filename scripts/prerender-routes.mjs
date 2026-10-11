@@ -5,6 +5,11 @@
 // client-side navigation; both read src/data/seo.json, and event pages read
 // the same helpers in src/lib/shared/.
 //
+// Each page also preloads the JS chunk its route is split into (read from the
+// build manifest) and, on event pages, the poster, so a direct hit does not
+// wait for the main bundle to run before it learns what else to fetch. Event
+// pages carry schema.org Event data and the home page the Organization.
+//
 // This script also writes, for every event:
 //   /events/<slug>/index.html   its page, previewing with its poster
 //   /events/<slug>.ics          a calendar file with a reminder
@@ -15,10 +20,15 @@ import {
   mkdirSync,
   existsSync,
   readdirSync,
+  rmSync,
 } from "node:fs";
-import { dirname, join, resolve } from "node:path";
+import { dirname, join, posix, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { eventPath, eventSlug } from "../src/lib/shared/event-time.js";
+import {
+  eventPath,
+  eventSlug,
+  eventWindow,
+} from "../src/lib/shared/event-time.js";
 import { eventPageMeta } from "../src/lib/shared/event-meta.js";
 import {
   FEED_PATH,
@@ -43,13 +53,23 @@ const fail = (message) => {
 const index = join(dist, "index.html");
 if (!existsSync(index)) fail("dist/index.html missing — run the build first.");
 
-// Read the routes off the router itself so this cannot drift from App.tsx.
-// Routes with parameters (/events/:slug) are expanded from the data below.
-const routes = [
-  ...readFileSync(appSource, "utf8").matchAll(/<Route\s+path="([^"]+)"/g),
-]
-  .map((m) => m[1])
-  .filter((p) => p !== "*" && !p.includes(":"));
+// Read the routes, and which page module each one loads, off the router
+// itself so this cannot drift from App.tsx. Routes with parameters
+// (/events/:slug) are expanded from the data below.
+const app = readFileSync(appSource, "utf8");
+const routeElements = new Map(
+  [...app.matchAll(/<Route\s+path="([^"]+)"\s+element={<(\w+)\s*\/>}/g)].map(
+    (m) => [m[1], m[2]],
+  ),
+);
+const lazyModules = new Map(
+  [...app.matchAll(/const (\w+) = lazy\(\(\) => import\("([^"]+)"\)\)/g)].map(
+    (m) => [m[1], m[2]],
+  ),
+);
+const routes = [...routeElements.keys()].filter(
+  (p) => p !== "*" && !p.includes(":"),
+);
 
 if (routes.length === 0) fail("no routes found in src/app/App.tsx.");
 
@@ -64,12 +84,16 @@ const escape = (s) =>
     .replace(/"/g, "&quot;");
 
 const assets = readdirSync(join(dist, "assets"));
-const builtFont = (prefix) => {
-  const file = assets.find((a) => a.startsWith(prefix) && a.endsWith(".woff2"));
-  if (!file) fail(`no built font matching ${prefix}*.woff2`);
+const builtAsset = (prefix, extension) => {
+  const file = assets.find(
+    (a) => a.startsWith(prefix) && a.endsWith(`.${extension}`),
+  );
+  if (!file) fail(`no built file matching ${prefix}*.${extension}`);
   return `/assets/${file}`;
 };
+const builtFont = (prefix) => builtAsset(prefix, "woff2");
 
+// The variable faces, which 404.html also needs (see the end of this file).
 const FONTS = [
   {
     family: "Inter Variable",
@@ -83,17 +107,66 @@ const FONTS = [
   },
 ];
 
-// The body and heading faces are needed for the first paint; without a
-// preload they queue behind the stylesheet and the headline rewraps late.
-const preloads = FONTS.map(
-  ({ file }) =>
-    `<link rel="preload" href="${file}" as="font" type="font/woff2" crossorigin />`,
-).join("\n    ");
+// The body and heading faces are needed for the first paint, and the mono
+// face labels the hero and the navigation; without a preload they queue
+// behind the stylesheet and the headline rewraps late.
+const preloads = [
+  ...FONTS.map(({ file }) => file),
+  builtFont("ibm-plex-mono-latin-500-normal-"),
+]
+  .map(
+    (file) =>
+      `<link rel="preload" href="${file}" as="font" type="font/woff2" crossorigin />`,
+  )
+  .join("\n    ");
 
 const template = readFileSync(index, "utf8").replace(
   "</head>",
-  `  ${preloads}\n  </head>`,
+  () => `  ${preloads}\n  </head>`,
 );
+
+// Vite's manifest maps each lazily imported page module to its chunk and the
+// chunks that one imports. It is a build detail, not a page, so it is read
+// here and removed from dist.
+const manifestFile = join(dist, ".vite", "manifest.json");
+if (!existsSync(manifestFile))
+  fail(
+    "dist/.vite/manifest.json missing — vite.config.ts must set build.manifest.",
+  );
+const manifest = JSON.parse(readFileSync(manifestFile, "utf8"));
+rmSync(join(dist, ".vite"), { recursive: true, force: true });
+
+// What index.html already loads or preloads; a page only adds what its own
+// route needs on top.
+const alreadyLoaded = new Set(
+  [
+    ...template.matchAll(
+      /<(?:script|link)[^>]*(?:src|href)="(\/assets\/[^"]+\.js)"/g,
+    ),
+  ].map((m) => m[1]),
+);
+
+/** The hashed JS chunks a route's page needs: its own and its static imports. */
+const chunksFor = (route) => {
+  const module = lazyModules.get(routeElements.get(route));
+  if (!module) return []; // part of the main bundle
+  const source = posix.join("src/app", module);
+  const key = ["tsx", "ts"]
+    .map((ext) => `${source}.${ext}`)
+    .find((k) => manifest[k]);
+  if (!key) fail(`no manifest entry for ${module} (route ${route})`);
+  const files = new Set();
+  const visit = (k) => {
+    const entry = manifest[k];
+    if (!entry || files.has(entry.file)) return;
+    files.add(entry.file);
+    for (const dep of entry.imports ?? []) visit(dep);
+  };
+  visit(key);
+  return [...files]
+    .map((f) => `/${f}`)
+    .filter((f) => f.endsWith(".js") && !alreadyLoaded.has(f));
+};
 
 /** Width and height of a JPEG, from its start-of-frame marker. */
 const jpegSize = (file) => {
@@ -119,52 +192,130 @@ const jpegSize = (file) => {
   return null;
 };
 
+/** A JSON-LD block. "<" is escaped so no value can end the script early. */
+const jsonLd = (data) =>
+  `<script type="application/ld+json">${JSON.stringify(data).replace(
+    /</g,
+    "\\u003c",
+  )}</script>`;
+
+const absolute = (path) => `${seo.siteUrl}${path === "/" ? "/" : path}`;
+
+const organization = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: seo.siteName,
+  alternateName: "CAIS",
+  url: absolute("/"),
+  logo: `${seo.siteUrl}/brand/cais-logo.svg`,
+  sameAs: seo.sameAs,
+};
+
+/** schema.org Event data for an event's page. */
+const eventData = (event, image) => {
+  const window = eventWindow(event);
+  const online = /^online\b/i.test(event.location);
+  const url = absolute(eventPath(event));
+  const endDate = window.multiDay
+    ? event.endDate
+    : !window.allDay && window.endKnown
+      ? window.end.toISOString()
+      : undefined;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: event.title,
+    description: event.description,
+    url,
+    startDate: window.allDay ? event.date : window.start.toISOString(),
+    ...(endDate && { endDate }),
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: online
+      ? "https://schema.org/OnlineEventAttendanceMode"
+      : "https://schema.org/OfflineEventAttendanceMode",
+    ...(online
+      ? { location: { "@type": "VirtualLocation", url } }
+      : event.location && {
+          location: {
+            "@type": "Place",
+            name: event.location,
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Ottawa",
+              addressRegion: "ON",
+              addressCountry: "CA",
+            },
+          },
+        }),
+    ...(image && { image: [`${seo.siteUrl}${image.url}`] }),
+    organizer: {
+      "@type": "Organization",
+      name: seo.siteName,
+      url: absolute("/"),
+    },
+  };
+};
+
 /**
  * The built HTML with this page's metadata in place of the placeholders.
- * @param {{ path: string, title: string, description: string,
- *   image?: { url: string, width: number, height: number, alt: string } }} page
+ * @param {{ path: string, title: string, ogTitle?: string, description: string,
+ *   image?: { url: string, width: number, height: number, alt: string },
+ *   head?: string[] }} page
  */
-const render = ({ path, title, description, image }) => {
+const render = ({ path, title, ogTitle, description, image, head = [] }) => {
   const fullTitle =
     title === seo.siteName ? title : `${title} | ${seo.siteName}`;
-  const url = `${seo.siteUrl}${path === "/" ? "/" : path}`;
+  const url = absolute(path);
   const t = escape(fullTitle);
+  const preview = escape(ogTitle ?? fullTitle);
   const d = escape(description);
 
   // Replacer functions, not strings: a replacement string would read "$2",
-  // "$&" or "$'" in a title or description as a pattern, not as text.
-  const set = (html, pattern, value) =>
-    html.replace(pattern, (_, open, close) => `${open}${value}${close}`);
+  // "$&" or "$'" in a title or description as a pattern, not as text. Every
+  // placeholder must be found, or a page would ship the template's values.
+  const set = (html, pattern, value) => {
+    if (!pattern.test(html)) fail(`index.html has nothing matching ${pattern}`);
+    return html.replace(pattern, (_, open, close) => `${open}${value}${close}`);
+  };
+  const meta = (attribute, name) =>
+    new RegExp(`(<meta\\s+${attribute}="${name}"\\s+content=")[^"]*(")`);
 
+  if (!/<title>[^<]*<\/title>/.test(template))
+    fail("index.html has no <title>");
   let html = template.replace(
     /<title>[^<]*<\/title>/,
     () => `<title>${t}</title>`,
   );
-  html = set(html, /(<meta name="description" content=")[^"]*(")/, d);
+  html = set(html, meta("name", "description"), d);
   html = set(html, /(<link rel="canonical" href=")[^"]*(")/, url);
-  html = set(html, /(<meta property="og:title" content=")[^"]*(")/, t);
-  html = set(html, /(<meta property="og:description" content=")[^"]*(")/, d);
-  html = set(html, /(<meta property="og:url" content=")[^"]*(")/, url);
-  html = set(html, /(<meta name="twitter:title" content=")[^"]*(")/, t);
-  html = set(html, /(<meta name="twitter:description" content=")[^"]*(")/, d);
+  html = set(html, meta("property", "og:title"), preview);
+  html = set(html, meta("property", "og:description"), d);
+  html = set(html, meta("property", "og:url"), url);
+  html = set(html, meta("name", "twitter:title"), preview);
+  html = set(html, meta("name", "twitter:description"), d);
+  const extra = [...head];
   if (image) {
     const src = escape(`${seo.siteUrl}${image.url}`);
-    html = set(html, /(<meta property="og:image" content=")[^"]*(")/, src);
-    html = set(html, /(<meta name="twitter:image" content=")[^"]*(")/, src);
-    html = set(
-      html,
-      /(<meta property="og:image:width" content=")[^"]*(")/,
-      String(image.width),
+    html = set(html, meta("property", "og:image"), src);
+    html = set(html, meta("name", "twitter:image"), src);
+    html = set(html, meta("property", "og:image:width"), String(image.width));
+    html = set(html, meta("property", "og:image:height"), String(image.height));
+    html = set(html, meta("property", "og:image:alt"), escape(image.alt));
+    // The poster is the largest thing on the page and the HTML already knows
+    // it; without this it is only requested once the page's JS has rendered.
+    extra.push(
+      `<link rel="preload" as="image" href="${escape(image.url)}" fetchpriority="high" />`,
     );
-    html = set(
-      html,
-      /(<meta property="og:image:height" content=")[^"]*(")/,
-      String(image.height),
-    );
-    html = set(
-      html,
-      /(<meta property="og:image:alt" content=")[^"]*(")/,
-      escape(image.alt),
+  }
+  for (const chunk of chunksFor(
+    path.includes("/events/") ? "/events/:slug" : path,
+  )) {
+    extra.push(`<link rel="modulepreload" crossorigin href="${chunk}" />`);
+  }
+  if (extra.length > 0) {
+    html = html.replace(
+      "</head>",
+      () => `  ${extra.join("\n    ")}\n  </head>`,
     );
   }
   return html;
@@ -178,7 +329,14 @@ const write = (path, html) => {
 };
 
 for (const route of routes) {
-  write(route, render({ path: route, ...seo.routes[route] }));
+  write(
+    route,
+    render({
+      path: route,
+      ...seo.routes[route],
+      head: route === "/" ? [jsonLd(organization)] : [],
+    }),
+  );
 }
 
 // One page and one calendar file per event.
@@ -197,6 +355,11 @@ for (const event of events) {
     const size = jpegSize(file);
     if (!size)
       fail(`event ${event.id}: ${event.poster} is not a readable JPEG`);
+    if (event.posterWidth !== size.width || event.posterHeight !== size.height)
+      fail(
+        `event ${event.id}: ${event.poster} is ${size.width}×${size.height}; ` +
+          `set "posterWidth": ${size.width}, "posterHeight": ${size.height} in events.json`,
+      );
     image = { url: event.poster, ...size, alt: `Poster for ${event.title}` };
   }
   const meta = eventPageMeta(event);
@@ -205,8 +368,10 @@ for (const event of events) {
     render({
       path: eventPath(event),
       title: meta.title,
+      ogTitle: meta.ogTitle,
       description: meta.description,
       image,
+      head: [jsonLd(eventData(event, image))],
     }),
   );
   writeFileSync(join(dist, icsPath(event)), vcalendar([event], { now }));
@@ -236,20 +401,17 @@ if (existsSync(notFoundPage)) {
     fail("404.html is missing its <!--FONT-FACE--> marker.");
   writeFileSync(
     notFoundPage,
-    html.replace("<!--FONT-FACE-->", `<style>\n${faces}\n    </style>`),
+    html.replace("<!--FONT-FACE-->", () => `<style>\n${faces}\n    </style>`),
   );
 }
 
-const today = now.toISOString().slice(0, 10);
+// No <lastmod>: the only honest value would be the last change to each
+// page's content, which the build does not know, and a build date on every
+// URL is a signal search engines learn to ignore.
 const pages = [...routes, ...events.map(eventPath)];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${pages
-  .map(
-    (r) =>
-      `  <url>\n    <loc>${seo.siteUrl}${r === "/" ? "/" : r}</loc>\n    <lastmod>${today}</lastmod>\n  </url>`,
-  )
-  .join("\n")}
+${pages.map((r) => `  <url>\n    <loc>${absolute(r)}</loc>\n  </url>`).join("\n")}
 </urlset>
 `;
 writeFileSync(join(dist, "sitemap.xml"), sitemap);
