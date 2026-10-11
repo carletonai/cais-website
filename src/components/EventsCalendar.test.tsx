@@ -214,7 +214,7 @@ test("opens a meeting's details for the day that was clicked", async () => {
   const details = screen.getByRole("dialog", { name: "Exec Meeting" });
   expect(details).toHaveTextContent("Tuesday, September 29, 2026");
   expect(details).toHaveTextContent("Every Tuesday");
-  expect(details).toHaveTextContent("7:30 PM - 8:00 PM");
+  expect(details).toHaveTextContent("7:30–8:00 PM");
   expect(details).toHaveTextContent("Richcraft Hall 3228");
 });
 
@@ -246,4 +246,26 @@ test("picks a year, then a month, to reach events from other years", async () =>
   expect(
     within(shortcuts).getByRole("button", { name: "Oct 2021, 1 event" }),
   ).toHaveAttribute("aria-current", "true");
+});
+
+test("shows a multi-day event on every day it runs, with its dates", () => {
+  const hackathon = {
+    ...icebreaker,
+    id: "57",
+    title: "CAIS Hackathon",
+    date: "2026-09-26",
+    endDate: "2026-09-27",
+    time: "",
+    type: "Competition",
+  };
+  render(
+    <MemoryRouter>
+      <EventsCalendar events={[hackathon]} meetings={[]} />
+    </MemoryRouter>,
+  );
+
+  expect(within(dayCell(26)).getByText("CAIS Hackathon")).toBeInTheDocument();
+  expect(within(dayCell(27)).getByText("CAIS Hackathon")).toBeInTheDocument();
+  expect(within(dayCell(25)).queryByText("CAIS Hackathon")).toBeNull();
+  expect(screen.getByText("Sat, Sep 26 – Sun, Sep 27")).toBeInTheDocument();
 });

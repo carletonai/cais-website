@@ -127,6 +127,8 @@ export default function Navbar() {
   }
 
   // Escape closes the mobile menu and returns focus to its button.
+  // While the sheet is open: Escape closes it, and the page behind it is
+  // neither scrollable nor reachable with the keyboard.
   useEffect(() => {
     if (!isMobileMenuOpen) return;
     const onKey = (e: KeyboardEvent) => {
@@ -136,97 +138,113 @@ export default function Navbar() {
       }
     };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    const behind = [
+      document.getElementById("main-content"),
+      document.querySelector("footer"),
+    ].filter((el): el is HTMLElement => el !== null);
+    behind.forEach((el) => el.setAttribute("inert", ""));
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      behind.forEach((el) => el.removeAttribute("inert"));
+      document.body.style.overflow = overflow;
+    };
   }, [isMobileMenuOpen]);
 
   return (
-    <nav
-      aria-label="Main"
-      className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/90 backdrop-blur-lg"
-    >
-      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-        <Link
-          to="/"
-          aria-label="Carleton AI Society — home"
-          className="flex min-h-11 items-center gap-3"
-        >
-          <img src="/logo.svg" alt="CAIS Logo" className="h-10 w-auto" />
-          <span className="label-mono hidden text-foreground lg:inline">
-            Carleton AI Society
-          </span>
-        </Link>
-
-        <div className="hidden items-center gap-1 md:flex">
-          {NAV_ITEMS.map((item) =>
-            item.children ? (
-              // Keyed on the page, so the submenu starts closed after any
-              // navigation, however it happened.
-              <TeamMenu
-                key={`${item.path}:${pathname}`}
-                item={item}
-                pathname={pathname}
-              />
-            ) : (
-              <Link
-                key={item.path}
-                to={item.path}
-                aria-current={
-                  pathname === item.path
-                    ? "page"
-                    : isInSection(item, pathname)
-                      ? "true"
-                      : undefined
-                }
-                className={cn(
-                  "inline-flex min-h-11 items-center rounded-full px-4 text-sm font-medium transition-colors",
-                  isInSection(item, pathname)
-                    ? "text-primary"
-                    : "text-foreground hover:text-primary",
-                )}
-              >
-                {item.label}
-              </Link>
-            ),
-          )}
-          <button
-            type="button"
-            onClick={openSearch}
-            className="ml-2 inline-flex min-h-11 items-center gap-2 rounded-full border border-input px-4 text-sm text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+    <nav aria-label="Main" className="fixed inset-x-0 top-0 z-50">
+      {/* The blur is on the bar, not the <nav>: a backdrop-filter makes its
+          element the containing block for fixed descendants, which pinned the
+          sheet below to the bar's own 64px and left it 1px tall. */}
+      <div className="border-b border-border bg-background/90 backdrop-blur-lg">
+        <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+          <Link
+            to="/"
+            aria-label="Carleton AI Society — home"
+            className="flex min-h-11 items-center gap-3"
           >
-            <SearchIcon aria-hidden="true" className="size-4" />
-            Search
-            <kbd className="rounded border border-border px-1.5 font-mono text-xs">
-              /
-            </kbd>
-          </button>
-        </div>
-
-        <div className="flex items-center gap-1 md:hidden">
-          <button
-            type="button"
-            onClick={openSearch}
-            className="inline-flex size-11 items-center justify-center rounded-full text-foreground hover:bg-accent"
-          >
-            <SearchIcon aria-hidden="true" className="size-5" />
-            <span className="sr-only">Search</span>
-          </button>
-          <button
-            ref={menuButton}
-            type="button"
-            onClick={() => setIsMobileMenuOpen((open) => !open)}
-            className="inline-flex size-11 items-center justify-center rounded-full text-foreground hover:bg-accent"
-            aria-controls="mobile-menu"
-            aria-expanded={isMobileMenuOpen}
-          >
-            <span className="sr-only">
-              {isMobileMenuOpen ? "Close main menu" : "Open main menu"}
+            <img src="/logo.svg" alt="CAIS Logo" className="h-10 w-auto" />
+            <span className="label-mono hidden text-foreground lg:inline">
+              Carleton AI Society
             </span>
-            {isMobileMenuOpen ? (
-              <XIcon aria-hidden="true" className="size-6" />
-            ) : (
-              <MenuIcon aria-hidden="true" className="size-6" />
+          </Link>
+
+          <div className="hidden items-center gap-1 md:flex">
+            {NAV_ITEMS.map((item) =>
+              item.children ? (
+                // Keyed on the page, so the submenu starts closed after any
+                // navigation, however it happened.
+                <TeamMenu
+                  key={`${item.path}:${pathname}`}
+                  item={item}
+                  pathname={pathname}
+                />
+              ) : (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  aria-current={
+                    pathname === item.path
+                      ? "page"
+                      : isInSection(item, pathname)
+                        ? "true"
+                        : undefined
+                  }
+                  className={cn(
+                    "inline-flex min-h-11 items-center rounded-full px-4 text-sm font-medium transition-colors",
+                    isInSection(item, pathname)
+                      ? "text-primary"
+                      : "text-foreground hover:text-primary",
+                  )}
+                >
+                  {item.label}
+                </Link>
+              ),
             )}
-          </button>
+            <button
+              type="button"
+              onClick={openSearch}
+              className="ml-2 inline-flex min-h-11 items-center gap-2 rounded-full border border-input px-4 text-sm text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+            >
+              <SearchIcon aria-hidden="true" className="size-4" />
+              Search
+              <kbd
+                aria-hidden="true"
+                className="rounded border border-border px-1.5 font-mono text-xs"
+              >
+                /
+              </kbd>
+            </button>
+          </div>
+
+          <div className="flex items-center gap-1 md:hidden">
+            <button
+              type="button"
+              onClick={openSearch}
+              className="inline-flex size-11 items-center justify-center rounded-full text-foreground hover:bg-accent"
+            >
+              <SearchIcon aria-hidden="true" className="size-5" />
+              <span className="sr-only">Search</span>
+            </button>
+            <button
+              ref={menuButton}
+              type="button"
+              onClick={() => setIsMobileMenuOpen((open) => !open)}
+              className="inline-flex size-11 items-center justify-center rounded-full text-foreground hover:bg-accent"
+              aria-controls="mobile-menu"
+              aria-expanded={isMobileMenuOpen}
+            >
+              <span className="sr-only">
+                {isMobileMenuOpen ? "Close main menu" : "Open main menu"}
+              </span>
+              {isMobileMenuOpen ? (
+                <XIcon aria-hidden="true" className="size-6" />
+              ) : (
+                <MenuIcon aria-hidden="true" className="size-6" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
