@@ -40,6 +40,8 @@ export interface ClubEvent {
   materials?: string;
   recording?: string;
   page?: string;
+  /** The Instagram post it was announced in; set by scripts/instagram-sync.mjs. */
+  instagram?: string;
   /** YYYY-MM-DD, the last day of an event that runs over several days. */
   endDate?: string;
 }

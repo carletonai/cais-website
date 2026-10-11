@@ -4,6 +4,7 @@ import { posterThumb } from "@/lib/events";
 import events from "./events.json";
 import meetings from "./meetings.json";
 import oldTeams from "./old-teams.json";
+import partners from "./partners.json";
 import projects from "./projects.json";
 import team from "./team.json";
 
@@ -16,7 +17,7 @@ const fields = (value: unknown, key = ""): [string, string][] => {
   return [];
 };
 
-const all = fields({ events, meetings, oldTeams, projects, team });
+const all = fields({ events, meetings, oldTeams, partners, projects, team });
 
 describe("events", () => {
   // The id is the key in every event URL and calendar file (CONTRIBUTING):
@@ -44,10 +45,20 @@ describe("data files", () => {
   // carletonai.com: an off-site poster would show on every preview and then
   // be blocked on the live site.
   it("serves every image from this site", () => {
-    const images = all.filter(([key]) => /^(image|poster)$/.test(key));
+    const images = all.filter(([key]) => /^(image|poster|logo)$/.test(key));
     expect(images.length).toBeGreaterThan(0);
     for (const [key, value] of images) {
       expect(`${key}: ${value}`).toMatch(/^\w+: \/(?!\/)/);
+    }
+  });
+
+  it("has a file for every partner logo", () => {
+    for (const partner of partners.partners) {
+      if (partner.logo) {
+        expect(existsSync(join(__dirname, "../../public", partner.logo))).toBe(
+          true,
+        );
+      }
     }
   });
 
@@ -65,7 +76,9 @@ describe("data files", () => {
 
   it("links only to https pages or to this site", () => {
     const links = all.filter(([key]) =>
-      /^(link|rsvpLink|page|recording|materials|linkedinURL)$/.test(key),
+      /^(link|rsvpLink|page|recording|materials|linkedinURL|url|instagram)$/.test(
+        key,
+      ),
     );
     expect(links.length).toBeGreaterThan(0);
     for (const [key, value] of links) {

@@ -1,0 +1,100 @@
+name: Instagram sync
+
+# Reads the club's recent Instagram posts and opens (or updates) a pull
+# request with any event announcements drafted into src/data/events.json,
+# posters included. Nothing reaches the site until a person merges it.
+# Setup, secrets and costs: CONTRIBUTING.md, "Instagram sync".
+on:
+  schedule:
+    - cron: "10 13 * * *" # 9:10 in Ottawa in summer, 8:10 in winter
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: instagram-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    # Forks have no token and should not open pull requests here.
+    if: github.repository == 'carletonai/cais-website'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      # Optional: a fine-grained token with "Secrets: write" on this repo
+      # lets the job refresh the Instagram token every day, so it never
+      # expires. Without it, renew IG_ACCESS_TOKEN by hand every 60 days.
+      SECRETS_PAT: ${{ secrets.ACTIONS_SECRETS_PAT }}
+
+    steps:
+      # Actions are pinned to full commit SHAs (tags can be moved); Dependabot
+      # keeps the SHA and the version comment up to date together.
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "22"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: |
+          for i in 1 2 3; do
+            pnpm install --frozen-lockfile && exit 0
+            sleep 10
+          done
+          exit 1
+        env:
+          NPM_CONFIG_REGISTRY: "https://registry.npmjs.org/"
+
+      - name: Read Instagram and draft events
+        id: sync
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/instagram-sync.mjs --summary-file "$RUNNER_TEMP/summary.md"
+
+      - name: Check the drafted data the way CI will
+        if: steps.sync.outputs.added != '0'
+        run: pnpm exec jest src/data
+
+      - name: Open or update the pull request
+        if: steps.sync.outputs.added != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c instagram-sync
+          git add src/data/events.json src/data/instagram-seen.json public/assets/events
+          git commit -m "feat(events): events announced on Instagram" \
+            -m "Drafted by the Instagram sync from the club's posts. Check the dates, times and places against the posts before merging."
+          git push --force origin instagram-sync
+          if gh pr view instagram-sync --json number >/dev/null 2>&1; then
+            gh pr edit instagram-sync --body-file "$RUNNER_TEMP/summary.md"
+          else
+            gh pr create --base master --head instagram-sync \
+              --title "Events announced on Instagram" \
+              --body-file "$RUNNER_TEMP/summary.md"
+          fi
+
+      - name: Refresh the Instagram token (each refresh lasts 60 days)
+        if: always() && env.SECRETS_PAT != ''
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          GH_TOKEN: ${{ env.SECRETS_PAT }}
+        run: |
+          new=$(curl -fsS "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=$IG_ACCESS_TOKEN" | jq -r '.access_token // empty')
+          if [ -n "$new" ]; then
+            gh secret set IG_ACCESS_TOKEN --repo "$GITHUB_REPOSITORY" --body "$new"
+            echo "Instagram token refreshed."
+          else
+            echo "::warning::The Instagram token could not be refreshed; renew it by hand before it expires."
+          fi
