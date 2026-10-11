@@ -298,7 +298,7 @@ const EventsPage = () => {
           id="calendar-heading"
           label="By month"
           title="Calendar"
-          lede="Events and the weekly exec meeting, month by month."
+          lede="Events, the weekly exec meeting and public holidays, month by month."
         />
         <div className="overflow-hidden rounded-2xl border border-border bg-card">
           <EventsCalendar events={allEvents} meetings={meetingsData.meetings} />

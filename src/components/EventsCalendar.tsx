@@ -16,10 +16,12 @@ import {
   type Meeting,
   eventDate,
   formatDateRange,
+  formatEventDate,
   formatTimeRange,
   meetsOn,
   upcomingEvents,
 } from "@/lib/events";
+import { holidaysInMonth } from "@/lib/holidays";
 
 const WEEKDAYS = [
   ["Sun", "Sunday"],
@@ -143,6 +145,7 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
   const monthMeetings = meetings.filter((meeting) =>
     days.some((day) => meetsOn(meeting, day)),
   );
+  const monthHolidays = holidaysInMonth(year, monthIndex + 1);
 
   const entriesOn = (
     day: Date,
@@ -160,6 +163,13 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
         key: `meeting-${meeting.id}`,
         title: meeting.title,
         entry: { kind: "meeting" as const, meeting, date: day },
+      })),
+    ...monthHolidays
+      .filter((holiday) => eventDate(holiday).getTime() === day.getTime())
+      .map((holiday) => ({
+        key: `holiday-${holiday.id}`,
+        title: holiday.name,
+        entry: { kind: "holiday" as const, holiday },
       })),
   ];
 
@@ -324,7 +334,9 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
                                     "flex h-6 w-full items-center justify-center rounded focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring md:block md:h-auto md:min-h-6 md:px-1.5 md:py-0.5 md:text-left md:text-xs md:leading-snug md:hover:ring-1 md:hover:ring-primary/60",
                                     entry.kind === "meeting"
                                       ? "md:border md:border-border md:text-muted-foreground"
-                                      : "md:bg-brand/20 md:font-medium md:text-primary",
+                                      : entry.kind === "holiday"
+                                        ? "md:border md:border-dashed md:border-muted-foreground/60 md:italic md:text-muted-foreground"
+                                        : "md:bg-brand/20 md:font-medium md:text-primary",
                                   )}
                                 >
                                   <span
@@ -333,7 +345,9 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
                                       "block h-2 w-2 rounded-full md:hidden",
                                       entry.kind === "meeting"
                                         ? "bg-muted-foreground"
-                                        : "bg-primary",
+                                        : entry.kind === "holiday"
+                                          ? "border border-muted-foreground"
+                                          : "bg-primary",
                                     )}
                                   />
                                   <span className="sr-only md:not-sr-only md:line-clamp-2">
@@ -433,6 +447,32 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
                   <span className="inline-flex items-center gap-1">
                     <MapPinIcon className="h-4 w-4" />
                     {meeting.location}
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {monthHolidays.length > 0 && (
+          <ul aria-label="Holidays" className="space-y-2">
+            {monthHolidays.map((holiday) => (
+              <li key={holiday.id}>
+                <button
+                  type="button"
+                  onClick={() => showDetails({ kind: "holiday", holiday })}
+                  className="flex w-full flex-wrap gap-x-4 gap-y-1 rounded-lg border border-dotted border-border px-4 py-3 text-left text-sm text-muted-foreground transition-colors hover:border-primary/50 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <span className="font-medium text-foreground">
+                    {holiday.name}
+                  </span>
+                  <time dateTime={holiday.date}>
+                    {formatEventDate(holiday.date)}
+                  </time>
+                  <span>
+                    {holiday.scope === "Ontario"
+                      ? "Ontario holiday"
+                      : "National holiday"}
                   </span>
                 </button>
               </li>
