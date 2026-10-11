@@ -472,7 +472,7 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
                   <span>
                     {holiday.scope === "Ontario"
                       ? "Ontario holiday"
-                      : "National holiday"}
+                      : "Federal holiday"}
                   </span>
                 </button>
               </li>
