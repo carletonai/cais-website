@@ -2,6 +2,7 @@ import Hero from "../../components/Hero";
 import { AboutSection } from "../../components/AboutSection";
 import { CatchUp, ComingUp } from "../../components/HomeEvents";
 import { JoinCTA } from "../../components/JoinCTA";
+import { Partners } from "../../components/Partners";
 
 const HomePage = () => {
   return (
@@ -10,6 +11,7 @@ const HomePage = () => {
       <ComingUp />
       <CatchUp />
       <AboutSection />
+      <Partners />
       <JoinCTA />
     </>
   );
