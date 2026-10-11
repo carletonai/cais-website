@@ -692,12 +692,12 @@
       "title": "Intro to Agentic AI",
       "date": "2026-10-09",
       "time": "6:00 PM - 7:00 PM",
-      "location": "CS Seminar Room, Herzberg",
+      "location": "CS Seminar Room, Herzberg 5345",
       "description": "Learn how AI agents plan, use tools, and get work done.",
       "type": "Workshop",
       "poster": "/assets/events/intro-to-agentic-ai-2026.jpg",
-      "posterWidth": 1056,
-      "posterHeight": 1367,
+      "posterWidth": 816,
+      "posterHeight": 1056,
       "tags": ["technical"]
     },
     {
