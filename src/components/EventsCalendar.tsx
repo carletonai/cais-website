@@ -15,6 +15,7 @@ import {
   type ClubEvent,
   type Meeting,
   eventDate,
+  formatDateRange,
   formatTimeRange,
   meetsOn,
   upcomingEvents,
@@ -50,6 +51,13 @@ const openingMonth = (events: readonly ClubEvent[]) => {
 };
 
 /** Every day of the month, as local-midnight dates. */
+/** The last day an event runs, as a local-midnight date. */
+const lastDay = (event: ClubEvent) =>
+  eventDate({
+    date:
+      event.endDate && event.endDate > event.date ? event.endDate : event.date,
+  });
+
 const daysOf = (month: Date) => {
   const count = new Date(
     month.getFullYear(),
@@ -122,11 +130,14 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
   const days = daysOf(month);
   const today = new Date();
 
+  // Every event on any day of the month: a multi-day one (a hackathon, a
+  // competition) runs from its first day through its last.
+  const monthStart = days[0];
+  const monthEnd = days[days.length - 1];
   const monthEvents = events
-    .filter((event) => {
-      const date = eventDate(event);
-      return date.getFullYear() === year && date.getMonth() === monthIndex;
-    })
+    .filter(
+      (event) => eventDate(event) <= monthEnd && lastDay(event) >= monthStart,
+    )
     .sort((a, b) => eventDate(a).getTime() - eventDate(b).getTime());
 
   const monthMeetings = meetings.filter((meeting) =>
@@ -137,7 +148,7 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
     day: Date,
   ): { key: string; title: string; entry: CalendarEntry }[] => [
     ...monthEvents
-      .filter((event) => eventDate(event).getDate() === day.getDate())
+      .filter((event) => eventDate(event) <= day && day <= lastDay(event))
       .map((event) => ({
         key: `event-${event.id}`,
         title: event.title,
@@ -310,7 +321,7 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
                                   type="button"
                                   onClick={() => showDetails(entry)}
                                   className={cn(
-                                    "flex h-6 w-full items-center justify-center rounded focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring md:block md:h-auto md:px-1.5 md:py-0.5 md:text-left md:text-xs md:leading-snug md:hover:ring-1 md:hover:ring-primary/60",
+                                    "flex h-6 w-full items-center justify-center rounded focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring md:block md:h-auto md:min-h-6 md:px-1.5 md:py-0.5 md:text-left md:text-xs md:leading-snug md:hover:ring-1 md:hover:ring-primary/60",
                                     entry.kind === "meeting"
                                       ? "md:border md:border-border md:text-muted-foreground"
                                       : "md:bg-brand/20 md:font-medium md:text-primary",
@@ -374,6 +385,9 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
                     <span className="block min-w-0">
                       <span className="block font-semibold">{event.title}</span>
                       <span className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
+                        {event.endDate && event.endDate > event.date && (
+                          <span>{formatDateRange(event)}</span>
+                        )}
                         {event.time && (
                           <span className="inline-flex items-center gap-1">
                             <ClockIcon className="h-4 w-4" />
@@ -414,7 +428,7 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
                   </span>
                   <span className="inline-flex items-center gap-1">
                     <ClockIcon className="h-4 w-4" />
-                    {meeting.time}
+                    {formatTimeRange(meeting.time)}
                   </span>
                   <span className="inline-flex items-center gap-1">
                     <MapPinIcon className="h-4 w-4" />

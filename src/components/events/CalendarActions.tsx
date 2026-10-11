@@ -35,6 +35,17 @@ import { cn } from "@/lib/utils";
 
 const FEED_URL = `${SITE_URL}${FEED_PATH}`;
 
+/**
+ * Every choice is a link, which Radix skips when it picks what to focus, so a
+ * dialog opened with the keyboard started on its last button, "Copy link",
+ * off the bottom of a phone screen. Start on the dialog itself: its title and
+ * description are read first, and Tab reaches the first choice.
+ */
+const startOnDialog = (e: Event) => {
+  e.preventDefault();
+  (e.currentTarget as HTMLElement | null)?.focus();
+};
+
 /** A full-width row in the calendar dialogs. */
 function Choice({
   href,
@@ -147,7 +158,10 @@ export function SubscribeButton({
           {label}
         </Button>
       </DialogTrigger>
-      <DialogContent className="w-[calc(100%-2rem)] max-w-md">
+      <DialogContent
+        onOpenAutoFocus={startOnDialog}
+        className="w-[calc(100%-2rem)] max-w-md"
+      >
         <DialogTitle className="pr-10 text-2xl">
           Get CAIS events in your calendar
         </DialogTitle>
@@ -179,7 +193,10 @@ export function AddToCalendarButton({
           Add to calendar
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-h-[90dvh] w-[calc(100%-2rem)] max-w-md overflow-y-auto">
+      <DialogContent
+        onOpenAutoFocus={startOnDialog}
+        className="max-h-[90dvh] w-[calc(100%-2rem)] max-w-md overflow-y-auto"
+      >
         <DialogTitle className="pr-10 text-2xl">
           Add to your calendar
         </DialogTitle>
