@@ -20,7 +20,6 @@ describe("holidaysIn", () => {
   it("places the moveable holidays of 2026", () => {
     expect(dateOf(2026, "family-day")).toBe("2026-02-16");
     expect(dateOf(2026, "good-friday")).toBe("2026-04-03");
-    expect(dateOf(2026, "easter-monday")).toBe("2026-04-06");
     expect(dateOf(2026, "victoria-day")).toBe("2026-05-18");
     expect(dateOf(2026, "labour-day")).toBe("2026-09-07");
     expect(dateOf(2026, "thanksgiving")).toBe("2026-10-12");
@@ -29,7 +28,6 @@ describe("holidaysIn", () => {
   it("places the moveable holidays of 2027", () => {
     expect(dateOf(2027, "family-day")).toBe("2027-02-15");
     expect(dateOf(2027, "good-friday")).toBe("2027-03-26");
-    expect(dateOf(2027, "easter-monday")).toBe("2027-03-29");
     expect(dateOf(2027, "victoria-day")).toBe("2027-05-24");
     expect(dateOf(2027, "labour-day")).toBe("2027-09-06");
     expect(dateOf(2027, "thanksgiving")).toBe("2027-10-11");
@@ -54,16 +52,23 @@ describe("holidaysIn", () => {
     }
   });
 
-  it("lists twelve holidays a year in date order, Family Day as Ontario's", () => {
+  it("only knows the National Day for Truth and Reconciliation from 2021", () => {
+    expect(dateOf(2020, "truth-and-reconciliation")).toBeUndefined();
+    expect(dateOf(2021, "truth-and-reconciliation")).toBe("2021-09-30");
+  });
+
+  it("lists the ten federal holidays plus Family Day, in date order", () => {
     const holidays = holidaysIn(2026);
-    expect(holidays).toHaveLength(12);
+    expect(holidays).toHaveLength(11);
     expect(holidays.map((h) => h.date)).toEqual(
       [...holidays.map((h) => h.date)].sort(),
     );
-    expect(new Set(holidays.map((h) => h.id)).size).toBe(12);
+    expect(new Set(holidays.map((h) => h.id)).size).toBe(11);
     expect(holidays.filter((h) => h.scope === "Ontario")).toEqual([
       expect.objectContaining({ id: "family-day" }),
     ]);
+    // Easter Monday is a federal public-service day, not a statutory one.
+    expect(dateOf(2026, "easter-monday")).toBeUndefined();
   });
 });
 

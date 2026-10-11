@@ -245,7 +245,7 @@ test("marks public holidays on their days and lists them under the month", async
   expect(
     screen.getByText("No events scheduled in October 2026."),
   ).toBeInTheDocument();
-  const row = screen.getByText("National holiday").closest("button")!;
+  const row = screen.getByText("Federal holiday").closest("button")!;
   expect(row).toHaveTextContent("Thanksgiving");
   expect(row).toHaveTextContent("Mon, Oct 12");
 });
@@ -258,9 +258,7 @@ test("opens a holiday's details, saying where it is a holiday", async () => {
   );
   const details = screen.getByRole("dialog", { name: "Labour Day" });
   expect(details).toHaveTextContent("Monday, September 7, 2026");
-  expect(details).toHaveAccessibleDescription(
-    "A statutory holiday across Canada.",
-  );
+  expect(details).toHaveAccessibleDescription("A federal statutory holiday.");
   await user.keyboard("{Escape}");
 
   // Family Day is Ontario's, and February 2026 has nothing else.
@@ -272,7 +270,7 @@ test("opens a holiday's details, saying where it is a holiday", async () => {
   );
   expect(
     screen.getByRole("dialog", { name: "Family Day" }),
-  ).toHaveAccessibleDescription("A statutory holiday in Ontario.");
+  ).toHaveAccessibleDescription("An Ontario statutory holiday.");
 });
 
 test("picks a year, then a month, to reach events from other years", async () => {

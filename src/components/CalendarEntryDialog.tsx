@@ -138,8 +138,8 @@ const HolidayDetails = ({ holiday }: { holiday: Holiday }) => (
     </ul>
     <DialogDescription className="mt-3 text-sm text-muted-foreground">
       {holiday.scope === "Ontario"
-        ? "A statutory holiday in Ontario."
-        : "A statutory holiday across Canada."}
+        ? "An Ontario statutory holiday."
+        : "A federal statutory holiday."}
     </DialogDescription>
   </>
 );
