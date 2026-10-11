@@ -16,6 +16,8 @@ describe("parseClockTimes", () => {
     ["10:00 AM - 4:30 PM", { startMin: 600, endMin: 990 }],
     ["12:00 PM - 1:00 PM", { startMin: 720, endMin: 780 }],
     ["1:15 PM", { startMin: 795, endMin: null }],
+    ["12:30 AM", { startMin: 30, endMin: null }],
+    ["6:00 PM – 7:00 PM", { startMin: 1080, endMin: 1140 }],
   ])("reads %s", (text, expected) => {
     expect(parseClockTimes(text)).toEqual(expected);
   });
@@ -24,6 +26,9 @@ describe("parseClockTimes", () => {
     "",
     "TBA",
     "Until 4:30 PM",
+    "0:30 PM",
+    "13:00",
+    "6:60 PM",
     "9:00 AM Sat - 1:30 PM Sun",
     "10:00 AM - 4:30 PM (Mar 21); 10:00 AM - 1:00 PM (Mar 22)",
   ])("leaves %j to be shown as written", (text) => {
@@ -61,6 +66,14 @@ describe("clubInstant", () => {
     expect(clubInstant("2026-11-01", 12 * 60).toISOString()).toBe(
       "2026-11-01T17:00:00.000Z",
     );
+    // 2026-03-08: 2 AM EST springs forward to 3 AM EDT, so 1 AM is still
+    // standard time and 3 AM is already summer time, an hour apart.
+    expect(clubInstant("2026-03-08", 60).toISOString()).toBe(
+      "2026-03-08T06:00:00.000Z",
+    );
+    expect(clubInstant("2026-03-08", 3 * 60).toISOString()).toBe(
+      "2026-03-08T07:00:00.000Z",
+    );
   });
 });
 
@@ -80,6 +93,16 @@ describe("eventWindow", () => {
     const window = eventWindow({ date: "2020-09-08", time: "1:15 PM" });
     expect(window.endKnown).toBe(false);
     expect(window.end.getTime() - window.start.getTime()).toBe(60 * 60_000);
+  });
+
+  it("runs past midnight when the end comes before the start", () => {
+    const window = eventWindow({
+      date: "2026-10-09",
+      time: "10:00 PM - 1:00 AM",
+    });
+    expect(window.endKnown).toBe(true);
+    expect(window.start.toISOString()).toBe("2026-10-10T02:00:00.000Z");
+    expect(window.end.toISOString()).toBe("2026-10-10T05:00:00.000Z");
   });
 
   it("treats anything else as the whole day", () => {
@@ -112,6 +135,7 @@ describe("formatting", () => {
     ["6:00 PM - 7:00 PM", "6:00–7:00 PM"],
     ["10:00 AM - 4:30 PM", "10:00 AM–4:30 PM"],
     ["1:15 PM", "1:15 PM"],
+    ["10:00 PM - 1:00 AM", "10:00 PM–1:00 AM"],
     ["Until 4:30 PM", "Until 4:30 PM"],
     ["", ""],
   ])("writes %j as %j", (text, expected) => {
@@ -137,6 +161,20 @@ describe("slugs", () => {
     expect(eventSlug({ id: "67", title: "Grok Bot Meetup – Ottawa" })).toBe(
       "67-grok-bot-meetup-ottawa",
     );
+  });
+
+  it("cuts a long title at a word, drops accents, and survives no words", () => {
+    expect(
+      eventSlug({
+        id: "2",
+        title:
+          "An Extraordinarily Long Workshop Title About the Future of Everything We Know",
+      }),
+    ).toBe("2-an-extraordinarily-long-workshop-title-about-the-future");
+    expect(eventSlug({ id: "1", title: "Café Été: Résumé & Co." })).toBe(
+      "1-cafe-ete-resume-and-co",
+    );
+    expect(eventSlug({ id: "3", title: "???" })).toBe("3");
   });
 
   it("is unique, URL-safe and short for every event", () => {

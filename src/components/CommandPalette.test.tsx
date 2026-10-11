@@ -1,13 +1,23 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes, useLocation } from "react-router-dom";
 import CommandPalette from "./CommandPalette";
+
+// Which events count as upcoming depends on the date: Ottawa, the afternoon
+// before Intro to Agentic AI, unless a test moves the clock first.
+beforeEach(() => {
+  jest.useFakeTimers({ now: new Date("2026-10-08T16:00:00-04:00") });
+});
+
+afterEach(() => {
+  jest.useRealTimers();
+});
 
 const Where = () => <p data-testid="path">{useLocation().pathname}</p>;
 
 const setup = () => {
   const onOpenChange = jest.fn();
-  const user = userEvent.setup();
+  const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
   render(
     <MemoryRouter>
       <CommandPalette open onOpenChange={onOpenChange} />
@@ -67,4 +77,60 @@ test("puts the newest of equally good matches first", async () => {
   expect(screen.getAllByRole("option")[0]).toHaveTextContent(
     "Intro to Agentic AI",
   );
+});
+
+test("files what is still to come under Upcoming, and the rest under Events", async () => {
+  const { user } = setup();
+  await user.type(screen.getByRole("combobox"), "agentic");
+  const upcoming = screen.getByRole("group", { name: "Upcoming" });
+  expect(
+    within(upcoming).getByRole("option", { name: /Intro to Agentic AI/ }),
+  ).toHaveTextContent("Fri, Oct 9, 2026 · 6:00–7:00 PM · Workshop");
+});
+
+test("moves an event into Events once it has happened", async () => {
+  jest.setSystemTime(new Date("2026-12-01T12:00:00-05:00"));
+  const { user } = setup();
+  await user.type(screen.getByRole("combobox"), "agentic");
+  expect(
+    screen.queryByRole("group", { name: "Upcoming" }),
+  ).not.toBeInTheDocument();
+  expect(
+    within(screen.getByRole("group", { name: "Events" })).getByRole("option", {
+      name: /Intro to Agentic AI/,
+    }),
+  ).toBeInTheDocument();
+});
+
+test("opens with the next events and the pages before anything is typed", () => {
+  setup();
+  const groups = screen
+    .getAllByRole("group")
+    .map((group) => group.getAttribute("aria-label"));
+  expect(groups).toEqual(["Upcoming", "Pages"]);
+  expect(
+    within(screen.getByRole("group", { name: "Upcoming" })).getAllByRole(
+      "option",
+    )[0],
+  ).toHaveTextContent("Intro to Agentic AI");
+});
+
+test("opens an outside link in a new tab and closes", async () => {
+  const open = jest.spyOn(window, "open").mockImplementation(() => null);
+  const { user, onOpenChange } = setup();
+  await user.type(screen.getByRole("combobox"), "instagram");
+  await user.click(screen.getByRole("option", { name: /CAIS on Instagram/ }));
+  expect(open).toHaveBeenCalledWith(
+    "https://www.instagram.com/carletonaisociety/",
+    "_blank",
+    "noopener,noreferrer",
+  );
+  expect(onOpenChange).toHaveBeenCalledWith(false);
+  open.mockRestore();
+});
+
+test("Escape closes it", async () => {
+  const { user, onOpenChange } = setup();
+  await user.keyboard("{Escape}");
+  expect(onOpenChange).toHaveBeenCalledWith(false);
 });

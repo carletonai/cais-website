@@ -19,6 +19,7 @@
  * Requires a dev server (`npm run dev`) and Playwright's chromium.
  */
 import { readFileSync, writeFileSync } from "node:fs";
+import { eventPath, eventWindow } from "../src/lib/shared/event-time.js";
 
 const arg = (flag, fallback) => {
   const i = process.argv.indexOf(flag);
@@ -29,13 +30,33 @@ const BASE = arg("--base", process.env.BASE || "http://localhost:5173");
 const VW = Number(arg("--width", 1280));
 const VH = Number(arg("--height", 900));
 const JSON_OUT = arg("--json", null);
-// Every route the site builds, from the same list the prerender step reads.
+// Every static route, from the same list the prerender step reads, plus
+// three event pages that between them show everything an event page can:
+// the next event (countdown, RSVP), the newest past one with slides or a
+// recording (resource links), and a multi-day one (a date range).
+const readData = (file) =>
+  JSON.parse(readFileSync(new URL(`../src/data/${file}`, import.meta.url)));
+const eventRoutes = () => {
+  const events = readData("events.json").events;
+  const now = Date.now();
+  const byStart = (a, b) =>
+    eventWindow(a).start.getTime() - eventWindow(b).start.getTime();
+  const next = events
+    .filter((e) => eventWindow(e).end.getTime() > now)
+    .sort(byStart)[0];
+  const withResources = events
+    .filter((e) => eventWindow(e).end.getTime() <= now)
+    .filter((e) => e.materials || e.recording)
+    .sort(byStart)
+    .at(-1);
+  const multiDay = events.find((e) => e.endDate && e.endDate > e.date);
+  return [next, withResources, multiDay]
+    .filter(Boolean)
+    .map((e) => `${eventPath(e)}/`);
+};
 const ROUTES = arg(
   "--routes",
-  Object.keys(
-    JSON.parse(readFileSync(new URL("../src/data/seo.json", import.meta.url)))
-      .routes,
-  ).join(","),
+  [...Object.keys(readData("seo.json").routes), ...eventRoutes()].join(","),
 ).split(",");
 
 let chromium;

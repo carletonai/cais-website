@@ -1,5 +1,6 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
+import { posterThumb } from "@/lib/events";
 import events from "./events.json";
 import meetings from "./meetings.json";
 import oldTeams from "./old-teams.json";
@@ -56,8 +57,9 @@ describe("data files", () => {
     const posters = all.filter(([key]) => key === "poster");
     expect(posters.length).toBeGreaterThan(0);
     for (const [, poster] of posters) {
-      const thumb = poster.replace(/\.jpe?g$/i, (ext) => `-600${ext}`);
-      expect(existsSync(join(__dirname, "../../public", thumb))).toBe(true);
+      expect(
+        existsSync(join(__dirname, "../../public", posterThumb(poster))),
+      ).toBe(true);
     }
   });
 

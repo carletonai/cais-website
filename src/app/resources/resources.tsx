@@ -923,7 +923,7 @@ const Resources = () => {
           isSystem: true,
         };
         break;
-      case "ascii":
+      case "ascii": {
         // Own keys only: "ascii __proto__" would otherwise render
         // Object.prototype and take the whole app down with it.
         const art =
@@ -935,7 +935,8 @@ const Resources = () => {
           isAscii: true,
         };
         break;
-      case "theme":
+      }
+      case "theme": {
         const newTheme = args[0] as keyof typeof THEMES;
         if (newTheme && Object.hasOwn(THEMES, newTheme)) {
           setTheme(newTheme);
@@ -950,6 +951,7 @@ const Resources = () => {
           };
         }
         break;
+      }
       case "matrix":
         output = {
           content: (
@@ -967,7 +969,7 @@ const Resources = () => {
           isSystem: true,
         };
         break;
-      case "quote":
+      case "quote": {
         // handleCommand only ever runs from handleKeyDown, a keyboard event
         // handler, so this is never evaluated during render. The compiler
         // cannot trace that call path.
@@ -979,6 +981,7 @@ const Resources = () => {
           isSystem: true,
         };
         break;
+      }
       case "stats":
         output = {
           content: (
@@ -1000,7 +1003,7 @@ const Resources = () => {
           isSystem: true,
         };
         break;
-      case "game":
+      case "game": {
         const game = args[0];
         if (game && Object.hasOwn(GAMES, game)) {
           startGame(game as keyof typeof GAMES);
@@ -1017,6 +1020,7 @@ const Resources = () => {
           };
         }
         break;
+      }
       case "hack":
         output = {
           content: (

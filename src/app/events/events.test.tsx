@@ -2,12 +2,15 @@ import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import eventsData from "@/data/events.json";
+import { allEvents, isUpcoming, upcomingEvents } from "@/lib/events";
 import EventsPage from "./events";
 
 // Which events are upcoming, and where the calendar opens, depend on the date:
 // Ottawa, the afternoon before Intro to Agentic AI.
+const NOW = new Date("2026-10-08T16:00:00-04:00");
+
 beforeEach(() => {
-  jest.useFakeTimers({ now: new Date("2026-10-08T16:00:00-04:00") });
+  jest.useFakeTimers({ now: NOW });
 });
 
 afterEach(() => {
@@ -33,9 +36,12 @@ test("leads with the next event, then what follows it", () => {
   expect(
     within(upcoming).getByRole("article", { name: /Intro to Agentic AI/ }),
   ).toHaveTextContent("Next up · Tomorrow · 6:00 PM");
+  // Whatever the data says comes second, so adding an event does not break
+  // this; the link's target is checked against the slug rule separately.
+  const second = upcomingEvents(allEvents, NOW)[1];
   expect(
-    within(upcoming).getByRole("link", { name: "Grok Bot Meetup – Ottawa" }),
-  ).toHaveAttribute("href", "/events/67-grok-bot-meetup-ottawa");
+    within(upcoming).getByRole("link", { name: second.title }),
+  ).toHaveAttribute("href", expect.stringMatching(`^/events/${second.id}-`));
 });
 
 test("offers only the event types that have events", () => {
@@ -67,7 +73,13 @@ test("filters past events by tag", async () => {
 
   expect(freeFood()).toHaveAttribute("aria-pressed", "true");
   const past = screen.getByRole("region", { name: "Past events" });
-  expect(within(past).getByRole("status")).toHaveTextContent("2 events match");
+  const expected = eventsData.events.filter(
+    (event) => event.tags.includes("free-food") && !isUpcoming(event, NOW),
+  ).length;
+  expect(expected).toBeGreaterThanOrEqual(2);
+  expect(within(past).getByRole("status")).toHaveTextContent(
+    `${expected} events match`,
+  );
   expect(
     within(past).getByRole("heading", { name: "CAIS Icebreaker" }),
   ).toBeInTheDocument();
