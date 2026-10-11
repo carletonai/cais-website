@@ -208,6 +208,13 @@ export interface ResourceLink {
   label: string;
 }
 
+/**
+ * The 600px-wide copy of a poster kept beside it for cards, where the full
+ * file (over 1,000px wide, 100-200 KB) would be shown at about 160px.
+ */
+export const posterThumb = (poster: string) =>
+  poster.replace(/\.jpe?g$/i, (ext) => `-600${ext}`);
+
 /** Slide decks are linked as PDFs; they are not code. */
 export const isPdf = (href: string) => /\.pdf($|[?#])/i.test(href);
 

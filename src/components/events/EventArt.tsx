@@ -1,5 +1,5 @@
 import { Ring } from "@/components/brand/Ring";
-import type { ClubEvent } from "@/lib/events";
+import { posterThumb, type ClubEvent } from "@/lib/events";
 import { cn } from "@/lib/utils";
 
 /** Longer titles step down a size so three lines always fit. */
@@ -42,19 +42,22 @@ export function EventArt({ event }: { event: ClubEvent }) {
 }
 
 /** A portrait poster inside a landscape frame: contained, over a blurred copy
- *  of itself that fills the spare width. */
+ *  of itself that fills the spare width. Both draw the 600px copy: the poster
+ *  shows at about 160px here, and the blur hides what little the full file
+ *  would add. */
 export function PosterThumb({ poster }: { poster: string }) {
+  const thumb = posterThumb(poster);
   return (
     <div className="relative size-full overflow-hidden bg-background">
       <img
-        src={poster}
+        src={thumb}
         alt=""
         loading="lazy"
         decoding="async"
         className="absolute inset-0 size-full scale-110 object-cover opacity-40 blur-xl"
       />
       <img
-        src={poster}
+        src={thumb}
         alt=""
         loading="lazy"
         decoding="async"
