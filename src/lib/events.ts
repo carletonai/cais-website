@@ -56,11 +56,20 @@ export const eventDate = (event: Pick<ClubEvent, "date">) => {
   return new Date(year, month - 1, day);
 };
 
-/** The academic year an event falls in, September to August: "2025–26". */
+const FOUNDED = Math.min(
+  ...allEvents.map((event) => Number(event.date.slice(0, 4))),
+);
+
+/**
+ * The academic year an event falls in, September to August: "2025–26". The
+ * club's first events, in the spring of its founding year, are simply that
+ * year: there was no 2018–19 season, and the site says "since 2019".
+ */
 export const academicYear = (event: Pick<ClubEvent, "date">) => {
   const date = eventDate(event);
   const start =
     date.getMonth() >= 8 ? date.getFullYear() : date.getFullYear() - 1;
+  if (start < FOUNDED) return String(date.getFullYear());
   return `${start}–${String(start + 1).slice(2)}`;
 };
 
@@ -118,6 +127,11 @@ const CLUB_DATE = new Intl.DateTimeFormat("en-CA", {
 
 /** Today's date in Ottawa, YYYY-MM-DD. */
 const clubToday = (now: Date) => CLUB_DATE.format(now);
+
+/** The academic year it is now in Ottawa: "This year" on /events and the cards.
+ *  Not the UTC date, which is already tomorrow for four hours each evening. */
+export const seasonNow = (now: Date = new Date()) =>
+  academicYear({ date: clubToday(now) });
 
 const dayNumber = (date: string) => {
   const [y, m, d] = date.split("-").map(Number);

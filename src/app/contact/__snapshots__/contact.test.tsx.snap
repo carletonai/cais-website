@@ -45,7 +45,7 @@ exports[`renders ContactPage correctly 1`] = `
       <h1
         class="font-display max-w-[14ch] text-title"
       >
-        Contact Us
+        Contact
       </h1>
       <p
         class="mt-5 text-lg text-muted-foreground"

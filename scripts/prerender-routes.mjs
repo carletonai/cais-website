@@ -339,10 +339,17 @@ for (const route of routes) {
   );
 }
 
-// One page and one calendar file per event.
+// One page and one calendar file per event. The id is the key in every URL
+// and calendar file (CONTRIBUTING), so it must be a whole number nothing
+// else uses: anything else builds a page the app cannot look up.
+const ids = new Set();
 const slugs = new Set();
 const now = new Date();
 for (const event of events) {
+  if (!/^\d+$/.test(event.id))
+    fail(`event ${JSON.stringify(event.id)}: ids are whole numbers`);
+  if (ids.has(event.id)) fail(`two events share the id ${event.id}`);
+  ids.add(event.id);
   const slug = eventSlug(event);
   if (slugs.has(slug)) fail(`two events share the slug ${slug}`);
   slugs.add(slug);

@@ -9,7 +9,7 @@ describe("Resources", () => {
   it("renders resources page", () => {
     render(<Resources />);
     expect(
-      screen.getByRole("heading", { name: /CAIS Resources Terminal/i }),
+      screen.getByRole("heading", { name: /CAIS Terminal/i }),
     ).toBeInTheDocument();
   });
 });

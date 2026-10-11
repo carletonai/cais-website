@@ -17,6 +17,27 @@ const fields = (value: unknown, key = ""): [string, string][] => {
 
 const all = fields({ events, meetings, oldTeams, projects, team });
 
+describe("events", () => {
+  // The id is the key in every event URL and calendar file (CONTRIBUTING):
+  // a whole number nothing else uses, or the page cannot find its event.
+  it("gives every event a unique whole-number id", () => {
+    const ids = events.events.map((event) => event.id);
+    for (const id of ids) expect(id).toMatch(/^\d+$/);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it("dates every event as YYYY-MM-DD, ending no earlier than it starts", () => {
+    for (const event of events.events) {
+      expect(event.date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      const endDate = "endDate" in event ? event.endDate : undefined;
+      if (endDate !== undefined) {
+        expect(endDate).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+        expect(endDate >= event.date).toBe(true);
+      }
+    }
+  });
+});
+
 describe("data files", () => {
   // The production CSP is img-src 'self' data:, and it is only sent on
   // carletonai.com: an off-site poster would show on every preview and then
