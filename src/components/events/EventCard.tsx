@@ -7,6 +7,7 @@ import {
   academicYear,
   eventPath,
   eventStatus,
+  seasonNow,
 } from "@/lib/events";
 import { cn } from "@/lib/utils";
 
@@ -26,11 +27,7 @@ export function EventCard({ event, now, headingLevel = "h3" }: EventCardProps) {
   const Heading = headingLevel;
   const live = status.phase === "live";
   const past = status.phase === "past";
-  const currentSeason =
-    academicYear(event) ===
-    academicYear({
-      date: now.toISOString().slice(0, 10),
-    });
+  const currentSeason = academicYear(event) === seasonNow(now);
 
   return (
     <article

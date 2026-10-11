@@ -7,7 +7,7 @@ const ContactPage = () => (
   <>
     <PageHeader
       label="Contact"
-      title="Contact Us"
+      title="Contact"
       lede="Find us on your platform of choice or drop us an email."
     />
     <Section>

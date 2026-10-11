@@ -8,7 +8,7 @@
 
 ## Prerequisites
 
-- Node.js 20.19 or later
+- Node.js 22.12 or later (or 20.19 or later in the 20 line)
 - pnpm (recommended for better performance and disk space efficiency)
 
 ## Getting Started
@@ -59,13 +59,13 @@ Open [http://localhost:5173](http://localhost:5173) with your browser to see the
 ## Available Scripts
 
 ```bash
-pnpm dev          # Start development server
-pnpm build        # Build for production
-pnpm serve        # Start production server
-pnpm test         # Run tests
+pnpm dev           # Start development server
+pnpm build         # Build for production and prerender every page
+pnpm serve         # Serve the production build
+pnpm test          # Run tests
 pnpm test:contrast # Audit colour contrast against WCAG AAA (needs a dev server)
-pnpm lint         # Run linting
-pnpm format       # Check formatting
+pnpm check         # Typecheck, lint and check formatting, as CI does
+pnpm fix           # Fix lint and formatting
 ```
 
 ## Accessibility
@@ -147,18 +147,22 @@ for every event, plus `/events.ics`, the calendar people subscribe to.
 
 ```
 src/
+├── app/          # One folder per page, App.tsx (the routes) and globals.css
 ├── components/   # Reusable UI components
-├── app/          # Main application code
-│   └── App.tsx   # Root application component
-├── assets/       # Static assets
-└── styles/       # Global styles and Tailwind config
+├── data/         # Everything the site shows: events, teams, projects, metadata
+├── lib/          # Event times, calendar files, search and other helpers
+└── main.tsx      # Entry point
+scripts/          # Build-time prerendering and the contrast audit
+public/           # Static files: posters, brand assets, the constitution, 404.html
 ```
 
 ### Pages Description
 
 - **Home (/)**: Landing page with CAIS's mission, an About section (`/#about`), and upcoming and past events
 - **Events (/events)**: Upcoming and past events, filterable by type and tag, plus the events calendar
-- **Projects (/projects)**: Showcase of current and past projects, including the CAIS Terminal (/resources)
+- **Event pages (/events/<id>-<title>)**: One page per event, with its poster as the link preview and calendar files
+- **Projects (/projects)**: Showcase of current and past projects
+- **CAIS Terminal (/resources)**: An interactive terminal with the club's links, events, projects and learning resources
 - **Governance (/governance)**: How the club is run; the landing page of the Team tab
 - **Current Team (/team)**: This year's executive team
 - **Past Teams (/team/past)**: Previous executive teams, year by year
