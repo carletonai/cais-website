@@ -1,3 +1,4 @@
+import { parseClockTimes } from "@/lib/shared/event-time.js";
 import {
   type ClubEvent,
   formatDateRange,
@@ -57,6 +58,10 @@ export function EventMeta({
   className,
 }: EventMetaProps) {
   const time = formatTimeRange(event.time);
+  // A clock time never breaks mid-way; free text ("Sat 10:00 AM–4:30 PM,
+  // Sun 10:00 AM–1:00 PM") wraps like a long place name.
+  const nowrap = (key: string) =>
+    key === "date" || (key === "time" && parseClockTimes(event.time) !== null);
   const stops = [
     {
       key: "date",
@@ -112,8 +117,7 @@ export function EventMeta({
             )}
           />
           <span className="sr-only">{label}: </span>
-          {/* Dates and times never break mid-way; long places may wrap. */}
-          <span className={key === "place" ? undefined : "whitespace-nowrap"}>
+          <span className={nowrap(key) ? "whitespace-nowrap" : undefined}>
             {value}
           </span>
           {key === "date" && weekdays && !event.endDate && (

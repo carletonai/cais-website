@@ -67,7 +67,7 @@ const numbersAt = (now: Date) => {
 export function AboutSection() {
   const numbers = numbersAt(new Date());
   return (
-    <Section id="about" labelledBy="about-heading" className="scroll-mt-20">
+    <Section id="about" labelledBy="about-heading" className="">
       <SectionHeader
         id="about-heading"
         focusable

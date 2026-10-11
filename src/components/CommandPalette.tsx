@@ -201,6 +201,12 @@ export default function CommandPalette({
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
   const listRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  // Whatever had focus when the palette opened (a link, the Search button,
+  // the terminal's input), to hand it back on close. Radix only restores
+  // focus to a DialogTrigger, which the palette has none of.
+  const openerRef = useRef<HTMLElement | null>(null);
+  const navigatedRef = useRef(false);
   const items = useMemo(() => buildItems(new Date()), []);
 
   const results = useMemo(() => {
@@ -231,6 +237,7 @@ export default function CommandPalette({
     if (!item) return;
     setOpen(false);
     if (item.href.startsWith("/") && !item.href.endsWith(".pdf")) {
+      navigatedRef.current = true;
       navigate(item.href);
     } else if (/^(mailto|webcal):/.test(item.href)) {
       window.location.href = item.href;
@@ -269,6 +276,23 @@ export default function CommandPalette({
       <DialogContent
         showCloseButton={false}
         aria-describedby={undefined}
+        onOpenAutoFocus={(e) => {
+          e.preventDefault();
+          openerRef.current =
+            document.activeElement instanceof HTMLElement
+              ? document.activeElement
+              : null;
+          inputRef.current?.focus();
+        }}
+        onCloseAutoFocus={(e) => {
+          // After choosing a page, the new page's heading takes focus.
+          if (navigatedRef.current) {
+            navigatedRef.current = false;
+            return;
+          }
+          e.preventDefault();
+          openerRef.current?.focus();
+        }}
         className="top-[12vh] w-[calc(100%-2rem)] max-w-xl translate-y-0 gap-0 overflow-hidden p-0"
       >
         <DialogTitle className="sr-only">Search CAIS</DialogTitle>
@@ -278,7 +302,7 @@ export default function CommandPalette({
             className="size-5 shrink-0 text-muted-foreground"
           />
           <input
-            autoFocus
+            ref={inputRef}
             role="combobox"
             aria-expanded="true"
             aria-controls={listId}

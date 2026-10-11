@@ -23,6 +23,7 @@ import {
   isPdf,
   pastEvents,
   upcomingEvents,
+  seasonNow,
 } from "@/lib/events";
 import { useNow } from "@/lib/useNow";
 import { cn } from "@/lib/utils";
@@ -145,7 +146,7 @@ const EventsPage = () => {
       (!onlyResources || event.materials || event.recording),
   );
   const [current, ...earlier] = byAcademicYear(past);
-  const thisSeason = academicYear({ date: now.toISOString().slice(0, 10) });
+  const thisSeason = seasonNow(now);
   // Cards for this season's events; every earlier year is a list of rows.
   const cards = current && current[0] === thisSeason ? current[1] : [];
   const years =
@@ -182,11 +183,7 @@ const EventsPage = () => {
         )}
       </Section>
 
-      <Section
-        id="past-events"
-        labelledBy="past-heading"
-        className="scroll-mt-20"
-      >
+      <Section id="past-events" labelledBy="past-heading">
         <SectionHeader
           id="past-heading"
           label="Since 2019"

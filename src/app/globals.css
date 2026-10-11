@@ -123,6 +123,8 @@
 
   html {
     font-family: var(--font-sans);
+    /* Anchors and scrollIntoView() stop short of the fixed 4rem bar. */
+    scroll-padding-top: 5rem;
     @apply antialiased;
   }
 

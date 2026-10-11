@@ -38,23 +38,31 @@ const RouteFallback = () => (
   </div>
 );
 
+const focusHeading = (el: HTMLElement) => {
+  if (!el.hasAttribute("tabindex")) el.tabIndex = -1;
+  el.focus({ preventScroll: true });
+};
+
 /**
  * After a client-side navigation: start the new page at its top, move focus
- * to its heading, and say which page it is, as a full page load would. Hash links
- * scroll themselves (see home.tsx), and back/forward keeps the browser's own
- * scroll restoration.
+ * to its heading, and say which page it is, as a full page load would. A link
+ * with a hash ("/events#past-events", "/#about") lands on that section
+ * instead, since the router changes the hash without scrolling; keyed on the
+ * navigation too, so a second link to the same hash still scrolls. Back and
+ * forward keep the browser's own scroll restoration.
  */
 const RouteChange = () => {
-  const { pathname, hash } = useLocation();
+  const { pathname, hash, key } = useLocation();
   const navigationType = useNavigationType();
   const [announcement, setAnnouncement] = useState("");
   const first = useRef(true);
 
   useEffect(() => {
-    if (first.current) {
-      first.current = false;
-      return;
-    }
+    // A full page load scrolls and announces itself, unless it has a hash
+    // whose section only exists once the page's code has run.
+    const initial = first.current;
+    first.current = false;
+    if (initial && !hash) return;
     if (navigationType !== "POP" && !hash) window.scrollTo(0, 0);
     // RouteMeta sets the title in an effect too; read it once both have run.
     // Lazy pages may still be loading, so wait (briefly) for their heading.
@@ -64,13 +72,19 @@ const RouteChange = () => {
       const heading = main?.querySelector<HTMLElement>("h1");
       if (!heading && ++tries < 40) return;
       clearInterval(timer);
-      setAnnouncement(document.title);
-      if (hash) return;
-      if (heading && !heading.hasAttribute("tabindex")) heading.tabIndex = -1;
-      (heading ?? main)?.focus({ preventScroll: true });
+      if (!initial) setAnnouncement(document.title);
+      if (hash) {
+        const target = document.getElementById(hash.slice(1));
+        if (!target) return;
+        target.scrollIntoView();
+        focusHeading(target.querySelector<HTMLElement>("h2") ?? target);
+        return;
+      }
+      if (heading) focusHeading(heading);
+      else main?.focus({ preventScroll: true });
     }, 50);
     return () => clearInterval(timer);
-  }, [pathname, hash, navigationType]);
+  }, [pathname, hash, key, navigationType]);
 
   return (
     <p role="status" aria-live="polite" className="sr-only">
@@ -92,7 +106,13 @@ const useCommandPalette = () => {
         ["INPUT", "TEXTAREA", "SELECT"].includes(target?.tagName ?? "");
       const combo =
         (event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k";
-      if (combo || (event.key === "/" && !typing && !event.altKey)) {
+      // A bare "/" is a shortcut only on the page itself, not over a dialog
+      // (Radix renders a dialog's content only while it is open).
+      const inDialog = document.querySelector('[role="dialog"]') !== null;
+      if (
+        combo ||
+        (event.key === "/" && !typing && !inDialog && !event.altKey)
+      ) {
         event.preventDefault();
         setLoaded(true);
         setOpen(true);
