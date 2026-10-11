@@ -16,16 +16,17 @@ const clip = (/** @type {string} */ text, /** @type {number} */ max) => {
 };
 
 /**
- * The tab and search-result title is the event's name; search engines show
- * about sixty characters, and the date leads the description anyway. Link
- * previews in chats get the date in the title too.
+ * The tab and search-result title is the event's name and year: search
+ * engines show about sixty characters, the date leads the description
+ * anyway, and the year keeps a recurring event's pages apart. Link previews
+ * in chats get the full date in the title.
  * @param {EventLike} event
  */
 export const eventPageMeta = (event) => {
   const when = formatWhen(event, { year: true });
   const where = event.location ? ` · ${event.location}` : "";
   return {
-    title: event.title,
+    title: `${event.title} · ${event.date.slice(0, 4)}`,
     ogTitle: `${event.title} · ${formatEventDate(event.date, { year: true })}`,
     description: clip(`${when}${where}. ${event.description}`, 160),
     image: event.poster ?? null,

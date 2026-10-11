@@ -1,12 +1,17 @@
 import {
+  academicYear,
   allEvents,
   clubNumbers,
   eventStatus,
   eventsWithResources,
   findEventBySlug,
+  isLive,
   isUpcoming,
   nextEvent,
+  posterThumb,
   resourceLinks,
+  rsvpFor,
+  seasonNow,
   type ClubEvent,
 } from "./events";
 
@@ -67,14 +72,61 @@ describe("upcoming and next", () => {
     expect(isUpcoming(event(), at("2026-10-09T23:01:00Z"))).toBe(false);
   });
 
-  it("picks the soonest event that is not over", () => {
-    expect(nextEvent(allEvents, at("2026-10-08T16:00:00Z"))?.title).toBe(
-      "Intro to Agentic AI",
-    );
-    expect(nextEvent(allEvents, at("2026-10-10T16:00:00Z"))?.title).toBe(
-      "Grok Bot Meetup – Ottawa",
-    );
+  it("picks the soonest event that is not over, whatever the data's order", () => {
+    const later = event({ id: "2", title: "Later", date: "2026-10-16" });
+    const sooner = event({ id: "1", title: "Sooner" });
+    const list = [later, sooner];
+    expect(nextEvent(list, at("2026-10-08T16:00:00Z"))?.title).toBe("Sooner");
+    expect(nextEvent(list, at("2026-10-10T16:00:00Z"))?.title).toBe("Later");
+    expect(nextEvent(list, at("2026-10-17T16:00:00Z"))).toBeUndefined();
   });
+
+  it("is live from the first minute to the last", () => {
+    expect(isLive(event(), at("2026-10-09T21:59:59Z"))).toBe(false);
+    expect(isLive(event(), at("2026-10-09T22:00:00Z"))).toBe(true);
+    expect(isLive(event(), at("2026-10-09T23:00:00Z"))).toBe(false);
+  });
+});
+
+describe("seasons", () => {
+  it("turn over on September 1st, Ottawa time", () => {
+    // 10 PM on Aug 31 in Ottawa is already Sep 1 in UTC.
+    expect(seasonNow(at("2026-09-01T02:00:00Z"))).toBe("2025–26");
+    expect(seasonNow(at("2026-09-01T04:00:00Z"))).toBe("2026–27");
+  });
+
+  it("call the founding spring by its year alone", () => {
+    expect(academicYear({ date: "2019-03-06" })).toBe("2019");
+    expect(academicYear({ date: "2019-09-10" })).toBe("2019–20");
+    expect(academicYear({ date: "2026-03-21" })).toBe("2025–26");
+  });
+});
+
+describe("rsvpFor", () => {
+  const before = at("2026-10-08T16:00:00Z");
+
+  it("names Luma, and drops placeholders and past events", () => {
+    const luma = event({ rsvpLink: "https://lu.ma/cais-agentic" });
+    expect(rsvpFor(luma, before)).toEqual({
+      href: "https://lu.ma/cais-agentic",
+      label: "Register on Luma",
+    });
+    expect(rsvpFor(event({ rsvpLink: "https://forms.gle/x" }), before)).toEqual(
+      { href: "https://forms.gle/x", label: "RSVP" },
+    );
+    expect(rsvpFor(event({ rsvpLink: "#" }), before)).toBeNull();
+    expect(rsvpFor(event(), before)).toBeNull();
+    expect(rsvpFor(luma, at("2026-10-10T16:00:00Z"))).toBeNull();
+  });
+});
+
+test("posterThumb names the 600px copy kept beside a poster", () => {
+  expect(posterThumb("/assets/events/intro-to-agentic-ai-2026.jpg")).toBe(
+    "/assets/events/intro-to-agentic-ai-2026-600.jpg",
+  );
+  expect(posterThumb("/assets/events/old.jpeg")).toBe(
+    "/assets/events/old-600.jpeg",
+  );
 });
 
 describe("findEventBySlug", () => {

@@ -57,24 +57,38 @@ if (!existsSync(index)) fail("dist/index.html missing — run the build first.")
 // itself so this cannot drift from App.tsx. Routes with parameters
 // (/events/:slug) are expanded from the data below.
 const app = readFileSync(appSource, "utf8");
-const routeElements = new Map(
-  [...app.matchAll(/<Route\s+path="([^"]+)"\s+element={<(\w+)\s*\/>}/g)].map(
-    (m) => [m[1], m[2]],
-  ),
-);
+// Every <Route> must be read, or a page would silently stop being built and
+// 404 on Vercel while CI stays green; only the catch-all is exempt.
+const routeElements = new Map();
+// A tag ends at a "/>" that is not the page element's own ("<Page />}").
+const tags = [...app.matchAll(/<Route\b[\s\S]*?\/>(?!\})/g)].map((m) => m[0]);
+if (tags.length !== (app.match(/<Route\b/g) ?? []).length)
+  fail("could not read every <Route> in src/app/App.tsx");
+for (const tag of tags) {
+  const path = /\bpath="([^"]+)"/.exec(tag)?.[1];
+  if (!path) fail(`App.tsx has a <Route> without a path: ${tag}`);
+  if (path === "*") continue;
+  const element = /\belement={<(\w+)[^>]*\/>}/.exec(tag)?.[1];
+  if (!element)
+    fail(
+      `App.tsx route ${path}: write it as <Route path="…" element={<Page />} />`,
+    );
+  routeElements.set(path, element);
+}
 const lazyModules = new Map(
   [...app.matchAll(/const (\w+) = lazy\(\(\) => import\("([^"]+)"\)\)/g)].map(
     (m) => [m[1], m[2]],
   ),
 );
-const routes = [...routeElements.keys()].filter(
-  (p) => p !== "*" && !p.includes(":"),
-);
+const routes = [...routeElements.keys()].filter((p) => !p.includes(":"));
 
 if (routes.length === 0) fail("no routes found in src/app/App.tsx.");
 
 const missing = routes.filter((r) => !seo.routes[r]);
 if (missing.length > 0) fail(`no seo.json entry for ${missing.join(", ")}`);
+const unrouted = Object.keys(seo.routes).filter((r) => !routeElements.has(r));
+if (unrouted.length > 0)
+  fail(`seo.json lists ${unrouted.join(", ")}, which App.tsx does not route`);
 
 const escape = (s) =>
   s

@@ -1,15 +1,28 @@
+import js from "@eslint/js";
 import { FlatCompat } from "@eslint/eslintrc";
-import react from "eslint-plugin-react";
 import reactRefresh from "eslint-plugin-react-refresh";
 import tsParser from "@typescript-eslint/parser";
 import tsPlugin from "@typescript-eslint/eslint-plugin";
+import globals from "globals";
 
+// ESLint's own recommended rules are applied directly above the React
+// presets; passing React's config here, as before, silently replaced them.
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
-  recommendedConfig: react.configs.recommended,
+  recommendedConfig: js.configs.recommended,
 });
 
 export default [
+  js.configs.recommended,
+  // The React presets come first so the project's own rules below win.
+  ...compat.config({
+    extends: [
+      "plugin:react/recommended",
+      "plugin:react/jsx-runtime",
+      "plugin:react-hooks/recommended",
+    ],
+    ignorePatterns: ["dist"],
+  }),
   {
     files: ["**/*.{js,mjs,cjs,jsx,ts,tsx}"],
     languageOptions: {
@@ -20,13 +33,13 @@ export default [
       ecmaVersion: "latest",
       sourceType: "module",
       globals: {
-        browser: true,
-        es2020: true,
+        ...globals.browser,
+        ...globals.node,
       },
     },
     settings: {
       react: {
-        version: "18.2",
+        version: "19.3",
       },
     },
     plugins: {
@@ -50,6 +63,19 @@ export default [
     },
   },
   {
+    // TypeScript resolves names; no-undef only sees its types as unknown.
+    files: ["**/*.{ts,tsx}"],
+    rules: { "no-undef": "off" },
+  },
+  {
+    files: ["**/*.test.{ts,tsx}", "src/setupTests.ts", "__mocks__/**"],
+    languageOptions: { globals: globals.jest },
+  },
+  {
+    files: ["**/*.cjs"],
+    languageOptions: { sourceType: "commonjs" },
+  },
+  {
     // Vendored shadcn/ui primitives: these intentionally export variant
     // helpers and Radix aliases alongside components. Keeping them as
     // upstream ships them matters more than fast-refresh granularity in
@@ -59,13 +85,4 @@ export default [
       "react-refresh/only-export-components": "off",
     },
   },
-  ...compat.config({
-    extends: [
-      "eslint:recommended",
-      "plugin:react/recommended",
-      "plugin:react/jsx-runtime",
-      "plugin:react-hooks/recommended",
-    ],
-    ignorePatterns: ["dist", ".eslintrc.cjs"],
-  }),
 ];

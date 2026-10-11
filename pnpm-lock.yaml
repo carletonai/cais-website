@@ -63,6 +63,9 @@ importers:
       '@eslint/eslintrc':
         specifier: ^3.3.7
         version: 3.3.7
+      '@eslint/js':
+        specifier: ^10.0.1
+        version: 10.0.1(eslint@10.12.0(jiti@2.7.0))
       '@tailwindcss/postcss':
         specifier: ^4.3.3
         version: 4.3.3
@@ -120,6 +123,9 @@ importers:
       eslint-plugin-react-refresh:
         specifier: ^0.5.7
         version: 0.5.7(eslint@10.12.0(jiti@2.7.0))
+      globals:
+        specifier: ^17.13.0
+        version: 17.13.0
       jest:
         specifier: ^30.5.2
         version: 30.5.2(@types/node@26.6.4)
@@ -865,6 +871,15 @@ packages:
   '@eslint/eslintrc@3.3.7':
     resolution: {integrity: sha512-F42g89Qd5oAWtp0k0nnSrjziAKza7w8SVT4mStc18LZMaRb4J1HQAHLCalEtDCxrTuksx7NU9qsmeLwpOfPqWw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@eslint/js@10.0.1':
+    resolution: {integrity: sha512-zeR9k5pd4gxjZ0abRoIaxdc7I3nDktoXZk2qOv9gCNWx3mVwEn32VRhyLaRsDiJjTs0xq/T8mfPtyuXu7GWBcA==}
+    engines: {node: ^20.19.0 || ^22.13.0 || >=24}
+    peerDependencies:
+      eslint: ^10.0.0
+    peerDependenciesMeta:
+      eslint:
+        optional: true
 
   '@eslint/object-schema@3.0.5':
     resolution: {integrity: sha512-vqTaUEgxzm+YDSdElad6PiRoX4t8VGDjCtt05zn4nU810UIx/uNEV7/lZJ6KwFThKZOzOxzXy48da+No7HZaMw==}
@@ -2657,6 +2672,10 @@ packages:
 
   globals@14.0.0:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
+    engines: {node: '>=18'}
+
+  globals@17.13.0:
+    resolution: {integrity: sha512-RwMTC61u7hrG3ZJMkZQOK4JLJrKS8QtoTii63EmWvFXHqycY9FObBJQCbsLxSO8kjKhWE5kV1GC+Vb1g3RI0Zg==}
     engines: {node: '>=18'}
 
   globalthis@1.0.4:
@@ -5059,6 +5078,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@eslint/js@10.0.1(eslint@10.12.0(jiti@2.7.0))':
+    optionalDependencies:
+      eslint: 10.12.0(jiti@2.7.0)
+
   '@eslint/object-schema@3.0.5': {}
 
   '@eslint/plugin-kit@0.7.3':
@@ -6892,6 +6915,8 @@ snapshots:
       path-scurry: 2.0.2
 
   globals@14.0.0: {}
+
+  globals@17.13.0: {}
 
   globalthis@1.0.4:
     dependencies:
