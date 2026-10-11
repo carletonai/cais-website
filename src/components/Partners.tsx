@@ -39,7 +39,7 @@ export function Partners() {
         title="Who we build with"
         lede="Clubs, hackathons and programs the society has run events alongside."
       />
-      <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+      <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3">
         {partners.map((partner) => {
           const body = (
             <>

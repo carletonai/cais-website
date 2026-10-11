@@ -9,6 +9,7 @@ import {
   eventPath,
   eventStatus,
   nextEvent,
+  posterThumb,
   rsvpFor,
 } from "@/lib/events";
 import { useNow } from "@/lib/useNow";
@@ -87,6 +88,9 @@ export function NextUp({
   const live = status.phase === "live";
   const path = eventPath(event);
   const hasRsvp = rsvpFor(event, now) !== null;
+  const thumb = event.poster ? posterThumb(event.poster) : null;
+  // The poster takes the ring's corner when the event has one.
+  const showRing = ring && !thumb;
 
   return (
     <article
@@ -98,42 +102,67 @@ export function NextUp({
       )}
     >
       {/* The ring lives in a gutter the text never enters. */}
-      {ring && (
+      {showRing && (
         <Ring
           draw
           className="absolute -right-14 -top-14 hidden w-40 sm:block"
         />
       )}
-      <div className={cn(ring && "sm:pr-24")}>
-        <p
-          className={cn(
-            "label-mono flex flex-wrap items-center gap-x-2 gap-y-1",
-            live ? "text-primary" : "text-muted-foreground",
-          )}
-        >
-          {live && (
-            <span
-              aria-hidden="true"
-              className="live-pulse inline-block size-2.5 rounded-full bg-mark"
-            />
-          )}
-          <span>{live ? status.label : `Next up · ${status.label}`}</span>
-        </p>
-        <Heading
-          id="next-up-title"
-          className="font-display mt-3 text-[2.25rem] leading-[0.92] sm:text-5xl"
-        >
-          <span className="sr-only">{live ? "On now: " : "Next up: "}</span>
+      <div
+        className={cn(
+          "flex items-start gap-5 sm:gap-8",
+          showRing && "sm:pr-24",
+        )}
+      >
+        <div className="min-w-0 flex-1">
+          <p
+            className={cn(
+              "label-mono flex flex-wrap items-center gap-x-2 gap-y-1",
+              live ? "text-primary" : "text-muted-foreground",
+            )}
+          >
+            {live && (
+              <span
+                aria-hidden="true"
+                className="live-pulse inline-block size-2.5 rounded-full bg-mark"
+              />
+            )}
+            <span>{live ? status.label : `Next up · ${status.label}`}</span>
+          </p>
+          <Heading
+            id="next-up-title"
+            className="font-display mt-3 text-[2.25rem] leading-[0.92] sm:text-5xl"
+          >
+            <span className="sr-only">{live ? "On now: " : "Next up: "}</span>
+            <Link
+              to={path}
+              className="decoration-mark decoration-4 underline-offset-[6px] hover:underline"
+            >
+              {event.title}
+            </Link>
+          </Heading>
+          <p className="mt-3 line-clamp-3 text-muted-foreground">
+            {event.description}
+          </p>
+        </div>
+        {thumb && (
+          // The poster repeats the title's link, so it is not a second tab stop.
           <Link
             to={path}
-            className="decoration-mark decoration-4 underline-offset-[6px] hover:underline"
+            tabIndex={-1}
+            aria-hidden="true"
+            className="w-24 shrink-0 overflow-hidden rounded-xl shadow-lg shadow-black/25 sm:w-40 sm:rounded-2xl"
           >
-            {event.title}
+            <img
+              src={thumb}
+              alt=""
+              width={event.posterWidth}
+              height={event.posterHeight}
+              decoding="async"
+              className="block h-auto w-full"
+            />
           </Link>
-        </Heading>
-        <p className="mt-3 line-clamp-3 text-muted-foreground">
-          {event.description}
-        </p>
+        )}
       </div>
 
       <EventMeta event={event} size="lg" weekdays className="mt-6" />
