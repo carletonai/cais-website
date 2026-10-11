@@ -5,7 +5,13 @@ import { useHotkeys } from "react-hotkeys-hook";
 import teamData from "@/data/team.json";
 import eventsData from "@/data/events.json";
 import projectsData from "@/data/projects.json";
-import { eventDate, upcomingEvents } from "@/lib/events";
+import {
+  allEvents,
+  clubNumbers,
+  formatWhen,
+  pastEvents,
+  upcomingEvents,
+} from "@/lib/events";
 
 interface Command {
   input: string;
@@ -33,7 +39,7 @@ interface GameState {
 
 const BOOTED_KEY = "cais-terminal-booted";
 
-const INITIAL_MESSAGE = `Welcome to CAIS Resources Terminal v2.0.0
+const INITIAL_MESSAGE = `Welcome to CAIS Terminal v2.0.0
 Type 'help' to see available commands or press 'Tab' for auto-completion.
 Try 'theme' to customize your experience!
 
@@ -75,7 +81,6 @@ A student club at Carleton University for anyone interested in AI and machine le
 What We Do:
 - Organize workshops and learning sessions
 - Build AI/ML projects together
-- Connect students with industry opportunities
 - Create a community of AI enthusiasts
 `;
 
@@ -93,7 +98,7 @@ Learning Resources:
 📘 Fast.ai: https://www.fast.ai/
 🤗 Hugging Face: https://huggingface.co/
 📊 Kaggle: https://www.kaggle.com/
-📝 Papers With Code: https://paperswithcode.com/
+📝 Hugging Face Papers: https://huggingface.co/papers
 `;
 
 const COURSES = `
@@ -106,7 +111,6 @@ Recommended Learning Path:
 
 2. Core ML/AI Courses
    - COMP 4107: Neural Networks
-   - COMP 4905: AI Special Topics
    - COMP 3106: Introduction to AI
 
 3. Complementary Skills
@@ -194,7 +198,7 @@ Upcoming Events:
 ${UPCOMING.map(
   (event, index) => `
 ${index + 1}. ${event.type === "Workshop" ? "🎯" : "📅"} ${event.title}
-   Date: ${eventDate(event).toLocaleDateString()} at ${event.time}
+   When: ${formatWhen(event, { year: true })}
    Location: ${event.location}
    Details: ${event.description}
    Tags: ${event.tags.map((tag) => `#${tag}`).join(" ")}
@@ -209,13 +213,13 @@ No upcoming events right now. Visit carletonai.com/events for past events and th
 `;
 
 const TEAM = `
-CAIS Executive Team 2023-2024:
+CAIS Executive Team:
 
 ${teamData.members
   .map(
     (member) => `
 ${
-  member.title === "Co-President"
+  member.title.includes("President")
     ? "👑"
     : member.title.includes("Academic")
       ? "🎓"
@@ -227,8 +231,7 @@ ${
             ? "🤝"
             : "📱"
 } ${member.title}
-   - ${member.name}
-   - ${member.description}
+   - ${member.name}${member.description ? `\n   - ${member.description}` : ""}
    ${member.linkedinURL ? `   - LinkedIn: ${member.linkedinURL}` : ""}
 `,
   )
@@ -331,16 +334,12 @@ const GAMES = {
   tic: "Tic Tac Toe vs AI (coming soon)",
 };
 
-/** Counted from the site's own data, so every number is one we can stand behind. */
+/** Counted from the site's own data, like the home page: events that have
+ *  happened, so every number is one we can stand behind. */
+const PAST = pastEvents(allEvents);
 const STATS = {
-  events: eventsData.events.length,
-  since: Math.min(
-    ...eventsData.events.map((event) => Number(event.date.slice(0, 4))),
-  ),
-  workshops: eventsData.events.filter((event) => event.type === "Workshop")
-    .length,
-  withCode: eventsData.events.filter((event) => event.materials).length,
-  recordings: eventsData.events.filter((event) => event.recording).length,
+  ...clubNumbers(PAST),
+  recordings: PAST.filter((event) => event.recording).length,
   projects: projectsData.projects.length,
   exec: teamData.members.length,
 };
@@ -464,7 +463,7 @@ const ANIMATIONS = {
 const KEYBOARD_SHORTCUTS = `
 Keyboard Shortcuts:
   Ctrl + L    - Clear terminal
-  Ctrl + K    - Clear current input
+  Ctrl + U    - Clear current input
   Up/Down     - Navigate command history
   Tab         - Autocomplete command
   Ctrl + M    - Toggle matrix mode
@@ -545,8 +544,6 @@ const Resources = () => {
     commands: [],
     currentIndex: -1,
   });
-  const [suggestions, setSuggestions] = useState<string[]>([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
   const [theme, setTheme] = useState<
     "default" | "cyberpunk" | "retro" | "matrix"
   >("default");
@@ -558,7 +555,7 @@ const Resources = () => {
   const hasBooted = useRef(false);
 
   const parseCommand = (input: string): ParsedCommand => {
-    const parts = input.trim().split(" ");
+    const parts = input.trim().split(/\s+/);
     const command = parts[0].toLowerCase();
     const args: string[] = [];
     const flags: Record<string, boolean | string> = {};
@@ -676,11 +673,9 @@ const Resources = () => {
 
       if (matchingCommands.length === 1) {
         setCurrentInput(matchingCommands[0]);
-        setSuggestions([]);
-        setShowSuggestions(false);
       } else if (matchingCommands.length > 1) {
-        setSuggestions(matchingCommands);
-        setShowSuggestions(true);
+        // Like a shell: list the possibilities in the log.
+        addCommand("", matchingCommands.join("  "), false, true);
       }
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
@@ -716,8 +711,6 @@ const Resources = () => {
         const parsed = parseCommand(currentInput);
         handleCommand(parsed);
         setCurrentInput("");
-        setSuggestions([]);
-        setShowSuggestions(false);
       }
     }
   };
@@ -787,35 +780,58 @@ const Resources = () => {
     if (!isBooting) inputRef.current?.focus({ preventScroll: true });
   }, [isBooting]);
 
-  useHotkeys("ctrl+l", (e: KeyboardEvent) => {
-    e.preventDefault();
-    setCommands([]);
-  });
+  // The caret lives in the command input, which react-hotkeys-hook ignores
+  // unless told otherwise. Ctrl+K is the site's search shortcut, so clearing
+  // the line is Ctrl+U, as in a shell.
+  const fromInput = { enableOnFormTags: ["INPUT" as const] };
 
-  useHotkeys("ctrl+k", (e: KeyboardEvent) => {
-    e.preventDefault();
-    setCurrentInput("");
-  });
+  useHotkeys(
+    "ctrl+l",
+    (e: KeyboardEvent) => {
+      e.preventDefault();
+      setCommands([]);
+    },
+    fromInput,
+  );
 
-  useHotkeys("ctrl+m", (e: KeyboardEvent) => {
-    e.preventDefault();
-    setTheme((prev) => (prev === "matrix" ? "default" : "matrix"));
-  });
+  useHotkeys(
+    "ctrl+u",
+    (e: KeyboardEvent) => {
+      e.preventDefault();
+      setCurrentInput("");
+    },
+    fromInput,
+  );
 
-  useHotkeys("ctrl+t", (e: KeyboardEvent) => {
-    e.preventDefault();
-    const themes = Object.keys(THEMES);
-    const currentIndex = themes.indexOf(theme);
-    const nextIndex = (currentIndex + 1) % themes.length;
-    setTheme(themes[nextIndex] as keyof typeof THEMES);
-  });
+  useHotkeys(
+    "ctrl+m",
+    (e: KeyboardEvent) => {
+      e.preventDefault();
+      setTheme((prev) => (prev === "matrix" ? "default" : "matrix"));
+    },
+    fromInput,
+  );
 
-  useHotkeys("esc", (e: KeyboardEvent) => {
-    e.preventDefault();
-    setCurrentInput("");
-    setSuggestions([]);
-    setShowSuggestions(false);
-  });
+  useHotkeys(
+    "ctrl+t",
+    (e: KeyboardEvent) => {
+      e.preventDefault();
+      const themes = Object.keys(THEMES);
+      const currentIndex = themes.indexOf(theme);
+      const nextIndex = (currentIndex + 1) % themes.length;
+      setTheme(themes[nextIndex] as keyof typeof THEMES);
+    },
+    fromInput,
+  );
+
+  useHotkeys(
+    "esc",
+    (e: KeyboardEvent) => {
+      e.preventDefault();
+      setCurrentInput("");
+    },
+    fromInput,
+  );
 
   useEffect(() => {
     const handleKonami = (e: KeyboardEvent): void => {
@@ -972,7 +988,10 @@ const Resources = () => {
                 Events since {STATS.since}: {STATS.events} 📅
               </div>
               <div>Workshops: {STATS.workshops} 🧠</div>
-              <div>Workshops with code online: {STATS.withCode} 💻</div>
+              <div>
+                Events with slides, code or video online: {STATS.withResources}{" "}
+                💻
+              </div>
               <div>Recorded sessions: {STATS.recordings} 🎥</div>
               <div>Projects: {STATS.projects} 🚀</div>
               <div>Exec team this year: {STATS.exec} 👥</div>
@@ -1114,7 +1133,6 @@ Ways to Contribute to CAIS:
 1. Join Project Teams
    - Website Development
    - Workshop Content Creation
-   - Research Reading Group
 
 2. Share Your Knowledge
    - Give a workshop
@@ -1145,8 +1163,7 @@ Event Details:
 
 ${event.type === "Workshop" ? "🎯" : "📅"} ${event.title}
 
-Date: ${eventDate(event).toLocaleDateString()}
-Time: ${event.time}
+When: ${formatWhen(event, { year: true })}
 Location: ${event.location}
 Type: ${event.type}
 
@@ -1172,7 +1189,7 @@ ${event.rsvpLink ? `\nRSVP Link: ${event.rsvpLink}` : ""}
         if (event) {
           if (event.rsvpLink) {
             output = {
-              content: `Opening RSVP form for "${event.title}": ${event.rsvpLink}`,
+              content: `RSVP for "${event.title}": ${event.rsvpLink}`,
               isSystem: true,
             };
           } else {
@@ -1327,7 +1344,7 @@ ${event.rsvpLink ? `\nRSVP Link: ${event.rsvpLink}` : ""}
             <span className="text-primary">Resources</span>
           </p>
           <h1 className="font-display mt-3 text-[clamp(2rem,1.4rem+3vw,3.5rem)] leading-none">
-            CAIS Resources Terminal
+            CAIS Terminal
           </h1>
           <p className="mt-3 text-muted-foreground">
             Learning resources, events and club links, one command away. Type{" "}
@@ -1452,29 +1469,6 @@ ${event.rsvpLink ? `\nRSVP Link: ${event.rsvpLink}` : ""}
           </div>
         </motion.div>
       </div>
-
-      {showSuggestions && suggestions.length > 0 && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          className="absolute bottom-full left-0 mb-2 bg-black/80 border border-primary/20 rounded-md p-2"
-        >
-          {suggestions.map((suggestion, i) => (
-            <div
-              key={i}
-              className="cursor-pointer hover:text-primary px-2 py-1"
-              onClick={() => {
-                setCurrentInput(suggestion);
-                setShowSuggestions(false);
-                inputRef.current?.focus();
-              }}
-            >
-              {suggestion}
-            </div>
-          ))}
-        </motion.div>
-      )}
     </div>
   );
 };

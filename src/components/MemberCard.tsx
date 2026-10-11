@@ -2,7 +2,8 @@ import { FaLinkedin } from "react-icons/fa";
 import MemberAvatar from "./MemberAvatar";
 
 export interface Member {
-  image: string;
+  /** A headshot under public/, once one exists. */
+  image?: string;
   name: string;
   title: string;
   description?: string;

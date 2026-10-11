@@ -22,6 +22,7 @@ import {
   eventDate,
   eventPath,
   eventStatus,
+  formatTimeRange,
 } from "@/lib/events";
 
 export type CalendarEntry =
@@ -115,7 +116,7 @@ const MeetingDetails = ({
               `, until ${longDate.format(eventDate({ date: meeting.until }))}`}
           </Fact>
         )}
-        <Fact icon={ClockIcon}>{meeting.time}</Fact>
+        <Fact icon={ClockIcon}>{formatTimeRange(meeting.time)}</Fact>
         <Fact icon={MapPinIcon}>{meeting.location}</Fact>
       </ul>
     </>

@@ -101,8 +101,13 @@ const vevent = (event, { now, feed }) => {
       `DTEND;VALUE=DATE:${dateStamp(dayAfter(event))}`,
     );
   } else {
-    lines.push(`DTSTART:${utcStamp(window.start)}`);
-    if (window.endKnown) lines.push(`DTEND:${utcStamp(window.end)}`);
+    // Without DTEND the event would be an instant; the window already
+    // assumes an hour when no end was announced, as the Google and Outlook
+    // links do, and the description says so.
+    lines.push(
+      `DTSTART:${utcStamp(window.start)}`,
+      `DTEND:${utcStamp(window.end)}`,
+    );
   }
   lines.push(
     `SUMMARY:${escapeText(event.title)}`,
