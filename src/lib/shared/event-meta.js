@@ -15,13 +15,19 @@ const clip = (/** @type {string} */ text, /** @type {number} */ max) => {
   return `${cut.slice(0, cut.lastIndexOf(" ")).replace(/[\s,;:.–-]+$/, "")}…`;
 };
 
-/** @param {EventLike} event */
+/**
+ * The tab and search-result title is the event's name; search engines show
+ * about sixty characters, and the date leads the description anyway. Link
+ * previews in chats get the date in the title too.
+ * @param {EventLike} event
+ */
 export const eventPageMeta = (event) => {
   const when = formatWhen(event, { year: true });
   const where = event.location ? ` · ${event.location}` : "";
   return {
-    title: `${event.title} · ${formatEventDate(event.date, { year: true })}`,
-    description: clip(`${when}${where}. ${event.description}`, 200),
+    title: event.title,
+    ogTitle: `${event.title} · ${formatEventDate(event.date, { year: true })}`,
+    description: clip(`${when}${where}. ${event.description}`, 160),
     image: event.poster ?? null,
   };
 };

@@ -44,7 +44,7 @@ type EventPosterProps = {
  */
 export function EventPoster({ event }: EventPosterProps) {
   const [zoomOrigin, setZoomOrigin] = useState<CSSProperties>();
-  const { poster, title } = event;
+  const { poster, posterWidth, posterHeight, title } = event;
 
   if (!poster) {
     return (
@@ -66,6 +66,9 @@ export function EventPoster({ event }: EventPosterProps) {
           <img
             src={poster}
             alt={`Poster for ${title}`}
+            width={posterWidth}
+            height={posterHeight}
+            fetchPriority="high"
             decoding="async"
             className="block h-auto w-full"
           />

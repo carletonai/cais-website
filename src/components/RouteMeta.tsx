@@ -20,14 +20,15 @@ const RouteMeta = () => {
   useEffect(() => {
     const meta = metaFor(pathname);
     const title = titleFor(meta);
+    const preview = meta.ogTitle ?? title;
     const url = `${siteUrl}${pathname.replace(/\/+$/, "") || "/"}`;
 
     document.title = title;
     setMeta('meta[name="description"]', "content", meta.description);
-    setMeta('meta[property="og:title"]', "content", title);
+    setMeta('meta[property="og:title"]', "content", preview);
     setMeta('meta[property="og:description"]', "content", meta.description);
     setMeta('meta[property="og:url"]', "content", url);
-    setMeta('meta[name="twitter:title"]', "content", title);
+    setMeta('meta[name="twitter:title"]', "content", preview);
     setMeta('meta[name="twitter:description"]', "content", meta.description);
 
     const canonical = document.head.querySelector<HTMLLinkElement>(

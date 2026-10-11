@@ -5,6 +5,8 @@ import { eventPageMeta } from "@/lib/shared/event-meta.js";
 export interface RouteMeta {
   title: string;
   description: string;
+  /** For link previews, when it should differ from the tab title. */
+  ogTitle?: string;
 }
 
 const routes: Record<string, RouteMeta> = seo.routes;

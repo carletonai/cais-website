@@ -12,6 +12,9 @@ export default defineConfig({
   plugins: [svgr(), react()],
   base: "/",
   build: {
+    // dist/.vite/manifest.json tells scripts/prerender-routes.mjs which chunk
+    // each lazy page is, so every route's HTML can preload its own.
+    manifest: true,
     rolldownOptions: {
       output: {
         // Keep the framework in its own chunk: it changes far less often

@@ -8,7 +8,6 @@
       "location": "Tory Building 238",
       "description": "The club's inauguration and very first meetup, billed as “Carleton AI Meetup #1”.",
       "type": "Social",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["social"],
       "materials": "https://github.com/cuaim/Meetup-Demo"
     },
@@ -20,7 +19,6 @@
       "location": "Tory Building 238",
       "description": "An introductory workshop for students new to data science and machine learning. Attendees were asked to bring a laptop.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["beginner-friendly", "hands-on", "technical"]
     },
     {
@@ -31,7 +29,6 @@
       "location": "Tory Building 206",
       "description": "CAIS's first tech talk, with a speaker from Shopify, for everyone from first-year students getting into AI to master's students looking for research opportunities.",
       "type": "Talk",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["guest-speaker"],
       "page": "https://carleton.ca/scs/event/carleton-ai-society-tech-talk/"
     },
@@ -43,7 +40,6 @@
       "location": "Tory Building 206",
       "description": "A hands-on tutorial on plotting datasets onto real maps with Pandas, Basemap and NumPy.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["hands-on", "technical"],
       "materials": "https://www.kaggle.com/code/carletonai/carleton-ai-workshop-visual-mapping"
     },
@@ -55,7 +51,6 @@
       "location": "Tory Junction",
       "description": "An info table with candy and a live visual-processing demo, introducing students to the club.",
       "type": "Social",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["recruitment"]
     },
     {
@@ -66,7 +61,6 @@
       "location": "Richcraft Hall 3220",
       "description": "The first event of Winter 2020: food, the exec team, and other students interested in AI.",
       "type": "Social",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["social"]
     },
     {
@@ -77,7 +71,6 @@
       "location": "",
       "description": "A talk on computer vision, presented by CAIS co-founder and past president Fahad Hayat and Carleton MCS student Omar Benismael.",
       "type": "Talk",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["technical"]
     },
     {
@@ -88,7 +81,6 @@
       "location": "",
       "description": "The club's first lecture: the ethics of AI, given by Dr. Jim Davies, a four-time TEDx speaker.",
       "type": "Talk",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["guest-speaker"]
     },
     {
@@ -99,7 +91,6 @@
       "location": "Online",
       "description": "CAIS introduced itself to incoming students at the online Expo Carleton, streaming its presentation live on Twitch.",
       "type": "Social",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["recruitment", "online"],
       "recording": "https://www.youtube.com/watch?v=Al6fGKzrGTs"
     },
@@ -111,7 +102,6 @@
       "location": "Online",
       "description": "An online meet and greet with the whole exec team, previewing the semester's events and its competition.",
       "type": "Social",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["social", "online"],
       "recording": "https://www.youtube.com/watch?v=y3Z1mmaO9vA"
     },
@@ -123,7 +113,6 @@
       "location": "Online",
       "description": "A beginner session on what data science is, Python basics, Kaggle and Jupyter notebooks.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["beginner-friendly", "technical", "online"],
       "recording": "https://www.youtube.com/watch?v=ck1Ej69bOOA"
     },
@@ -135,7 +124,6 @@
       "location": "Online",
       "description": "How to navigate Kaggle, then build and submit a first notebook for the CAIS X competition.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["hands-on", "technical", "online"],
       "recording": "https://www.youtube.com/watch?v=Ylv7Z35njIw"
     },
@@ -148,7 +136,6 @@
       "location": "Online (Kaggle)",
       "description": "CAIS's first Kaggle competition for Carleton students: teams of up to two forecast COVID-19 cases, recoveries and deaths by province. It ran until January 3, 2021, with 14 teams taking part.",
       "type": "Competition",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["competition", "online"],
       "page": "https://www.kaggle.com/competitions/cais-x-t1-2021"
     },
@@ -160,7 +147,6 @@
       "location": "Online",
       "description": "Introduced Maximum Likelihood Estimation and derived it for the Bernoulli and Gaussian distributions, touching on the bias-variance dilemma along the way.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["technical", "online"],
       "recording": "https://www.youtube.com/watch?v=XggYZNaNRbg",
       "materials": "https://web.archive.org/web/20240511150356/https://carletonai.com/wp-content/uploads/2020/10/CAIS_MLE-Slides.pdf"
@@ -173,7 +159,6 @@
       "location": "Online",
       "description": "Basic feature engineering techniques for improving model performance: garbage in, garbage out.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["technical", "online"],
       "recording": "https://www.youtube.com/watch?v=EDUonPWsg20"
     },
@@ -185,7 +170,6 @@
       "location": "Online",
       "description": "The core data science toolkit: NumPy, Pandas, scikit-learn and matplotlib.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["beginner-friendly", "technical", "online"],
       "recording": "https://www.youtube.com/watch?v=xK0xmq0TruQ"
     },
@@ -197,7 +181,6 @@
       "location": "Online",
       "description": "Unsupervised learning through K-means and Gaussian Mixture Models, and how Expectation-Maximization fits a GMM.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["technical", "online"],
       "recording": "https://www.youtube.com/watch?v=4FG0TWJRRPI"
     },
@@ -209,7 +192,6 @@
       "location": "Online",
       "description": "Derived Principal Component Analysis and Linear Discriminant Analysis and compared their strengths and limits. Streamed live on Twitch.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["technical", "online"],
       "recording": "https://www.youtube.com/watch?v=lGpO1CgpSv0"
     },
@@ -221,7 +203,6 @@
       "location": "Online",
       "description": "A demonstration of the Power BI business analytics tool followed by hands-on practice, run with club sponsor CPA Ontario.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["hands-on", "online"]
     },
     {
@@ -232,7 +213,6 @@
       "location": "Online",
       "description": "CAIS joined Carleton's online fall orientation showcase to meet incoming students.",
       "type": "Social",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["recruitment", "online"]
     },
     {
@@ -243,7 +223,6 @@
       "location": "Online",
       "description": "An informal chat introducing the team and the year's plans (workshops, CAIS X and the podcast), followed by an open discussion about machine learning.",
       "type": "Social",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["social", "discussion", "online"],
       "materials": "https://web.archive.org/web/20240406052651/https://carletonai.com/wp-content/uploads/2021/09/CAIS_Coffee_Hour_1.pdf"
     },
@@ -255,7 +234,6 @@
       "location": "Online (Discord)",
       "description": "A first-week game night in the CAIS Discord, to meet new people and learn about the club.",
       "type": "Social",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["social", "online"]
     },
     {
@@ -266,7 +244,6 @@
       "location": "Online",
       "description": "NumPy, Pandas, scikit-learn and matplotlib for beginners.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["beginner-friendly", "technical", "online"],
       "materials": "https://web.archive.org/web/20240216140245/https://carletonai.com/wp-content/uploads/2021/09/CAIS-Workshop.pdf"
     },
@@ -278,7 +255,6 @@
       "location": "Online",
       "description": "An informal chat about reinforcement learning. No experience needed.",
       "type": "Social",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["social", "discussion", "online"]
     },
     {
@@ -289,7 +265,6 @@
       "location": "Online",
       "description": "What linear regression is, when it is useful and how it works, as part of a series preparing members for the CAIS X competition.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["technical", "online"],
       "recording": "https://www.youtube.com/watch?v=jAVnWNh_uAU",
       "materials": "https://www.kaggle.com/code/carletonai/cais-2021-workshop-2-linear-regression"
@@ -302,7 +277,6 @@
       "location": "Online (Discord)",
       "description": "AI and machine learning trivia on Kahoot, with prizes for the top two players.",
       "type": "Social",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["social", "online"]
     },
     {
@@ -313,7 +287,6 @@
       "location": "Online",
       "description": "An introduction to linear classifiers, focusing on logistic regression.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["technical", "online"],
       "recording": "https://www.youtube.com/watch?v=7blenH4jRk4",
       "materials": "https://www.kaggle.com/code/carletonai/cais-2021-workshop-3-linear-classification"
@@ -326,7 +299,6 @@
       "location": "Online",
       "description": "A Halloween-themed chat with the Systems and Computer Engineering Society (SCESoc) about the scary and unethical sides of AI and ML.",
       "type": "Social",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["social", "discussion", "online"]
     },
     {
@@ -337,7 +309,6 @@
       "location": "Online",
       "description": "Techniques for selecting and transforming features to improve model quality and performance.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["technical", "online"],
       "recording": "https://www.youtube.com/watch?v=TWaes_XkH_8",
       "materials": "https://www.kaggle.com/code/carletonai/cais-2021-workshop-4-feature-selection"
@@ -350,7 +321,6 @@
       "location": "Online",
       "description": "Guest speaker Vinyas Harish, an MD/PhD student at the University of Toronto, on positive applications of AI and machine learning.",
       "type": "Talk",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["guest-speaker", "online"]
     },
     {
@@ -362,7 +332,6 @@
       "location": "Online (Kaggle)",
       "description": "CAIS's annual beginner machine learning competition, open to Carleton, uOttawa, Algonquin and La Cité students: predict students' final grades. It ran until April 1, 2022.",
       "type": "Competition",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["competition", "online"],
       "page": "https://www.kaggle.com/competitions/caisx"
     },
@@ -374,7 +343,6 @@
       "location": "Online",
       "description": "The first event of Winter 2022: meet the team, recap the last semester and preview the next.",
       "type": "Social",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["social", "online"]
     },
     {
@@ -385,7 +353,6 @@
       "location": "Online",
       "description": "The foundations of deep learning: how simple parts combine into neural networks that can model complex relationships.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["beginner-friendly", "technical", "online"],
       "recording": "https://www.youtube.com/watch?v=FEgwNUGq7N0",
       "materials": "https://www.kaggle.com/code/carletonai/cais-2022-workshop-1-intro-to-neural-networks"
@@ -398,7 +365,6 @@
       "location": "Online",
       "description": "Build, train and test a simple neural network that makes predictions from tabular data.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["hands-on", "technical", "online"],
       "recording": "https://www.youtube.com/watch?v=ggve4xg3yP4",
       "materials": "https://www.kaggle.com/code/carletonai/cais-2022-workshop-2-neural-networks-project-1"
@@ -411,7 +377,6 @@
       "location": "",
       "description": "Dr. Jason Bernard on getting into graduate school, and surviving and thriving once you are there.",
       "type": "Talk",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["guest-speaker"]
     },
     {
@@ -422,7 +387,6 @@
       "location": "Online",
       "description": "The core ideas behind CNNs and the architectures behind image classification, object detection and segmentation.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["technical", "online"]
     },
     {
@@ -433,7 +397,6 @@
       "location": "Tory Building 236",
       "description": "The first workshop of Winter 2023: basic NLP libraries and common text pre-processing tasks.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["beginner-friendly", "technical"]
     },
     {
@@ -444,7 +407,6 @@
       "location": "Tory Building 236",
       "description": "Attention mechanisms for time-series forecasting, worked through a traffic-flow prediction example.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["technical"],
       "materials": "https://github.com/Farzad-R/CAIS/tree/main/attention-mechanism"
     },
@@ -457,7 +419,6 @@
       "location": "Richcraft Hall",
       "description": "CAIS's first hackathon: a free weekend of machine learning and AI building, with workshops on TensorFlow, NLP, computer vision and ChatGPT. ChatRoller and WLIT took the prizes.",
       "type": "Competition",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["hackathon", "competition"],
       "page": "https://cais-hackathon.devpost.com/"
     },
@@ -469,7 +430,6 @@
       "location": "Tory Building 208",
       "description": "How to calculate and interpret metrics, with use cases for machine learning and data science projects.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["beginner-friendly", "technical"]
     },
     {
@@ -480,7 +440,6 @@
       "location": "Teraanga Commons",
       "description": "Presenting the club to new students and recruiting new members.",
       "type": "Social",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["social", "recruitment"]
     },
     {
@@ -491,7 +450,6 @@
       "location": "Paterson Hall 114",
       "description": "Meet the club executives and learn about the club's goals and our plans for the future",
       "type": "Social",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["social", "planning"]
     },
     {
@@ -502,7 +460,6 @@
       "location": "Tory Building 217",
       "description": "Learn the fundamentals of AI: its history, the main types of algorithms, and how to keep learning.",
       "type": "Workshop",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["beginner-friendly", "conceptual"]
     },
     {
@@ -513,7 +470,6 @@
       "location": "Richcraft Hall 1200",
       "description": "Hackathon workshop on using Ollama and HuggingFace models in your projects, plus mentorship on site.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["beginner-friendly", "hands-on"]
     },
     {
@@ -524,7 +480,6 @@
       "location": "Canal Building 2400",
       "description": "Beginner workshop on implementing neural networks and a demo on how to build your own model.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["hands-on", "technical"]
     },
     {
@@ -535,7 +490,6 @@
       "location": "Tory Building 431",
       "description": "Learn how to use AI APIs to implement AI in your projects.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["hands-on", "technical"]
     },
     {
@@ -546,7 +500,6 @@
       "location": "Tory Building 342",
       "description": "Meet the CAIS executive team, learn about the club, and connect with students interested in AI.",
       "type": "Social",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["beginner-friendly", "networking", "social"]
     },
     {
@@ -557,7 +510,6 @@
       "location": "Richcraft Hall",
       "description": "The exec team met students at CUSA's Frost Week expo and shared how CAIS is building an inclusive AI community on campus.",
       "type": "Social",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["recruitment"]
     },
     {
@@ -568,7 +520,6 @@
       "location": "Richcraft Hall 3110",
       "description": "An introductory workshop covering core AI concepts and real-world applications.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["beginner-friendly", "educational"]
     },
     {
@@ -579,7 +530,6 @@
       "location": "Richcraft Hall 3228",
       "description": "A workshop comparing vibe coding and prompt engineering in modern AI development.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["technical", "discussion"]
     },
     {
@@ -590,7 +540,6 @@
       "location": "Tory Building 342",
       "description": "An introduction to large language models and how they power modern AI systems.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["beginner-friendly", "technical"]
     },
     {
@@ -601,7 +550,6 @@
       "location": "Tory Building 210",
       "description": "Learn how AI chatbots work using RAG and semantic search in LLM applications.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["hands-on", "technical"],
       "materials": "https://github.com/carletonai/chatbot"
     },
@@ -613,7 +561,6 @@
       "location": "Tory Building 210",
       "description": "Train your first machine learning model using Python in a hands-on session.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["hands-on", "beginner-friendly", "technical"],
       "materials": "https://github.com/carletonai/model"
     },
@@ -625,7 +572,6 @@
       "location": "Richcraft Hall 3201",
       "description": "A science-fair-style night to demo AI, ML, cybersecurity and software projects, with no pitches or judges. Run by Carleton Blueprint with cuHacking, CAIS, Carleton Cybersecurity, SCESoc and CCSS.",
       "type": "Social",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["social"]
     },
     {
@@ -636,7 +582,6 @@
       "location": "Innovation Hub, Sprott School of Business",
       "description": "CAIS gave a guest presentation on artificial intelligence and the club's work at the Innovation Hub's Winter Pitch Night.",
       "type": "Talk",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": []
     },
     {
@@ -648,7 +593,6 @@
       "location": "",
       "description": "A 48-hour challenge with a $250 prize pool, building AI solutions to problems post-secondary students face. Registration filled to capacity. ThinkFirst, CUCognitive and Procrastination Bot took the top three spots.",
       "type": "Competition",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["hackathon", "competition"],
       "page": "https://www.linkedin.com/posts/carleton-ai_cais-hackathon-20-this-past-weekend-activity-7442672368860225536-dZ8H"
     },
@@ -660,7 +604,6 @@
       "location": "Richcraft Hall 1200",
       "description": "A cuHacking workshop on using agentic AI to design and build neural networks.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["hands-on", "technical", "beginner-friendly"]
     },
     {
@@ -671,7 +614,6 @@
       "location": "Fieldhouse",
       "description": "Presenting the club to new students and recruiting new members.",
       "type": "Social",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["social", "recruitment"]
     },
     {
@@ -682,7 +624,6 @@
       "location": "Herzberg 4155",
       "description": "Showcasing CAIS alongside Carleton's other tech clubs and meeting students interested in AI.",
       "type": "Social",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["social", "recruitment"]
     },
     {
@@ -693,7 +634,6 @@
       "location": "EDC",
       "description": "Meeting students at the FED Meet & Greet, with free food and pizza.",
       "type": "Social",
-      "image": "/assets/events/ml-workshop.svg",
       "tags": ["social", "recruitment", "free-food"]
     },
     {
@@ -704,8 +644,9 @@
       "location": "Southam Hall 402",
       "description": "Come find out who we are and what we actually do. Free pizza, all years welcome, no experience needed.",
       "type": "Social",
-      "image": "/assets/events/neural-networks.svg",
       "poster": "/assets/events/icebreaker-2026.jpg",
+      "posterWidth": 1236,
+      "posterHeight": 1600,
       "tags": ["social", "networking", "free-food"]
     },
     {
@@ -716,7 +657,6 @@
       "location": "Room C040, uOttawa (Hack the Hill III)",
       "description": "A practical introduction to machine learning at uOttawa's Hack the Hill III hackathon: the core ideas behind models, and how to bring ML into a hackathon project. The demos set a hand-written rule against a model that learns its own, then train a small PyTorch neural network on a heart-failure clinical dataset.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "tags": ["beginner-friendly", "technical"],
       "page": "https://hackthehill.com",
       "materials": "https://github.com/carletonai/cais-workshop-hth-iii"
@@ -729,8 +669,9 @@
       "location": "Herzberg 5345",
       "description": "Come find out how the AI you use every day actually works. The first workshop in a series that goes from AI basics to machine learning and then deep learning. No prerequisites: all years welcome, no experience needed.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "poster": "/assets/events/intro-to-ai-2026.jpg",
+      "posterWidth": 1056,
+      "posterHeight": 1367,
       "tags": ["beginner-friendly", "technical"]
     },
     {
@@ -741,8 +682,9 @@
       "location": "Richcraft Hall 3228",
       "description": "Come help run the club behind the scenes.",
       "type": "Social",
-      "image": "/assets/events/ml-workshop.svg",
       "poster": "/assets/events/volunteer-meeting-2026.jpg",
+      "posterWidth": 1236,
+      "posterHeight": 1598,
       "tags": ["planning"]
     },
     {
@@ -753,8 +695,9 @@
       "location": "CS Seminar Room, Herzberg",
       "description": "Learn how AI agents plan, use tools, and get work done.",
       "type": "Workshop",
-      "image": "/assets/events/neural-networks.svg",
       "poster": "/assets/events/intro-to-agentic-ai-2026.jpg",
+      "posterWidth": 1056,
+      "posterHeight": 1367,
       "tags": ["technical"]
     },
     {
@@ -765,8 +708,9 @@
       "location": "Nicol Building",
       "description": "An evening on AI agents that do real work, hosted by Builders Collective Ottawa with CAIS, ARC, CCSS, ColorStack and SISSA: Grok Bot 101, live demos, builder showcases and networking. Food provided, plus free Grok Bot credits. Bring a laptop; registration is on Luma and subject to approval.",
       "type": "Social",
-      "image": "/assets/events/ml-workshop.svg",
       "poster": "/assets/events/grok-bot-ottawa-2026.jpg",
+      "posterWidth": 1236,
+      "posterHeight": 1546,
       "rsvpLink": "https://luma.com/phs5tofz",
       "tags": ["networking", "free-food", "technical"]
     }
