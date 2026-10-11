@@ -228,6 +228,10 @@ export const timeIn = (text) => {
   return "";
 };
 
+/** A literal for a RegExp: every metacharacter escaped, backslash included. */
+const escapeRegExp = (/** @type {string} */ text) =>
+  text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
 /**
  * Where it is: a "📍"/"Location:" line, a campus building with its room,
  * or "Online". Empty when nothing is named.
@@ -244,7 +248,7 @@ export const locationIn = (raw) => {
   const text = clean(raw);
   for (const building of BUILDINGS) {
     const match = new RegExp(
-      `\\b${building.replace(/[.]/g, "\\.")}\\b(?:,?\\s*(?:room|rm\\.?)?\\s*(\\d{3,4}[a-z]?))?`,
+      `\\b${escapeRegExp(building)}\\b(?:,?\\s*(?:room|rm\\.?)?\\s*(\\d{3,4}[a-z]?))?`,
       "i",
     ).exec(text);
     if (match) {
