@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import events from "./events.json";
 import meetings from "./meetings.json";
 import oldTeams from "./old-teams.json";
@@ -24,6 +26,17 @@ describe("data files", () => {
     expect(images.length).toBeGreaterThan(0);
     for (const [key, value] of images) {
       expect(`${key}: ${value}`).toMatch(/^\w+: \/(?!\/)/);
+    }
+  });
+
+  // Cards show posters at about 160px wide from a 600px copy kept beside the
+  // full file (see CONTRIBUTING); a missing copy would 404 on every card.
+  it("keeps a 600px copy of every poster", () => {
+    const posters = all.filter(([key]) => key === "poster");
+    expect(posters.length).toBeGreaterThan(0);
+    for (const [, poster] of posters) {
+      const thumb = poster.replace(/\.jpe?g$/i, (ext) => `-600${ext}`);
+      expect(existsSync(join(__dirname, "../../public", thumb))).toBe(true);
     }
   });
 
