@@ -27,7 +27,7 @@ jobs:
       # Optional: a fine-grained token with "Secrets: write" on this repo
       # lets the job refresh the Instagram token every day, so it never
       # expires. Without it, renew IG_ACCESS_TOKEN by hand every 60 days.
-      SECRETS_PAT: ${{ secrets.ACTIONS_SECRETS_PAT }}
+      SECRETS_PAT: ${{ secrets.ACTIONS_SECRET_PAT }}
 
     steps:
       # Actions are pinned to full commit SHAs (tags can be moved); Dependabot
