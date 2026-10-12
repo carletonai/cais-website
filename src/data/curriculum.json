@@ -1,0 +1,90 @@
+{
+  "series": [
+    {
+      "id": "ai-foundations-2026",
+      "title": "AI foundations",
+      "season": "Fall 2026",
+      "lede": "From how the AI you use every day actually works, through machine learning, to deep learning. No prerequisites: each workshop builds on the one before, and all years are welcome.",
+      "modules": [
+        {
+          "event": "64",
+          "blurb": "What AI is and is not, the kinds of systems behind the tools you already use, and the map for the rest of the series."
+        },
+        {
+          "event": "66",
+          "blurb": "Agents: models that plan, call tools and carry a task through, and what that means for how you build with them."
+        },
+        {
+          "title": "Machine learning",
+          "blurb": "Teaching a model a rule from data instead of writing the rule yourself: training, testing, and the metrics that tell you whether it worked."
+        },
+        {
+          "title": "Deep learning",
+          "blurb": "Neural networks: how layers of simple units learn from images and text, and training your first one."
+        }
+      ]
+    },
+    {
+      "id": "ai-workshops-winter-2026",
+      "title": "Building with AI",
+      "season": "Winter 2026",
+      "lede": "Five sessions from first principles to working code: what today's models are, how to work with them, and two hands-on builds with the code to take home.",
+      "modules": [
+        { "event": "8" },
+        { "event": "9" },
+        { "event": "10" },
+        { "event": "11" },
+        { "event": "12" }
+      ]
+    },
+    {
+      "id": "ai-workshops-winter-2025",
+      "title": "AI in practice",
+      "season": "Winter 2025",
+      "lede": "The fundamentals, a neural network built by hand, and AI APIs in a real project.",
+      "modules": [{ "event": "3" }, { "event": "5" }, { "event": "6" }]
+    },
+    {
+      "id": "deep-learning-winter-2023",
+      "title": "Language and attention",
+      "season": "Winter 2023",
+      "lede": "Natural language processing and the attention mechanism, worked through real examples.",
+      "modules": [{ "event": "55" }, { "event": "56" }]
+    },
+    {
+      "id": "machine-learning-2021-22",
+      "title": "Machine learning, step by step",
+      "season": "2021–22",
+      "lede": "Scientific Python, then regression, classification and feature engineering, then neural networks. Every session has its notebook on Kaggle and most have a recording.",
+      "modules": [
+        { "event": "41" },
+        { "event": "43" },
+        { "event": "45" },
+        { "event": "47" },
+        { "event": "51" },
+        { "event": "52" },
+        { "event": "54" }
+      ]
+    },
+    {
+      "id": "data-science-fall-2020",
+      "title": "Data science fundamentals",
+      "season": "2020–21",
+      "lede": "The club's first full series, run online and recorded: Python and data science from a first Kaggle submission to clustering and dimensionality reduction.",
+      "modules": [
+        { "event": "29" },
+        { "event": "30" },
+        { "event": "32" },
+        { "event": "33" },
+        { "event": "34" },
+        { "event": "35" },
+        { "event": "36" }
+      ]
+    }
+  ],
+  "standalone": {
+    "title": "One-off workshops",
+    "lede": "Sessions run at hackathons and on their own, outside a series.",
+    "events": ["63", "14", "58", "4", "37", "22", "20"]
+  }
+}

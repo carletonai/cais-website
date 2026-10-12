@@ -20,6 +20,10 @@
       "title": "Events",
       "description": "Workshops, socials, and hackathon sessions hosted by the Carleton AI Society. See what is coming up and browse past events."
     },
+    "/workshops": {
+      "title": "Workshop curriculum",
+      "description": "Every CAIS workshop series in the order to take it, from AI basics to machine learning and deep learning, with the slides, code and recordings that are online."
+    },
     "/projects": {
       "title": "Projects",
       "description": "Innovative AI and machine learning projects built by CAIS members, taken from idea to working prototype."
