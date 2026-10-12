@@ -70,15 +70,27 @@ const HEADING = new RegExp(
   "m",
 );
 
-/** The text without HTML comments, however they nest or overlap. */
+/** One pass: every "<!-- … -->" cut out; an unclosed one runs to the end. */
+const cutComments = (/** @type {string} */ text) => {
+  let out = "";
+  let i = 0;
+  for (;;) {
+    const start = text.indexOf("<!--", i);
+    if (start === -1) return out + text.slice(i);
+    out += text.slice(i, start);
+    const end = text.indexOf("-->", start + 4);
+    if (end === -1) return out;
+    i = end + 3;
+  }
+};
+
+/** The text without HTML comments, however they nest or overlap: cutting
+ *  one out can expose another ("<!-<!-- -->-- -->"), so it repeats until
+ *  none is left; every pass shortens the text, so it ends. */
 const withoutComments = (/** @type {string} */ text) => {
   let out = text;
-  for (let i = 0; i < 100; i += 1) {
-    const next = out.replace(/<!--[\s\S]*?-->/g, "");
-    if (next === out) break;
-    out = next;
-  }
-  return out.includes("<!--") ? out.replace(/<!--[\s\S]*/g, "") : out;
+  while (out.includes("<!--")) out = cutComments(out);
+  return out;
 };
 
 /**
