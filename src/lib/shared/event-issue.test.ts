@@ -85,6 +85,16 @@ describe("parseIssueForm", () => {
     );
     expect(answers["Agenda"]).toBeUndefined();
   });
+
+  it("strips comments that nest, overlap or never close", () => {
+    const nested = submission({
+      Description: "Food <!-<!-- x -->-- y --> yes",
+    });
+    expect(parseIssueForm(nested)["Description"]).toBe("Food  yes");
+    const open = submission({ Description: "Talks <!-- never closed" });
+    expect(parseIssueForm(open)["Description"]).toBe("Talks");
+    expect(parseIssueForm(open)["Description"]).not.toContain("<!--");
+  });
 });
 
 test("isEventForm recognizes a submission by its headings", () => {
@@ -452,11 +462,11 @@ describe("describeDraft", () => {
   it("describes a draft for the pull request, closing the issue", () => {
     const result = eventFromIssue(parseIssueForm(submission()), {
       ...context,
-      title: "Event: ML 101 | Part 1",
+      title: "Event: ML 101 \\| Part 1",
     });
     const text = describeDraft(result, { issueNumber: 70, poster: "attached" });
     expect(text).toContain("## Event drafted from #70");
-    expect(text).toContain("| Title | ML 101 \\| Part 1 |");
+    expect(text).toContain("| Title | ML 101 \\\\\\| Part 1 |");
     expect(text).toContain("| Poster | attached |");
     expect(text.trim().endsWith("Closes #70")).toBe(true);
   });
