@@ -1,0 +1,94 @@
+name: New event
+description: Put an event on the calendar. A pull request with the draft opens on its own.
+title: "Event: "
+labels: ["event"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill in what you know. When you submit, a pull request appears with the event drafted into the site's data, poster included; merging it puts the event on the calendar and builds its page and calendar file. If something cannot be read, a comment here says what to change, and editing this issue runs the check again.
+
+        Pasting the Instagram caption into the description is fine: the time, place and RSVP link are read from it when their own fields are left blank.
+  - type: input
+    id: title
+    attributes:
+      label: Event title
+      placeholder: Intro to Agentic AI
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: Date
+      description: YYYY-MM-DD. A written date ("October 9") works too.
+      placeholder: "2026-10-09"
+    validations:
+      required: true
+  - type: input
+    id: end-date
+    attributes:
+      label: Last day
+      description: Only for an event that runs over several days (a hackathon); the last day, YYYY-MM-DD.
+  - type: input
+    id: time
+    attributes:
+      label: Time
+      description: '"6:00 PM - 7:00 PM", or a start time alone. Leave blank for an all-day event.'
+      placeholder: "6:00 PM - 7:00 PM"
+  - type: input
+    id: location
+    attributes:
+      label: Location
+      placeholder: Herzberg 5345, or Online
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      options:
+        - Workshop
+        - Talk
+        - Social
+        - Competition
+      default: 0
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A sentence or two for the event's card, or the Instagram caption as posted.
+    validations:
+      required: true
+  - type: checkboxes
+    id: tags
+    attributes:
+      label: Tags
+      options:
+        - label: beginner-friendly
+        - label: hands-on
+        - label: technical
+        - label: online
+        - label: free-food
+        - label: guest-speaker
+        - label: networking
+        - label: recruitment
+        - label: hackathon
+  - type: input
+    id: rsvp
+    attributes:
+      label: RSVP or registration link
+      placeholder: https://luma.com/…
+  - type: input
+    id: instagram
+    attributes:
+      label: Instagram post
+      description: The announcement's link, if it is already up.
+      placeholder: https://www.instagram.com/p/…
+  - type: input
+    id: materials
+    attributes:
+      label: Materials
+      description: Slides, code or a notebook, if they are online already.
+  - type: textarea
+    id: poster
+    attributes:
+      label: Poster
+      description: Drag the poster image into this box (JPEG or PNG; it is resized and converted as needed).

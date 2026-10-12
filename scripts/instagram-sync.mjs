@@ -18,7 +18,7 @@
  * caption the heuristics flag, which catches dates written in prose and
  * posts that only sound like events. Without it the heuristics stand alone.
  */
-import { execFileSync, spawnSync } from "node:child_process";
+import { execFileSync } from "node:child_process";
 import { appendFileSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -31,6 +31,7 @@ import {
   posterSource,
   summarize,
 } from "../src/lib/shared/instagram-sync-core.js";
+import { savePoster } from "./lib/poster.mjs";
 
 /** @typedef {import("../src/lib/shared/instagram-sync-core.js").Media} Media */
 /** @typedef {import("../src/lib/shared/instagram-sync-core.js").Outcome} Outcome */
@@ -107,83 +108,6 @@ const fetchMedia = async (/** @type {string} */ token) => {
   const byId = new Map();
   for (const item of [...(own.data ?? []), ...tagged]) byId.set(item.id, item);
   return [...byId.values()];
-};
-
-/** Width and height from a JPEG's start-of-frame marker. */
-const jpegSize = (/** @type {Buffer} */ buffer) => {
-  let i = 2;
-  while (i + 9 < buffer.length) {
-    if (buffer[i] !== 0xff) {
-      i += 1;
-      continue;
-    }
-    const marker = buffer[i + 1];
-    if (
-      marker >= 0xc0 &&
-      marker <= 0xcf &&
-      ![0xc4, 0xc8, 0xcc].includes(marker)
-    ) {
-      return {
-        posterHeight: buffer.readUInt16BE(i + 5),
-        posterWidth: buffer.readUInt16BE(i + 7),
-      };
-    }
-    if (
-      marker === 0xd8 ||
-      (marker >= 0xd0 && marker <= 0xd7) ||
-      marker === 0x01
-    ) {
-      i += 2;
-      continue;
-    }
-    i += 2 + buffer.readUInt16BE(i + 2);
-  }
-  return null;
-};
-
-/**
- * Saves the poster beside the others and its 600px copy for the cards
- * (ImageMagick, which the GitHub runner has; by hand otherwise).
- * @param {string} url
- * @param {string} name
- */
-const savePoster = async (url, name) => {
-  const response = await fetch(url, { signal: AbortSignal.timeout(30_000) });
-  if (!response.ok) throw new Error(`${response.status} fetching the poster`);
-  const buffer = Buffer.from(await response.arrayBuffer());
-  if (buffer[0] !== 0xff || buffer[1] !== 0xd8)
-    throw new Error("the poster is not a JPEG");
-  const dir = join(root, "public/assets/events");
-  const file = join(dir, `${name}.jpg`);
-  writeFileSync(file, buffer);
-  const size = jpegSize(buffer);
-  if (!size) throw new Error("could not read the poster's size");
-  const convert = ["magick", "convert"].find(
-    (command) =>
-      spawnSync(command, ["-version"], { stdio: "ignore" }).status === 0,
-  );
-  if (convert) {
-    spawnSync(
-      convert,
-      [
-        file,
-        "-resize",
-        "600x",
-        "-quality",
-        "82",
-        "-strip",
-        join(dir, `${name}-600.jpg`),
-      ],
-      {
-        stdio: "inherit",
-      },
-    );
-  } else {
-    console.warn(
-      `instagram-sync: no ImageMagick; make ${name}-600.jpg by hand (see CONTRIBUTING.md)`,
-    );
-  }
-  return { poster: `/assets/events/${name}.jpg`, ...size };
 };
 
 /**
@@ -343,6 +267,7 @@ const main = async () => {
         const poster = await savePoster(
           source,
           posterName(draft.title, draft.date),
+          { root, log: (m) => console.warn(`instagram-sync: ${m}`) },
         );
         event = { ...rest, ...poster, tags };
       } catch (error) {

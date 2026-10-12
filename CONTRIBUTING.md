@@ -135,6 +135,30 @@ Events live in `src/data/events.json`; the newest go at the end.
 The build writes a page, a link preview (using the poster) and an `.ics` file
 for every event, plus `/events.ics`, the calendar people subscribe to.
 
+## Adding an event from GitHub
+
+The same thing without touching a file: open a **New event** issue
+(Issues, New issue, the "New event" form). Fill in the title, date and a
+description, and whatever else you know; drag the poster into the Poster
+box. On submit, `.github/workflows/event-intake.yml` runs
+`scripts/event-from-issue.mjs`, which turns the form into an entry at the
+end of `events.json` (the next free id, the poster saved and resized, the
+600px copy made) and opens a pull request titled "Event: …". Merging the
+pull request puts the event on the site and closes the issue.
+
+- If a field cannot be read (a date like "next month", a link that is not
+  https), the issue gets a comment listing what to change; edit the issue
+  and the check runs again.
+- Pasting the Instagram caption as the description is fine: the time, place
+  and RSVP link are read from it when their own fields are blank, and links
+  and hashtags are stripped from what the card shows.
+- Only people in the carletonai organization or with access to the
+  repository start a draft; anyone else's "New event" issue stays an
+  ordinary issue for an exec to act on.
+
+The Instagram sync below does the same for posts on its own, when it has a
+token; the form needs none.
+
 ## The workshop curriculum
 
 `/workshops` lays the club's workshop series out in the order to take them,
@@ -257,7 +281,7 @@ src/
 ├── data/         # Everything the site shows: events, teams, projects, metadata
 ├── lib/          # Event times, calendar files, search and other helpers
 └── main.tsx      # Entry point
-scripts/          # Build-time prerendering and the contrast audit
+scripts/          # Build-time prerendering, the contrast audit, the Instagram sync and the event intake
 public/           # Static files: posters, brand assets, the constitution, 404.html
 ```
 

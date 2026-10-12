@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Adding an event by hand
+    url: https://github.com/carletonai/cais-website/blob/master/CONTRIBUTING.md#adding-an-event
+    about: How events.json works, for changes the form does not cover.
