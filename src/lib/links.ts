@@ -24,7 +24,7 @@ export const CONSTITUTION_URL = "/constitution.pdf";
  * or null until the club has one: the field is not shown until it is set.
  * Setting it up: CONTRIBUTING.md, "Mailing list".
  */
-export const NEWSLETTER_USERNAME: string | null = null;
+export const NEWSLETTER_USERNAME: string | null = "cais";
 
 /** Where Buttondown's plain form posts a new subscriber. */
 export const newsletterAction = (username: string) =>
