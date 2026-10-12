@@ -2,6 +2,8 @@ import {
   captionBody,
   describeDraft,
   eventFromIssue,
+  eventTitle,
+  isEventForm,
   parseIssueForm,
   posterUrlIn,
   readDate,
@@ -19,11 +21,11 @@ const events = [
   },
   { id: "67", title: "Grok Bot Meetup – Ottawa", date: "2026-10-17" },
 ];
+const context = { title: "Event: Machine Learning 101", today, events };
 
 /** A submitted form, the way GitHub writes it into the issue body. */
 const submission = (overrides: Record<string, string> = {}) => {
   const answers: Record<string, string> = {
-    "Event title": "Machine Learning 101",
     Date: "2026-10-23",
     "Last day": "_No response_",
     Time: "6:00 PM - 7:00 PM",
@@ -57,7 +59,7 @@ const caption = [
 describe("parseIssueForm", () => {
   it("reads each answer under its heading and blanks the no-response marker", () => {
     const answers = parseIssueForm(submission());
-    expect(answers["Event title"]).toBe("Machine Learning 101");
+    expect(answers["Date"]).toBe("2026-10-23");
     expect(answers["Last day"]).toBe("");
     expect(answers["Description"]).toMatch(/^Teach a model/);
     expect(answers["Tags"]).toContain("- [x] beginner-friendly");
@@ -71,6 +73,33 @@ describe("parseIssueForm", () => {
       Poster: "",
     });
   });
+
+  it("splits only on the form's own headings and drops HTML comments", () => {
+    const body = submission({
+      Description:
+        "<!-- a note GitHub hid -->\n### Agenda\n\nTalks, then food.\n\n### Not a field",
+    });
+    const answers = parseIssueForm(body);
+    expect(answers["Description"]).toBe(
+      "### Agenda\n\nTalks, then food.\n\n### Not a field",
+    );
+    expect(answers["Agenda"]).toBeUndefined();
+  });
+});
+
+test("isEventForm recognizes a submission by its headings", () => {
+  expect(isEventForm(submission())).toBe(true);
+  expect(isEventForm("Just a bug report with ### Steps")).toBe(false);
+});
+
+test("eventTitle takes the issue title after the form's prefix", () => {
+  expect(eventTitle("Event: Machine Learning 101")).toBe(
+    "Machine Learning 101",
+  );
+  expect(eventTitle("event:ML 101")).toBe("ML 101");
+  expect(eventTitle("New event: ML 101")).toBe("ML 101");
+  expect(eventTitle("ML 101")).toBe("ML 101");
+  expect(eventTitle("Event: ")).toBe("");
 });
 
 test("ticked lists the boxes checked, in either case", () => {
@@ -79,12 +108,30 @@ test("ticked lists the boxes checked, in either case", () => {
 });
 
 describe("readDate", () => {
-  it("takes ISO dates and written ones, and rejects impossible ones", () => {
-    expect(readDate("2026-10-23", today)).toBe("2026-10-23");
-    expect(readDate("2026-1-5", today)).toBe("2026-01-05");
-    expect(readDate("October 23, 2026", today)).toBe("2026-10-23");
-    expect(readDate("Oct 23", today)).toBe("2026-10-23");
+  it("takes ISO dates and dates with the month written out", () => {
+    expect(readDate("2026-10-23", today)).toEqual({
+      date: "2026-10-23",
+      yearGiven: true,
+    });
+    expect(readDate("2026-1-5", today)).toEqual({
+      date: "2026-01-05",
+      yearGiven: true,
+    });
+    expect(readDate("October 23, 2026", today)).toEqual({
+      date: "2026-10-23",
+      yearGiven: true,
+    });
+    expect(readDate("Oct 23", today)).toEqual({
+      date: "2026-10-23",
+      yearGiven: false,
+    });
+  });
+
+  it("rejects impossible dates and anything relative", () => {
     expect(readDate("2026-02-30", today)).toBeNull();
+    expect(readDate("Friday", today)).toBeNull();
+    expect(readDate("tomorrow", today)).toBeNull();
+    expect(readDate("10/23/2026", today)).toBeNull();
     expect(readDate("soon", today)).toBeNull();
     expect(readDate("", today)).toBeNull();
   });
@@ -103,6 +150,29 @@ describe("readTime", () => {
     });
   });
 
+  it("gives a range's end the period of its start, crossing noon when it must", () => {
+    expect(readTime("6:00 PM - 7:00")).toEqual({
+      time: "6:00 PM - 7:00 PM",
+      normalized: true,
+    });
+    expect(readTime("11 AM - 1")).toEqual({
+      time: "11:00 AM - 1:00 PM",
+      normalized: true,
+    });
+  });
+
+  it("reads 24-hour clock times", () => {
+    expect(readTime("18:00")).toEqual({ time: "6:00 PM", normalized: true });
+    expect(readTime("18:00 - 19:30")).toEqual({
+      time: "6:00 PM - 7:30 PM",
+      normalized: true,
+    });
+    expect(readTime("09:30-12:00")).toEqual({
+      time: "9:30 AM - 12:00 PM",
+      normalized: true,
+    });
+  });
+
   it("treats blank and TBA as all day", () => {
     expect(readTime("")).toEqual({ time: "", normalized: true });
     expect(readTime("TBA")).toEqual({ time: "", normalized: true });
@@ -112,12 +182,16 @@ describe("readTime", () => {
     const odd = "Sat 10:00 AM–4:30 PM, Sun 10:00 AM–1:00 PM";
     expect(readTime(odd)).toEqual({ time: odd, normalized: false });
     expect(readTime("25pm")).toEqual({ time: "25pm", normalized: false });
+    expect(readTime("6:00 - 7:00")).toEqual({
+      time: "6:00 - 7:00",
+      normalized: false,
+    });
   });
 });
 
 describe("captionBody", () => {
   it("drops the date, time, place and label lines of a pasted caption", () => {
-    const kept = captionBody(caption, "Herzberg 5345")
+    const kept = captionBody(caption, ["Herzberg 5345"])
       .split("\n")
       .filter(Boolean);
     expect(kept).toEqual([
@@ -127,10 +201,24 @@ describe("captionBody", () => {
     ]);
   });
 
+  it("drops a one-line header and a pin line even when the place was typed differently", () => {
+    const oneLine =
+      "📅 Friday, October 23 🕕 6-7pm 📍 Herzberg 5345\nCome learn ML!\n📍 HP 5345";
+    expect(captionBody(oneLine, ["Herzberg 5345", ""])).toBe("Come learn ML!");
+    expect(captionBody("Oct 23 · 6-7pm · HP 5345\nSee you!", ["HP 5345"])).toBe(
+      "See you!",
+    );
+  });
+
   it("leaves ordinary text alone", () => {
-    expect(captionBody("Bring a laptop.\n\nSee you there!", "")).toBe(
+    expect(captionBody("Bring a laptop.\n\nSee you there!", [""])).toBe(
       "Bring a laptop.\n\nSee you there!",
     );
+    expect(
+      captionBody("Join us on October 23 at 6pm in Herzberg 5345.", [
+        "Herzberg 5345",
+      ]),
+    ).toBe("Join us on October 23 at 6pm in Herzberg 5345.");
   });
 });
 
@@ -159,13 +247,13 @@ describe("posterUrlIn", () => {
 });
 
 describe("eventFromIssue", () => {
-  it("drafts an event from a complete form", () => {
+  it("drafts an event from a complete form, titled by the issue", () => {
     const result = eventFromIssue(parseIssueForm(submission()), {
-      today,
-      events,
+      ...context,
       issueUrl: "https://github.com/carletonai/cais-website/issues/70",
     });
     expect(result.errors).toEqual([]);
+    expect(result.warnings).toEqual([]);
     expect(result.event).toEqual({
       id: "68",
       title: "Machine Learning 101",
@@ -190,7 +278,7 @@ describe("eventFromIssue", () => {
           Description: caption,
         }),
       ),
-      { today, events },
+      context,
     );
     expect(result.errors).toEqual([]);
     expect(result.event).toMatchObject({
@@ -205,10 +293,10 @@ describe("eventFromIssue", () => {
 
   it("keeps a time it cannot normalize and says so", () => {
     const odd = "Sat 10:00 AM–4:30 PM, Sun 10:00 AM–1:00 PM";
-    const result = eventFromIssue(parseIssueForm(submission({ Time: odd })), {
-      today,
-      events,
-    });
+    const result = eventFromIssue(
+      parseIssueForm(submission({ Time: odd })),
+      context,
+    );
     expect(result.event?.time).toBe(odd);
     expect(result.warnings.join(" ")).toMatch(/kept as written/);
   });
@@ -216,14 +304,23 @@ describe("eventFromIssue", () => {
   it("treats a blank or TBA time as all day", () => {
     const blank = eventFromIssue(
       parseIssueForm(submission({ Time: "_No response_" })),
-      { today, events },
+      context,
     );
     expect(blank.event?.time).toBe("");
-    const tba = eventFromIssue(parseIssueForm(submission({ Time: "TBA" })), {
-      today,
-      events,
-    });
+    const tba = eventFromIssue(
+      parseIssueForm(submission({ Time: "TBA" })),
+      context,
+    );
     expect(tba.event?.time).toBe("");
+  });
+
+  it("warns when the year had to be guessed", () => {
+    const result = eventFromIssue(
+      parseIssueForm(submission({ Date: "Oct 23" })),
+      context,
+    );
+    expect(result.event?.date).toBe("2026-10-23");
+    expect(result.warnings.join(" ")).toMatch(/write the year/);
   });
 
   it("takes the optional links, the last day and the poster", () => {
@@ -238,7 +335,7 @@ describe("eventFromIssue", () => {
             "![poster](https://github.com/user-attachments/assets/1234abcd-5678-90ef-aaaa-bbbbccccdddd)",
         }),
       ),
-      { today, events },
+      context,
     );
     expect(result.errors).toEqual([]);
     expect(result.event).toMatchObject({
@@ -250,24 +347,43 @@ describe("eventFromIssue", () => {
     expect(result.posterUrl).toMatch(/user-attachments/);
   });
 
-  it("falls back to the tags the words support, for the chosen type, when none are ticked", () => {
-    const result = eventFromIssue(
+  it("always carries the type's own tag, and reads tags from the words when none are ticked", () => {
+    const ticked = eventFromIssue(
+      parseIssueForm(
+        submission({ Tags: "- [x] free-food\n- [ ] hands-on", Type: "Social" }),
+      ),
+      context,
+    );
+    expect(ticked.event?.tags).toEqual(["free-food", "social"]);
+    const none = eventFromIssue(
       parseIssueForm(
         submission({
           Tags: "- [ ] beginner-friendly\n- [ ] hands-on",
           Type: "Social",
         }),
       ),
-      { today, events },
+      context,
     );
-    expect(result.event?.tags).toEqual(["hands-on", "social"]);
+    expect(none.event?.tags).toEqual(["hands-on", "social"]);
+  });
+
+  it("refuses tags the site does not use", () => {
+    const result = eventFromIssue(
+      parseIssueForm(
+        submission({ Tags: "- [x] beginner-friendly\n- [x] vip" }),
+      ),
+      context,
+    );
+    expect(result.event).toBeNull();
+    expect(result.errors.join(" ")).toMatch(
+      /"vip", which the site does not use/,
+    );
   });
 
   it("refuses a form it cannot make an event from, naming every problem", () => {
     const result = eventFromIssue(
       parseIssueForm(
         submission({
-          "Event title": "_No response_",
           Date: "next month",
           "RSVP or registration link": "luma.com/x",
           "Instagram post": "https://example.com/post",
@@ -275,46 +391,43 @@ describe("eventFromIssue", () => {
           Type: "Party",
         }),
       ),
-      { today, events },
+      { ...context, title: "Event: " },
     );
     expect(result.event).toBeNull();
     expect(result.errors).toHaveLength(6);
-    expect(result.errors.join("\n")).toMatch(/Event title\*\* is required/);
+    expect(result.errors.join("\n")).toMatch(
+      /\*\*title\*\* is the event's title/,
+    );
     expect(result.errors.join("\n")).toMatch(/Date\*\* could not be read/);
   });
 
   it("rejects a last day before the date and drops one equal to it", () => {
     const before = eventFromIssue(
       parseIssueForm(submission({ "Last day": "2026-10-22" })),
-      { today, events },
+      context,
     );
     expect(before.errors.join(" ")).toMatch(/before the date/);
     const same = eventFromIssue(
       parseIssueForm(submission({ "Last day": "2026-10-23" })),
-      { today, events },
+      context,
     );
     expect(same.errors).toEqual([]);
     expect(same.event?.endDate).toBeUndefined();
   });
 
-  it("spots an event that is already on the site", () => {
+  it("spots an event that is already on the site, however its post link was copied", () => {
     const byPost = eventFromIssue(
       parseIssueForm(
         submission({
-          "Instagram post": "https://www.instagram.com/p/DeLVyDeOnbq/",
+          "Instagram post": "https://instagram.com/p/DeLVyDeOnbq?igsh=abc",
         }),
       ),
-      { today, events },
+      context,
     );
     expect(byPost.errors.join(" ")).toMatch(/already on the site as event #66/);
     const byTitle = eventFromIssue(
-      parseIssueForm(
-        submission({
-          "Event title": "grok bot meetup, ottawa!",
-          Date: "2026-10-17",
-        }),
-      ),
-      { today, events },
+      parseIssueForm(submission({ Date: "2026-10-17" })),
+      { ...context, title: "Event: grok bot meetup, ottawa!" },
     );
     expect(byTitle.errors.join(" ")).toMatch(
       /already on the site as event #67/,
@@ -326,7 +439,7 @@ describe("eventFromIssue", () => {
       parseIssueForm(
         submission({ Date: "2026-09-24", Poster: "see attached" }),
       ),
-      { today, events },
+      context,
     );
     expect(result.errors).toEqual([]);
     expect(result.warnings.join(" ")).toMatch(/has passed/);
@@ -338,15 +451,12 @@ describe("eventFromIssue", () => {
 describe("describeDraft", () => {
   it("describes a draft for the pull request, closing the issue", () => {
     const result = eventFromIssue(parseIssueForm(submission()), {
-      today,
-      events,
+      ...context,
+      title: "Event: ML 101 | Part 1",
     });
-    const text = describeDraft(result, {
-      issueNumber: 70,
-      poster: "/assets/events/machine-learning-101-2026.jpg",
-    });
+    const text = describeDraft(result, { issueNumber: 70, poster: "attached" });
     expect(text).toContain("## Event drafted from #70");
-    expect(text).toContain("| Title | Machine Learning 101 |");
+    expect(text).toContain("| Title | ML 101 \\| Part 1 |");
     expect(text).toContain("| Poster | attached |");
     expect(text.trim().endsWith("Closes #70")).toBe(true);
   });
@@ -354,9 +464,9 @@ describe("describeDraft", () => {
   it("lists what to fix when there is no draft", () => {
     const result = eventFromIssue(
       parseIssueForm(submission({ Date: "someday" })),
-      { today, events },
+      context,
     );
-    const text = describeDraft(result, { issueNumber: 70 });
+    const text = describeDraft(result, { issueNumber: 70, poster: "none" });
     expect(text).toContain("## No event drafted yet");
     expect(text).toContain("could not be read");
     expect(text).not.toContain("Closes #70");

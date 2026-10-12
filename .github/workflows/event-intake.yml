@@ -5,8 +5,9 @@ name: Event intake
 # poster included; merging the pull request closes the issue. If the form
 # cannot be read, the issue gets a comment saying what to change, and
 # editing it runs this again. Only people in the organization or with
-# access to the repository can start it. CONTRIBUTING.md, "Adding an event
-# from GitHub".
+# access to the repository start a draft; anyone else gets a thank-you and
+# an exec takes it from there. CONTRIBUTING.md, "Adding an event from
+# GitHub".
 on:
   issues:
     types: [opened, edited]
@@ -22,10 +23,15 @@ concurrency:
 
 jobs:
   draft:
+    # The form is recognized by its own headings, not by a label: a label
+    # the repository lacks would be dropped silently. Title-only edits do
+    # not redraft, so a renamed issue keeps its pull request as it is.
     if: >-
       github.repository == 'carletonai/cais-website' &&
       github.event.issue.state == 'open' &&
-      contains(github.event.issue.labels.*.name, 'event') &&
+      contains(github.event.issue.body, '### Date') &&
+      contains(github.event.issue.body, '### Description') &&
+      (github.event.action == 'opened' || github.event.changes.body != null || github.event.changes.title != null) &&
       contains(fromJSON('["OWNER", "MEMBER", "COLLABORATOR"]'), github.event.issue.author_association)
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -58,39 +64,49 @@ jobs:
         env:
           NPM_CONFIG_REGISTRY: "https://registry.npmjs.org/"
 
-      # The issue body is anyone's text: it reaches the script through the
+      # The issue's text is anyone's text: it reaches the script through the
       # environment, never through the shell.
       - name: Draft the event from the issue
         id: draft
         env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
           ISSUE_BODY: ${{ github.event.issue.body }}
           ISSUE_URL: ${{ github.event.issue.html_url }}
         run: node scripts/event-from-issue.mjs --summary-file "$RUNNER_TEMP/summary.md"
 
+      # The pull request this job opens does not get the repository's own
+      # CI (a token-made pull request starts no workflow), so the build and
+      # the data tests run here instead: a bad poster or id stops before
+      # anything is pushed.
       - name: Check the drafted data the way CI will
         if: steps.draft.outputs.added == '1'
-        run: pnpm exec jest src/data
+        run: |
+          pnpm exec jest src/data
+          pnpm run build
 
       - name: Open or update the pull request
         if: steps.draft.outputs.added == '1'
         env:
           TITLE: ${{ steps.draft.outputs.title }}
+          EVENT_ID: ${{ steps.draft.outputs.event_id }}
         run: |
           branch="event-issue-$ISSUE_NUMBER"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "$branch"
           git add src/data/events.json public/assets/events
-          git commit -m "feat(events): $TITLE" \
-            -m "Drafted from the New event issue form (#$ISSUE_NUMBER). Check it against the announcement before merging."
+          # The commit message carries no text from the issue: words like
+          # "closes #12" in a title must not act when the commit lands.
+          git commit -m "feat(events): event #$EVENT_ID from issue #$ISSUE_NUMBER" \
+            -m "Drafted from the New event issue form. Check it against the announcement before merging."
           git push --force origin "$branch"
-          if gh pr view "$branch" --json number >/dev/null 2>&1; then
-            gh pr edit "$branch" --body-file "$RUNNER_TEMP/summary.md"
+          open=$(gh pr list --head "$branch" --state open --json number --jq '.[0].number // empty')
+          if [ -n "$open" ]; then
+            gh pr edit "$open" --title "Event: $TITLE" --body-file "$RUNNER_TEMP/summary.md"
           else
-            gh pr create --base master --head "$branch" \
+            url=$(gh pr create --base master --head "$branch" \
               --title "Event: $TITLE" \
-              --body-file "$RUNNER_TEMP/summary.md"
-            url=$(gh pr view "$branch" --json url --jq .url)
+              --body-file "$RUNNER_TEMP/summary.md")
             gh issue comment "$ISSUE_NUMBER" \
               --body "Drafted as $url. Check it against the announcement and merge it to put the event on the site; editing this issue redoes the draft."
           fi
@@ -98,3 +114,27 @@ jobs:
       - name: Say what needs changing
         if: steps.draft.outputs.added == '0'
         run: gh issue comment "$ISSUE_NUMBER" --body-file "$RUNNER_TEMP/summary.md"
+
+      - name: Say that the draft failed
+        if: failure()
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --body "The draft could not be made. The run's log says why: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID. Editing the issue runs it again; otherwise add the event by hand (CONTRIBUTING.md, \"Adding an event\")."
+
+  acknowledge:
+    # A form from someone outside the club's GitHub: no draft, but not
+    # silence either.
+    if: >-
+      github.repository == 'carletonai/cais-website' &&
+      github.event.action == 'opened' &&
+      contains(github.event.issue.body, '### Date') &&
+      contains(github.event.issue.body, '### Description') &&
+      !contains(fromJSON('["OWNER", "MEMBER", "COLLABORATOR"]'), github.event.issue.author_association)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      issues: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Thank them
+        run: gh issue comment "${{ github.event.issue.number }}" --repo "$GITHUB_REPOSITORY" --body "Thanks for the event! Drafts are made only for members of the club's GitHub organization, so an exec will add this one by hand."

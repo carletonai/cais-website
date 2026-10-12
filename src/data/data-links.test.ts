@@ -76,7 +76,7 @@ describe("data files", () => {
 
   it("links only to https pages or to this site", () => {
     const links = all.filter(([key]) =>
-      /^(link|rsvpLink|page|recording|materials|linkedinURL|url|instagram)$/.test(
+      /^(link|rsvpLink|page|recording|materials|linkedinURL|url|instagram|issue)$/.test(
         key,
       ),
     );

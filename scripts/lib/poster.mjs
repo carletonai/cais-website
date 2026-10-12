@@ -5,7 +5,13 @@
  * it for the cards. Shared by the Instagram sync and the issue intake.
  */
 import { spawnSync } from "node:child_process";
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -63,19 +69,37 @@ export const imageMagick = () =>
   ) ?? null;
 
 /**
+ * `name`, or `name-2`, `name-3`… when a poster of that name is already
+ * there: a second "Intro to AI" in the same year must not replace the
+ * first one's poster.
+ * @param {string} root
+ * @param {string} name
+ */
+export const freePosterName = (root, name) => {
+  const dir = join(root, "public/assets/events");
+  let candidate = name;
+  for (let n = 2; existsSync(join(dir, `${candidate}.jpg`)); n += 1) {
+    candidate = `${name}-${n}`;
+  }
+  return candidate;
+};
+
+/**
  * Downloads the poster, stores it as `<name>.jpg` and writes its 600px
- * copy. A PNG or WebP is converted and anything wider than `maxWidth` is
- * scaled down, both with ImageMagick; without it only a JPEG can be saved,
- * as it is.
+ * copy. With `normalize`, every image is re-encoded through ImageMagick
+ * (a PNG or WebP becomes a JPEG, transparency goes white, an EXIF
+ * rotation is applied, anything wider than `maxWidth` is scaled down), so
+ * what is recorded is what is shown. Without it, a JPEG is stored as it
+ * came, which is right for Instagram's.
  * @param {string} url
  * @param {string} name file name without the extension
- * @param {{ root: string, maxWidth?: number, log?: (message: string) => void }} options
+ * @param {{ root: string, normalize?: boolean, maxWidth?: number, log?: (message: string) => void }} options
  * @returns {Promise<{ poster: string, posterWidth: number, posterHeight: number }>}
  */
 export const savePoster = async (
   url,
   name,
-  { root, maxWidth, log = console.warn },
+  { root, normalize = false, maxWidth = 1600, log = console.warn },
 ) => {
   const response = await fetch(url, { signal: AbortSignal.timeout(30_000) });
   if (!response.ok) throw new Error(`${response.status} fetching the poster`);
@@ -84,15 +108,15 @@ export const savePoster = async (
   if (!kind) throw new Error("the poster is not an image");
   const convert = imageMagick();
 
-  const needsConversion = kind !== "jpeg";
   let size = kind === "jpeg" ? jpegSize(buffer) : null;
-  const needsResize =
-    maxWidth !== undefined && size !== null && size.posterWidth > maxWidth;
-  if (needsConversion || needsResize || (kind === "jpeg" && !size)) {
-    if (!convert)
+  if (normalize || kind !== "jpeg" || !size) {
+    if (!convert) {
       throw new Error(
-        `the poster is a ${kind}${needsResize ? ` ${size?.posterWidth}px wide` : ""} and there is no ImageMagick to make a JPEG of it`,
+        kind === "jpeg"
+          ? "the JPEG's size could not be read and there is no ImageMagick to rewrite it"
+          : `the poster is a ${kind.toUpperCase()} and there is no ImageMagick to make a JPEG of it`,
       );
+    }
     const work = mkdtempSync(join(tmpdir(), "poster-"));
     try {
       const input = join(work, `input.${kind}`);
@@ -103,7 +127,14 @@ export const savePoster = async (
         [
           `${input}[0]`,
           "-auto-orient",
-          ...(maxWidth ? ["-resize", `${maxWidth}x>`] : []),
+          "-background",
+          "white",
+          "-alpha",
+          "remove",
+          "-alpha",
+          "off",
+          "-resize",
+          `${maxWidth}x>`,
           "-quality",
           "88",
           "-strip",
@@ -125,10 +156,11 @@ export const savePoster = async (
   const file = join(dir, `${name}.jpg`);
   writeFileSync(file, buffer);
   if (convert) {
-    spawnSync(
+    const result = spawnSync(
       convert,
       [
         file,
+        "-auto-orient",
         "-resize",
         "600x",
         "-quality",
@@ -138,6 +170,8 @@ export const savePoster = async (
       ],
       { stdio: "inherit" },
     );
+    if (result.status !== 0)
+      throw new Error(`ImageMagick could not make ${name}-600.jpg`);
   } else {
     log(`no ImageMagick; make ${name}-600.jpg by hand (see CONTRIBUTING.md)`);
   }

@@ -138,23 +138,39 @@ for every event, plus `/events.ics`, the calendar people subscribe to.
 ## Adding an event from GitHub
 
 The same thing without touching a file: open a **New event** issue
-(Issues, New issue, the "New event" form). Fill in the title, date and a
-description, and whatever else you know; drag the poster into the Poster
-box. On submit, `.github/workflows/event-intake.yml` runs
+(Issues, New issue, the "New event" form). The issue's title, after
+"Event:", is the event's title; fill in the date, a description and
+whatever else you know, and drag the poster into the Poster box. On
+submit, `.github/workflows/event-intake.yml` runs
 `scripts/event-from-issue.mjs`, which turns the form into an entry at the
-end of `events.json` (the next free id, the poster saved and resized, the
-600px copy made) and opens a pull request titled "Event: …". Merging the
-pull request puts the event on the site and closes the issue.
+end of `events.json` (the next free id; the poster converted to JPEG,
+scaled down if it is wider than 1600px, and its 600px copy made), checks
+it the way CI would, and opens a pull request titled "Event: …". A person
+merges the pull request: that puts the event on the site and closes the
+issue.
 
 - If a field cannot be read (a date like "next month", a link that is not
-  https), the issue gets a comment listing what to change; edit the issue
-  and the check runs again.
+  https, a tag the site does not use), the issue gets a comment listing
+  what to change. Edit the issue (the ··· menu on its first comment) and
+  the check runs again; the same happens if you edit it after the pull
+  request exists, which redrafts the pull request from scratch. If the
+  run fails for another reason, the comment links to its log.
 - Pasting the Instagram caption as the description is fine: the time, place
-  and RSVP link are read from it when their own fields are blank, and links
-  and hashtags are stripped from what the card shows.
+  and RSVP link are read from it when their own fields are blank, and its
+  date, time, place and link lines, hashtags and emoji are kept off the
+  card. Dates may be written out ("October 9"), but not as "Friday" or
+  "next week", which would mean something else on a later edit.
 - Only people in the carletonai organization or with access to the
-  repository start a draft; anyone else's "New event" issue stays an
-  ordinary issue for an exec to act on.
+  repository start a draft; anyone else gets a thank-you comment and an
+  exec adds the event by hand. If your own submission gets no response,
+  your organization membership may be private: ask an admin to make it
+  public or to add you as a collaborator.
+- Two event issues open at the same time draft the same id. Merge one,
+  then edit the other issue so it takes the next free id.
+- The workflow needs "Allow GitHub Actions to create and approve pull
+  requests" turned on under Settings, Actions, General (the same setting
+  the Instagram sync uses), and the `event` label to exist in the
+  repository, which it does.
 
 The Instagram sync below does the same for posts on its own, when it has a
 token; the form needs none.

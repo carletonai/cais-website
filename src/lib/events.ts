@@ -42,6 +42,8 @@ export interface ClubEvent {
   page?: string;
   /** The Instagram post it was announced in; set by scripts/instagram-sync.mjs. */
   instagram?: string;
+  /** The "New event" issue it was drafted from; set by scripts/event-from-issue.mjs. */
+  issue?: string;
   /** YYYY-MM-DD, the last day of an event that runs over several days. */
   endDate?: string;
 }
