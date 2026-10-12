@@ -70,6 +70,17 @@ const HEADING = new RegExp(
   "m",
 );
 
+/** The text without HTML comments, however they nest or overlap. */
+const withoutComments = (/** @type {string} */ text) => {
+  let out = text;
+  for (let i = 0; i < 100; i += 1) {
+    const next = out.replace(/<!--[\s\S]*?-->/g, "");
+    if (next === out) break;
+    out = next;
+  }
+  return out.includes("<!--") ? out.replace(/<!--[\s\S]*/g, "") : out;
+};
+
 /**
  * GitHub renders a submitted issue form as "### Label" headings, each
  * followed by the answer, with "_No response_" for a blank optional field.
@@ -79,10 +90,9 @@ const HEADING = new RegExp(
 export const parseIssueForm = (body) => {
   /** @type {Record<string, string>} */
   const answers = {};
-  const parts = (body ?? "")
-    .replace(/\r\n/g, "\n")
-    .replace(/<!--[\s\S]*?-->/g, "")
-    .split(HEADING);
+  const parts = withoutComments((body ?? "").replace(/\r\n/g, "\n")).split(
+    HEADING,
+  );
   // parts[0] is anything before the first heading; then label, value, ...
   for (let i = 1; i + 1 < parts.length; i += 2) {
     const value = parts[i + 1].trim();
@@ -469,9 +479,11 @@ export const eventFromIssue = (
   };
 };
 
-/** A value in a Markdown table cell. */
+/** A value in a Markdown table cell: backslashes and pipes escaped. */
 const cell = (/** @type {unknown} */ value) =>
-  String(value ?? "").replace(/\|/g, "\\|");
+  String(value ?? "")
+    .replace(/\\/g, "\\\\")
+    .replace(/\|/g, "\\|");
 
 /**
  * The pull request's description, or the comment that explains why no
