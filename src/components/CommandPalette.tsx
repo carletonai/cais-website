@@ -47,6 +47,11 @@ const fold = (text: string) =>
 const PAGES: Item[] = [
   ["Home", "/", "about join what we do"],
   ["Events", "/events", "workshops talks socials calendar"],
+  [
+    "Workshop curriculum",
+    "/workshops",
+    "learn series slides recordings code notebooks intro to ai machine learning deep learning",
+  ],
   ["Projects", "/projects", "build code hackathon"],
   ["Current Team", "/team", "exec executives people"],
   ["Past Teams", "/team/past", "alumni history"],
@@ -151,7 +156,7 @@ const ORDER: Group[] = [
 ];
 const LIMIT: Record<Group, number> = {
   Upcoming: 4,
-  Pages: 8,
+  Pages: 9,
   Events: 8,
   Projects: 5,
   People: 6,
