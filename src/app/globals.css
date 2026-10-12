@@ -48,6 +48,8 @@
   --color-mark: #cf252e;
   --color-circuit: #63666f;
   --color-dot: #1e1f24;
+  /* The "online" dot beside the Discord count. */
+  --color-online: #3ba55d;
 
   --color-destructive: #a90f14;
   --color-destructive-foreground: #ffffff;
@@ -91,6 +93,7 @@
 
   --color-circuit: #b9b2a4;
   --color-dot: #e4e0d5;
+  --color-online: #1f7a45;
 
   --color-border: #d6d0c3;
   --color-input: #847e74; /* 3.5:1 */

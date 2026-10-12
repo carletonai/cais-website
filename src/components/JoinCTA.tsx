@@ -1,25 +1,33 @@
 import { FaDiscord, FaInstagram } from "react-icons/fa";
 import { Section } from "@/components/brand/Section";
 import { Ring } from "@/components/brand/Ring";
+import { DiscordPresence } from "@/components/DiscordPresence";
+import { NewsletterForm } from "@/components/NewsletterForm";
 import { Button } from "@/components/ui/button";
-import { DISCORD_URL, INSTAGRAM_URL } from "@/lib/links";
+import { DISCORD_URL, INSTAGRAM_URL, NEWSLETTER_USERNAME } from "@/lib/links";
 
-const steps = [
-  {
-    title: "Join the Discord",
-    detail:
-      "The club's chat: meet other members and ask the exec team questions.",
-  },
-  {
-    title: "Follow @carletonaisociety",
-    detail: "Event posters and announcements go up on Instagram.",
-  },
-  {
-    title: "Come to an event",
-    detail:
-      "Workshops, talks and socials, for total beginners and seasoned researchers alike.",
-  },
-];
+const discord = {
+  title: "Join the Discord",
+  detail:
+    "The club’s chat: meet other members and ask the exec team questions.",
+};
+const instagram = {
+  title: "Follow @carletonaisociety",
+  detail: "Event posters and announcements go up on Instagram.",
+};
+const newsletter = {
+  title: "Get email updates",
+  detail: "A few emails a year: the term’s first workshop and the big events.",
+};
+const attend = {
+  title: "Come to an event",
+  detail:
+    "Workshops, talks and socials, for total beginners and seasoned researchers alike.",
+};
+
+const steps = NEWSLETTER_USERNAME
+  ? [discord, instagram, newsletter, attend]
+  : [discord, instagram, attend];
 
 /** How to join, on the posters' cream ground. */
 export function JoinCTA() {
@@ -37,7 +45,7 @@ export function JoinCTA() {
             Get involved
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Three ways to get started.
+            {steps.length === 4 ? "Four" : "Three"} ways to get started.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild size="lg">
@@ -55,6 +63,10 @@ export function JoinCTA() {
               </a>
             </Button>
           </div>
+          <DiscordPresence className="mt-4" />
+          {NEWSLETTER_USERNAME && (
+            <NewsletterForm username={NEWSLETTER_USERNAME} className="mt-10" />
+          )}
         </div>
         <ol className="space-y-6">
           {steps.map(({ title, detail }, i) => (

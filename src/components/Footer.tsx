@@ -7,6 +7,7 @@ const COLUMNS = [
     title: "Explore",
     links: [
       { label: "Events", to: "/events" },
+      { label: "Workshop curriculum", to: "/workshops" },
       { label: "Projects", to: "/projects" },
       { label: "CAIS Terminal", to: "/resources" },
       { label: "Contact", to: "/contact" },

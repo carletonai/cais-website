@@ -18,6 +18,7 @@ import RouteMeta from "../components/RouteMeta";
 const Projects = lazy(() => import("./projects/projects"));
 const Events = lazy(() => import("./events/events"));
 const EventPage = lazy(() => import("./events/event-page"));
+const Workshops = lazy(() => import("./workshops/workshops"));
 const Contact = lazy(() => import("./contact/contact"));
 const Team = lazy(() => import("./team/team"));
 const PastTeams = lazy(() => import("./past-teams/past-teams"));
@@ -156,6 +157,7 @@ const App = () => {
               <Route path="/projects" element={<Projects />} />
               <Route path="/events" element={<Events />} />
               <Route path="/events/:slug" element={<EventPage />} />
+              <Route path="/workshops" element={<Workshops />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/team" element={<Team />} />
               <Route path="/team/past" element={<PastTeams />} />

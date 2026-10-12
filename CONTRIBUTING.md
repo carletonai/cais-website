@@ -135,6 +135,51 @@ Events live in `src/data/events.json`; the newest go at the end.
 The build writes a page, a link preview (using the poster) and an `.ics` file
 for every event, plus `/events.ics`, the calendar people subscribe to.
 
+## The workshop curriculum
+
+`/workshops` lays the club's workshop series out in the order to take them,
+with each session's slides, code and recording. It is built from
+`src/data/curriculum.json`, which only points at events: the titles, dates,
+rooms and links all come from `events.json`, so a workshop is added there
+first (above) and then placed in the curriculum.
+
+- `series`: newest first; the first one is "this term" on the page. Each has
+  an `id`, `title`, `season` ("Fall 2026", "2021–22"), a one-paragraph `lede`
+  and its `modules` in the order they ran.
+- A module is `{ "event": "<id>" }`, optionally with a `blurb` to use instead
+  of the event's description (when the description reads as an announcement).
+  A session still to be announced is `{ "title": "...", "blurb": "..." }` with
+  no event; it shows as "Date to be announced" and goes after the dated ones.
+  When the event is created, replace `title` with its `event` id.
+- `standalone.events`: workshops run outside any series, by id.
+
+The tests check that every id exists, is a workshop, and appears once.
+
+## Mailing list
+
+The email field in the home page's "Get involved" section subscribes people
+to a [Buttondown](https://buttondown.com) newsletter. It is a plain form
+posting to Buttondown, which sends the confirmation email and hosts the
+archive and unsubscribe links, so the site keeps no addresses and needs no
+key. Setting it up:
+
+1. Create a Buttondown account for the club (the free plan covers the first
+   100 subscribers; "Email updates" copy promises a few emails a year).
+2. Set `NEWSLETTER_USERNAME` in `src/lib/links.ts` to the account's username.
+   The field is not shown while it is `null`.
+3. The production CSP already allows the post (`form-action` in
+   `vercel.json`). Subscribers arriving from the site carry the tag
+   `website`.
+
+## Discord presence
+
+The same section shows "42 online now · 1,200 members on Discord", read from
+Discord's public invite API (`DISCORD_PRESENCE_URL` in `src/lib/links.ts`),
+which describes a server to anyone holding an invite link and needs no key.
+The invite must stay valid: if it is ever revoked and replaced, update
+`DISCORD_INVITE` there. The answer is kept for five minutes in the browser,
+and if Discord does not answer the line is simply left out.
+
 ## Instagram sync
 
 Event announcements the club posts on Instagram can become draft events on
@@ -221,6 +266,7 @@ public/           # Static files: posters, brand assets, the constitution, 404.h
 - **Home (/)**: Landing page with CAIS's mission, an About section (`/#about`), and upcoming and past events
 - **Events (/events)**: Upcoming and past events, filterable by type and tag, plus the events calendar
 - **Event pages (/events/<id>-<title>)**: One page per event, with its poster as the link preview and calendar files
+- **Workshop curriculum (/workshops)**: Every workshop series in the order to take it, with slides, code and recordings
 - **Projects (/projects)**: Showcase of current and past projects
 - **CAIS Terminal (/resources)**: An interactive terminal with the club's links, events, projects and learning resources
 - **Governance (/governance)**: How the club is run; the landing page of the Team tab

@@ -28,6 +28,7 @@ describe("Navbar Component", () => {
     const links = [
       "Home",
       "Events",
+      "Workshops",
       "Projects",
       "Team",
       "Governance",
