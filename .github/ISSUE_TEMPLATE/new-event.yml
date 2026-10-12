@@ -6,21 +6,14 @@ body:
   - type: markdown
     attributes:
       value: |
-        Fill in what you know. When you submit, a pull request appears with the event drafted into the site's data, poster included; merging it puts the event on the calendar and builds its page and calendar file. If something cannot be read, a comment here says what to change, and editing this issue runs the check again.
+        The issue's title, after "Event:", is the event's title. Fill in what you know below. When you submit, a pull request appears with the event drafted into the site's data, poster included; merging it puts the event on the calendar and builds its page and calendar file. If something cannot be read, a comment here says what to change, and editing this issue runs the check again.
 
         Pasting the Instagram caption into the description is fine: the time, place and RSVP link are read from it when their own fields are left blank.
-  - type: input
-    id: title
-    attributes:
-      label: Event title
-      placeholder: Intro to Agentic AI
-    validations:
-      required: true
   - type: input
     id: date
     attributes:
       label: Date
-      description: YYYY-MM-DD. A written date ("October 9") works too.
+      description: YYYY-MM-DD, or with the month spelled out ("October 9, 2026"). For an event over several days, the first day.
       placeholder: "2026-10-09"
     validations:
       required: true
@@ -61,6 +54,7 @@ body:
     id: tags
     attributes:
       label: Tags
+      description: The event's type adds its own tag (technical, social or competition).
       options:
         - label: beginner-friendly
         - label: hands-on

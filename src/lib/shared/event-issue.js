@@ -11,7 +11,6 @@ import { nextId } from "./instagram-sync-core.js";
 
 /** The form's fields, by the label GitHub writes above each answer. */
 export const FIELDS = {
-  title: "Event title",
   date: "Date",
   endDate: "Last day",
   time: "Time",
@@ -27,12 +26,49 @@ export const FIELDS = {
 
 export const TYPES = ["Workshop", "Talk", "Social", "Competition"];
 
+/** The tag each type carries on the site, so its filter finds the event. */
+const TYPE_TAGS = {
+  Workshop: "technical",
+  Talk: "technical",
+  Social: "social",
+  Competition: "competition",
+};
+
+/** The boxes on the form, plus the tags the site already uses. */
+export const KNOWN_TAGS = [
+  "beginner-friendly",
+  "hands-on",
+  "technical",
+  "online",
+  "free-food",
+  "guest-speaker",
+  "networking",
+  "recruitment",
+  "hackathon",
+  "social",
+  "competition",
+  "discussion",
+  "conceptual",
+  "educational",
+  "planning",
+];
+
 /** Hosts an image dragged into an issue can come from; nothing else is fetched. */
 const POSTER_HOSTS = [
   "github.com",
   "user-images.githubusercontent.com",
   "private-user-images.githubusercontent.com",
 ];
+
+const escapeRegExp = (/** @type {string} */ text) =>
+  text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/** Only the form's own headings split the body: a "### " typed into the
+ *  description is part of the description. */
+const HEADING = new RegExp(
+  `^### +(${Object.values(FIELDS).map(escapeRegExp).join("|")}) *$`,
+  "m",
+);
 
 /**
  * GitHub renders a submitted issue form as "### Label" headings, each
@@ -43,13 +79,22 @@ const POSTER_HOSTS = [
 export const parseIssueForm = (body) => {
   /** @type {Record<string, string>} */
   const answers = {};
-  const parts = (body ?? "").replace(/\r\n/g, "\n").split(/^### +(.+?) *$/m);
+  const parts = (body ?? "")
+    .replace(/\r\n/g, "\n")
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .split(HEADING);
   // parts[0] is anything before the first heading; then label, value, ...
   for (let i = 1; i + 1 < parts.length; i += 2) {
     const value = parts[i + 1].trim();
     answers[parts[i].trim()] = value === "_No response_" ? "" : value;
   }
   return answers;
+};
+
+/** Whether a body is a submission of this form at all. */
+export const isEventForm = (/** @type {string} */ body) => {
+  const answers = parseIssueForm(body);
+  return FIELDS.date in answers && FIELDS.description in answers;
 };
 
 /** The boxes ticked in a checkboxes field. */
@@ -69,28 +114,75 @@ const validDate = (/** @type {string} */ date) => {
   );
 };
 
+const MONTH = String.raw`(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?`;
+const WEEKDAY = String.raw`(?:mon|tue|tues|wed|thu|thur|thurs|fri|sat|sun)[a-z]*\.?,?`;
+const NAMES_A_MONTH = new RegExp(`\\b${MONTH}`, "i");
+
 /**
- * YYYY-MM-DD from what someone typed: the ISO form, or a written date
- * resolved the way captions are ("Oct 9" is the next October 9th).
+ * YYYY-MM-DD from what someone typed: the ISO form, or a date with its
+ * month written out ("October 23", "Oct 23, 2026"). Nothing relative:
+ * "Friday" or "next week" would mean something else by the time the
+ * issue is edited and read again.
  * @param {string} text
- * @param {string} today YYYY-MM-DD
+ * @param {string} today YYYY-MM-DD, for a written date without a year
+ * @returns {{ date: string, yearGiven: boolean } | null}
  */
 export const readDate = (text, today) => {
   const value = collapse(text);
   if (!value) return null;
   const iso = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(value);
-  const date = iso
-    ? `${iso[1]}-${iso[2].padStart(2, "0")}-${iso[3].padStart(2, "0")}`
-    : dateIn(value, today);
-  return date && validDate(date) ? date : null;
+  if (iso) {
+    const date = `${iso[1]}-${iso[2].padStart(2, "0")}-${iso[3].padStart(2, "0")}`;
+    return validDate(date) ? { date, yearGiven: true } : null;
+  }
+  if (!NAMES_A_MONTH.test(value)) return null;
+  const date = dateIn(value, today);
+  return date && validDate(date)
+    ? { date, yearGiven: /\b\d{4}\b/.test(value) }
+    : null;
 };
 
 const CLOCK = String.raw`(?:noon|\d{1,2}(?::\d{2})?\s*(?:a\.?m\.?|p\.?m\.?)?)`;
+const RANGE = String.raw`(?:-|–|—|to|until|till)`;
 /** "6pm", "6:00 PM - 7:00 PM", "noon to 2": a time and nothing else. */
-const JUST_A_TIME = new RegExp(
-  `^${CLOCK}(?:\\s*(?:-|–|—|to|until|till)\\s*${CLOCK})?$`,
-  "i",
-);
+const JUST_A_TIME = new RegExp(`^${CLOCK}(?:\\s*${RANGE}\\s*${CLOCK})?$`, "i");
+
+/** "18:00" -> "6:00 pm", only when nothing in the text says am or pm. */
+const from24h = (/** @type {string} */ text) =>
+  /\b[ap]\.?m\b/i.test(text) || /\bnoon\b/i.test(text)
+    ? text
+    : text.replace(/\b([01]?\d|2[0-3]):([0-5]\d)\b/g, (_, h, m) => {
+        const hour = Number(h);
+        if (
+          hour < 8 &&
+          !/\b(?:0\d|[1-7]):\d{2}\b.*\b(?:1\d|2[0-3]):/.test(text)
+        )
+          return `${h}:${m}`; // "6:00 - 7:00" is left for the period rule below
+        return `${hour % 12 || 12}:${m} ${hour < 12 ? "am" : "pm"}`;
+      });
+
+/**
+ * "6:00 PM - 7:00" takes the period of its start; "11 AM - 1" crosses noon.
+ * @param {string} text
+ */
+const endPeriod = (text) => {
+  const m =
+    /^(\d{1,2})(?::\d{2})?\s*([ap])\.?m\.?\s*(-|–|—|to|until|till)\s*(\d{1,2})((?::\d{2})?)$/i.exec(
+      text,
+    );
+  if (!m) return text;
+  const [, start, period, sep, end, minutes] = m;
+  const crosses = Number(end) % 12 < Number(start) % 12 && Number(end) !== 12;
+  const endPeriodLetter = crosses
+    ? period.toLowerCase() === "a"
+      ? "pm"
+      : "am"
+    : `${period.toLowerCase()}m`;
+  return `${text.slice(0, m.index + m[0].length - end.length - minutes.length)}${end}${minutes} ${endPeriodLetter}`.replace(
+    sep,
+    "-",
+  );
+};
 
 /**
  * The time field as events.json writes it: "6:00 PM - 7:00 PM", a start
@@ -103,17 +195,21 @@ export const readTime = (text) => {
   const value = collapse(text);
   if (!value || /^(tba|tbd|all day)$/i.test(value))
     return { time: "", normalized: true };
-  if (JUST_A_TIME.test(value)) {
-    const time = timeIn(value);
-    if (time) return { time, normalized: true };
+  const candidate = endPeriod(from24h(value));
+  if (JUST_A_TIME.test(candidate)) {
+    const time = timeIn(candidate);
+    const range = new RegExp(`\\s${RANGE}\\s|\\d${RANGE}\\d`, "i").test(
+      candidate,
+    );
+    // A range that came back as a single time lost its end: not normalized.
+    if (time && (!range || time.includes(" - ")))
+      return { time, normalized: true };
   }
   return { time: value, normalized: false };
 };
 
-const MONTH = String.raw`(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?`;
-const WEEKDAY = String.raw`(?:mon|tue|tues|wed|thu|thur|thurs|fri|sat|sun)[a-z]*\.?,?`;
-/** A line that only says when: "Friday, October 23", "Oct 23, 2026", "2026-10-23". */
-const DATE_LINE = new RegExp(
+/** A segment that only says when: "Friday, October 23", "Oct 23, 2026", "2026-10-23". */
+const DATE_ONLY = new RegExp(
   `^(?:${WEEKDAY}\\s*)?(?:${MONTH}\\s+\\d{1,2}(?:st|nd|rd|th)?|\\d{1,2}(?:st|nd|rd|th)?\\s+(?:of\\s+)?${MONTH}|\\d{4}-\\d{2}-\\d{2})(?:,?\\s*\\d{4})?$`,
   "i",
 );
@@ -121,29 +217,38 @@ const LABEL_LINE =
   /^(?:date|time|when|where|location|venue|place|rsvp|register|sign ?up|link|tickets|cost|price)\s*:/i;
 /** Emoji and the joiners that build them, which label caption lines. */
 const PICTOGRAPHS = /\p{Extended_Pictographic}|\u{FE0F}|\u{200D}|\u{20E3}/gu;
+const TRIM = /^[\s\-–—•|:·,]+|[\s\-–—•|:·,]+$/g;
 
 /**
  * A pasted caption without its date, time and place lines: they become
- * fields of their own, so the card should not repeat them.
+ * fields of their own, so the card should not repeat them. A line is
+ * dropped when every piece of it (split at emoji, "|", "•" or a wide gap)
+ * is a date, a time or the place.
  * @param {string} raw
- * @param {string} location what the place was read as, to drop its line
+ * @param {string[]} places what the place was read as, to drop its line
  */
-export const captionBody = (raw, location) =>
-  (raw ?? "")
+export const captionBody = (raw, places) => {
+  const known = places.map((p) => collapse(p).toLowerCase()).filter(Boolean);
+  return (raw ?? "")
     .split("\n")
     .filter((line) => {
-      const bare = line
-        .replace(PICTOGRAPHS, "")
-        .replace(/^[\s\-–—•|:·]+|[\s\-–—•|:·]+$/g, "")
-        .trim();
-      if (!bare) return true; // keeps paragraph breaks
-      if (LABEL_LINE.test(bare)) return false;
-      if (DATE_LINE.test(bare) || JUST_A_TIME.test(bare)) return false;
-      if (location && bare.toLowerCase() === location.toLowerCase())
-        return false;
-      return true;
+      if (/^\s*📍/u.test(line)) return false;
+      const pieces = line
+        .replace(PICTOGRAPHS, "|")
+        .split(/\s*[|•·]\s*|\s{2,}/)
+        .map((piece) => piece.replace(TRIM, "").trim())
+        .filter(Boolean);
+      if (pieces.length === 0) return true; // keeps paragraph breaks
+      if (LABEL_LINE.test(pieces.join(" "))) return false;
+      return !pieces.every(
+        (piece) =>
+          DATE_ONLY.test(piece) ||
+          JUST_A_TIME.test(piece) ||
+          known.includes(piece.toLowerCase()),
+      );
     })
     .join("\n");
+};
 
 /** The first image link in a textarea: Markdown, HTML or bare. */
 export const posterUrlIn = (/** @type {string} */ text) => {
@@ -166,6 +271,17 @@ export const posterUrlIn = (/** @type {string} */ text) => {
 
 const isHttps = (/** @type {string} */ url) => /^https:\/\/\S+$/.test(url);
 
+/** Two links to the same Instagram post, however it was copied. */
+const samePost = (/** @type {string} */ a, /** @type {string} */ b) => {
+  const key = (/** @type {string} */ url) =>
+    url
+      .toLowerCase()
+      .replace(/^https?:\/\/(www\.)?/, "")
+      .replace(/[?#].*$/, "")
+      .replace(/\/+$/, "");
+  return key(a) === key(b);
+};
+
 /** Titles that are the same event: case, punctuation and spacing aside. */
 const sameTitle = (/** @type {string} */ a, /** @type {string} */ b) =>
   collapse(a)
@@ -174,6 +290,10 @@ const sameTitle = (/** @type {string} */ a, /** @type {string} */ b) =>
   collapse(b)
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "");
+
+/** The issue's title without the form's "Event:" prefix. */
+export const eventTitle = (/** @type {string} */ issueTitle) =>
+  collapse((issueTitle ?? "").replace(/^\s*(?:new\s+)?event\s*:\s*/i, ""));
 
 /**
  * @typedef {object} IssueEvent
@@ -185,10 +305,14 @@ const sameTitle = (/** @type {string} */ a, /** @type {string} */ b) =>
 
 /**
  * @param {Record<string, string>} answers from parseIssueForm
- * @param {{ today: string, events: { id: string, title: string, date: string, instagram?: string }[], issueUrl?: string }} context
+ * @param {{ title: string, today: string, events: { id: string, title: string, date: string, instagram?: string }[], issueUrl?: string }} context
+ *   title is the issue's title, which is the event's
  * @returns {IssueEvent}
  */
-export const eventFromIssue = (answers, { today, events, issueUrl }) => {
+export const eventFromIssue = (
+  answers,
+  { title: issueTitle, today, events, issueUrl },
+) => {
   /** @type {string[]} */
   const errors = [];
   /** @type {string[]} */
@@ -196,23 +320,31 @@ export const eventFromIssue = (answers, { today, events, issueUrl }) => {
   const get = (/** @type {keyof typeof FIELDS} */ key) =>
     answers[FIELDS[key]] ?? "";
 
-  const title = collapse(get("title"));
-  if (!title) errors.push(`**${FIELDS.title}** is required.`);
+  const title = eventTitle(issueTitle);
+  if (!title)
+    errors.push("The issue's **title** is the event's title: give it one.");
   else if (title.length > 120)
-    errors.push(`**${FIELDS.title}** is too long (120 characters at most).`);
+    errors.push("The **title** is too long (120 characters at most).");
 
-  const date = readDate(get("date"), today);
+  const dateRead = readDate(get("date"), today);
+  const date = dateRead?.date ?? null;
   if (!date)
     errors.push(
-      `**${FIELDS.date}** could not be read: write it as YYYY-MM-DD (2026-10-09).`,
+      `**${FIELDS.date}** could not be read: write it as YYYY-MM-DD (2026-10-09), or with the month spelled out.`,
     );
-  else if (date < today)
-    warnings.push(`The date (${date}) has passed; it goes in as a past event.`);
+  else {
+    if (!dateRead?.yearGiven)
+      warnings.push(`The date was read as ${date}; write the year to be sure.`);
+    if (date < today)
+      warnings.push(
+        `The date (${date}) has passed; it goes in as a past event.`,
+      );
+  }
 
   /** @type {string | undefined} */
   let endDate;
   if (collapse(get("endDate"))) {
-    const read = readDate(get("endDate"), today);
+    const read = readDate(get("endDate"), today)?.date ?? null;
     if (!read)
       errors.push(
         `**${FIELDS.endDate}** could not be read: write it as YYYY-MM-DD.`,
@@ -280,14 +412,30 @@ export const eventFromIssue = (answers, { today, events, issueUrl }) => {
     );
 
   const chosen = ticked(get("tags"));
-  const tags = chosen.length > 0 ? chosen : tagsIn(rawDescription, type);
+  const unknown = chosen.filter((tag) => !KNOWN_TAGS.includes(tag));
+  if (unknown.length > 0)
+    errors.push(
+      `**${FIELDS.tags}** has ${unknown.map((t) => `"${t}"`).join(", ")}, which the site does not use.`,
+    );
+  const typeTag = TYPE_TAGS[/** @type {keyof typeof TYPE_TAGS} */ (type)];
+  const tags = [
+    ...new Set([
+      ...(chosen.length > 0 ? chosen : tagsIn(rawDescription, type)),
+      ...(typeTag ? [typeTag] : []),
+    ]),
+  ];
 
   const description =
-    parseCaption(captionBody(rawDescription, location), { postedAt })
-      .description || collapse(rawDescription);
+    parseCaption(captionBody(rawDescription, [location, parsed.location]), {
+      postedAt,
+    }).description || collapse(rawDescription);
 
   for (const existing of events) {
-    if (instagram && existing.instagram === instagram)
+    if (
+      instagram &&
+      existing.instagram &&
+      samePost(existing.instagram, instagram)
+    )
       errors.push(
         `That Instagram post is already on the site as event #${existing.id} (${existing.title}).`,
       );
@@ -321,11 +469,15 @@ export const eventFromIssue = (answers, { today, events, issueUrl }) => {
   };
 };
 
+/** A value in a Markdown table cell. */
+const cell = (/** @type {unknown} */ value) =>
+  String(value ?? "").replace(/\|/g, "\\|");
+
 /**
  * The pull request's description, or the comment that explains why no
  * draft was made.
  * @param {IssueEvent} result
- * @param {{ issueNumber: string | number, poster?: string | null }} context
+ * @param {{ issueNumber: string | number, poster: "attached" | "none" | "failed" }} context
  */
 export const describeDraft = (result, { issueNumber, poster }) => {
   if (!result.event) {
@@ -336,7 +488,7 @@ export const describeDraft = (result, { issueNumber, poster }) => {
       "",
       ...result.errors.map((e) => `- ${e}`),
       "",
-      "Edit the issue (the pencil on the first comment) and the check runs again.",
+      "Edit the issue (the ··· menu at the top right of its first comment, then Edit) and the check runs again.",
     ].join("\n");
   }
   const e = result.event;
@@ -345,15 +497,15 @@ export const describeDraft = (result, { issueNumber, poster }) => {
     "",
     "| | |",
     "| --- | --- |",
-    `| Title | ${e.title} |`,
+    `| Title | ${cell(e.title)} |`,
     `| Date | ${e.date}${e.endDate ? ` to ${e.endDate}` : ""} |`,
-    `| Time | ${e.time || "all day"} |`,
-    `| Place | ${e.location || "?"} |`,
+    `| Time | ${cell(e.time) || "all day"} |`,
+    `| Place | ${cell(e.location) || "?"} |`,
     `| Type | ${e.type} |`,
     `| Tags | ${/** @type {string[]} */ (e.tags).join(", ") || "none"} |`,
-    `| Poster | ${poster ? "attached" : result.posterUrl ? "could not be saved" : "none"} |`,
+    `| Poster | ${poster === "attached" ? "attached" : poster === "failed" ? "could not be saved" : "none"} |`,
     "",
-    "Check it against the announcement, then merge: the event goes on the calendar, its page and its calendar file are built, and this issue closes.",
+    "Check it against the announcement, then merge: the event goes on the calendar, its page and its calendar file are built, and the issue closes. To change something, edit the issue and this pull request is redrafted. If another event's pull request merges first, edit the issue once more so this one takes the next free id.",
   ];
   if (result.warnings.length > 0) {
     lines.push(

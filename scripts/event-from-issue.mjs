@@ -9,9 +9,9 @@
  * .github/workflows/event-intake.yml runs this when such an issue is opened
  * or edited. See CONTRIBUTING.md, "Adding an event from GitHub".
  *
- *   ISSUE_NUMBER=12 ISSUE_URL=… ISSUE_BODY="$(cat issue.md)" \
+ *   ISSUE_NUMBER=12 ISSUE_TITLE="Event: ML 101" ISSUE_URL=… ISSUE_BODY="$(cat issue.md)" \
  *     node scripts/event-from-issue.mjs [--dry-run] [--summary-file out.md]
- *   node scripts/event-from-issue.mjs --body issue.md --dry-run      (local)
+ *   node scripts/event-from-issue.mjs --body issue.md --title "ML 101" --dry-run   (local)
  */
 import { execFileSync } from "node:child_process";
 import { appendFileSync, readFileSync, writeFileSync } from "node:fs";
@@ -23,7 +23,7 @@ import {
   parseIssueForm,
 } from "../src/lib/shared/event-issue.js";
 import { posterName } from "../src/lib/shared/instagram-sync-core.js";
-import { savePoster } from "./lib/poster.mjs";
+import { freePosterName, savePoster } from "./lib/poster.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const args = process.argv.slice(2);
@@ -63,6 +63,7 @@ const main = async () => {
   const body = bodyFile
     ? readFileSync(resolve(bodyFile), "utf8")
     : (process.env.ISSUE_BODY ?? "");
+  const title = option("--title") ?? process.env.ISSUE_TITLE ?? "";
   const issueNumber = process.env.ISSUE_NUMBER ?? "0";
   const issueUrl = process.env.ISSUE_URL;
   if (!body.trim()) return fail("no issue body (ISSUE_BODY or --body)");
@@ -73,18 +74,24 @@ const main = async () => {
   const today = clubDate(new Date());
 
   const answers = parseIssueForm(body);
-  const result = eventFromIssue(answers, { today, events, issueUrl });
+  const result = eventFromIssue(answers, { title, today, events, issueUrl });
 
+  /** @type {"attached" | "none" | "failed"} */
+  let posterState = result.posterUrl ? "attached" : "none";
   /** @type {{ poster: string, posterWidth: number, posterHeight: number } | null} */
   let poster = null;
   if (result.event && result.posterUrl && !dryRun) {
     try {
       poster = await savePoster(
         result.posterUrl,
-        posterName(String(result.event.title), String(result.event.date)),
-        { root, maxWidth: MAX_POSTER_WIDTH },
+        freePosterName(
+          root,
+          posterName(String(result.event.title), String(result.event.date)),
+        ),
+        { root, normalize: true, maxWidth: MAX_POSTER_WIDTH },
       );
     } catch (error) {
+      posterState = "failed";
       result.warnings.push(
         `The poster could not be saved (${/** @type {Error} */ (error).message}); the event goes in without one. Add it by hand to the pull request if you want it.`,
       );
@@ -110,10 +117,7 @@ const main = async () => {
     output("added", "0");
   }
 
-  const summary = describeDraft(result, {
-    issueNumber,
-    poster: poster?.poster ?? null,
-  });
+  const summary = describeDraft(result, { issueNumber, poster: posterState });
   console.log(summary);
   if (summaryFile) writeFileSync(summaryFile, `${summary}\n`);
   if (process.env.GITHUB_STEP_SUMMARY)

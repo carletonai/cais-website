@@ -31,7 +31,7 @@ import {
   posterSource,
   summarize,
 } from "../src/lib/shared/instagram-sync-core.js";
-import { savePoster } from "./lib/poster.mjs";
+import { freePosterName, savePoster } from "./lib/poster.mjs";
 
 /** @typedef {import("../src/lib/shared/instagram-sync-core.js").Media} Media */
 /** @typedef {import("../src/lib/shared/instagram-sync-core.js").Outcome} Outcome */
@@ -266,7 +266,7 @@ const main = async () => {
       try {
         const poster = await savePoster(
           source,
-          posterName(draft.title, draft.date),
+          freePosterName(root, posterName(draft.title, draft.date)),
           { root, log: (m) => console.warn(`instagram-sync: ${m}`) },
         );
         event = { ...rest, ...poster, tags };
