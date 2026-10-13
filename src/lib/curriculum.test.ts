@@ -57,7 +57,7 @@ describe("allSeries", () => {
   it("numbers the sessions from 1 and takes copy from the event", () => {
     const series = allSeries.find((s) => s.id === "ai-workshops-winter-2026");
     expect(series).toBeDefined();
-    expect(series!.modules.map((m) => m.number)).toEqual([1, 2, 3, 4, 5]);
+    expect(series!.modules.map((m) => m.number)).toEqual([1, 2, 3, 4, 5, 6]);
     const chatbot = series!.modules[3];
     expect(chatbot.title).toBe("Building an AI Chatbot!");
     expect(chatbot.blurb).toBe(chatbot.event!.description);
