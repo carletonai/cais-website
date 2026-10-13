@@ -27,14 +27,15 @@
     {
       "id": "ai-workshops-winter-2026",
       "title": "Building with AI",
-      "season": "Winter 2026",
-      "lede": "Five sessions from first principles to working code: what today's models are, how to work with them, and two hands-on builds with the code to take home.",
+      "season": "Winter–summer 2026",
+      "lede": "Six sessions from first principles to working code: what today's models are, how to work with them, two hands-on builds with the code to take home, and a cuHacking session on using agentic AI to build neural networks.",
       "modules": [
         { "event": "8" },
         { "event": "9" },
         { "event": "10" },
         { "event": "11" },
-        { "event": "12" }
+        { "event": "12" },
+        { "event": "14" }
       ]
     },
     {
@@ -85,6 +86,6 @@
   "standalone": {
     "title": "One-off workshops",
     "lede": "Sessions run at hackathons and on their own, outside a series.",
-    "events": ["63", "14", "58", "4", "37", "22", "20"]
+    "events": ["63", "58", "4", "37", "22", "20"]
   }
 }

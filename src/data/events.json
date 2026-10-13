@@ -622,8 +622,11 @@
       "date": "2026-09-16",
       "time": "5:00 PM - 7:00 PM",
       "location": "Herzberg 4155",
-      "description": "Showcasing CAIS alongside Carleton's other tech clubs and meeting students interested in AI.",
+      "description": "Carleton's tech clubs in one room, hosted by the Carleton Computer Science Society: CAIS alongside InSpace, Blackbird UAV, WiCS, CU Game Dev and more, meeting students interested in AI.",
       "type": "Social",
+      "poster": "/assets/events/tech-club-expo-2026.jpg",
+      "posterWidth": 1136,
+      "posterHeight": 1464,
       "tags": ["social", "recruitment"]
     },
     {
