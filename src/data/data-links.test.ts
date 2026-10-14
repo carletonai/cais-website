@@ -45,7 +45,7 @@ describe("data files", () => {
   // carletonai.com: an off-site poster would show on every preview and then
   // be blocked on the live site.
   it("serves every image from this site", () => {
-    const images = all.filter(([key]) => /^(image|poster|logo)$/.test(key));
+    const images = all.filter(([key]) => /^(image|poster|logo|src)$/.test(key));
     expect(images.length).toBeGreaterThan(0);
     for (const [key, value] of images) {
       expect(`${key}: ${value}`).toMatch(/^\w+: \/(?!\/)/);
@@ -63,11 +63,16 @@ describe("data files", () => {
   });
 
   // Cards show posters at about 160px wide from a 600px copy kept beside the
-  // full file (see CONTRIBUTING); a missing copy would 404 on every card.
-  it("keeps a 600px copy of every poster", () => {
+  // full file (see CONTRIBUTING), and event pages show photos the same way;
+  // a missing copy would 404 on every card.
+  it("keeps a 600px copy of every poster and photo", () => {
     const posters = all.filter(([key]) => key === "poster");
+    const photos = events.events.flatMap((event) =>
+      (event.photos ?? []).map((photo) => photo.src),
+    );
     expect(posters.length).toBeGreaterThan(0);
-    for (const [, poster] of posters) {
+    expect(photos.length).toBeGreaterThan(0);
+    for (const poster of [...posters.map(([, poster]) => poster), ...photos]) {
       expect(
         existsSync(join(__dirname, "../../public", posterThumb(poster))),
       ).toBe(true);

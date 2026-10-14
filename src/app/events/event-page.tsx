@@ -4,6 +4,7 @@ import { Ring } from "@/components/brand/Ring";
 import { EventPoster } from "@/components/EventPoster";
 import { EventCard } from "@/components/events/EventCard";
 import { EventMeta } from "@/components/events/EventMeta";
+import { EventPhotos } from "@/components/events/EventPhotos";
 import { ResourceLinks, RsvpButton } from "@/components/events/EventLinks";
 import {
   AddToCalendarButton,
@@ -118,13 +119,15 @@ const EventPage = () => {
                 ))}
               </ul>
             )}
-            <ResourceLinks event={event} className="mt-8" />
+            <ResourceLinks event={event} withPost className="mt-8" />
           </div>
           <div className="lg:pt-24">
             <EventPoster event={event} />
           </div>
         </div>
       </div>
+
+      <EventPhotos event={event} className="pt-16" />
 
       <section
         aria-labelledby="more-events"
