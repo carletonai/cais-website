@@ -383,6 +383,19 @@ for (const event of events) {
       );
     image = { url: event.poster, ...size, alt: `Poster for ${event.title}` };
   }
+  for (const photo of event.photos ?? []) {
+    const file = join(root, "public", photo.src);
+    if (!existsSync(file)) fail(`event ${event.id}: no file for ${photo.src}`);
+    const size = jpegSize(file);
+    if (!size) fail(`event ${event.id}: ${photo.src} is not a readable JPEG`);
+    if (photo.width !== size.width || photo.height !== size.height)
+      fail(
+        `event ${event.id}: ${photo.src} is ${size.width}×${size.height}; ` +
+          `set "width": ${size.width}, "height": ${size.height} in events.json`,
+      );
+    if (!photo.alt?.trim())
+      fail(`event ${event.id}: ${photo.src} needs "alt", what the photo shows`);
+  }
   const meta = eventPageMeta(event);
   write(
     eventPath(event),

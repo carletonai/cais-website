@@ -500,6 +500,10 @@
       "location": "Tory Building 342",
       "description": "Meet the CAIS executive team, learn about the club, and connect with students interested in AI.",
       "type": "Social",
+      "poster": "/assets/events/icebreaker-2025.jpg",
+      "posterWidth": 1440,
+      "posterHeight": 1800,
+      "instagram": "https://www.instagram.com/p/DRV6iA5DpCv/",
       "tags": ["beginner-friendly", "networking", "social"]
     },
     {
@@ -510,6 +514,15 @@
       "location": "Richcraft Hall",
       "description": "The exec team met students at CUSA's Frost Week expo and shared how CAIS is building an inclusive AI community on campus.",
       "type": "Social",
+      "instagram": "https://www.instagram.com/p/DTthm_Kjqn2/",
+      "photos": [
+        {
+          "src": "/assets/events/cusa-winter-club-expo-2026/01.jpg",
+          "width": 1440,
+          "height": 1920,
+          "alt": "Three members of the club at the CAIS table at the Winter Expo, with stickers, flyers and the club's banner"
+        }
+      ],
       "tags": ["recruitment"]
     },
     {
@@ -520,6 +533,10 @@
       "location": "Richcraft Hall 3110",
       "description": "An introductory workshop covering core AI concepts and real-world applications.",
       "type": "Workshop",
+      "poster": "/assets/events/workshop-1-intro-to-ai-2026.jpg",
+      "posterWidth": 1350,
+      "posterHeight": 1688,
+      "instagram": "https://www.instagram.com/p/DTnNmI0jn3X/",
       "tags": ["beginner-friendly", "educational"]
     },
     {
@@ -530,6 +547,10 @@
       "location": "Richcraft Hall 3228",
       "description": "A workshop comparing vibe coding and prompt engineering in modern AI development.",
       "type": "Workshop",
+      "poster": "/assets/events/workshop-2-vibe-coding-2026.jpg",
+      "posterWidth": 1350,
+      "posterHeight": 1688,
+      "instagram": "https://www.instagram.com/p/DTxgxf1DuZ8/",
       "tags": ["technical", "discussion"]
     },
     {
@@ -540,6 +561,10 @@
       "location": "Tory Building 342",
       "description": "An introduction to large language models and how they power modern AI systems.",
       "type": "Workshop",
+      "poster": "/assets/events/workshop-3-llms-2026.jpg",
+      "posterWidth": 1350,
+      "posterHeight": 1688,
+      "instagram": "https://www.instagram.com/p/DT2qWwrDlIj/",
       "tags": ["beginner-friendly", "technical"]
     },
     {
@@ -550,6 +575,10 @@
       "location": "Tory Building 210",
       "description": "Learn how AI chatbots work using RAG and semantic search in LLM applications.",
       "type": "Workshop",
+      "poster": "/assets/events/building-an-ai-chatbot-2026.jpg",
+      "posterWidth": 1350,
+      "posterHeight": 1688,
+      "instagram": "https://www.instagram.com/p/DU39kwqDryE/",
       "tags": ["hands-on", "technical"],
       "materials": "https://github.com/carletonai/chatbot"
     },
@@ -561,6 +590,10 @@
       "location": "Tory Building 210",
       "description": "Train your first machine learning model using Python in a hands-on session.",
       "type": "Workshop",
+      "poster": "/assets/events/training-an-ai-model-2026.jpg",
+      "posterWidth": 1350,
+      "posterHeight": 1688,
+      "instagram": "https://www.instagram.com/p/DU9RcjGjh3b/",
       "tags": ["hands-on", "beginner-friendly", "technical"],
       "materials": "https://github.com/carletonai/model"
     },
@@ -590,9 +623,87 @@
       "date": "2026-03-21",
       "endDate": "2026-03-22",
       "time": "Sat 10:00 AM–4:30 PM, Sun 10:00 AM–1:00 PM",
-      "location": "",
+      "location": "Richcraft Hall 3228",
       "description": "A 48-hour challenge with a $250 prize pool, building AI solutions to problems post-secondary students face. Registration filled to capacity. ThinkFirst, CUCognitive and Procrastination Bot took the top three spots.",
       "type": "Competition",
+      "poster": "/assets/events/cais-hackathon-2-2026.jpg",
+      "posterWidth": 1204,
+      "posterHeight": 1210,
+      "instagram": "https://www.instagram.com/p/DVw5V4aDl49/",
+      "photos": [
+        {
+          "src": "/assets/events/cais-hackathon-2-2026/01.jpg",
+          "width": 1440,
+          "height": 1080,
+          "alt": "Participants and organizers in front of the Hackathon 2.0 slide, one of them taking a selfie"
+        },
+        {
+          "src": "/assets/events/cais-hackathon-2-2026/02.jpg",
+          "width": 969,
+          "height": 727,
+          "alt": "Participants around the pizza boxes, with a “You did it!” slide on the screen behind them"
+        },
+        {
+          "src": "/assets/events/cais-hackathon-2-2026/03.jpg",
+          "width": 1440,
+          "height": 1080,
+          "alt": "Teams at work around the room's tables"
+        },
+        {
+          "src": "/assets/events/cais-hackathon-2-2026/04.jpg",
+          "width": 1440,
+          "height": 1080,
+          "alt": "A presenter in front of a slide asking “What did people before us use?”"
+        },
+        {
+          "src": "/assets/events/cais-hackathon-2-2026/05.jpg",
+          "width": 1440,
+          "height": 1080,
+          "alt": "Two members of ThinkFirst beside their project on the big screen"
+        },
+        {
+          "src": "/assets/events/cais-hackathon-2-2026/06.jpg",
+          "width": 1440,
+          "height": 1080,
+          "alt": "A presenter demonstrating face tracking on the projector"
+        },
+        {
+          "src": "/assets/events/cais-hackathon-2-2026/07.jpg",
+          "width": 1440,
+          "height": 1080,
+          "alt": "Three team members presenting their project"
+        },
+        {
+          "src": "/assets/events/cais-hackathon-2-2026/08.jpg",
+          "width": 1440,
+          "height": 1080,
+          "alt": "Teams working on laptops around the room"
+        },
+        {
+          "src": "/assets/events/cais-hackathon-2-2026/09.jpg",
+          "width": 1440,
+          "height": 1080,
+          "alt": "ThinkFirst in front of the first-place slide"
+        },
+        {
+          "src": "/assets/events/cais-hackathon-2-2026/10.jpg",
+          "width": 1440,
+          "height": 1080,
+          "alt": "CUCognitive in front of the second-place slide"
+        },
+        {
+          "src": "/assets/events/cais-hackathon-2-2026/11.jpg",
+          "width": 1440,
+          "height": 1080,
+          "alt": "Procrastination Bot in front of the third-place slide"
+        },
+        {
+          "src": "/assets/events/cais-hackathon-2-2026/12.jpg",
+          "width": 1440,
+          "height": 1080,
+          "alt": "Group photo of the participants in front of the Hackathon 2.0 slide"
+        }
+      ],
       "tags": ["hackathon", "competition"],
       "page": "https://www.linkedin.com/posts/carleton-ai_cais-hackathon-20-this-past-weekend-activity-7442672368860225536-dZ8H"
     },
@@ -627,6 +738,7 @@
       "poster": "/assets/events/tech-club-expo-2026.jpg",
       "posterWidth": 1136,
       "posterHeight": 1464,
+      "instagram": "https://www.instagram.com/p/DdVYw6COBHH/",
       "tags": ["social", "recruitment"]
     },
     {
@@ -650,6 +762,7 @@
       "poster": "/assets/events/icebreaker-2026.jpg",
       "posterWidth": 1236,
       "posterHeight": 1600,
+      "instagram": "https://www.instagram.com/p/DdklSHYu9L5/",
       "tags": ["social", "networking", "free-food"]
     },
     {
@@ -675,6 +788,7 @@
       "poster": "/assets/events/intro-to-ai-2026.jpg",
       "posterWidth": 1056,
       "posterHeight": 1367,
+      "instagram": "https://www.instagram.com/p/Dd2I2zKBAi3/",
       "tags": ["beginner-friendly", "technical"]
     },
     {
@@ -688,6 +802,7 @@
       "poster": "/assets/events/volunteer-meeting-2026.jpg",
       "posterWidth": 1236,
       "posterHeight": 1598,
+      "instagram": "https://www.instagram.com/p/Dd9nRtRAFKa/",
       "tags": ["planning"]
     },
     {
@@ -701,6 +816,7 @@
       "poster": "/assets/events/intro-to-agentic-ai-2026.jpg",
       "posterWidth": 816,
       "posterHeight": 1056,
+      "instagram": "https://www.instagram.com/p/DeLVyDeOnbq/",
       "tags": ["technical"]
     },
     {
