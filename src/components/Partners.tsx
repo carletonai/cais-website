@@ -37,7 +37,7 @@ export function Partners() {
         id="partners-heading"
         label="Partners"
         title="Who we build with"
-        lede="Clubs, hackathons and programs the society has run events alongside."
+        lede="Clubs, student societies, hackathons and sponsors the society has worked with."
       />
       <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3">
         {partners.map((partner) => {

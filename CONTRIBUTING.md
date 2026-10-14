@@ -281,11 +281,13 @@ such items). `--dry-run` prints what would be added and writes nothing.
 
 ## Adding a partner
 
-Organizations the club has run events with are listed on the home page from
-`src/data/partners.json`: `name`, a one-line `blurb` saying what you did
-together, the `url` to link to (or `null`), and a square `logo` under
-`public/assets/partners/` (WebP, about 192px; or `null` to show the
-organization's initials until there is one).
+Organizations the club has worked with are listed on the home page from
+`src/data/partners.json`: `name` (the full name, with its acronym in
+brackets when it goes by one, e.g. "Carleton Computer Science Society
+(CCSS)"), a one-line `blurb` saying what you did together, the `url` to
+link to (or `null`), and a square `logo` under `public/assets/partners/`
+(WebP, about 192px; or `null` to show the acronym or initials until there
+is one).
 
 ## Contributing
 

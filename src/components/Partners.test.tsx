@@ -38,3 +38,11 @@ test("shows a logo where there is one and initials where there is not", () => {
     ).toHaveAttribute("aria-hidden", "true");
   }
 });
+
+test("shows a partner's own acronym in place of a logo", () => {
+  expect(partnerInitials("CPA Ontario")).toBe("CPA");
+  expect(
+    partnerInitials("Systems and Computer Engineering Society (SCESoc)"),
+  ).toBe("SCESoc");
+  expect(partnerInitials("Builders Collective Ottawa")).toBe("BCO");
+});
