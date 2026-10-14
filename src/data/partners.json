@@ -3,21 +3,21 @@
     {
       "id": "cuhacking",
       "name": "cuHacking",
-      "blurb": "Carleton's hackathon: co-hosted workshops and the Project Showcase.",
+      "blurb": "Carleton's hackathon: co-hosted workshops.",
       "url": "https://cuhacking.ca",
       "logo": "/assets/partners/cuhacking.webp"
     },
     {
       "id": "ccss",
-      "name": "Carleton Computer Science Society",
-      "blurb": "The CS student society: the Project Showcase and the Grok Bot Meetup.",
+      "name": "Carleton Computer Science Society (CCSS)",
+      "blurb": "Host of the Tech Club Expo; co-host of the Grok Bot Meetup.",
       "url": "https://ccss.carleton.ca",
       "logo": "/assets/partners/carleton-computer-science-society.webp"
     },
     {
       "id": "hack-the-hill",
       "name": "Hack the Hill",
-      "blurb": "uOttawa's hackathon: our machine learning workshop at Hack the Hill III.",
+      "blurb": "A hackathon in Ottawa: our machine learning workshop at Hack the Hill III.",
       "url": "https://hackthehill.com",
       "logo": "/assets/partners/hack-the-hill.webp"
     },
@@ -44,8 +44,8 @@
     },
     {
       "id": "sissa",
-      "name": "SISSA",
-      "blurb": "Sprott's information systems students: co-host of the Grok Bot Meetup.",
+      "name": "Sprott's Information Systems Students Association (SISSA)",
+      "blurb": "Co-host of the Grok Bot Meetup.",
       "url": null,
       "logo": "/assets/partners/sissa.webp"
     },

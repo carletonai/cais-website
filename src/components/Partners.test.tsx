@@ -2,6 +2,9 @@ import { render, screen, within } from "@testing-library/react";
 import { partnerInitials, partners } from "@/lib/partners";
 import { Partners } from "./Partners";
 
+const escapeRegExp = (text: string) =>
+  text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
 test("names every partner, linking the ones with a site", () => {
   render(<Partners />);
   const region = screen.getByRole("region", { name: "Who we build with" });
@@ -13,7 +16,7 @@ test("names every partner, linking the ones with a site", () => {
   expect(links).toHaveLength(linked.length);
   for (const partner of linked) {
     const link = within(region).getByRole("link", {
-      name: new RegExp(`^${partner.name}.*opens in a new tab`),
+      name: new RegExp(`^${escapeRegExp(partner.name)}.*opens in a new tab`),
     });
     expect(link).toHaveAttribute("href", partner.url);
     expect(link).toHaveAttribute("rel", "noopener noreferrer");

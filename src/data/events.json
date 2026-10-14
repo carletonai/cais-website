@@ -771,7 +771,7 @@
       "date": "2026-09-26",
       "time": "3:00 PM - 4:00 PM",
       "location": "Room C040, uOttawa (Hack the Hill III)",
-      "description": "A practical introduction to machine learning at uOttawa's Hack the Hill III hackathon: the core ideas behind models, and how to bring ML into a hackathon project. The demos set a hand-written rule against a model that learns its own, then train a small PyTorch neural network on a heart-failure clinical dataset.",
+      "description": "A practical introduction to machine learning at Hack the Hill III, a hackathon in Ottawa: the core ideas behind models, and how to bring ML into a hackathon project. The demos set a hand-written rule against a model that learns its own, then train a small PyTorch neural network on a heart-failure clinical dataset.",
       "type": "Workshop",
       "tags": ["beginner-friendly", "technical"],
       "page": "https://hackthehill.com",
