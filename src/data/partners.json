@@ -3,7 +3,7 @@
     {
       "id": "cuhacking",
       "name": "cuHacking",
-      "blurb": "Carleton's hackathon: co-hosted workshops.",
+      "blurb": "Carleton's hackathon: co-hosted workshops, and a cuHacking 6 partner club.",
       "url": "https://cuhacking.ca",
       "logo": "/assets/partners/cuhacking.webp"
     },
@@ -22,11 +22,67 @@
       "logo": "/assets/partners/hack-the-hill.webp"
     },
     {
+      "id": "cusa",
+      "name": "Carleton University Students' Association (CUSA)",
+      "blurb": "We're a CUSA club, and meet new members at its Club Expos.",
+      "url": "https://www.cusaonline.ca",
+      "logo": "/assets/partners/carleton-university-students-association.webp"
+    },
+    {
+      "id": "fed",
+      "name": "Faculty of Engineering and Design (FED)",
+      "blurb": "Host of the FED Meet & Greet, September 2026.",
+      "url": "https://carleton.ca/engineering-design/",
+      "logo": "/assets/partners/faculty-of-engineering-and-design.webp"
+    },
+    {
+      "id": "cses",
+      "name": "Carleton Student Engineering Society (CSES)",
+      "blurb": "We're a CSES-affiliated group, funded through KEFC.",
+      "url": "https://www.mycses.ca",
+      "logo": "/assets/partners/carleton-student-engineering-society.webp"
+    },
+    {
+      "id": "scesoc",
+      "name": "Systems and Computer Engineering Society (SCESoc)",
+      "blurb": "Co-host of our Spooky AI Applications coffee hour, November 2021.",
+      "url": "https://www.scesoc.ca",
+      "logo": "/assets/partners/scesoc.webp"
+    },
+    {
+      "id": "carleton-blueprint",
+      "name": "Carleton Blueprint",
+      "blurb": "Host of the Project Showcase, February 2026.",
+      "url": "https://linktr.ee/cublueprint",
+      "logo": "/assets/partners/carleton-blueprint.webp"
+    },
+    {
+      "id": "carleton-cybersecurity-club",
+      "name": "Carleton Cybersecurity Club",
+      "blurb": "Co-host of the Project Showcase, February 2026.",
+      "url": "https://linktr.ee/CarletonCyberSecurityClub",
+      "logo": "/assets/partners/carleton-cybersecurity-club.webp"
+    },
+    {
       "id": "blackbird-uav",
       "name": "Blackbird UAV",
       "blurb": "Carleton's student UAV team: autonomous drones for the AEAC competition.",
       "url": "https://blackbirduav.ca",
       "logo": "/assets/partners/blackbird-uav.webp"
+    },
+    {
+      "id": "mindhack",
+      "name": "MindHack",
+      "blurb": "Carleton's cognitive science hackathon: partnering on MindHack 2027.",
+      "url": "https://mindhack-2026.devpost.com",
+      "logo": "/assets/partners/mindhack.webp"
+    },
+    {
+      "id": "cucai",
+      "name": "Canadian Undergraduate Conference on Artificial Intelligence (CUCAI)",
+      "blurb": "We were a Student Partner club of CUCAI 2021.",
+      "url": "https://cucai.ca",
+      "logo": "/assets/partners/cucai.webp"
     },
     {
       "id": "colorstack",
@@ -62,6 +118,13 @@
       "blurb": "Host of the Winter Pitch Night, March 2026.",
       "url": null,
       "logo": "/assets/partners/carleton-university.webp"
+    },
+    {
+      "id": "cpa-ontario",
+      "name": "CPA Ontario",
+      "blurb": "Club sponsor: co-host of our Power BI workshop, March 2021.",
+      "url": "https://www.cpaontario.ca",
+      "logo": null
     }
   ]
 }
