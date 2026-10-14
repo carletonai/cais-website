@@ -61,7 +61,10 @@ export const imageKind = (/** @type {Buffer} */ buffer) => {
   return null;
 };
 
-/** ImageMagick's command, which the GitHub runner has; null without it. */
+/**
+ * ImageMagick's command, or null without it. GitHub's Ubuntu runners do not
+ * ship it; the workflows that save posters install it first.
+ */
 export const imageMagick = () =>
   ["magick", "convert"].find(
     (command) =>

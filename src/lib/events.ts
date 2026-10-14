@@ -20,6 +20,18 @@ export {
   weekdayOf,
 } from "@/lib/shared/event-time.js";
 
+/**
+ * A photo taken at an event: a JPEG under public/ with a 600px copy beside
+ * it, like a poster, and its pixel size so the page can reserve the space.
+ */
+export interface EventPhoto {
+  src: string;
+  width: number;
+  height: number;
+  /** What the photo shows, for anyone who cannot see it. */
+  alt: string;
+}
+
 /** One entry in src/data/events.json. */
 export interface ClubEvent {
   id: string;
@@ -42,6 +54,8 @@ export interface ClubEvent {
   page?: string;
   /** The Instagram post it was announced in; set by scripts/instagram-sync.mjs. */
   instagram?: string;
+  /** Pictures from the event itself, shown under its page. */
+  photos?: EventPhoto[];
   /** The "New event" issue it was drafted from; set by scripts/event-from-issue.mjs. */
   issue?: string;
   /** YYYY-MM-DD, the last day of an event that runs over several days. */
@@ -218,7 +232,7 @@ export const rsvpFor = (event: ClubEvent, now: Date = new Date()) =>
       }
     : null;
 
-export type ResourceKind = "materials" | "recording" | "page";
+export type ResourceKind = "materials" | "recording" | "page" | "post";
 
 export interface ResourceLink {
   kind: ResourceKind;
@@ -277,6 +291,15 @@ export const resourceLinks = (event: ClubEvent): ResourceLink[] => {
   }
   return links;
 };
+
+/**
+ * The Instagram post an event was announced in. Only its own page links it:
+ * on cards it would crowd out the code and recordings people come back for.
+ */
+export const postLink = (event: ClubEvent): ResourceLink | null =>
+  event.instagram
+    ? { kind: "post", href: event.instagram, label: "Instagram post" }
+    : null;
 
 /** Past events whose code or recording is online, newest first. */
 export const eventsWithResources = (

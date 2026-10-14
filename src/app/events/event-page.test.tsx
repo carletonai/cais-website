@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { MemoryRouter, Route, Routes, useLocation } from "react-router-dom";
 import EventPage from "./event-page";
 
@@ -52,6 +52,29 @@ test("links a past workshop's code", () => {
   );
   expect(
     screen.queryByRole("button", { name: "Add to calendar" }),
+  ).not.toBeInTheDocument();
+});
+
+test("shows a past event's photos and the post it was announced in", () => {
+  renderAt("/events/62-cais-hackathon-2-0");
+  expect(
+    screen.getByRole("link", {
+      name: /Instagram post for CAIS Hackathon 2.0/,
+    }),
+  ).toHaveAttribute("href", "https://www.instagram.com/p/DVw5V4aDl49/");
+  const photos = screen.getByRole("region", { name: "Photos" });
+  expect(within(photos).getAllByRole("button")).toHaveLength(12);
+  expect(
+    within(photos).getByRole("button", {
+      name: "Enlarge photo: ThinkFirst in front of the first-place slide",
+    }),
+  ).toBeInTheDocument();
+});
+
+test("leaves the photos out for an event without any", () => {
+  renderAt("/events/66-intro-to-agentic-ai");
+  expect(
+    screen.queryByRole("region", { name: "Photos" }),
   ).not.toBeInTheDocument();
 });
 

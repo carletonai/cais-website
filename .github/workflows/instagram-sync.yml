@@ -54,6 +54,11 @@ jobs:
         env:
           NPM_CONFIG_REGISTRY: "https://registry.npmjs.org/"
 
+      # GitHub's Ubuntu runners do not ship ImageMagick, which
+      # scripts/lib/poster.mjs needs to convert posters and make their 600px copies.
+      - name: Install ImageMagick
+        run: command -v magick || command -v convert || { sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends imagemagick; }
+
       - name: Read Instagram and draft events
         id: sync
         env:

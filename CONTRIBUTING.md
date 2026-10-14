@@ -129,6 +129,13 @@ Events live in `src/data/events.json`; the newest go at the end.
   cards (the tests check it is there), for example with
   `convert poster.jpg -resize 600x -quality 82 -strip poster-600.jpg`.
   Images must be on this site: the production CSP blocks any other origin.
+- `photos`: pictures from the event itself, shown in a grid under its page.
+  Each is `{ "src", "width", "height", "alt" }`: a JPEG in a folder of its own
+  under `public/assets/events/`, with a 600px copy beside it as for posters,
+  and `alt` saying what the photo shows. The build fails if a size is wrong or
+  `alt` is empty.
+- `instagram`: the post the event was announced in, linked from its page. The
+  Instagram sync fills it in, and skips any post an event already links.
 - `rsvpLink`, `materials`, `recording`, `page`: https links. They show up on the
   event's card and page with labels like "Code on GitHub" or "Register on Luma".
 

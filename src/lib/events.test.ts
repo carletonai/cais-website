@@ -9,6 +9,7 @@ import {
   isUpcoming,
   nextEvent,
   posterThumb,
+  postLink,
   resourceLinks,
   rsvpFor,
   seasonNow,
@@ -150,6 +151,19 @@ describe("resourceLinks", () => {
       },
       { kind: "page", href: "https://hackthehill.com", label: "Event page" },
     ]);
+  });
+
+  it("keeps the Instagram post for the event's own page", () => {
+    const chatbot = findEventBySlug("11")!;
+    expect(resourceLinks(chatbot).map((link) => link.kind)).toEqual([
+      "materials",
+    ]);
+    expect(postLink(chatbot)).toEqual({
+      kind: "post",
+      href: "https://www.instagram.com/p/DU39kwqDryE/",
+      label: "Instagram post",
+    });
+    expect(postLink(findEventBySlug("67")!)).toBeNull();
   });
 
   it("lists past events with code or a recording, newest first", () => {
