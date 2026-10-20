@@ -53,15 +53,29 @@
       "id": "carleton-blueprint",
       "name": "Carleton Blueprint",
       "blurb": "Host of the Project Showcase, February 2026.",
-      "url": "https://linktr.ee/cublueprint",
+      "url": "https://carletonblueprint.org",
       "logo": "/assets/partners/carleton-blueprint.webp"
     },
     {
       "id": "carleton-cybersecurity-club",
       "name": "Carleton Cybersecurity Club",
       "blurb": "Co-host of the Project Showcase, February 2026.",
-      "url": "https://linktr.ee/CarletonCyberSecurityClub",
+      "url": "https://cucybersec.club",
       "logo": "/assets/partners/carleton-cybersecurity-club.webp"
+    },
+    {
+      "id": "wics",
+      "name": "Women in Computer Science (WiCS)",
+      "blurb": "Co-host of the Halloween Social, October 2026.",
+      "url": "https://wics.scs.carleton.ca",
+      "logo": "/assets/partners/wics.webp"
+    },
+    {
+      "id": "cu-game-dev-club",
+      "name": "CU Game Dev Club",
+      "blurb": "Co-host of the Halloween Social, October 2026.",
+      "url": "https://www.instagram.com/cu_gamedev_club/",
+      "logo": "/assets/partners/cu-game-dev-club.webp"
     },
     {
       "id": "blackbird-uav",
