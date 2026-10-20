@@ -22,11 +22,16 @@ const renderAt = (path: string) =>
 
 test("shows one event with everything needed to go", () => {
   renderAt("/events/66-intro-to-agentic-ai");
-  expect(
-    screen.getByRole("heading", { level: 1, name: "Intro to Agentic AI" }),
-  ).toBeInTheDocument();
-  expect(screen.getByText("Fri, Oct 9, 2026")).toBeInTheDocument();
-  expect(screen.getByText("6:00–7:00 PM")).toBeInTheDocument();
+  const title = screen.getByRole("heading", {
+    level: 1,
+    name: "Intro to Agentic AI",
+  });
+  expect(title).toBeInTheDocument();
+  // The "Also coming up" cards below carry dates and times of their own,
+  // so the event's are looked for in the block that holds its title.
+  const details = within(title.parentElement!);
+  expect(details.getByText("Fri, Oct 9, 2026")).toBeInTheDocument();
+  expect(details.getByText("6:00–7:00 PM")).toBeInTheDocument();
   expect(
     screen.getByRole("button", { name: "Add to calendar" }),
   ).toBeInTheDocument();
