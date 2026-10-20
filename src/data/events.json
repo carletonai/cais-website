@@ -832,6 +832,21 @@
       "posterHeight": 1545,
       "rsvpLink": "https://luma.com/phs5tofz",
       "tags": ["networking", "free-food", "technical"]
+    },
+    {
+      "id": "68",
+      "title": "Projects kickoff",
+      "date": "2026-10-23",
+      "time": "6:00 PM - 7:00 PM",
+      "location": "Herzberg 5345",
+      "description": "Come build cool AI things with us! HP5345 this Friday from 6-7 PM",
+      "type": "Workshop",
+      "instagram": "https://www.instagram.com/carletonaisociety/p/DesKbv4hqlT/",
+      "issue": "https://github.com/carletonai/cais-website/issues/70",
+      "poster": "/assets/events/projects-kickoff-2026.jpg",
+      "posterHeight": 2071,
+      "posterWidth": 1600,
+      "tags": ["beginner-friendly", "hands-on", "technical", "online"]
     }
   ]
 }
