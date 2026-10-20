@@ -862,6 +862,20 @@
       "posterHeight": 1080,
       "posterWidth": 1080,
       "tags": ["free-food", "networking", "social"]
+    },
+    {
+      "id": "70",
+      "title": "Come build cool AI things with us! HP5345 this Friday from 6-7 PM (67)… Join…",
+      "date": "2026-10-23",
+      "time": "6:00 PM - 7:00 PM",
+      "location": "",
+      "description": "Come build cool AI things with us! HP5345 this Friday from 6-7 PM (67)… Join our discord for more info (link in bio).",
+      "type": "Social",
+      "instagram": "https://www.instagram.com/p/DesKbv4hqlT/",
+      "poster": "/assets/events/come-build-cool-ai-things-with-us-hp5345-this-fr-2026.jpg",
+      "posterHeight": 2112,
+      "posterWidth": 1648,
+      "tags": ["social"]
     }
   ]
 }
