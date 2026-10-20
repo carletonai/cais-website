@@ -2,6 +2,7 @@ import { parseCaption } from "./instagram-caption.js";
 import {
   candidates,
   draftEvent,
+  instagramPostCode,
   nextId,
   posterName,
   posterSource,
@@ -43,6 +44,46 @@ describe("candidates", () => {
       now,
     });
     expect(chosen.map((m) => m.id)).toEqual(["A"]);
+  });
+
+  // Event #68 linked its post with the account's name in the path, and the
+  // sync drafted the same post again as a new event.
+  it("knows a post is on the site however its link was copied", () => {
+    const kickoff = post("DesKbv4hqlT", "Come build cool AI things with us!");
+    const chosen = candidates([kickoff], {
+      seen: [],
+      events: [
+        {
+          instagram:
+            "https://www.instagram.com/carletonaisociety/p/DesKbv4hqlT/",
+        },
+      ],
+      now,
+    });
+    expect(chosen).toEqual([]);
+  });
+});
+
+describe("instagramPostCode", () => {
+  it("reads the post's code from every kind of post link", () => {
+    for (const url of [
+      "https://www.instagram.com/p/DesKbv4hqlT/",
+      "https://instagram.com/p/DesKbv4hqlT?igsh=abc",
+      "https://www.instagram.com/carletonaisociety/p/DesKbv4hqlT/",
+      "https://www.instagram.com/carletoncss/reel/DesKbv4hqlT/",
+      "https://www.instagram.com/reels/DesKbv4hqlT",
+    ]) {
+      expect(`${url}: ${instagramPostCode(url)}`).toBe(`${url}: DesKbv4hqlT`);
+    }
+  });
+
+  it("keeps the code's case and ignores links that are not posts", () => {
+    expect(instagramPostCode("https://www.instagram.com/p/AbC-_1/")).toBe(
+      "AbC-_1",
+    );
+    expect(
+      instagramPostCode("https://www.instagram.com/carletonaisociety/"),
+    ).toBeNull();
   });
 });
 
