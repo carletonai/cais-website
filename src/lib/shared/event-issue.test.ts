@@ -435,6 +435,18 @@ describe("eventFromIssue", () => {
       context,
     );
     expect(byPost.errors.join(" ")).toMatch(/already on the site as event #66/);
+    const withAccount = eventFromIssue(
+      parseIssueForm(
+        submission({
+          "Instagram post":
+            "https://www.instagram.com/carletonaisociety/p/DeLVyDeOnbq/",
+        }),
+      ),
+      context,
+    );
+    expect(withAccount.errors.join(" ")).toMatch(
+      /already on the site as event #66/,
+    );
     const byTitle = eventFromIssue(
       parseIssueForm(submission({ Date: "2026-10-17" })),
       { ...context, title: "Event: grok bot meetup, ottawa!" },
