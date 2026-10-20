@@ -847,6 +847,21 @@
       "posterHeight": 2071,
       "posterWidth": 1600,
       "tags": ["beginner-friendly", "hands-on", "technical", "online"]
+    },
+    {
+      "id": "69",
+      "title": "Halloween Social",
+      "date": "2026-10-21",
+      "time": "6:00 PM - 8:00 PM",
+      "location": "Herzberg 4155",
+      "description": "Join us and our fellow tech clubs for an evening of spooky fun with free pizza and candy! We’ll have pumpkin painting, Halloween Kahoots, make-your-own candy bags, and more. Costumes are encouraged but not required!",
+      "type": "Social",
+      "instagram": "https://www.instagram.com/carletoncss/p/DemrHs3hIh8/",
+      "issue": "https://github.com/carletonai/cais-website/issues/71",
+      "poster": "/assets/events/halloween-social-2026.jpg",
+      "posterHeight": 1080,
+      "posterWidth": 1080,
+      "tags": ["free-food", "networking", "social"]
     }
   ]
 }
