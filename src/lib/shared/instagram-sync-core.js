@@ -32,10 +32,29 @@
 /** Posts older than this are not announcements of anything to come. */
 export const MAX_AGE_DAYS = 60;
 
-/** Two links to the same post, with or without the trailing slash or query. */
-const samePost = (/** @type {string} */ a, /** @type {string} */ b) =>
-  a.replace(/[?#].*$/, "").replace(/\/+$/, "") ===
-  b.replace(/[?#].*$/, "").replace(/\/+$/, "");
+/**
+ * The code that names an Instagram post, wherever its link was copied from:
+ * instagram.com/p/<code>/, /reel/<code>/ and /tv/<code>/, with or without
+ * the account's name in front (instagram.com/carletonaisociety/p/<code>/),
+ * a query or a trailing slash. Codes are case-sensitive. Null for anything
+ * that is not a post link.
+ */
+export const instagramPostCode = (/** @type {string} */ url) =>
+  /^https?:\/\/(?:www\.)?instagram\.com\/(?:[\w.]+\/)?(?:p|reels?|tv)\/([\w-]+)/i.exec(
+    url.trim(),
+  )?.[1] ?? null;
+
+/** Two links to the same post, however each was copied. */
+export const samePost = (/** @type {string} */ a, /** @type {string} */ b) => {
+  const code = instagramPostCode(a);
+  if (code) return code === instagramPostCode(b);
+  const bare = (/** @type {string} */ url) =>
+    url
+      .trim()
+      .replace(/[?#].*$/, "")
+      .replace(/\/+$/, "");
+  return bare(a) === bare(b);
+};
 
 /**
  * The posts worth reading: not decided before, not already an event on the

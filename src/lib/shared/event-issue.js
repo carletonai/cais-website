@@ -7,7 +7,7 @@
  * or edited. See CONTRIBUTING.md, "Adding an event from GitHub".
  */
 import { dateIn, parseCaption, tagsIn, timeIn } from "./instagram-caption.js";
-import { nextId } from "./instagram-sync-core.js";
+import { nextId, samePost } from "./instagram-sync-core.js";
 
 /** The form's fields, by the label GitHub writes above each answer. */
 export const FIELDS = {
@@ -292,17 +292,6 @@ export const posterUrlIn = (/** @type {string} */ text) => {
 };
 
 const isHttps = (/** @type {string} */ url) => /^https:\/\/\S+$/.test(url);
-
-/** Two links to the same Instagram post, however it was copied. */
-const samePost = (/** @type {string} */ a, /** @type {string} */ b) => {
-  const key = (/** @type {string} */ url) =>
-    url
-      .toLowerCase()
-      .replace(/^https?:\/\/(www\.)?/, "")
-      .replace(/[?#].*$/, "")
-      .replace(/\/+$/, "");
-  return key(a) === key(b);
-};
 
 /** Titles that are the same event: case, punctuation and spacing aside. */
 const sameTitle = (/** @type {string} */ a, /** @type {string} */ b) =>
