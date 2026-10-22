@@ -33,6 +33,12 @@ updates:
         update-types:
           - "minor"
           - "patch"
+      # react and react-dom refuse to run at different versions, so a bump of
+      # one alone fails every test; they move together.
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
 
   - package-ecosystem: "github-actions"
     directory: "/"
