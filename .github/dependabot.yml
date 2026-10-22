@@ -39,6 +39,13 @@ updates:
         patterns:
           - "react"
           - "react-dom"
+      # The Babel presets need the @babel/core of the same major: a preset
+      # bumped to 8 under core 7 loads as nothing and strips no TypeScript.
+      # Majors included, since the dev-tooling group above takes only
+      # minors and patches.
+      babel:
+        patterns:
+          - "@babel/*"
 
   - package-ecosystem: "github-actions"
     directory: "/"
