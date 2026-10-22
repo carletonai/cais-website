@@ -4,8 +4,11 @@ process.env.TZ = "America/Toronto";
 
 module.exports = {
   testEnvironment: "jsdom",
+  // The project's own babel-jest, not the copy jest-config bundles: that one
+  // is paired with jest's internal @babel/core 7, which loads the Babel 8
+  // presets as empty objects and leaves TypeScript and JSX untransformed.
   transform: {
-    "^.+\\.(ts|tsx|js|jsx|mjs)$": "babel-jest",
+    "^.+\\.(ts|tsx|js|jsx|mjs)$": require.resolve("babel-jest"),
   },
   // react-hotkeys-hook 5 is ESM-only and ships untranspiled, so it has to
   // go through babel rather than being skipped with the rest of node_modules.
