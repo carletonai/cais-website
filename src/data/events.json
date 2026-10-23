@@ -862,6 +862,20 @@
       "posterHeight": 1080,
       "posterWidth": 1080,
       "tags": ["free-food", "networking", "social"]
+    },
+    {
+      "id": "70",
+      "title": "Come one, come all! HP5345 this Friday 6-7 PM",
+      "date": "2026-10-23",
+      "time": "6:00 PM - 7:00 PM",
+      "location": "",
+      "description": "Come one, come all! HP5345 this Friday 6-7 PM",
+      "type": "Social",
+      "instagram": "https://www.instagram.com/reel/DexWaslAk67/",
+      "poster": "/assets/events/come-one-come-all-hp5345-this-friday-6-7-pm-2026.jpg",
+      "posterHeight": 2080,
+      "posterWidth": 1170,
+      "tags": ["social"]
     }
   ]
 }

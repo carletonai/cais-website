@@ -1,3 +1,18 @@
 {
-  "seen": []
+  "seen": [
+    {
+      "id": "18197588878387555",
+      "permalink": "https://www.instagram.com/reel/Dd4wfFcgGWg/",
+      "decision": "skipped",
+      "reason": "dated 2026-10-02, already past",
+      "at": "2026-10-23"
+    },
+    {
+      "id": "18117477743600586",
+      "permalink": "https://www.instagram.com/reel/DexWaslAk67/",
+      "decision": "event",
+      "eventId": "70",
+      "at": "2026-10-23"
+    }
+  ]
 }
