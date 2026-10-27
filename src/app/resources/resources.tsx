@@ -90,7 +90,7 @@ Essential Links:
 🤝 Discord: https://discord.gg/gCs3v653de
 📱 Instagram: https://www.instagram.com/carletonaisociety/
 💼 LinkedIn: https://www.linkedin.com/company/carleton-ai
-📺 YouTube: https://www.youtube.com/channel/UCWKRnTa68hlHrW6WYCgCNaw
+📺 YouTube: https://www.youtube.com/@carletonai
 💻 GitHub: https://github.com/carletonai
 📧 Email: info.carletonai@gmail.com
 
@@ -1123,7 +1123,7 @@ Benefits:
 🤝 Discord: https://discord.gg/gCs3v653de
 📱 Instagram: https://www.instagram.com/carletonaisociety/
 💼 LinkedIn: https://www.linkedin.com/company/carleton-ai
-📺 YouTube: https://www.youtube.com/channel/UCWKRnTa68hlHrW6WYCgCNaw
+📺 YouTube: https://www.youtube.com/@carletonai
 💻 GitHub: https://github.com/carletonai
     `,
           isSystem: true,
