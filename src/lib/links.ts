@@ -52,8 +52,8 @@ export const SOCIAL_LINKS = [
   },
   {
     label: "YouTube",
-    handle: "CAIS YouTube",
-    url: "https://www.youtube.com/channel/UCWKRnTa68hlHrW6WYCgCNaw",
+    handle: "@carletonai",
+    url: "https://www.youtube.com/@carletonai",
     icon: FaYoutube,
   },
   {
