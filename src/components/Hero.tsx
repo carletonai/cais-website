@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { FaDiscord } from "react-icons/fa";
 import { ArrowRightIcon } from "lucide-react";
 import { Ring } from "@/components/brand/Ring";
-import { SignalGrid } from "@/components/brand/SignalGrid";
 import { NextUp } from "@/components/events/NextUp";
 import { Button } from "@/components/ui/button";
 import { clubNumbers } from "@/lib/events";
@@ -18,11 +17,8 @@ export default function Hero() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="relative overflow-hidden border-b border-border bg-dots"
+      className="relative overflow-hidden border-b border-border"
     >
-      {/* The dot grid comes alive: waves from the ring, links under the
-          pointer, signals running along the grid. */}
-      <SignalGrid />
       {/* Only where the layout leaves room: text never crosses the ring. */}
       <Ring
         draw

@@ -11,8 +11,8 @@ const titleSize = (title: string) =>
       : "text-[1.05rem]";
 
 /**
- * A poster-style cover for the many events that never had a poster: dot grid,
- * red ring, uppercase title. Socials get the posters' cream variant. Costs no
+ * A poster-style cover for the many events that never had a poster: a plain
+ * ground, red ring and uppercase title. Socials get the posters' cream variant. Costs no
  * bytes and repeats the card's own text, so it is hidden from assistive tech.
  */
 export function EventArt({ event }: { event: ClubEvent }) {
@@ -21,7 +21,7 @@ export function EventArt({ event }: { event: ClubEvent }) {
     <div
       aria-hidden="true"
       data-surface={paper ? "paper" : undefined}
-      className="relative size-full overflow-hidden bg-background bg-dots"
+      className="relative size-full overflow-hidden bg-background"
     >
       <Ring className="absolute -right-8 -top-8 w-28" />
       <div className="absolute inset-x-0 bottom-0 p-4 pr-6">
