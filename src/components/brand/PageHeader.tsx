@@ -11,12 +11,12 @@ type PageHeaderProps = {
 
 /**
  * The top of every inner page, in the posters' language: a cropped red
- * ring and a tight uppercase headline on a plain ground. Text never sits on
- * the ring.
+ * ring and a tight uppercase headline, on a ground that glows faintly in the
+ * ring's corner and eases into the page. Text never sits on the ring.
  */
 export function PageHeader({ label, title, lede, children }: PageHeaderProps) {
   return (
-    <header className="relative overflow-hidden border-b border-border">
+    <header className="relative overflow-hidden bg-glow">
       <Ring
         draw
         className="absolute -right-20 -top-32 w-48 lg:-right-16 lg:-top-40 lg:w-[26rem]"
