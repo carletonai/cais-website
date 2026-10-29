@@ -2,9 +2,9 @@
 @config "../../tailwind.config.ts";
 
 /*
- * The site wears the club's poster language: near-black "ink" or warm cream
- * "paper" grounds with a fine dot grid, a red ring, tight Space Grotesk
- * headlines and letter-spaced IBM Plex Mono labels.
+ * The site wears the club's poster language: plain near-black "ink" or warm
+ * cream "paper" grounds, a red ring, tight Space Grotesk headlines and
+ * letter-spaced IBM Plex Mono labels.
  *
  * Contrast rules (checked by `pnpm test:contrast`): text is AAA (7:1) on every
  * surface, except red *ink* on the dark ground, which no red that still looks
@@ -47,7 +47,6 @@
   /* Graphics only (rings, bullets): never text. */
   --color-mark: #cf252e;
   --color-circuit: #63666f;
-  --color-dot: #1e1f24;
   /* The "online" dot beside the Discord count. */
   --color-online: #3ba55d;
 
@@ -92,7 +91,6 @@
   --color-primary-foreground: #fcfbf7;
 
   --color-circuit: #b9b2a4;
-  --color-dot: #e4e0d5;
   --color-online: #1f7a45;
 
   --color-border: #d6d0c3;
@@ -219,17 +217,6 @@
 }
 
 @layer utilities {
-  /* The posters' fine dot grid. Dots are dark enough that muted text crossing
-     one still clears 7:1. */
-  .bg-dots {
-    background-image: radial-gradient(
-      var(--color-dot) 1.5px,
-      transparent 1.5px
-    );
-    background-size: 24px 24px;
-    background-position: 12px 12px;
-  }
-
   /* "C A R L E T O N  A I  S O C I E T Y": letter-spaced mono labels. */
   .label-mono {
     font-family: var(--font-mono);

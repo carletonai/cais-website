@@ -51,7 +51,7 @@ const EventPage = () => {
 
   return (
     <article className="relative">
-      <div className="relative overflow-hidden border-b border-border bg-dots">
+      <div className="relative overflow-hidden border-b border-border">
         <Ring
           draw
           className="absolute -right-24 -top-32 w-56 lg:-right-20 lg:-top-44 lg:w-[30rem]"

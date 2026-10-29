@@ -10,12 +10,13 @@ type PageHeaderProps = {
 };
 
 /**
- * The top of every inner page, in the posters' language: dot grid, a cropped
- * red ring and a tight uppercase headline. Text never sits on the ring.
+ * The top of every inner page, in the posters' language: a cropped red
+ * ring and a tight uppercase headline on a plain ground. Text never sits on
+ * the ring.
  */
 export function PageHeader({ label, title, lede, children }: PageHeaderProps) {
   return (
-    <header className="relative overflow-hidden border-b border-border bg-dots">
+    <header className="relative overflow-hidden border-b border-border">
       <Ring
         draw
         className="absolute -right-20 -top-32 w-48 lg:-right-16 lg:-top-40 lg:w-[26rem]"

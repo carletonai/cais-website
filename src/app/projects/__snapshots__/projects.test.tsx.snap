@@ -3,7 +3,7 @@
 exports[`renders ProjectsPage correctly 1`] = `
 <DocumentFragment>
   <header
-    class="relative overflow-hidden border-b border-border bg-dots"
+    class="relative overflow-hidden border-b border-border"
   >
     <svg
       aria-hidden="true"

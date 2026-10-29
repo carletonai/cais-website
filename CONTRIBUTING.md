@@ -75,7 +75,7 @@ for large text (>=24px, or >=18.66px bold). The one exception is the brand-red
 text colour (`primary`), which is held to **AA** (4.5:1, 3:1 large): no red that
 still looks red can reach 7:1 on the site's near-black background.
 
-Text sits on dot grids, poster images and two surfaces (ink and cream "paper"),
+Text sits on poster images and two surfaces (ink and cream "paper"),
 so contrast cannot be checked by reading Tailwind classes. `pnpm test:contrast`
 measures it from rendered pixels instead — it screenshots
 each page twice (once normally, once with glyphs made transparent), diffs the
