@@ -217,6 +217,19 @@
 }
 
 @layer utilities {
+  /* Headers and covers: a quiet wash in place of a rule. The ring's red at a
+     whisper in its corner, over a ground that eases from card to page, so the
+     block has depth and no edge. Plain gradients: no pattern. */
+  .bg-glow {
+    background-image:
+      radial-gradient(
+        70rem 40rem at 100% 0%,
+        color-mix(in oklab, var(--color-mark) 12%, transparent),
+        transparent 60%
+      ),
+      linear-gradient(to bottom, var(--color-card), var(--color-background));
+  }
+
   /* "C A R L E T O N  A I  S O C I E T Y": letter-spaced mono labels. */
   .label-mono {
     font-family: var(--font-mono);

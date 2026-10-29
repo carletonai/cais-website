@@ -3,7 +3,7 @@
 exports[`renders TeamPage correctly 1`] = `
 <DocumentFragment>
   <header
-    class="relative overflow-hidden border-b border-border"
+    class="relative overflow-hidden bg-glow"
   >
     <svg
       aria-hidden="true"

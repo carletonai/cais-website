@@ -17,7 +17,7 @@ export default function Hero() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="relative overflow-hidden border-b border-border"
+      className="relative overflow-hidden bg-glow"
     >
       {/* Only where the layout leaves room: text never crosses the ring. */}
       <Ring
