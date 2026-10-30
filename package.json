@@ -71,7 +71,7 @@
     "tailwindcss": "^4.3.3",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^6.0.3",
-    "vite": "^8.3.4",
+    "vite": "^8.3.5",
     "vite-plugin-svgr": "^5.2.0"
   },
   "engines": {
