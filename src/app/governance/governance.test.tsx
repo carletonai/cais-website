@@ -29,6 +29,6 @@ describe("Governance", () => {
     ).toHaveAttribute("href", "/team/past");
     expect(
       within(pages).getByRole("link", { name: /Constitution/ }),
-    ).toHaveAttribute("href", "/constitution.pdf");
+    ).toHaveAttribute("href", "/constitution");
   });
 });

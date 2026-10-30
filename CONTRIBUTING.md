@@ -289,6 +289,26 @@ link to (or `null`), and a square `logo` under `public/assets/partners/`
 (WebP, about 192px; or `null` to show the acronym or initials until there
 is one).
 
+## Updating the constitution
+
+The constitution is a page of the site, `/constitution`, built from
+`src/data/constitution.json`; the PDF it reproduces is
+`public/constitution.pdf`, the page's "Download PDF". When the general
+membership adopts an amendment (Article X), change both: replace the PDF with
+the new version and edit the JSON to match it, then set `edition` to the year
+of the new version. Keep the wording exactly as adopted, since the page stands
+in for the document.
+
+Each article has its roman `number`, its `title` and its `content`, a list of
+blocks in order: a string is a paragraph, `{ "heading": "…" }` a sub-heading
+within the article ("Elections"), and `{ "items": [...] }` a numbered list of
+clauses. A clause is a string, or `{ "text": "…", "items": [...] }` when it
+has sub-clauses of its own: the page numbers clauses 1, 2, 3, their
+sub-clauses a, b, c, and theirs i, ii, iii. `"marker": "bullet"` on a clause
+bullets its sub-clauses instead, as the document does for the quorum rule.
+The tests check that every article is in the page's contents and reachable
+by its anchor.
+
 ## Contributing
 
 1. Fork the repository
@@ -307,7 +327,7 @@ src/
 ├── lib/          # Event times, calendar files, search and other helpers
 └── main.tsx      # Entry point
 scripts/          # Build-time prerendering, the contrast audit, the Instagram sync and the event intake
-public/           # Static files: posters, brand assets, the constitution, 404.html
+public/           # Static files: posters, brand assets, the constitution PDF, 404.html
 ```
 
 ### Pages Description
@@ -319,6 +339,7 @@ public/           # Static files: posters, brand assets, the constitution, 404.h
 - **Projects (/projects)**: Showcase of current and past projects
 - **CAIS Terminal (/resources)**: An interactive terminal with the club's links, events, projects and learning resources
 - **Governance (/governance)**: How the club is run; the landing page of the Team tab
+- **Constitution (/constitution)**: The club constitution, article by article, with the PDF to download
 - **Current Team (/team)**: This year's executive team
 - **Past Teams (/team/past)**: Previous executive teams, year by year
 - **Contact (/contact)**: Get in touch with CAIS

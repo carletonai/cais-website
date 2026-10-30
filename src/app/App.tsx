@@ -23,6 +23,7 @@ const Contact = lazy(() => import("./contact/contact"));
 const Team = lazy(() => import("./team/team"));
 const PastTeams = lazy(() => import("./past-teams/past-teams"));
 const Governance = lazy(() => import("./governance/governance"));
+const Constitution = lazy(() => import("./constitution/constitution"));
 const Resources = lazy(() => import("./resources/resources"));
 const CommandPalette = lazy(() => import("../components/CommandPalette"));
 
@@ -162,6 +163,7 @@ const App = () => {
               <Route path="/team" element={<Team />} />
               <Route path="/team/past" element={<PastTeams />} />
               <Route path="/governance" element={<Governance />} />
+              <Route path="/constitution" element={<Constitution />} />
               <Route path="/resources" element={<Resources />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

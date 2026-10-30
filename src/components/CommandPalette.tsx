@@ -56,6 +56,11 @@ const PAGES: Item[] = [
   ["Current Team", "/team", "exec executives people"],
   ["Past Teams", "/team/past", "alumni history"],
   ["Governance", "/governance", "constitution roles elections"],
+  [
+    "Constitution",
+    CONSTITUTION_URL,
+    "rules bylaws membership executive meetings elections impeachment amendments pdf",
+  ],
   ["Contact", "/contact", "email socials reach"],
   ["CAIS Terminal", "/resources", "resources learning cli"],
 ].map(([title, href, keywords]) => ({
@@ -75,14 +80,6 @@ const ACTIONS: Item[] = [
     keywords: "ics webcal google apple outlook reminders",
     href: webcalFeedUrl(),
     icon: CalendarIcon,
-  },
-  {
-    id: "action:constitution",
-    group: "Actions",
-    title: "Read the constitution (PDF)",
-    keywords: "governance rules",
-    href: CONSTITUTION_URL,
-    icon: FileTextIcon,
   },
   ...SOCIAL_LINKS.map(({ label, handle, url }) => ({
     id: `action:${label}`,
@@ -156,7 +153,7 @@ const ORDER: Group[] = [
 ];
 const LIMIT: Record<Group, number> = {
   Upcoming: 4,
-  Pages: 9,
+  Pages: 10,
   Events: 8,
   Projects: 5,
   People: 6,

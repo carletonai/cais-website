@@ -32,6 +32,10 @@
       "title": "Governance",
       "description": "How CAIS is structured: the responsibilities of each executive role, the club constitution, and our current and past teams."
     },
+    "/constitution": {
+      "title": "Constitution",
+      "description": "The constitution of the Carleton AI Society: the club's purpose, membership, executive roles, meetings, elections, impeachment and how it is amended."
+    },
     "/team": {
       "title": "Current Team",
       "description": "Meet the executive team driving AI education at Carleton University this year."

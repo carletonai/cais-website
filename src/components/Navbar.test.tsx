@@ -34,6 +34,7 @@ describe("Navbar Component", () => {
       "Governance",
       "Current Team",
       "Past Teams",
+      "Constitution",
       "Contact",
     ];
     links.forEach((link) => {

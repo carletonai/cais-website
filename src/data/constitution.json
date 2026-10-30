@@ -1,0 +1,295 @@
+{
+  "title": "Constitution of Carleton AI Society",
+  "edition": "2026",
+  "articles": [
+    {
+      "number": "I",
+      "title": "Name of the Organization",
+      "content": [
+        "The Organization shall be known as “Carleton AI Society”, and herein be referred to as “C.A.I.S.” No other name shall be used in the advertisement or representation of the club."
+      ]
+    },
+    {
+      "number": "II",
+      "title": "Purpose of the Organization",
+      "content": [
+        "The organization shall work towards:",
+        {
+          "items": [
+            {
+              "text": "Missions",
+              "items": [
+                "Provide individuals with the necessary skills and knowledge to succeed in their professional, personal, or academic journey into machine learning and artificial intelligence."
+              ]
+            },
+            {
+              "text": "Vision",
+              "items": [
+                "Foster a community of diverse, responsible and eager individuals passionate about machine learning and artificial intelligence while considering the ethical and social implications of their work.",
+                "Consider of the ethical and social implications of artificial intelligence within the community",
+                "Help students attain their professional and academic goals with respect to AI"
+              ]
+            },
+            {
+              "text": "Objectives and goals",
+              "items": [
+                "To engage Carleton University students interested in AI in social and academic activities",
+                "Ensure that every student is offered an equitable pathway in their journey into AI."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "III",
+      "title": "Responsibilities",
+      "content": [
+        "To advance the society’s objectives and nothing else, the executives have the right to:",
+        {
+          "items": [
+            "Bring on registered members as volunteers, who are passionate about the society and committed to contribute their time and skills to support initiatives brought forth by the society.",
+            "Collaborate with like-minded groups to share information, advice, and knowledge, including but not limited to partnerships with other academic societies, volunteer organizations, and both statutory and non-statutory entities.",
+            "Raise funds and contributions where appropriate, ensuring that all efforts align with the guidelines established by CAIS and Carleton University"
+          ]
+        }
+      ]
+    },
+    {
+      "number": "IV",
+      "title": "Structure",
+      "content": [
+        {
+          "items": [
+            "The General Membership shall be the legislative body of the organization and shall be composed of all members.",
+            "The Executive shall be the administrative body of the organization and shall be composed of members elected by the General Membership.",
+            "The President should have explicit signing authority for club operations and related activities."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "V",
+      "title": "Membership",
+      "content": [
+        {
+          "items": [
+            "The Organization’s General Membership shall be open to all undergraduate students at Carleton University. The club’s membership cannot be exclusive towards any group of students at Carleton University.",
+            "The Organization may grant graduate students at Carleton University and others in the community membership in the Organization, however they must not have voting rights in elections and must have a membership classification in Article III - Structure.",
+            "Membership in the organization shall be valid from May to April each academic year.",
+            "Only undergraduate students enrolled at Carleton University may serve on the Executive. Graduate students may only serve a non-voting, advisory capacity."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "VI",
+      "title": "Executive",
+      "content": [
+        {
+          "items": [
+            {
+              "text": "The President shall:",
+              "items": [
+                "Oversee the other executives in the performance of their duties.",
+                "Provide updates to executive members and general members about the state of the club and recommend to their consideration such measures they shall judge necessary and expedient.",
+                "Represent the Society in dealings with other organizations, including, but not limited to, other clubs, Carleton University, and the Carleton University Students’ Association."
+              ]
+            },
+            {
+              "text": "The Vice-President Finance/Treasurer shall:",
+              "items": [
+                "Manage the finances and assets of the club.",
+                "Prepare a budget for the Society each year, or more frequently as events require, and keep records of the financial transactions of the Society.",
+                "Arrange the funding of social events of the Society.",
+                "Have signing authority for the Society."
+              ]
+            },
+            {
+              "text": "The Vice-President Community shall:",
+              "items": [
+                "Lead initiatives to attract members at the beginning of the academic year.",
+                "Assist in organizing social events with a focus on fostering member interactivity and inclusivity.",
+                "Keep social media accounts up to date, with events and announcements, ensuring members are up to date.",
+                "Assist with building partnerships with other clubs and/or external groups for events.",
+                "Gather feedback from members regarding events and general club activity, at least once per year at the end of the academic year.",
+                "Provide assistance onboarding by directing new members or providing new members with useful resources pertaining to the society."
+              ]
+            },
+            {
+              "text": "The Vice-President Academics shall:",
+              "items": [
+                "Assist in organizing academic events like workshops, study sessions, or course review pertaining to the society.",
+                "Locate, curate, and provide academic resources related to that will aid students with their academic goals with subjects relevant to AI.",
+                "Collect information on programs and opportunities that allow for pursuing studies in AI beyond undergraduate studies",
+                "Reach out to various academics to partner for an academic related event, such as a guest speaker event."
+              ]
+            },
+            {
+              "text": "The Vice-President Events shall:",
+              "items": [
+                "Lead the planning of all society events, including, but not limited to, workshops, social events, and competitions.",
+                "Oversee all event execution, to ensure a smooth experience for participants.",
+                "Develop and maintain an event schedule to keep all executives and members informed in advance.",
+                "Collaborate with the VP Community to promote events through means such as social media.",
+                "Assist gathering member feedback on events and use it to make improvements for future planning.",
+                "Plan and monitor event expenses within the society’s budget, with financial oversight of the VP finance."
+              ]
+            },
+            {
+              "text": "The Vice-President Projects/Technology shall:",
+              "items": [
+                "Lead the planning and execution of technical projects related to the society’s missions.",
+                "Research new technologies and project ideas that can be brought to the community.",
+                "Assist with any technical challenges in the planning and execution of events.",
+                "Recruit and, if necessary, train volunteers to assist with the development of technical projects under the guidance of the President.",
+                "Maintain an organized report of all projects, including timelines, tasks, and issues, for the visibility of volunteers and executives.",
+                "Keep the society’s website up to date by regularly updating necessary information and addressing any potential bugs."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "VII",
+      "title": "Meetings",
+      "content": [
+        { "heading": "Meetings of the General Membership" },
+        {
+          "items": [
+            {
+              "text": "Meetings of the General Membership can be called:",
+              "items": [
+                "At the request of the President, for a meeting to be held not less than one week from the date of publication of the notice;",
+                "At the request of the Executive, for a meeting to be held not less than one week from the date of publication of the notice; or",
+                "At the request of any five members of the Organization."
+              ]
+            },
+            "A minimum of one meeting of the General Membership must occur per year in the spring for the purpose of elections.",
+            {
+              "text": "Quorum of the General Membership",
+              "marker": "bullet",
+              "items": [
+                "The presence of at least five members or the majority of members, whichever is less, shall be necessary to constitute a meeting of General Membership for the exercise of its powers"
+              ]
+            }
+          ]
+        },
+        { "heading": "Meetings of the Executive Committee" },
+        {
+          "items": [
+            {
+              "text": "Meetings of the Executive Committee shall",
+              "items": [
+                "Be held at least once every two weeks and are for the purpose of running the club.",
+                "Votes by the Executive Committee on club business shall be declared by a simple majority."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "VIII",
+      "title": "Leadership Succession",
+      "content": [
+        { "heading": "Elections" },
+        "The Organization has chosen to run elections for its Leadership Succession. The following are the steps necessary to be taken to run elections.",
+        {
+          "items": [
+            {
+              "text": "The Club executives will appoint a Succession Officer to run elections for the Club.",
+              "items": [
+                {
+                  "text": "A Succession Officer may be any one (1) of the following individuals:",
+                  "items": [
+                    "A neutral party to all elections being held within the club.",
+                    "A member of the Clubs Oversight Commission.",
+                    "A member of the CUSA Clubs Office.",
+                    "A club member or an external student non-member."
+                  ]
+                },
+                "All efforts should be made for a Succession Officer to be appointed on a consensus basis in the Executive Committee. When that is not possible, a recorded vote in a first past the post majority or plurality vote winner will be appointed Succession Officer.",
+                "The Organization will work with the Succession Officer to set the date of final voting membership purchase, campaign start, campaign end, voting start, and voting end.",
+                "Students-at-large will have the opportunity to join the club before the start of voting.",
+                "Every voter has the right to cast their ballot in private.",
+                "During counting, candidates may select an individual who is not a candidate to be present for counting and scrutinizing.",
+                "Appeals, complaints, or conflict may be made to the Clubs Oversight Commission by way of emailing the Student Groups Administrator.",
+                {
+                  "text": "Timeline:",
+                  "items": [
+                    "Day 1 - Announcement of campaign, voting, and results announcement dates",
+                    "Day 7 - Start of campaign",
+                    "Day 10 - last day to buy voting memberships for the club",
+                    "Day 14 - end of campaign",
+                    "Day 15 - start of voting",
+                    "Day 16 - end of voting",
+                    "Day 17 - Results announced"
+                  ]
+                }
+              ]
+            },
+            {
+              "text": "The Club will run a first past the post-style election to elect the executive positions of President, Vice-President Finance/Treasurer, Vice-President Community, Vice-President Academics, Vice-President Events, Vice-President Projects/Technology.",
+              "items": [
+                "Candidates on the ballot shall be organized alphabetically by last name, with a box to be filled, marked, or checked for a single option/candidate.",
+                "A final “no-confidence” option will be offered at the bottom of the ballot.",
+                "Any ballot with multiple boxes clearly marked will be discarded as “spoiled.”",
+                "Upon counting of the vote, the candidate with the most votes will be considered elected to the position."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "IX",
+      "title": "Impeachment",
+      "content": [
+        {
+          "items": [
+            "To remove a member, our Club will first consult the CUSA Clubs Membership Removal Committee (MRC)",
+            "The CUSA Clubs Membership Removal Committee (MRC) will advise on the next steps for the club",
+            "Should the CUSA Clubs Membership Removal Committee (MRC) advises that the club proceed with membership removal, the following steps will take place:",
+            {
+              "text": "Impeachment for Removing an Executive Role:",
+              "items": [
+                "Grounds for impeachment of a club member include any violation of the constitution, the governing documents of CUSA, committing an act (or acts) which negatively affects and/or harms the interests of the clubs and its members, and/or failure to fulfill executive duties.",
+                "Any member can bring forward a request for impeachment to any executive. Within 10 days of receiving this request, the executive will host a meeting with the general membership. At this meeting, the complaint will be reviewed. The member bringing forward the complaint and the accused executive shall be given time to speak.",
+                "A vote for impeachment with the general membership will be conducted. The accused executive shall not be permitted to vote. A simple majority will be needed to impeach the executive. Impeachment of an executive results in their removal from office and as a member of the club."
+              ]
+            },
+            {
+              "text": "Membership Impeachment:",
+              "items": [
+                "Grounds for impeachment of a club member include any violation of the constitution, the governing documents of CUSA, and committing an act (or acts) which negatively affects and/or harms the interests of the clubs and its members.",
+                "Any member can bring forward a request for impeachment to any executive. Within 10 days of receiving this request, the executive will host a meeting. At this meeting, the complaint will be reviewed. The individual bringing forward the complaint and the person accused shall be given time to speak.",
+                "A vote for impeachment within the executive will be conducted. A simple majority of executives will be needed to impeach the member. Impeachment of a member results in their removal as a member of the club."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "X",
+      "title": "Amendments",
+      "content": [
+        {
+          "items": [
+            "Any member can propose an amendment to the constitution. This amendment will be presented at the annual general meeting and a vote will take place with the general membership to adopt the new amendment.",
+            "A simple majority will be required to adopt the new amendment."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "XI",
+      "title": "Dissolution",
+      "content": [
+        "Upon dissolution of the Organization, all assets gained through CUSA shall be returned to CUSA and all other assets shall be given to the Ottawa Food Bank."
+      ]
+    }
+  ]
+}

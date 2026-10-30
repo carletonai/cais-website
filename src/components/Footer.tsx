@@ -19,7 +19,7 @@ const COLUMNS = [
       { label: "Governance", to: "/governance" },
       { label: "Current Team", to: "/team" },
       { label: "Past Teams", to: "/team/past" },
-      { label: "Constitution (PDF)", href: CONSTITUTION_URL },
+      { label: "Constitution", to: CONSTITUTION_URL },
     ],
   },
 ];
@@ -50,17 +50,11 @@ export default function Footer() {
           <nav key={title} aria-label={title}>
             <p className="label-mono mb-3 text-primary">{title}</p>
             <ul>
-              {links.map((link) => (
-                <li key={link.label}>
-                  {"to" in link && link.to ? (
-                    <Link to={link.to} className={linkClass}>
-                      {link.label}
-                    </Link>
-                  ) : (
-                    <a href={link.href} className={linkClass}>
-                      {link.label}
-                    </a>
-                  )}
+              {links.map(({ label, to }) => (
+                <li key={label}>
+                  <Link to={to} className={linkClass}>
+                    {label}
+                  </Link>
                 </li>
               ))}
             </ul>

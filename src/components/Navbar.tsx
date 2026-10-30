@@ -24,6 +24,7 @@ const NAV_ITEMS: NavItem[] = [
       { label: "Governance", path: "/governance" },
       { label: "Current Team", path: "/team" },
       { label: "Past Teams", path: "/team/past" },
+      { label: "Constitution", path: "/constitution" },
     ],
   },
   { label: "Contact", path: "/contact" },

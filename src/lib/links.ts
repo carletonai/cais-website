@@ -17,7 +17,10 @@ export const DISCORD_URL = `https://discord.gg/${DISCORD_INVITE}`;
 export const DISCORD_PRESENCE_URL = `https://discord.com/api/v10/invites/${DISCORD_INVITE}?with_counts=true`;
 export const INSTAGRAM_URL = "https://www.instagram.com/carletonaisociety/";
 export const EMAIL = "info.carletonai@gmail.com";
-export const CONSTITUTION_URL = "/constitution.pdf";
+/** The constitution is a page of the site; the PDF it reproduces sits beside
+ *  it in public/, for anyone who needs the document itself. */
+export const CONSTITUTION_URL = "/constitution";
+export const CONSTITUTION_PDF_URL = "/constitution.pdf";
 
 /**
  * The Buttondown account the home page's email field subscribes people to,

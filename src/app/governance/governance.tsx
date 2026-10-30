@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { PageHeader } from "@/components/brand/PageHeader";
 import { Section, SectionHeader } from "@/components/brand/Section";
+import { CONSTITUTION_URL } from "@/lib/links";
 import {
   ArrowRightIcon,
   FileTextIcon,
@@ -58,8 +59,8 @@ const SECTIONS = [
   {
     icon: FileTextIcon,
     title: "Constitution",
-    description: "The document that sets out how the club is run (PDF).",
-    href: "/constitution.pdf",
+    description: "The document that sets out how the club is run.",
+    to: CONSTITUTION_URL,
   },
 ];
 
@@ -74,35 +75,25 @@ const Governance = () => (
         aria-label="Team pages"
         className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-3"
       >
-        {SECTIONS.map(({ icon: Icon, title, description, to, href }) => {
-          const body = (
-            <>
-              <span className="flex items-center gap-2 font-semibold text-foreground">
-                <Icon aria-hidden="true" className="size-5 text-primary" />
-                {title}
-                <ArrowRightIcon
-                  aria-hidden="true"
-                  className="ml-auto size-4 transition-transform group-hover:translate-x-1"
-                />
-              </span>
-              <span className="mt-2 block text-sm text-muted-foreground">
-                {description}
-              </span>
-            </>
-          );
-          const className =
-            "group block rounded-2xl border border-border bg-card p-5 transition-colors hover:border-input";
-
-          return to ? (
-            <Link key={title} to={to} className={className}>
-              {body}
-            </Link>
-          ) : (
-            <a key={title} href={href} className={className}>
-              {body}
-            </a>
-          );
-        })}
+        {SECTIONS.map(({ icon: Icon, title, description, to }) => (
+          <Link
+            key={title}
+            to={to}
+            className="group block rounded-2xl border border-border bg-card p-5 transition-colors hover:border-input"
+          >
+            <span className="flex items-center gap-2 font-semibold text-foreground">
+              <Icon aria-hidden="true" className="size-5 text-primary" />
+              {title}
+              <ArrowRightIcon
+                aria-hidden="true"
+                className="ml-auto size-4 transition-transform group-hover:translate-x-1"
+              />
+            </span>
+            <span className="mt-2 block text-sm text-muted-foreground">
+              {description}
+            </span>
+          </Link>
+        ))}
       </nav>
     </PageHeader>
 
