@@ -19,7 +19,7 @@ export default defineConfig({
       output: {
         // Keep the framework in its own chunk: it changes far less often
         // than the app, so repeat visitors keep it cached across deploys.
-        advancedChunks: {
+        codeSplitting: {
           groups: [
             {
               name: "react-vendor",
