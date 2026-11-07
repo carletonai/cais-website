@@ -12,6 +12,13 @@ updates:
     cooldown:
       default-days: 7
       semver-major-days: 14
+    ignore:
+      # typescript-eslint 8 declares a peer range of typescript <6.1 and stops
+      # with "does not support TS 7.0" under TypeScript 7 (#82). Its TypeScript 7
+      # support is aimed at 7.1; drop this once a typescript-eslint release
+      # supports it.
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
     groups:
       # Lint, typecheck and test tooling: CI exercises all of it, so these can
       # land together. UI and build dependencies (React, Radix, Tailwind, Vite,
