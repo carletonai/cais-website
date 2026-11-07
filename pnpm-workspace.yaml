@@ -17,7 +17,9 @@ allowBuilds:
 strictDepBuilds: true
 
 # Guards on anything pnpm resolves (pnpm add / update, Dependabot):
-# skip versions published less than a day ago,
+# skip versions published less than a day ago (Dependabot applies its 7-day
+# cooldown here instead, and its updates fail while the lockfile holds
+# anything younger: CONTRIBUTING.md, "Updating dependencies by hand"),
 minimumReleaseAge: 1440
 # only take transitive dependencies from the registry (no git or tarball URLs),
 blockExoticSubdeps: true

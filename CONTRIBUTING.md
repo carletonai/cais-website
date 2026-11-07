@@ -68,6 +68,18 @@ Open [http://localhost:5173](http://localhost:5173) with your browser to see the
     (GHSA-gcqx-w48m-w2h4) with no patched release. It only ever merges this
     repository's own Jest config.
 
+- **Updating dependencies by hand**: Dependabot waits until a release is 7
+  days old (14 for a major) before proposing it, and resolves
+  `pnpm-lock.yaml` under the same limit: while the lockfile holds anything
+  younger, its updates fail with "update_not_possible" until that version
+  turns 7 days old. `pnpm-workspace.yaml` holds `pnpm add` and `pnpm update`
+  to only a day, so give them Dependabot's limit when you change the lockfile
+  yourself:
+
+  ```bash
+  pnpm add <package>@<version> --config.minimum-release-age=10080
+  ```
+
 ## Available Scripts
 
 ```bash
