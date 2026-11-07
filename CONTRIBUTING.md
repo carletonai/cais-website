@@ -56,6 +56,18 @@ Open [http://localhost:5173](http://localhost:5173) with your browser to see the
   - Prettier for code formatting
   - Jest for testing
 
+- **Forced dependency versions**:
+  - `pnpm.overrides` in `package.json` lifts glob to 14.0.2+ and minimatch
+    to 11.0.1+, the first releases patched for GHSA-3g3m-2fjr-6pw4 and
+    GHSA-g3hv-75wg-m249. Jest, babel-plugin-istanbul's test-exclude and
+    typescript-eslint still ask for older majors. Drop each override once
+    those packages require the patched versions themselves.
+  - TypeScript stays on 6.x, and Dependabot skips its major updates, until a
+    typescript-eslint release supports TypeScript 7.
+  - deepmerge, which Jest's config loader uses, has a low-severity advisory
+    (GHSA-gcqx-w48m-w2h4) with no patched release. It only ever merges this
+    repository's own Jest config.
+
 ## Available Scripts
 
 ```bash
