@@ -252,45 +252,48 @@ test("opens a meeting's details for the day that was clicked", async () => {
   expect(details).toHaveTextContent("MacOdrum Library");
 });
 
-test("shows a meeting that changed rooms in the room it met in that week", async () => {
+test("shows a meeting that changed room and time as it was that week", async () => {
   const user = setup([
     {
       ...execMeeting,
       id: "exec-meeting-2026-09",
+      time: "7:30 PM - 8:00 PM",
       location: "Richcraft Hall 3228",
       until: "2026-09-29",
     },
     { ...execMeeting, id: "exec-meeting-2026-10", date: "2026-10-06" },
   ]);
 
-  // September: once a week in Richcraft, and its details say when that ended.
+  // September: once a week at 7:30 in Richcraft, and its details say when
+  // that ended.
   expect(screen.getAllByText("Tuesdays")).toHaveLength(1);
-  expect(screen.getByText("Tuesdays").closest("li")).toHaveTextContent(
-    "Richcraft Hall 3228",
-  );
+  const septemberRow = screen.getByText("Tuesdays").closest("li");
+  expect(septemberRow).toHaveTextContent("7:30–8:00 PM");
+  expect(septemberRow).toHaveTextContent("Richcraft Hall 3228");
   await user.click(
     within(dayCell(29)).getByRole("button", { name: "Exec Meeting" }),
   );
   const september = screen.getByRole("dialog", { name: "Exec Meeting" });
+  expect(september).toHaveTextContent("7:30–8:00 PM");
   expect(september).toHaveTextContent("Richcraft Hall 3228");
   expect(september).toHaveTextContent(
     "Every Tuesday, until Tuesday, September 29, 2026",
   );
   await user.keyboard("{Escape}");
 
-  // October: once a week in MacOdrum Library, never in both rooms at once.
+  // October: once a week at 5:30 in MacOdrum Library, never both at once.
   await user.click(screen.getByRole("button", { name: "Next month" }));
   expect(screen.getAllByText("Tuesdays")).toHaveLength(1);
-  expect(screen.getByText("Tuesdays").closest("li")).toHaveTextContent(
-    "MacOdrum Library",
-  );
+  const octoberRow = screen.getByText("Tuesdays").closest("li");
+  expect(octoberRow).toHaveTextContent("5:30–6:00 PM");
+  expect(octoberRow).toHaveTextContent("MacOdrum Library");
   expect(within(dayCell(6)).getAllByText("Exec Meeting")).toHaveLength(1);
   await user.click(
     within(dayCell(6)).getByRole("button", { name: "Exec Meeting" }),
   );
-  expect(
-    screen.getByRole("dialog", { name: "Exec Meeting" }),
-  ).toHaveTextContent("MacOdrum Library");
+  const october = screen.getByRole("dialog", { name: "Exec Meeting" });
+  expect(october).toHaveTextContent("5:30–6:00 PM");
+  expect(october).toHaveTextContent("MacOdrum Library");
 });
 
 test("marks public holidays on their days and lists them under the month", async () => {
