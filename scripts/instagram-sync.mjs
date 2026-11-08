@@ -132,7 +132,9 @@ const refineWithClaude = async (caption, parsed, posted) => {
       signal: AbortSignal.timeout(30_000),
       body: JSON.stringify({
         model: process.env.ANTHROPIC_MODEL ?? "claude-haiku-5-5",
-        max_tokens: 600,
+        // Claude Haiku 5.5 thinks before it answers unless told otherwise,
+        // and that thinking counts toward max_tokens: leave it room.
+        max_tokens: 2048,
         system:
           "You read Instagram captions from a university AI club and extract event announcements. Reply with JSON only, no prose: " +
           '{"is_event": boolean, "reason": string, "title": string, "date": "YYYY-MM-DD" | null, "time": "h:mm AM - h:mm PM" | "h:mm AM" | "", "location": string, "rsvp_link": string | null}. ' +
@@ -148,6 +150,9 @@ const refineWithClaude = async (caption, parsed, posted) => {
     if (!response.ok)
       throw new Error(`${response.status} ${response.statusText}`);
     const result = await response.json();
+    // A reply cut off at max_tokens, or declined, has no JSON to read.
+    if (result.stop_reason !== "end_turn")
+      throw new Error(`stop_reason ${result.stop_reason}`);
     const text =
       result.content
         ?.map((/** @type {{ text?: string }} */ c) => c.text ?? "")
