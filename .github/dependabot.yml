@@ -26,7 +26,6 @@ updates:
       # browser.
       dev-tooling:
         patterns:
-          - "@babel/*"
           - "@eslint/*"
           - "@testing-library/*"
           - "@types/*"
@@ -48,8 +47,9 @@ updates:
           - "react-dom"
       # The Babel presets need the @babel/core of the same major: a preset
       # bumped to 8 under core 7 loads as nothing and strips no TypeScript.
-      # Majors included, since the dev-tooling group above takes only
-      # minors and patches.
+      # Every @babel/* update lands here, majors included. dev-tooling must
+      # not list @babel/* as well: Dependabot gives a package that two groups
+      # match equally to the first one, which left this group empty.
       babel:
         patterns:
           - "@babel/*"
