@@ -7,13 +7,16 @@ import {
   findEventBySlug,
   isLive,
   isUpcoming,
+  meetsOn,
   nextEvent,
   posterThumb,
   postLink,
   resourceLinks,
   rsvpFor,
   seasonNow,
+  type Break,
   type ClubEvent,
+  type Meeting,
 } from "./events";
 
 const event = (overrides: Partial<ClubEvent> = {}): ClubEvent => ({
@@ -194,4 +197,34 @@ test("says a multi-day event is on until its last day", () => {
   expect(eventStatus(hackathon, at("2026-03-22T14:00:00Z")).label).toBe(
     "On now · until Sun, Mar 22",
   );
+});
+
+describe("meetsOn", () => {
+  const execMeeting: Meeting = {
+    id: "exec-meeting",
+    title: "Exec Meeting",
+    date: "2026-09-22",
+    time: "5:30 PM - 6:00 PM",
+    location: "MacOdrum Library",
+    weekly: true,
+  };
+  const readingWeek: Break = {
+    id: "fall-break-2026",
+    name: "Reading Week",
+    date: "2026-10-26",
+    endDate: "2026-10-30",
+  };
+
+  it("skips the weeks a weekly meeting falls in a break", () => {
+    const tuesday = (month: number, day: number) => new Date(2026, month, day);
+    expect(meetsOn(execMeeting, tuesday(9, 20), [readingWeek])).toBe(true);
+    expect(meetsOn(execMeeting, tuesday(9, 27), [readingWeek])).toBe(false);
+    expect(meetsOn(execMeeting, tuesday(10, 3), [readingWeek])).toBe(true);
+    expect(meetsOn(execMeeting, tuesday(9, 27))).toBe(true);
+  });
+
+  it("keeps a one-off meeting on its date, even in a break", () => {
+    const oneOff = { ...execMeeting, date: "2026-10-28", weekly: false };
+    expect(meetsOn(oneOff, new Date(2026, 9, 28), [readingWeek])).toBe(true);
+  });
 });

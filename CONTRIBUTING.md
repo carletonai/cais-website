@@ -237,6 +237,19 @@ first (above) and then placed in the curriculum.
 
 The tests check that every id exists, is a workshop, and appears once.
 
+## The exec meeting and reading weeks
+
+The weekly exec meeting comes from `src/data/meetings.json`: the `date` of
+the first meeting, its `time` and room (`location`), and `weekly: true` to
+repeat it on that weekday (an `until` date stops it). It shows on the events
+calendar only, never as an event card.
+
+Reading weeks come from `src/data/breaks.json`, one entry per break: an
+`id`, a `name`, and its first and last day as `date` and `endDate`. The
+calendar marks each of those days, and weekly meetings skip them. Carleton
+sets the dates each year, so add each term's reading week once they are
+published.
+
 ## Mailing list
 
 The email field in the home page's "Get involved" section subscribes people

@@ -17,11 +17,13 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import {
+  type Break,
   type ClubEvent,
   type Meeting,
   eventDate,
   eventPath,
   eventStatus,
+  formatDateRange,
   formatTimeRange,
 } from "@/lib/events";
 import { type Holiday } from "@/lib/holidays";
@@ -30,7 +32,8 @@ export type CalendarEntry =
   | { kind: "event"; event: ClubEvent }
   /** `date` is the occurrence that was clicked; absent from the summary row. */
   | { kind: "meeting"; meeting: Meeting; date?: Date }
-  | { kind: "holiday"; holiday: Holiday };
+  | { kind: "holiday"; holiday: Holiday }
+  | { kind: "break"; termBreak: Break };
 
 const longDate = new Intl.DateTimeFormat("en-CA", {
   weekday: "long",
@@ -144,6 +147,25 @@ const HolidayDetails = ({ holiday }: { holiday: Holiday }) => (
   </>
 );
 
+const BreakDetails = ({ termBreak }: { termBreak: Break }) => (
+  <>
+    <p className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+      Break
+    </p>
+    <DialogTitle className="pr-10 text-xl leading-snug">
+      {termBreak.name}
+    </DialogTitle>
+    <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
+      <Fact icon={CalendarIcon}>
+        {formatDateRange(termBreak, { year: true })}
+      </Fact>
+    </ul>
+    <DialogDescription className="mt-3 text-sm text-muted-foreground">
+      No classes at Carleton, and weekly club meetings take the week off.
+    </DialogDescription>
+  </>
+);
+
 /** Details for whatever was clicked on the events calendar. */
 export function CalendarEntryDialog({
   entry,
@@ -175,8 +197,10 @@ export function CalendarEntryDialog({
             <EventDetails event={entry.event} />
           ) : entry.kind === "meeting" ? (
             <MeetingDetails meeting={entry.meeting} date={entry.date} />
-          ) : (
+          ) : entry.kind === "holiday" ? (
             <HolidayDetails holiday={entry.holiday} />
+          ) : (
+            <BreakDetails termBreak={entry.termBreak} />
           )}
         </DialogContent>
       )}
