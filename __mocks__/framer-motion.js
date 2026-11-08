@@ -1,5 +1,4 @@
 const React = require("react");
-const PropTypes = require("prop-types");
 
 const motionProps = new Set([
   "animate",
@@ -49,10 +48,6 @@ const createMotionComponent = (tag) => {
     );
   });
   MotionComponent.displayName = `motion.${String(tag)}`;
-  MotionComponent.propTypes = {
-    children: PropTypes.node,
-    style: PropTypes.object,
-  };
 
   return MotionComponent;
 };
@@ -66,9 +61,6 @@ const motion = new Proxy(
 
 const AnimatePresence = ({ children }) =>
   React.createElement(React.Fragment, null, children);
-AnimatePresence.propTypes = {
-  children: PropTypes.node,
-};
 
 const useScroll = () => ({
   scrollY: createMotionValue(0),
@@ -89,9 +81,6 @@ const useReducedMotion = () =>
 
 const MotionConfig = ({ children }) =>
   React.createElement(React.Fragment, null, children);
-MotionConfig.propTypes = {
-  children: PropTypes.node,
-};
 
 module.exports = {
   AnimatePresence,
