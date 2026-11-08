@@ -1,9 +1,18 @@
 {
   "meetings": [
     {
-      "id": "exec-meeting",
+      "id": "exec-meeting-2026-09",
       "title": "Exec Meeting",
       "date": "2026-09-22",
+      "time": "5:30 PM - 6:00 PM",
+      "location": "Richcraft Hall 3228",
+      "weekly": true,
+      "until": "2026-09-29"
+    },
+    {
+      "id": "exec-meeting-2026-10",
+      "title": "Exec Meeting",
+      "date": "2026-10-06",
       "time": "5:30 PM - 6:00 PM",
       "location": "MacOdrum Library",
       "weekly": true

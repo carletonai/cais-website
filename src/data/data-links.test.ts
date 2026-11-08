@@ -1,6 +1,6 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
-import { posterThumb } from "@/lib/events";
+import { type Meeting, posterThumb } from "@/lib/events";
 import breaks from "./breaks.json";
 import events from "./events.json";
 import meetings from "./meetings.json";
@@ -60,6 +60,41 @@ describe("breaks", () => {
       expect(termBreak.endDate).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       expect(termBreak.endDate >= termBreak.date).toBe(true);
     }
+  });
+});
+
+describe("meetings", () => {
+  const list: readonly Meeting[] = meetings.meetings;
+
+  it("gives every meeting a unique id and dates as YYYY-MM-DD", () => {
+    const ids = list.map((meeting) => meeting.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    for (const meeting of list) {
+      expect(meeting.date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      if (meeting.until !== undefined) {
+        expect(meeting.until).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+        expect(meeting.until >= meeting.date).toBe(true);
+      }
+    }
+  });
+
+  // A weekly meeting that changes room, time or day is one entry per
+  // arrangement, each ending with `until` before the next begins
+  // (CONTRIBUTING). Entries that overlap would list it twice on one day.
+  it("ends each weekly meeting's entry before its next one begins", () => {
+    const weekly = list.filter((meeting) => meeting.weekly);
+    const overlaps = weekly.flatMap((earlier) =>
+      weekly
+        .filter(
+          (later) =>
+            later !== earlier &&
+            later.title === earlier.title &&
+            later.date >= earlier.date &&
+            !(earlier.until !== undefined && earlier.until < later.date),
+        )
+        .map((later) => `${earlier.id} runs into ${later.id}`),
+    );
+    expect(overlaps).toEqual([]);
   });
 });
 
