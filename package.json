@@ -2,7 +2,7 @@
   "name": "cais-website",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@10.34.6",
+  "packageManager": "pnpm@10.34.9",
   "description": "A project for CAIS club website.",
   "type": "module",
   "homepage": "https://carletonai.com",
