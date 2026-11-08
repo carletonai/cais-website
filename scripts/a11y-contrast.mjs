@@ -2,8 +2,9 @@
  * WCAG 2.2 Level AAA contrast audit (SC 1.4.6).
  *
  * Static analysis of Tailwind classes cannot answer this site's question,
- * because most text here sits on a stack of gradients, blurred blooms and
- * grid overlays rather than on a flat token colour. So this measures pixels:
+ * because much of the text here sits on gradient washes, and the same token
+ * classes resolve to different colours on the ink and paper surfaces. So this
+ * measures pixels:
  *
  *   1. Render the page and screenshot it with artwork hidden ("ink" pass).
  *   2. Screenshot it again with glyphs made transparent ("backdrop" pass).
@@ -11,12 +12,13 @@
  *   4. At those pixels, composite the element's *specified* colour over the
  *      backdrop and compare luminance — WCAG's model, on the real backdrop.
  *
- * Gradient text (`bg-clip-text`) has no specified colour, so its rendered ink
- * is read straight from the screenshot; those headings are large enough that
- * glyph interiors reach full coverage.
+ * Gradient text (background-clip: text) has no specified colour, so its
+ * rendered ink is read straight from the screenshot, which holds for text
+ * large enough that glyph interiors reach full coverage. Nothing on the site
+ * uses it today; the branch stays for when something does.
  *
  * Usage:  node scripts/a11y-contrast.mjs [--base URL] [--width N] [--json FILE]
- * Requires a dev server (`npm run dev`) and Playwright's chromium.
+ * Requires a dev server (`pnpm dev`) and Playwright's chromium.
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { eventPath, eventWindow } from "../src/lib/shared/event-time.js";
@@ -72,10 +74,9 @@ try {
   process.exit(2);
 }
 
-/* Decorative animation is pinned at its brightest frame — the worst case for
-   light text — so a passing run holds for every frame of the loop. */
-const PIN = `*,*::before,*::after{animation-play-state:paused!important;transition:none!important}
-.bg-glow::before{animation:none!important;opacity:.8!important;transform:scale(1.1)!important}`;
+/* Animations and transitions are frozen so both screenshots of a screenful
+   show the same frame. */
+const PIN = `*,*::before,*::after{animation-play-state:paused!important;transition:none!important}`;
 const NOART = `svg,img,video,canvas{visibility:hidden!important}`;
 const NOINK = `${NOART}
 *,*::before,*::after{-webkit-text-fill-color:transparent!important;text-shadow:none!important;caret-color:transparent!important}`;
@@ -190,8 +191,7 @@ const collect = () => {
       continue;
 
     const rgba = resolve(cs.color);
-    const gradient =
-      cs.webkitBackgroundClip === "text" || cs.backgroundClip === "text";
+    const gradient = cs.backgroundClip === "text";
     out.push({
       path: path(el),
       text: own.slice(0, 50),
@@ -205,7 +205,7 @@ const collect = () => {
         : isRed(rgba),
       rect: { x: r.x, y: r.y, w: r.width, h: r.height },
       /* Gradient ink is read from the screenshot, so a child with its own
-         colour (the red "AI" inside the hero title) would be scored as part
+         colour (say, a red word inside a gradient heading) would be scored as part
          of this element. Such children are measured on their own; skip them. */
       exclude: gradient
         ? [...el.querySelectorAll("*")]
