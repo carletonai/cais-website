@@ -72,6 +72,12 @@ export default [
     languageOptions: { globals: globals.jest },
   },
   {
+    // React 19 never reads propTypes, so the plain-JS Jest mocks declare
+    // none; TypeScript checks the props of everything else.
+    files: ["__mocks__/**"],
+    rules: { "react/prop-types": "off" },
+  },
+  {
     files: ["**/*.cjs"],
     languageOptions: { sourceType: "commonjs" },
   },
