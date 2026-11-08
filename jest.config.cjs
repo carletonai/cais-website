@@ -4,15 +4,26 @@ process.env.TZ = "America/Toronto";
 
 module.exports = {
   testEnvironment: "jsdom",
+  // Load packages' development builds, as React itself runs under Jest:
+  // React Router 8 serves its dev build (and its dev-only warnings, such as
+  // "No routes matched location") only under this condition, where 7.x always
+  // did. "browser" is jsdom's default; Radix's dev-only warnings come on too.
+  testEnvironmentOptions: {
+    customExportConditions: ["browser", "development"],
+  },
   // The project's own babel-jest, not the copy jest-config bundles: that one
   // is paired with jest's internal @babel/core 7, which loads the Babel 8
   // presets as empty objects and leaves TypeScript and JSX untransformed.
   transform: {
     "^.+\\.(ts|tsx|js|jsx|mjs)$": require.resolve("babel-jest"),
   },
-  // react-hotkeys-hook 5 is ESM-only and ships untranspiled, so it has to
-  // go through babel rather than being skipped with the rest of node_modules.
-  transformIgnorePatterns: ["/node_modules/(?!.*react-hotkeys-hook)"],
+  // These packages ship only ES modules, so they go through babel rather
+  // than being skipped with the rest of node_modules: react-hotkeys-hook 5,
+  // and React Router 8 with its two dependencies (babel.config.cjs also
+  // rewrites the `import.meta` React Router reads).
+  transformIgnorePatterns: [
+    "/node_modules/(?!.*(react-hotkeys-hook|react-router|@remix-run/route-pattern|cookie-es))",
+  ],
   moduleNameMapper: {
     "\\.(css|less|scss|sass)$": "<rootDir>/__mocks__/styleMock.js",
     "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
