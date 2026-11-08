@@ -1,6 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router";
 import eventsData from "@/data/events.json";
 import { allEvents, isUpcoming, upcomingEvents } from "@/lib/events";
 import EventsPage from "./events";

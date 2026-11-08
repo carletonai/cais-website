@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router";
 import oldTeamsData from "@/data/old-teams.json";
 import { seasonLabel } from "@/lib/utils";
 import PastTeamsPage from "./past-teams";

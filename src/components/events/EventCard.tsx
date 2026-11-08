@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { EventCover } from "./EventArt";
 import { EventMeta } from "./EventMeta";
 import { ResourceLinks, RsvpButton } from "./EventLinks";

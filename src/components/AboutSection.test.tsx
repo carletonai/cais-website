@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router";
 import { AboutSection } from "./AboutSection";
 
 test("brings the About content onto the home page as a linkable section", () => {
