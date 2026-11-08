@@ -8,7 +8,7 @@
 
 ## Prerequisites
 
-- Node.js 22.12 or later (or 20.19 or later in the 20 line)
+- Node.js 24.11 or later (or 22.18 or later in the 22 line)
 - pnpm (recommended for better performance and disk space efficiency)
 
 ## Getting Started
