@@ -285,7 +285,7 @@ const THEMES = {
   },
   cyberpunk: {
     primary: "text-pink-300",
-    background: "bg-gradient-to-br from-purple-950 via-black to-blue-950",
+    background: "bg-linear-to-br from-purple-950 via-black to-blue-950",
     accent: "text-yellow-300",
     gradient: "from-pink-300 via-purple-300 to-blue-300",
     inputBg: "bg-purple-950/40",
@@ -1334,7 +1334,7 @@ ${event.rsvpLink ? `\nRSVP Link: ${event.rsvpLink}` : ""}
 
       <div
         className={cn(
-          "absolute inset-0 bg-gradient-to-b",
+          "absolute inset-0 bg-linear-to-b",
           theme === "matrix"
             ? "from-green-900/0 via-green-900/20 to-black"
             : "from-black/0 via-black/20 to-background",
