@@ -6,7 +6,7 @@ import {
   Navigate,
   useLocation,
   useNavigationType,
-} from "react-router-dom";
+} from "react-router";
 import HomePage from "./home/home";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";

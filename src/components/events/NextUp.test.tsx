@@ -1,5 +1,5 @@
 import { render, screen, within } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router";
 import { type ClubEvent } from "@/lib/events";
 import { NextUp } from "./NextUp";
 

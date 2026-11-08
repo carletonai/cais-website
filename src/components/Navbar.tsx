@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router";
 import { ChevronDownIcon, MenuIcon, SearchIcon, XIcon } from "lucide-react";
 import { FaDiscord } from "react-icons/fa";
 import { Button } from "@/components/ui/button";

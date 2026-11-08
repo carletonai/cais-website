@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { FaDiscord } from "react-icons/fa";
 import { ArrowRightIcon } from "lucide-react";
 import { Ring } from "@/components/brand/Ring";

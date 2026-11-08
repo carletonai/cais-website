@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { ChevronDownIcon } from "lucide-react";
 import { FaDiscord } from "react-icons/fa";
 import { PageHeader } from "@/components/brand/PageHeader";

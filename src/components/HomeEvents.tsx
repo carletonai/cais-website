@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { ArrowRightIcon } from "lucide-react";
 import { Section, SectionHeader } from "@/components/brand/Section";
 import { EventCard } from "@/components/events/EventCard";
