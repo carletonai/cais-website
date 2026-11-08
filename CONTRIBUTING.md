@@ -9,7 +9,9 @@
 ## Prerequisites
 
 - Node.js 24.11 or later (or 22.18 or later in the 22 line)
-- pnpm (recommended for better performance and disk space efficiency)
+- pnpm 10 or later, which switches itself to the version in `packageManager`.
+  It is required, not just recommended: npm and yarn ignore the lockfile, the
+  `pnpm.overrides` security pins and the install guards in `pnpm-workspace.yaml`.
 
 ## Getting Started
 
@@ -59,9 +61,16 @@ Open [http://localhost:5173](http://localhost:5173) with your browser to see the
 - **Forced dependency versions**:
   - `pnpm.overrides` in `package.json` lifts glob to 14.0.2+ and minimatch
     to 11.0.1+, the first releases patched for GHSA-3g3m-2fjr-6pw4 and
-    GHSA-g3hv-75wg-m249. Jest, babel-plugin-istanbul's test-exclude and
-    typescript-eslint still ask for older majors. Drop each override once
+    GHSA-g3hv-75wg-m249. Jest, babel-plugin-istanbul's test-exclude, ESLint
+    and typescript-eslint still ask for older majors. Drop each override once
     those packages require the patched versions themselves.
+  - `@istanbuljs/load-nyc-config>js-yaml` gives babel-plugin-istanbul's
+    config loader the js-yaml 4.3.2 that `@eslint/eslintrc` and cosmiconfig
+    already use, in place of the ^3.13.1 it asks for, so the lockfile holds
+    one js-yaml. It only calls `load()`, which js-yaml 4 keeps. It is not a
+    security pin: js-yaml 3.15.2, inside that range, has the same fixes, so
+    the override can be dropped at any time (the lockfile then adds js-yaml
+    3.15.2, argparse 1, esprima and sprintf-js).
   - TypeScript stays on 6.x, and Dependabot skips its major updates, until a
     typescript-eslint release supports TypeScript 7.
   - deepmerge, which Jest's config loader uses, has a low-severity advisory
@@ -99,12 +108,13 @@ for large text (>=24px, or >=18.66px bold). The one exception is the brand-red
 text colour (`primary`), which is held to **AA** (4.5:1, 3:1 large): no red that
 still looks red can reach 7:1 on the site's near-black background.
 
-Text sits on poster images and two surfaces (ink and cream "paper"),
-so contrast cannot be checked by reading Tailwind classes. `pnpm test:contrast`
-measures it from rendered pixels instead — it screenshots
-each page twice (once normally, once with glyphs made transparent), diffs the
-two to find the pixels each glyph covers, and evaluates the specified text
-colour against the real backdrop at those pixels.
+Text sits on gradient washes (the headers' glow, the footer) and two surfaces
+(ink and cream "paper"), so contrast cannot be checked by reading Tailwind
+classes. `pnpm test:contrast` measures it from rendered pixels instead — with
+artwork (SVG, images, video, canvas) hidden, it screenshots each screenful
+twice (once as is, once with glyphs made transparent), diffs the two to find
+the pixels each glyph covers, and evaluates the specified text colour against
+the real backdrop at those pixels.
 
 ```bash
 pnpm dev &                       # the audit drives a running dev server
@@ -120,7 +130,7 @@ On a cream `data-surface="paper"` section the same token names are re-scoped
 (src/app/globals.css), and `primary` is dark enough there to clear 7:1. Keep
 text off the red rings: the audit hides SVG artwork, so it cannot see them.
 
-Two colour roles keep this working, and they are not interchangeable:
+Three colour roles keep this working, and they are not interchangeable:
 
 - `primary` is the brand red as **ink**: the buttons' hue, lifted just enough to
   clear 4.5:1 on every surface. Use it for text and icons.
@@ -191,17 +201,18 @@ issue.
   date, time, place and link lines, hashtags and emoji are kept off the
   card. Dates may be written out ("October 9"), but not as "Friday" or
   "next week", which would mean something else on a later edit.
-- Only people in the carletonai organization or with access to the
-  repository start a draft; anyone else gets a thank-you comment and an
-  exec adds the event by hand. If your own submission gets no response,
-  your organization membership may be private: ask an admin to make it
-  public or to add you as a collaborator.
+- Only public members of the carletonai organization and collaborators on
+  the repository start a draft; anyone else gets a thank-you comment and an
+  exec adds the event by hand. If you are in the organization and get the
+  thank-you instead of a draft, your membership may be private: make it
+  public on the organization's People page (the menu next to your name),
+  or ask an admin to add you as a collaborator, then edit the issue.
 - Two event issues open at the same time draft the same id. Merge one,
   then edit the other issue so it takes the next free id.
 - The workflow needs "Allow GitHub Actions to create and approve pull
   requests" turned on under Settings, Actions, General (the same setting
-  the Instagram sync uses), and the `event` label to exist in the
-  repository, which it does.
+  the Instagram sync uses). It recognizes the form by its headings, not
+  by the `event` label.
 
 The Instagram sync below does the same for posts on its own, when it has a
 token; the form needs none.
@@ -306,12 +317,12 @@ such items). `--dry-run` prints what would be added and writes nothing.
 ## Adding a partner
 
 Organizations the club has worked with are listed on the home page from
-`src/data/partners.json`: `name` (the full name, with its acronym in
-brackets when it goes by one, e.g. "Carleton Computer Science Society
-(CCSS)"), a one-line `blurb` saying what you did together, the `url` to
-link to (or `null`), and a square `logo` under `public/assets/partners/`
-(WebP, about 192px; or `null` to show the acronym or initials until there
-is one).
+`src/data/partners.json`: an `id` (a short unique slug, e.g. "ccss"),
+`name` (the full name, with its acronym in brackets when it goes by one,
+e.g. "Carleton Computer Science Society (CCSS)"), a one-line `blurb` saying
+what you did together, the `url` to link to (or `null`), and a square `logo`
+under `public/assets/partners/` (WebP, about 192px; or `null` to show the
+acronym or initials until there is one).
 
 ## Contributing
 
