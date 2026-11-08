@@ -1,5 +1,5 @@
 import { render, screen, within } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router";
 import Hero from "./Hero";
 
 // Ottawa, the afternoon before Intro to Agentic AI (Fri Oct 9, 6 PM).

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { SubscribeButton } from "@/components/events/CalendarActions";
 import { CONSTITUTION_URL, SOCIAL_LINKS } from "@/lib/links";
 

@@ -1,4 +1,4 @@
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router";
 import { ArrowLeftIcon } from "lucide-react";
 import { Ring } from "@/components/brand/Ring";
 import { EventPoster } from "@/components/EventPoster";

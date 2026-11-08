@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { MemoryRouter, useNavigate } from "react-router-dom";
+import { MemoryRouter, useNavigate } from "react-router";
 import RouteMeta from "./RouteMeta";
 
 // The tags index.html ships, which RouteMeta rewrites on every navigation.
