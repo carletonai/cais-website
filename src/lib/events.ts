@@ -335,13 +335,38 @@ export type Meeting = {
   until?: string;
 };
 
-/** Whether the meeting takes place on `day`, a local-midnight date. */
-export const meetsOn = (meeting: Meeting, day: Date) => {
+/**
+ * University breaks the events calendar marks, like reading week, from
+ * breaks.json: Carleton sets their dates each year, so no rule computes them.
+ */
+export type Break = {
+  id: string;
+  name: string;
+  /** First day, YYYY-MM-DD. */
+  date: string;
+  /** Last day, YYYY-MM-DD. */
+  endDate: string;
+};
+
+/** Whether `day`, a local-midnight date, falls within the break. */
+export const duringBreak = (termBreak: Break, day: Date) =>
+  eventDate(termBreak) <= day && day <= eventDate({ date: termBreak.endDate });
+
+/**
+ * Whether the meeting takes place on `day`, a local-midnight date. A weekly
+ * meeting skips the days of `breaks`; a one-off meeting keeps its date.
+ */
+export const meetsOn = (
+  meeting: Meeting,
+  day: Date,
+  breaks: readonly Break[] = [],
+) => {
   const first = eventDate(meeting);
   if (day < first) return false;
   if (meeting.until && day > eventDate({ date: meeting.until })) return false;
 
   return meeting.weekly
-    ? day.getDay() === first.getDay()
+    ? day.getDay() === first.getDay() &&
+        !breaks.some((termBreak) => duringBreak(termBreak, day))
     : day.getTime() === first.getTime();
 };

@@ -12,8 +12,10 @@ import {
 } from "@/components/CalendarEntryDialog";
 import { cn } from "@/lib/utils";
 import {
+  type Break,
   type ClubEvent,
   type Meeting,
+  duringBreak,
   eventDate,
   formatDateRange,
   formatEventDate,
@@ -112,6 +114,8 @@ type EventsCalendarProps = {
   events: readonly ClubEvent[];
   /** Calendar-only entries: shown in the grid, never listed as events. */
   meetings: readonly Meeting[];
+  /** Marked on each of their days; weekly meetings skip them. */
+  breaks?: readonly Break[];
 };
 
 /**
@@ -120,7 +124,11 @@ type EventsCalendarProps = {
  * and the agenda under the grid carries the details at every width. Any
  * entry, in the grid or the agenda, opens its full details.
  */
-export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
+export function EventsCalendar({
+  events,
+  meetings,
+  breaks = [],
+}: EventsCalendarProps) {
   const [month, setMonth] = useState(() => openingMonth(events));
   const [selected, setSelected] = useState<CalendarEntry | null>(null);
   const [detailsOpen, setDetailsOpen] = useState(false);
@@ -143,9 +151,12 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
     .sort((a, b) => eventDate(a).getTime() - eventDate(b).getTime());
 
   const monthMeetings = meetings.filter((meeting) =>
-    days.some((day) => meetsOn(meeting, day)),
+    days.some((day) => meetsOn(meeting, day, breaks)),
   );
   const monthHolidays = holidaysInMonth(year, monthIndex + 1);
+  const monthBreaks = breaks.filter((termBreak) =>
+    days.some((day) => duringBreak(termBreak, day)),
+  );
 
   const entriesOn = (
     day: Date,
@@ -158,7 +169,7 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
         entry: { kind: "event" as const, event },
       })),
     ...monthMeetings
-      .filter((meeting) => meetsOn(meeting, day))
+      .filter((meeting) => meetsOn(meeting, day, breaks))
       .map((meeting) => ({
         key: `meeting-${meeting.id}`,
         title: meeting.title,
@@ -170,6 +181,13 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
         key: `holiday-${holiday.id}`,
         title: holiday.name,
         entry: { kind: "holiday" as const, holiday },
+      })),
+    ...monthBreaks
+      .filter((termBreak) => duringBreak(termBreak, day))
+      .map((termBreak) => ({
+        key: `break-${termBreak.id}`,
+        title: termBreak.name,
+        entry: { kind: "break" as const, termBreak },
       })),
   ];
 
@@ -334,7 +352,8 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
                                     "flex h-6 w-full items-center justify-center rounded focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring md:block md:h-auto md:min-h-6 md:px-1.5 md:py-0.5 md:text-left md:text-xs md:leading-snug md:hover:ring-1 md:hover:ring-primary/60",
                                     entry.kind === "meeting"
                                       ? "md:border md:border-border md:text-muted-foreground"
-                                      : entry.kind === "holiday"
+                                      : entry.kind === "holiday" ||
+                                          entry.kind === "break"
                                         ? "md:border md:border-dashed md:border-muted-foreground/60 md:italic md:text-muted-foreground"
                                         : "md:bg-brand/20 md:font-medium md:text-primary",
                                   )}
@@ -345,7 +364,8 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
                                       "block h-2 w-2 rounded-full md:hidden",
                                       entry.kind === "meeting"
                                         ? "bg-muted-foreground"
-                                        : entry.kind === "holiday"
+                                        : entry.kind === "holiday" ||
+                                            entry.kind === "break"
                                           ? "border border-muted-foreground"
                                           : "bg-primary",
                                     )}
@@ -474,6 +494,26 @@ export function EventsCalendar({ events, meetings }: EventsCalendarProps) {
                       ? "Ontario holiday"
                       : "Federal holiday"}
                   </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {monthBreaks.length > 0 && (
+          <ul aria-label="Breaks" className="space-y-2">
+            {monthBreaks.map((termBreak) => (
+              <li key={termBreak.id}>
+                <button
+                  type="button"
+                  onClick={() => showDetails({ kind: "break", termBreak })}
+                  className="flex w-full flex-wrap gap-x-4 gap-y-1 rounded-lg border border-dotted border-border px-4 py-3 text-left text-sm text-muted-foreground transition-colors hover:border-primary/50 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <span className="font-medium text-foreground">
+                    {termBreak.name}
+                  </span>
+                  <span>{formatDateRange(termBreak)}</span>
+                  <span>No classes; meetings take the week off</span>
                 </button>
               </li>
             ))}

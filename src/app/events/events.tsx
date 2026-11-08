@@ -13,6 +13,7 @@ import { NextUp } from "@/components/events/NextUp";
 import { SubscribeButton } from "@/components/events/CalendarActions";
 import { EventsCalendar } from "@/components/EventsCalendar";
 import { Button } from "@/components/ui/button";
+import breaksData from "@/data/breaks.json";
 import meetingsData from "@/data/meetings.json";
 import {
   type ClubEvent,
@@ -298,10 +299,14 @@ const EventsPage = () => {
           id="calendar-heading"
           label="By month"
           title="Calendar"
-          lede="Events, the weekly exec meeting and public holidays, month by month."
+          lede="Events, the weekly exec meeting, public holidays and reading weeks, month by month."
         />
         <div className="overflow-hidden rounded-2xl border border-border bg-card">
-          <EventsCalendar events={allEvents} meetings={meetingsData.meetings} />
+          <EventsCalendar
+            events={allEvents}
+            meetings={meetingsData.meetings}
+            breaks={breaksData.breaks}
+          />
         </div>
       </Section>
     </>

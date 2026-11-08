@@ -1,7 +1,7 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router";
-import { type Meeting } from "@/lib/events";
+import { type Break, type Meeting } from "@/lib/events";
 import { EventsCalendar } from "./EventsCalendar";
 
 const icebreaker = {
@@ -40,15 +40,26 @@ const execMeeting: Meeting = {
   title: "Exec Meeting",
   date: "2026-09-22",
   time: "5:30 PM - 6:00 PM",
-  location: "Richcraft Hall 3228",
+  location: "MacOdrum Library",
   weekly: true,
 };
 
-const setup = (meetings: Meeting[] = []) => {
+const readingWeek: Break = {
+  id: "fall-break-2026",
+  name: "Reading Week",
+  date: "2026-10-26",
+  endDate: "2026-10-30",
+};
+
+const setup = (meetings: Meeting[] = [], breaks: Break[] = []) => {
   const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
   render(
     <MemoryRouter>
-      <EventsCalendar events={[workshop, icebreaker]} meetings={meetings} />
+      <EventsCalendar
+        events={[workshop, icebreaker]}
+        meetings={meetings}
+        breaks={breaks}
+      />
     </MemoryRouter>,
   );
   return user;
@@ -125,6 +136,29 @@ test("stops a weekly meeting after its last date", async () => {
   await user.click(screen.getByRole("button", { name: "Next month" }));
   expect(within(dayCell(13)).getByText("Exec Meeting")).toBeInTheDocument();
   expect(within(dayCell(20)).queryByText("Exec Meeting")).toBeNull();
+});
+
+test("marks reading week on each of its days, and the weekly meeting skips it", async () => {
+  const user = setup([execMeeting], [readingWeek]);
+
+  await user.click(screen.getByRole("button", { name: "Next month" }));
+  for (const day of [26, 27, 28, 29, 30]) {
+    expect(within(dayCell(day)).getByText("Reading Week")).toBeInTheDocument();
+  }
+  expect(within(dayCell(25)).queryByText("Reading Week")).toBeNull();
+  expect(within(dayCell(31)).queryByText("Reading Week")).toBeNull();
+  // The exec meeting meets the Tuesday before, not the one in reading week.
+  expect(within(dayCell(20)).getByText("Exec Meeting")).toBeInTheDocument();
+  expect(within(dayCell(27)).queryByText("Exec Meeting")).toBeNull();
+
+  const breaks = screen.getByRole("list", { name: "Breaks" });
+  expect(breaks).toHaveTextContent("Reading Week");
+  expect(breaks).toHaveTextContent("Mon, Oct 26 – Fri, Oct 30");
+
+  await user.click(within(breaks).getByRole("button"));
+  const details = screen.getByRole("dialog", { name: "Reading Week" });
+  expect(details).toHaveTextContent("Mon, Oct 26 – Fri, Oct 30, 2026");
+  expect(details).toHaveTextContent("No classes at Carleton");
 });
 
 test("summarises a meeting once rather than listing it as an event", async () => {
@@ -215,7 +249,7 @@ test("opens a meeting's details for the day that was clicked", async () => {
   expect(details).toHaveTextContent("Tuesday, September 29, 2026");
   expect(details).toHaveTextContent("Every Tuesday");
   expect(details).toHaveTextContent("5:30–6:00 PM");
-  expect(details).toHaveTextContent("Richcraft Hall 3228");
+  expect(details).toHaveTextContent("MacOdrum Library");
 });
 
 test("marks public holidays on their days and lists them under the month", async () => {
