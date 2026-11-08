@@ -1,6 +1,7 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { posterThumb } from "@/lib/events";
+import breaks from "./breaks.json";
 import events from "./events.json";
 import meetings from "./meetings.json";
 import oldTeams from "./old-teams.json";
@@ -17,7 +18,15 @@ const fields = (value: unknown, key = ""): [string, string][] => {
   return [];
 };
 
-const all = fields({ events, meetings, oldTeams, partners, projects, team });
+const all = fields({
+  breaks,
+  events,
+  meetings,
+  oldTeams,
+  partners,
+  projects,
+  team,
+});
 
 describe("events", () => {
   // The id is the key in every event URL and calendar file (CONTRIBUTING):
@@ -36,6 +45,20 @@ describe("events", () => {
         expect(endDate).toMatch(/^\d{4}-\d{2}-\d{2}$/);
         expect(endDate >= event.date).toBe(true);
       }
+    }
+  });
+});
+
+describe("breaks", () => {
+  // Reading weeks are marked on the events calendar, and weekly meetings skip
+  // them, from their first day to their last (CONTRIBUTING).
+  it("gives every break a unique id and a first and last day", () => {
+    const ids = breaks.breaks.map((termBreak) => termBreak.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    for (const termBreak of breaks.breaks) {
+      expect(termBreak.date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(termBreak.endDate).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(termBreak.endDate >= termBreak.date).toBe(true);
     }
   });
 });
