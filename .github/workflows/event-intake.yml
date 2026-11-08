@@ -24,8 +24,8 @@ concurrency:
 jobs:
   draft:
     # The form is recognized by its own headings, not by a label: a label
-    # the repository lacks would be dropped silently. Title-only edits do
-    # not redraft, so a renamed issue keeps its pull request as it is.
+    # the repository lacks would be dropped silently. An edit to the title
+    # redrafts too: the issue's title is the event's title.
     if: >-
       github.repository == 'carletonai/cais-website' &&
       github.event.issue.state == 'open' &&

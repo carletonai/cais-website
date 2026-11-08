@@ -1,12 +1,12 @@
 name: New event
-description: Put an event on the calendar. A pull request with the draft opens on its own.
+description: Put an event on the calendar. For public members of the club's GitHub organization and collaborators on this repository, a pull request with the draft opens on its own.
 title: "Event: "
 labels: ["event"]
 body:
   - type: markdown
     attributes:
       value: |
-        The issue's title, after "Event:", is the event's title. Fill in what you know below. When you submit, a pull request appears with the event drafted into the site's data, poster included; merging it puts the event on the calendar and builds its page and calendar file. If something cannot be read, a comment here says what to change, and editing this issue runs the check again.
+        The issue's title, after "Event:", is the event's title. Fill in what you know below. If you are a public member of the club's GitHub organization or a collaborator on this repository, a pull request appears when you submit, with the event drafted into the site's data, poster included; merging it puts the event on the calendar and builds its page and calendar file. If something cannot be read, a comment here says what to change, and editing this issue runs the check again. Anyone else, private organization members included, gets a thank-you comment here, and an exec adds the event by hand (CONTRIBUTING.md says how to make your membership public).
 
         Pasting the Instagram caption into the description is fine: the time, place and RSVP link are read from it when their own fields are left blank.
   - type: input
