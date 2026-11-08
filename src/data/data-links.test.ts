@@ -1,6 +1,6 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
-import { type Meeting, posterThumb } from "@/lib/events";
+import { type Meeting, eventDate, meetsOn, posterThumb } from "@/lib/events";
 import breaks from "./breaks.json";
 import events from "./events.json";
 import meetings from "./meetings.json";
@@ -79,8 +79,8 @@ describe("meetings", () => {
   });
 
   // A weekly meeting that changes room, time or day is one entry per
-  // arrangement, each ending with `until` before the next begins
-  // (CONTRIBUTING). Entries that overlap would list it twice on one day.
+  // arrangement, all with its title, each ending with `until` before the
+  // next begins (CONTRIBUTING). Entries that overlap would list it twice.
   it("ends each weekly meeting's entry before its next one begins", () => {
     const weekly = list.filter((meeting) => meeting.weekly);
     const overlaps = weekly.flatMap((earlier) =>
@@ -95,6 +95,25 @@ describe("meetings", () => {
         .map((later) => `${earlier.id} runs into ${later.id}`),
     );
     expect(overlaps).toEqual([]);
+  });
+
+  // A one-off on a day the same meeting already meets would list it twice
+  // there, perhaps in two rooms. A weekly meeting skips reading weeks, so a
+  // one-off may stand in for it then.
+  it("puts no one-off meeting on a day the same meeting already meets", () => {
+    const clashes = list
+      .filter((oneOff) => !oneOff.weekly)
+      .flatMap((oneOff) =>
+        list
+          .filter(
+            (other) =>
+              other !== oneOff &&
+              other.title === oneOff.title &&
+              meetsOn(other, eventDate(oneOff), breaks.breaks),
+          )
+          .map((other) => `${oneOff.id} falls on a day of ${other.id}`),
+      );
+    expect(clashes).toEqual([]);
   });
 });
 
