@@ -248,8 +248,9 @@ When the meeting changes room, time or day, keep the past weeks as they were:
 give the current entry an `until` on its last meeting, and add a new entry
 with its own `id` from the first meeting after the change. That is how its
 September 2026 weeks stay at 7:30 PM in Richcraft Hall 3228 while later ones
-are at 5:30 PM in MacOdrum Library. The tests fail if two entries for the same
-meeting overlap.
+are at 5:30 PM in MacOdrum Library. Keep the `title` unchanged: the tests
+treat entries with the same title as one meeting, and fail if two of its weekly
+entries run at once or a one-off falls on a day it already meets.
 
 Reading weeks come from `src/data/breaks.json`, one entry per break: an
 `id`, a `name`, and its first and last day as `date` and `endDate`. The
