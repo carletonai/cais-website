@@ -8,7 +8,7 @@
 
 ## Prerequisites
 
-- Node.js 24.11 or later (or 22.18 or later in the 22 line)
+- Node.js 24.11 or later (or 22.22 or later in the 22 line)
 - pnpm 10 or later, which switches itself to the version in `packageManager`.
   It is required, not just recommended: npm and yarn ignore the lockfile, the
   `pnpm.overrides` security pins and the install guards in `pnpm-workspace.yaml`.
