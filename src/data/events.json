@@ -862,6 +862,20 @@
       "posterHeight": 1080,
       "posterWidth": 1080,
       "tags": ["free-food", "networking", "social"]
+    },
+    {
+      "id": "70",
+      "title": "Practice makes perfect, but what if we told you AI learns the same way?…",
+      "date": "2026-11-13",
+      "time": "5:00 PM - 6:00 PM",
+      "location": "",
+      "description": "Practice makes perfect, but what if we told you AI learns the same way? Through trial, error, and rewards, discover how machines learn from their mistakes and improve over time. Join us on Friday, November 13th from 5 - 6pm at HP 5345 for an Introduction to Reinforcement Learning!",
+      "type": "Social",
+      "instagram": "https://www.instagram.com/reel/DflSLVHANXA/",
+      "poster": "/assets/events/practice-makes-perfect-but-what-if-we-told-you-a-2026.jpg",
+      "posterHeight": 1920,
+      "posterWidth": 1080,
+      "tags": ["social"]
     }
   ]
 }

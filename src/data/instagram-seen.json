@@ -1,3 +1,39 @@
 {
-  "seen": []
+  "seen": [
+    {
+      "id": "18197588878387555",
+      "permalink": "https://www.instagram.com/reel/Dd4wfFcgGWg/",
+      "decision": "skipped",
+      "reason": "dated 2026-10-02, already past",
+      "at": "2026-11-13"
+    },
+    {
+      "id": "18117477743600586",
+      "permalink": "https://www.instagram.com/reel/DexWaslAk67/",
+      "decision": "skipped",
+      "reason": "dated 2026-10-23, already past",
+      "at": "2026-11-13"
+    },
+    {
+      "id": "18637464376011533",
+      "permalink": "https://www.instagram.com/p/De2RSUJAEK0/",
+      "decision": "skipped",
+      "reason": "dated, but nothing says it is an event",
+      "at": "2026-11-13"
+    },
+    {
+      "id": "18438778078194361",
+      "permalink": "https://www.instagram.com/reel/DflSLVHANXA/",
+      "decision": "event",
+      "eventId": "70",
+      "at": "2026-11-13"
+    },
+    {
+      "id": "18172677310462893",
+      "permalink": "https://www.instagram.com/p/DfoDVTMOpJL/",
+      "decision": "skipped",
+      "reason": "no date in the caption",
+      "at": "2026-11-13"
+    }
+  ]
 }
