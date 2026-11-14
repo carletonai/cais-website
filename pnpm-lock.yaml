@@ -3881,9 +3881,6 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
 
-  tailwindcss@4.3.3:
-    resolution: {integrity: sha512-gOhV3P7ufE62QDGg1zVaTgCR+EtPv92k2nIhVcVKcLmxT1sUBsQGhnZj175j+MqRt4zLF7ic+sCYjfhxMxj7YQ==}
-
   tailwindcss@4.3.4:
     resolution: {integrity: sha512-PCJZTFFdG+sL3gvnP1Do9o6GbkvH2q0p04xSs3f7cSvmAeK+sttG+/7ncK1fdRwKFfC7n+wDDJaOMBSefkI9ow==}
 
@@ -8375,8 +8372,6 @@ snapshots:
   tailwindcss-animate@1.0.7(tailwindcss@4.3.4):
     dependencies:
       tailwindcss: 4.3.4
-
-  tailwindcss@4.3.3: {}
 
   tailwindcss@4.3.4: {}
 
