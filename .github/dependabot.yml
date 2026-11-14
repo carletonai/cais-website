@@ -45,6 +45,13 @@ updates:
         patterns:
           - "react"
           - "react-dom"
+      # @tailwindcss/postcss compiles with the tailwindcss of its own exact
+      # version, while globals.css imports the project's tailwindcss, so a bump
+      # of one alone builds with two Tailwind versions; they move together.
+      tailwind:
+        patterns:
+          - "tailwindcss"
+          - "@tailwindcss/*"
       # The Babel presets need the @babel/core of the same major: a preset
       # bumped to 8 under core 7 loads as nothing and strips no TypeScript.
       # Every @babel/* update lands here, majors included. dev-tooling must
