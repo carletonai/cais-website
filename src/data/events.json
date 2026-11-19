@@ -862,6 +862,34 @@
       "posterHeight": 1080,
       "posterWidth": 1080,
       "tags": ["free-food", "networking", "social"]
+    },
+    {
+      "id": "70",
+      "title": "Explore how machines use data to recognize patterns, learn and make informed…",
+      "date": "2026-11-20",
+      "time": "5:00 PM - 6:00 PM",
+      "location": "",
+      "description": "Explore how machines use data to recognize patterns, learn and make informed decisions. Join us Friday, November 20th at HP 5345 from 5-6pm for our Intro to Machine Learning Workshop:)",
+      "type": "Workshop",
+      "instagram": "https://www.instagram.com/reel/Df3eIIXO3Hn/",
+      "poster": "/assets/events/explore-how-machines-use-data-to-recognize-patte-2026.jpg",
+      "posterHeight": 960,
+      "posterWidth": 540,
+      "tags": ["technical"]
+    },
+    {
+      "id": "71",
+      "title": "Hii, we're having an Intro to Machine Learning workshop this Friday. Hope to…",
+      "date": "2026-11-20",
+      "time": "",
+      "location": "",
+      "description": "Hii, we're having an Intro to Machine Learning workshop this Friday. Hope to see you there!",
+      "type": "Workshop",
+      "instagram": "https://www.instagram.com/p/Df6CFYkOogh/",
+      "poster": "/assets/events/hii-we-re-having-an-intro-to-machine-learning-wo-2026.jpg",
+      "posterHeight": 1440,
+      "posterWidth": 1440,
+      "tags": ["technical"]
     }
   ]
 }
