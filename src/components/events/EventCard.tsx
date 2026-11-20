@@ -27,7 +27,8 @@ export function EventCard({ event, now, headingLevel = "h3" }: EventCardProps) {
   const settled = useClockSettled();
   const status = eventStatus(event, now, { relative: settled });
   const Heading = headingLevel;
-  const live = status.phase === "live";
+  // On now waits for the clock, like the label (see NextUp).
+  const live = status.phase === "live" && settled;
   const past = status.phase === "past";
   const currentSeason = academicYear(event) === seasonNow(now);
 

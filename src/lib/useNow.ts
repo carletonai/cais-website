@@ -9,19 +9,20 @@ import {
 } from "react";
 
 const TICK = 15_000;
+const LIVE_AFTER = 1_000;
 
 interface Clock {
   /** The time now, refreshed every TICK. */
   now: Date;
-  /** When the page was opened: what "as the page loaded" means, held all
-   *  session (the calendar's opening month). */
+  /** When the clock caught up with the real time: the moment a prerendered
+   *  page opened, for what was on it from the start (useOpenedAt). */
   openedAt: Date;
   /** Whether the clock has caught up with the real time. Before that (the
    *  build's render, and the browser's first render, which must match it),
    *  relative words such as "In 3 days" would be as of the build. */
   settled: boolean;
-  /** One render after `settled`: from here on a live region's changes are
-   *  the visitor's doing, not the clock catching up with the build. */
+  /** A second after `settled`: from here on a live region's changes are the
+   *  visitor's doing, not the clock catching up with the build. */
   live: boolean;
 }
 
@@ -99,11 +100,15 @@ export function NowProvider({
   );
   const [tick] = useState(() => advance(setClock));
   useEffect(tick, [tick]);
-  // Live regions turn on in the render after the catch-up, so the catch-up's
-  // own changes (a new opening month, a new count) are not announced.
+  // Live regions turn on a second after the catch-up, so the catch-up's own
+  // changes (a new opening month, a new count) are not announced: well apart,
+  // not just a render apart, which a browser could pass on to a screen reader
+  // as one change.
   const { settled, live } = clock;
   useEffect(() => {
-    if (settled && !live) tick();
+    if (!settled || live) return;
+    const timer = setTimeout(tick, LIVE_AFTER);
+    return () => clearTimeout(timer);
   }, [settled, live, tick]);
   useTicker(tick, TICK, true);
   return createElement(NowContext.Provider, { value: clock }, children);
@@ -129,8 +134,20 @@ const useClock = (intervalMs = 30_000): Clock => {
  */
 export const useNow = (intervalMs = 30_000) => useClock(intervalMs).now;
 
-/** When the page was opened, held for the whole visit. */
-export const useOpenedAt = () => useClock().openedAt;
+/**
+ * When the calling component opened (first rendered), held while it stays
+ * on the page: for one that was on the prerendered page from the start, the
+ * moment the clock caught up with the build; for one opened later (a page
+ * navigated to), the time then.
+ */
+export const useOpenedAt = () => {
+  const clock = useClock();
+  const [opened] = useState(() => ({
+    at: clock.now,
+    beforeSettling: !clock.settled,
+  }));
+  return opened.beforeSettling ? clock.openedAt : opened.at;
+};
 
 /** False while the page still shows the build's moment (see Clock.settled):
  *  words relative to now, and countdowns, wait for it. */

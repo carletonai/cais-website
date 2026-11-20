@@ -28,7 +28,12 @@ import {
   upcomingEvents,
 } from "@/lib/events";
 import { holidaysInMonth } from "@/lib/holidays";
-import { useLiveRegions, useNow, useOpenedAt } from "@/lib/useNow";
+import {
+  useClockSettled,
+  useLiveRegions,
+  useNow,
+  useOpenedAt,
+} from "@/lib/useNow";
 
 const WEEKDAYS = [
   ["Sun", "Sunday"],
@@ -145,6 +150,7 @@ export function EventsCalendar({
   const month = picked ?? openingMonth(events, openedAt);
   // The heading announces months the reader moves to, not that catch-up.
   const live = useLiveRegions();
+  const settled = useClockSettled();
   const [selected, setSelected] = useState<CalendarEntry | null>(null);
   const [detailsOpen, setDetailsOpen] = useState(false);
   const headingId = useId();
@@ -207,7 +213,9 @@ export function EventsCalendar({
       })),
   ];
 
-  const isToday = (day: Date) => isoDay(day) === today;
+  // Marked once the clock has caught up: the prerendered grid marks no day,
+  // rather than the day it was built on.
+  const isToday = (day: Date) => settled && isoDay(day) === today;
 
   const showMonth = (offset: number) =>
     setMonth(new Date(year, monthIndex + offset, 1));
