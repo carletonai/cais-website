@@ -43,6 +43,8 @@ const EventPage = () => {
 
   const status = eventStatus(event, now, { relative: settled });
   const live = status.phase === "live";
+  // On now waits for the clock, like the label (see NextUp).
+  const onNow = live && settled;
   const past = status.phase === "past";
   const others = past
     ? relatedEvents(event, pastEvents(allEvents, now))
@@ -74,10 +76,10 @@ const EventPage = () => {
             <p
               className={cn(
                 "label-mono mt-6",
-                live ? "text-primary" : "text-muted-foreground",
+                onNow ? "text-primary" : "text-muted-foreground",
               )}
             >
-              {live && (
+              {onNow && (
                 <span
                   aria-hidden="true"
                   className="live-pulse mr-2 inline-block size-2.5 rounded-full bg-mark align-middle"

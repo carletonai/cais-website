@@ -87,6 +87,9 @@ export function NextUp({
 
   const status = eventStatus(event, now, { relative: settled });
   const live = status.phase === "live";
+  // Saying it is on now waits for the clock, like the label: a page built
+  // during an event would otherwise say so until the next deploy.
+  const onNow = live && settled;
   const path = eventPath(event);
   const hasRsvp = rsvpFor(event, now) !== null;
   const thumb = event.poster ? posterThumb(event.poster) : null;
@@ -119,22 +122,22 @@ export function NextUp({
           <p
             className={cn(
               "label-mono flex flex-wrap items-center gap-x-2 gap-y-1",
-              live ? "text-primary" : "text-muted-foreground",
+              onNow ? "text-primary" : "text-muted-foreground",
             )}
           >
-            {live && (
+            {onNow && (
               <span
                 aria-hidden="true"
                 className="live-pulse inline-block size-2.5 rounded-full bg-mark"
               />
             )}
-            <span>{live ? status.label : `Next up · ${status.label}`}</span>
+            <span>{onNow ? status.label : `Next up · ${status.label}`}</span>
           </p>
           <Heading
             id="next-up-title"
             className="font-display mt-3 text-[2.25rem] leading-[0.92] sm:text-5xl"
           >
-            <span className="sr-only">{live ? "On now: " : "Next up: "}</span>
+            <span className="sr-only">{onNow ? "On now: " : "Next up: "}</span>
             <Link
               to={path}
               className="decoration-mark decoration-4 underline-offset-[6px] hover:underline"

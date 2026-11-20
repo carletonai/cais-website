@@ -242,17 +242,20 @@ if (!existsSync(notFound)) {
 // would show until it did.
 const vercel = readJson("vercel.json");
 for (const { source, destination } of vercel.rewrites ?? []) {
+  const file = join(dist, destination);
+  if (!existsSync(file)) {
+    problems.push(
+      `vercel.json rewrites ${source} to ${destination}, which was not built`,
+    );
+    continue;
+  }
+  // A rewritten URL is another page's address: it must get an empty #root
+  // (the app shell), never a prerendered page such as index.html.
   check(
-    existsSync(join(dist, destination)),
-    `vercel.json rewrites ${source} to ${destination}, which was not built`,
+    readFileSync(file, "utf8").includes('<div id="root"></div>'),
+    `vercel.json rewrites ${source} to ${destination}, which is a prerendered page, not the app shell`,
   );
 }
-const shell = join(dist, "app-shell.html");
-check(
-  existsSync(shell) &&
-    readFileSync(shell, "utf8").includes('<div id="root"></div>'),
-  "app-shell.html was not built with an empty #root",
-);
 
 check(!existsSync(join(dist, ".vite")), "dist/.vite should not be deployed");
 
