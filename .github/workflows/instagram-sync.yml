@@ -82,10 +82,13 @@ jobs:
           git commit -m "feat(events): events announced on Instagram" \
             -m "Drafted by the Instagram sync from the club's posts. Check the dates, times and places against the posts before merging."
           git push --force origin instagram-sync
-          # Only an open pull request: "gh pr view instagram-sync" also finds a
-          # closed one, and then the drafts went on updating a pull request no
-          # one would see (#74, closed in October, did that for a month).
-          pr=$(gh pr list --head instagram-sync --state open --json number --jq '.[0].number // empty')
+          # Only an open pull request from this repository's own branch:
+          # "gh pr view instagram-sync" also finds a closed one, and then the
+          # drafts went on updating a pull request no one would see (#74,
+          # closed in October, did that for a month); and --head matches a
+          # fork's branch of the same name too.
+          pr=$(gh pr list --head instagram-sync --state open --json number,isCrossRepository \
+            --jq 'map(select(.isCrossRepository | not)) | .[0].number // empty')
           if [ -n "$pr" ]; then
             gh pr edit "$pr" --body-file "$RUNNER_TEMP/summary.md"
           else

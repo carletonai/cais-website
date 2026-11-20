@@ -334,6 +334,14 @@ request; the parser reads captions, it does not understand them. Each draft
 keeps the post's link in its `instagram` field, and
 `src/data/instagram-seen.json` remembers which posts were already decided.
 
+Those decisions only count once they are merged. To turn a draft down (a
+post that is not an event, or a second post about one already listed),
+delete its entry from `events.json` and its poster on the pull request's
+branch, change its record in `instagram-seen.json` to `"decision":
+"skipped"` with a `"reason"`, and merge. Closing the pull request instead
+records nothing: the next morning the post is drafted again, in a new pull
+request.
+
 Setting it up, once:
 
 1. The club's Instagram account must be a professional account (Business or
