@@ -11,6 +11,21 @@
   ],
   "locale": "en_CA",
   "twitterCard": "summary_large_image",
+  "email": "info.carletonai@gmail.com",
+  "foundingYear": "2019",
+  "university": {
+    "@type": "CollegeOrUniversity",
+    "name": "Carleton University",
+    "url": "https://carleton.ca/",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1125 Colonel By Drive",
+      "addressLocality": "Ottawa",
+      "addressRegion": "ON",
+      "postalCode": "K1S 5B6",
+      "addressCountry": "CA"
+    }
+  },
   "routes": {
     "/": {
       "title": "Carleton AI Society",

@@ -216,18 +216,68 @@ const jsonLd = (data) =>
 
 const absolute = (path) => `${seo.siteUrl}${path === "/" ? "/" : path}`;
 
+// The club and the site, as Google's Organization and site-name docs ask:
+// both on the home page, the site naming the club as its publisher, and
+// every event pointing at the club by its @id.
+const organizationId = `${seo.siteUrl}/#organization`;
 const organization = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": organizationId,
   name: seo.siteName,
   alternateName: "CAIS",
   url: absolute("/"),
   logo: `${seo.siteUrl}/brand/cais-logo.svg`,
+  description: seo.routes["/"].description,
+  email: seo.email,
+  foundingDate: seo.foundingYear,
+  parentOrganization: seo.university,
   sameAs: seo.sameAs,
 };
+const website = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${seo.siteUrl}/#website`,
+  name: seo.siteName,
+  alternateName: "CAIS",
+  url: absolute("/"),
+  publisher: { "@id": organizationId },
+};
 
-/** schema.org Event data for an event's page. */
+/**
+ * Where an in-person event was. Every venue in events.json is a Carleton
+ * building ("Herzberg 5345", "Richcraft Hall 3228") unless its name says
+ * otherwise, so the campus is named and given its street address; a venue
+ * elsewhere names its institution ("Room C040, uOttawa (Hack the Hill III)")
+ * and is left with the city only.
+ */
+const place = (location) => {
+  const elsewhere = /\b(uOttawa|University of Ottawa)\b/i.test(location);
+  if (elsewhere)
+    return {
+      "@type": "Place",
+      name: location,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Ottawa",
+        addressRegion: "ON",
+        addressCountry: "CA",
+      },
+    };
+  return {
+    "@type": "Place",
+    name: `${location}, ${seo.university.name}`,
+    address: seo.university.address,
+  };
+};
+
+/**
+ * schema.org Event data for an event's page, or null for an event with no
+ * recorded location: Google requires one, and an Event without it is an
+ * error in its Rich Results report rather than a smaller result.
+ */
 const eventData = (event, image) => {
+  if (!event.location) return null;
   const window = eventWindow(event);
   const online = /^online\b/i.test(event.location);
   const url = absolute(eventPath(event));
@@ -248,28 +298,36 @@ const eventData = (event, image) => {
     eventAttendanceMode: online
       ? "https://schema.org/OnlineEventAttendanceMode"
       : "https://schema.org/OfflineEventAttendanceMode",
-    ...(online
-      ? { location: { "@type": "VirtualLocation", url } }
-      : event.location && {
-          location: {
-            "@type": "Place",
-            name: event.location,
-            address: {
-              "@type": "PostalAddress",
-              addressLocality: "Ottawa",
-              addressRegion: "ON",
-              addressCountry: "CA",
-            },
-          },
-        }),
+    // An online event's location is where people took part: its Kaggle
+    // competition or other page when it has one, else its page here.
+    location: online
+      ? { "@type": "VirtualLocation", url: event.page ?? url }
+      : place(event.location),
     ...(image && { image: [`${seo.siteUrl}${image.url}`] }),
     organizer: {
       "@type": "Organization",
+      "@id": organizationId,
       name: seo.siteName,
       url: absolute("/"),
     },
   };
 };
+
+/** Home › Events › the event, matching the page's "All events" link. */
+const breadcrumbs = (event) => ({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { name: seo.siteName, path: "/" },
+    { name: "Events", path: "/events" },
+    { name: event.title, path: eventPath(event) },
+  ].map(({ name, path }, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name,
+    item: absolute(path),
+  })),
+});
 
 /**
  * The built HTML with this page's metadata in place of the placeholders.
@@ -324,6 +382,7 @@ const render = ({
     html = set(html, meta("property", "og:image:width"), String(image.width));
     html = set(html, meta("property", "og:image:height"), String(image.height));
     html = set(html, meta("property", "og:image:alt"), escape(image.alt));
+    html = set(html, meta("name", "twitter:image:alt"), escape(image.alt));
     // The poster is the largest thing on the page and the HTML already knows
     // it; without this it is only requested once the page's JS has rendered.
     extra.push(
@@ -357,7 +416,7 @@ for (const route of routes) {
     render({
       path: route,
       ...seo.routes[route],
-      head: route === "/" ? [jsonLd(organization)] : [],
+      head: route === "/" ? [jsonLd(organization), jsonLd(website)] : [],
     }),
   );
 }
@@ -414,7 +473,9 @@ for (const event of events) {
       ogTitle: meta.ogTitle,
       description: meta.description,
       image,
-      head: [jsonLd(eventData(event, image))],
+      head: [eventData(event, image), breadcrumbs(event)]
+        .filter(Boolean)
+        .map(jsonLd),
     }),
   );
   writeFileSync(join(dist, icsPath(event)), vcalendar([event], { now }));
