@@ -12,6 +12,8 @@ import {
   SubscribeButton,
 } from "@/components/events/CalendarActions";
 import { Countdown } from "@/components/events/Countdown";
+import projectsData from "@/data/projects.json";
+import { relatedEvents, seriesOf } from "@/lib/curriculum";
 import {
   allEvents,
   eventPath,
@@ -42,12 +44,15 @@ const EventPage = () => {
   const live = status.phase === "live";
   const past = status.phase === "past";
   const others = past
-    ? pastEvents(allEvents, now)
-        .filter((e) => e.id !== event.id && e.type === event.type)
-        .slice(0, 3)
+    ? relatedEvents(event, pastEvents(allEvents, now))
     : upcomingEvents(allEvents, now)
         .filter((e) => e.id !== event.id)
         .slice(0, 3);
+  const series = seriesOf(event.id);
+  // A hackathon's page points at the projects that won it.
+  const winners = projectsData.projects.some(
+    (project) => "hackathon" in project && project.hackathon === event.title,
+  );
 
   return (
     <article className="relative">
@@ -107,6 +112,31 @@ const EventPage = () => {
               <ShareButton event={event} />
             </div>
             <p className="mt-10 text-lg leading-relaxed">{event.description}</p>
+            {(series || winners) && (
+              <ul className="mt-6 space-y-2">
+                {series && (
+                  <li>
+                    <Link
+                      to={series.href}
+                      className="text-primary underline underline-offset-4"
+                    >
+                      Part {series.module.number} of {series.series.title} (
+                      {series.series.season})
+                    </Link>
+                  </li>
+                )}
+                {winners && (
+                  <li>
+                    <Link
+                      to="/projects#hackathon-projects"
+                      className="text-primary underline underline-offset-4"
+                    >
+                      See the winning projects
+                    </Link>
+                  </li>
+                )}
+              </ul>
+            )}
             {event.tags.length > 0 && (
               <ul aria-label="Tags" className="mt-6 flex flex-wrap gap-2">
                 {event.tags.map((tag) => (
