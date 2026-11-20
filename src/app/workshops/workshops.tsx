@@ -1,4 +1,5 @@
-import { Link } from "react-router";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router";
 import { ChevronDownIcon } from "lucide-react";
 import { FaDiscord } from "react-icons/fa";
 import { PageHeader } from "@/components/brand/PageHeader";
@@ -119,6 +120,17 @@ function ModuleList({
 
 const WorkshopsPage = () => {
   const now = useNow();
+  const { hash } = useLocation();
+
+  // An event page links its series as /workshops#<series id>: open that
+  // series' <details> so the link lands on its sessions, not a closed row.
+  // An effect, not the `open` prop: the prerendered page cannot know the
+  // hash, and the first render in the browser has to match it.
+  useEffect(() => {
+    if (!hash) return;
+    const target = document.getElementById(hash.slice(1));
+    if (target instanceof HTMLDetailsElement) target.open = true;
+  }, [hash]);
   const [current, ...earlier] = allSeries;
   const modules = allSeries.flatMap((series) => series.modules);
   const workshops = modules.length + standaloneWorkshops.events.length;
@@ -238,7 +250,9 @@ const WorkshopsPage = () => {
                 </summary>
                 <div className="border-t border-border px-5 pb-6 pt-5">
                   <p className="mb-8 text-muted-foreground">{series.lede}</p>
-                  <ModuleList series={series} now={now} headingLevel="h4" />
+                  {/* h3, like the current series' sessions: under the
+                      "Earlier series" h2, an h4 skipped a level. */}
+                  <ModuleList series={series} now={now} headingLevel="h3" />
                 </div>
               </details>
             );

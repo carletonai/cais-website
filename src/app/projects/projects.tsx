@@ -4,6 +4,7 @@ import { PageHeader } from "@/components/brand/PageHeader";
 import { Section, SectionHeader } from "@/components/brand/Section";
 import { Button } from "@/components/ui/button";
 import projectsData from "@/data/projects.json";
+import { allEvents, eventPath } from "@/lib/events";
 import { DISCORD_URL } from "@/lib/links";
 
 interface Project {
@@ -39,15 +40,34 @@ const SECTIONS = [
 const linkClass =
   "label-mono relative z-10 mt-auto inline-flex min-h-11 items-center gap-2 text-foreground hover:text-primary";
 
+/** A hackathon's name, linking its event page when one has that title. */
+const Hackathon = ({ name }: { name: string }) => {
+  const event = allEvents.find((e) => e.title === name);
+  return event ? (
+    <Link
+      to={eventPath(event)}
+      className="underline underline-offset-4 hover:text-foreground"
+    >
+      {name}
+    </Link>
+  ) : (
+    <>{name}</>
+  );
+};
+
 const ProjectCard = ({ project }: { project: Project }) => (
   <li className="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-colors duration-150 hover:border-input">
     {(project.status || project.period) && (
       <p className="label-mono mb-4 flex flex-wrap items-center gap-x-2 text-muted-foreground">
         {project.status && (
           <span className="text-primary">
-            {project.hackathon
-              ? `${project.hackathon} · ${project.status}`
-              : project.status}
+            {project.hackathon ? (
+              <>
+                <Hackathon name={project.hackathon} /> · {project.status}
+              </>
+            ) : (
+              project.status
+            )}
           </span>
         )}
         {project.status && project.period && <span aria-hidden="true">·</span>}
