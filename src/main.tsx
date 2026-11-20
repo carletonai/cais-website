@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { MotionConfig } from "framer-motion";
-import App from "./app/App";
+import { BrowserRouter } from "react-router";
+import { AppProviders, AppShell } from "./app/App";
 import "./app/globals.css";
 import "@fontsource-variable/inter";
 import "@fontsource-variable/space-grotesk";
@@ -10,16 +10,39 @@ import "@fontsource/ibm-plex-mono/latin-400.css";
 import "@fontsource/ibm-plex-mono/latin-500.css";
 
 const rootElement = document.getElementById("root");
+
+/** "/events/" and "/events" are the same page. */
+const normalize = (path: string) => path.replace(/\/+$/, "") || "/";
+
 if (rootElement) {
-  ReactDOM.createRoot(rootElement).render(
+  // scripts/prerender-routes.mjs writes each page's HTML into #root, with the
+  // path it rendered and the time it rendered at. React adopts that HTML
+  // (hydration) when it is this page's, starting the clock at the build time
+  // so the first render matches it. A URL served another page's file (an old
+  // event slug rewritten to index.html) or the dev server's empty #root is
+  // rendered from scratch instead.
+  const { path, renderedAt } = rootElement.dataset;
+  const prerendered =
+    rootElement.hasChildNodes() &&
+    path !== undefined &&
+    normalize(path) === normalize(window.location.pathname);
+  const app = (
     <React.StrictMode>
-      {/* 2.3.3 Animation from Interactions — framer-motion drives these from
-          JS, so the CSS prefers-reduced-motion block cannot reach them. */}
-      <MotionConfig reducedMotion="user">
-        <App />
-      </MotionConfig>
-    </React.StrictMode>,
+      <AppProviders
+        now={prerendered && renderedAt ? new Date(renderedAt) : undefined}
+      >
+        <BrowserRouter>
+          <AppShell />
+        </BrowserRouter>
+      </AppProviders>
+    </React.StrictMode>
   );
+  if (prerendered) {
+    ReactDOM.hydrateRoot(rootElement, app);
+  } else {
+    rootElement.replaceChildren();
+    ReactDOM.createRoot(rootElement).render(app);
+  }
 } else {
   console.error("Root element not found");
 }

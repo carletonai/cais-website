@@ -9,6 +9,7 @@ import {
 import { Section, SectionHeader } from "@/components/brand/Section";
 import { Button } from "@/components/ui/button";
 import { allEvents, clubNumbers, pastEvents } from "@/lib/events";
+import { useNow } from "@/lib/useNow";
 import projectsData from "@/data/projects.json";
 
 const pillars = [
@@ -65,7 +66,9 @@ const numbersAt = (now: Date) => {
 
 /** The home page's "About CAIS" section, which /#about and /about land on. */
 export function AboutSection() {
-  const numbers = numbersAt(new Date());
+  // The page's clock, not new Date(): the prerendered counts are as of the
+  // build, and the browser's first render has to match them.
+  const numbers = numbersAt(useNow());
   return (
     <Section id="about" labelledBy="about-heading" className="">
       <SectionHeader

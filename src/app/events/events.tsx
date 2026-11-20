@@ -37,7 +37,7 @@ const byUse = (values: string[]) => {
   const counts = new Map<string, number>();
   for (const value of values) counts.set(value, (counts.get(value) ?? 0) + 1);
   return [...counts.keys()].sort(
-    (a, b) => counts.get(b)! - counts.get(a)! || a.localeCompare(b),
+    (a, b) => counts.get(b)! - counts.get(a)! || a.localeCompare(b, "en"),
   );
 };
 

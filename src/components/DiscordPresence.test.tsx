@@ -82,8 +82,10 @@ describe("DiscordPresence", () => {
     await screen.findByText(/42 online now/);
     first.unmount();
 
-    render(<DiscordPresence />);
-    expect(screen.getByText(/42 online now/)).toBeInTheDocument();
+    // Not in the first render, which has to match the prerendered page.
+    const second = render(<DiscordPresence />);
+    expect(second.container).toBeEmptyDOMElement();
+    expect(await screen.findByText(/42 online now/)).toBeInTheDocument();
     expect(fetch).toHaveBeenCalledTimes(1);
   });
 });

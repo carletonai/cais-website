@@ -101,6 +101,31 @@ pnpm check         # Typecheck, lint and check formatting, as CI does
 pnpm fix           # Fix lint and formatting
 ```
 
+## How pages are built
+
+`pnpm build` renders every page with React at build time
+(`src/entry-server.tsx`) and writes the result into that page's HTML, so
+search engines and link previews get the content and links without running
+JavaScript. In the browser, `src/main.tsx` then adopts that HTML instead of
+rendering it again (hydration). That only works if a component's first render
+in the browser produces exactly what it produced at build time:
+
+- Read the time with `useNow()`, never `new Date()` while rendering. The page
+  clock starts at the build time and catches up to the real time right after
+  the page loads.
+- Work out "today" or "this year" in Ottawa time (`clubToday(now)` in
+  `src/lib/events.ts`). The build machine runs in UTC and visitors can be
+  anywhere.
+- Spell out month and day names (`MONTHS`, `DAYS`) instead of using
+  `Intl`/`toLocaleString`, whose output differs between Node and browsers.
+- Read `window`, `localStorage`/`sessionStorage` or media queries in an effect,
+  not during render.
+
+If they differ, React throws the prerendered page away and renders it again
+from scratch: the page still works, but there's a flash and an error in the
+console. `pnpm build` fails if a page's prerendered body is missing or shows
+the loading spinner.
+
 ## Accessibility
 
 The site targets **WCAG 2.2 Level AAA** for contrast: 7:1 for body text, 4.5:1
@@ -281,7 +306,8 @@ Discord's public invite API (`DISCORD_PRESENCE_URL` in `src/lib/links.ts`),
 which describes a server to anyone holding an invite link and needs no key.
 The invite must stay valid: if it is ever revoked and replaced, update
 `DISCORD_INVITE` there. The answer is kept for five minutes in the browser,
-and if Discord does not answer the line is simply left out.
+and if Discord does not answer the line is simply left out. The counts are
+fetched after the page loads and are never in the prerendered HTML.
 
 ## Instagram sync
 
@@ -361,7 +387,8 @@ src/
 ├── components/   # Reusable UI components
 ├── data/         # Everything the site shows: events, teams, projects, metadata
 ├── lib/          # Event times, calendar files, search and other helpers
-└── main.tsx      # Entry point
+├── entry-server.tsx # Renders a page to HTML at build time
+└── main.tsx      # Entry point: adopts that HTML in the browser
 scripts/          # Build-time prerendering, the contrast audit, the Instagram sync and the event intake
 public/           # Static files: posters, brand assets, the constitution, 404.html
 ```
