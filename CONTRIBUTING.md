@@ -113,6 +113,13 @@ in the browser produces exactly what it produced at build time:
 - Read the time with `useNow()`, never `new Date()` while rendering. The page
   clock starts at the build time and catches up to the real time right after
   the page loads.
+- Words relative to now ("In 3 days", "Happening now") and countdowns wait for
+  `useClockSettled()`: until then the page shows the date instead, since HTML
+  built days ago would get them wrong. Something that should not move once
+  the page is open (the calendar's opening month) reads `useOpenedAt()`.
+- A live region (`aria-live`, `role="status"`) turns on with
+  `useLiveRegions()`, so the clock catching up as the page loads is not
+  announced.
 - Work out "today" or "this year" in Ottawa time (`clubToday(now)` in
   `src/lib/events.ts`). The build machine runs in UTC and visitors can be
   anywhere.
@@ -125,6 +132,10 @@ If they differ, React throws the prerendered page away and renders it again
 from scratch: the page still works, but there's a flash and an error in the
 console. `pnpm build` fails if a page's prerendered body is missing or shows
 the loading spinner.
+
+Old and id-only event links (`/events/13`) are rewritten by `vercel.json` to
+`app-shell.html`, the home page's head with an empty `#root`: the app renders
+them from scratch and settles on the event's current address.
 
 ## Accessibility
 

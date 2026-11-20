@@ -49,6 +49,31 @@ describe("eventStatus", () => {
     expect(status.label).toBe(label);
   });
 
+  it.each([
+    ["2026-10-01T16:00:00Z", "soon"],
+    ["2026-10-09T21:35:00Z", "today"],
+    ["2026-10-09T22:30:00Z", "live"],
+  ])("without relative words, at %s (%s) it gives the date", (now, phase) => {
+    const status = eventStatus(event(), at(now), { relative: false });
+    expect(status.phase).toBe(phase);
+    expect(status.label).toBe("Fri, Oct 9");
+  });
+
+  it("without relative words, a past event is still past", () => {
+    expect(
+      eventStatus(event(), at("2026-10-09T23:00:00Z"), { relative: false })
+        .label,
+    ).toBe("Past event");
+  });
+
+  it("without relative words, a multi-day event gives its days", () => {
+    const hackathon = event({ endDate: "2026-10-11", time: "" });
+    expect(
+      eventStatus(hackathon, at("2026-10-10T16:00:00Z"), { relative: false })
+        .label,
+    ).toBe("Fri, Oct 9 – Sun, Oct 11");
+  });
+
   it("counts down to the start", () => {
     expect(eventStatus(event(), at("2026-10-09T21:00:00Z")).startsIn).toBe(
       60 * 60_000,
