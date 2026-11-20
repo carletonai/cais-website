@@ -46,7 +46,7 @@ test("a prerendered page's clock starts at the build, then catches up, then turn
     settled: false,
     live: false,
   });
-  // The catch-up and the render after it: live regions come on only once
+  // The catch-up, and a second later live regions: they come on well after
   // the catch-up's own changes are on the page.
   const caughtUp = seen.findIndex((s) => s.settled);
   expect(seen[caughtUp]).toEqual({
@@ -55,6 +55,9 @@ test("a prerendered page's clock starts at the build, then catches up, then turn
     settled: true,
     live: false,
   });
+  act(() => jest.advanceTimersByTime(900));
+  expect(seen.at(-1)).toMatchObject({ settled: true, live: false });
+  act(() => jest.advanceTimersByTime(100));
   expect(seen.at(-1)).toMatchObject({
     openedAt: visited.toISOString(),
     settled: true,
@@ -101,6 +104,23 @@ const meetup: ClubEvent = {
   tags: [],
 };
 
+test("a component opened after the catch-up holds the time it opened, not the page's", () => {
+  const Opened = () => <p>{useOpenedAt().toISOString()}</p>;
+  const { rerender, container } = render(
+    <NowProvider initial={built}>{null}</NowProvider>,
+  );
+  act(() => jest.advanceTimersByTime(5 * 60_000));
+  rerender(
+    <NowProvider initial={built}>
+      <Opened />
+    </NowProvider>,
+  );
+  const opened = new Date(visited.getTime() + 5 * 60_000).toISOString();
+  expect(container).toHaveTextContent(opened);
+  act(() => jest.advanceTimersByTime(60_000));
+  expect(container).toHaveTextContent(opened);
+});
+
 test("the prerendered HTML gives the date and no countdown, not words relative to the build", () => {
   const html = renderToString(
     <NowProvider initial={built}>
@@ -113,6 +133,21 @@ test("the prerendered HTML gives the date and no countdown, not words relative t
   expect(html).not.toContain("In 7 days");
   expect(html).not.toContain("Starts in");
   expect(html).toContain("--");
+});
+
+test("a page built during an event does not say it is on now", () => {
+  const during = new Date("2026-10-17T23:00:00Z"); // 7 PM in Ottawa
+  const html = renderToString(
+    <NowProvider initial={during}>
+      <MemoryRouter>
+        <NextUp events={[meetup]} />
+      </MemoryRouter>
+    </NowProvider>,
+  );
+  expect(html).not.toContain("On now");
+  expect(html).not.toContain("live-pulse");
+  expect(html).not.toContain("Happening now");
+  expect(html).toContain("Sat, Oct 17");
 });
 
 test("once the clock catches up, the browser says how far off it is", () => {

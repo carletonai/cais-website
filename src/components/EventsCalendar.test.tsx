@@ -1,5 +1,6 @@
 import { act, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { renderToString } from "react-dom/server";
 import { MemoryRouter } from "react-router";
 import { type Break, type Meeting } from "@/lib/events";
 import { NowProvider } from "@/lib/useNow";
@@ -402,6 +403,47 @@ test("shows a multi-day event on every day it runs, with its dates", () => {
   expect(within(dayCell(27)).getByText("CAIS Hackathon")).toBeInTheDocument();
   expect(within(dayCell(25)).queryByText("CAIS Hackathon")).toBeNull();
   expect(screen.getByText("Sat, Sep 26 – Sun, Sep 27")).toBeInTheDocument();
+});
+
+test("opens on the current month when it opens after the page did", () => {
+  // The page opens at 7:59 PM in Ottawa on Sep 24, during the icebreaker; the
+  // calendar opens (a navigation to /events) after it has ended.
+  jest.setSystemTime(new Date("2026-09-24T23:59:00Z"));
+  const october = {
+    ...icebreaker,
+    id: "14",
+    title: "Fall Social",
+    date: "2026-10-02",
+  };
+  const calendar = (
+    <EventsCalendar events={[icebreaker, october]} meetings={[]} />
+  );
+  const { rerender } = render(
+    <MemoryRouter>
+      <NowProvider>{null}</NowProvider>
+    </MemoryRouter>,
+  );
+  act(() => jest.advanceTimersByTime(5 * 60_000));
+  rerender(
+    <MemoryRouter>
+      <NowProvider>{calendar}</NowProvider>
+    </MemoryRouter>,
+  );
+  expect(screen.getByRole("heading", { level: 3 })).toHaveTextContent(
+    "October 2026",
+  );
+});
+
+test("the prerendered calendar marks no day as today", () => {
+  const html = renderToString(
+    <MemoryRouter>
+      <NowProvider initial={new Date("2026-09-24T16:00:00Z")}>
+        <EventsCalendar events={[icebreaker]} meetings={[]} />
+      </NowProvider>
+    </MemoryRouter>,
+  );
+  expect(html).toContain("September 2026");
+  expect(html).not.toContain("(today)");
 });
 
 test("keeps the month it opened on when the next event ends during the visit", () => {
