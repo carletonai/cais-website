@@ -31,14 +31,8 @@ const escape = (s) =>
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
-/** Text React escaped back to what it says, to compare with the data. */
-const decode = (s) =>
-  s
-    .replace(/&quot;/g, '"')
-    .replace(/&#x27;/g, "'")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&amp;/g, "&");
+/** Text as React writes it into HTML, to compare with what it wrote. */
+const reactText = (s) => escape(s).replace(/'/g, "&#x27;");
 const fullTitle = (meta) => documentTitle(meta, seo.siteName);
 const absolute = (path) => `${seo.siteUrl}${path === "/" ? "/" : path}`;
 const attribute = (html, pattern) => pattern.exec(html)?.[1];
@@ -120,17 +114,18 @@ for (const page of pages) {
     body.startsWith(`<div id="root" data-path="${escape(page.path)}"`),
     `${page.path}: #root is not marked as this page's prerender`,
   );
-  const headings = [...body.matchAll(/<h1\b[^>]*>(.*?)<\/h1>/gs)].map((m) =>
-    decode(m[1].replace(/<[^>]*>/g, "")),
+  const headings = [...body.matchAll(/<h1\b[^>]*>(.*?)<\/h1>/gs)].map(
+    (m) => m[1],
   );
   check(
     headings.length === 1,
     `${page.path}: ${headings.length} <h1> in the prerendered page`,
   );
   if (page.event) {
+    // An event page's heading is its title alone, as React escapes it.
     check(
-      headings[0] === page.event.title,
-      `${page.path}: <h1> is ${headings[0]}, expected ${page.event.title}`,
+      headings[0] === reactText(page.event.title),
+      `${page.path}: <h1> is ${headings[0]}, expected ${reactText(page.event.title)}`,
     );
   }
   for (const [marker, what] of [
