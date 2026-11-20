@@ -12,7 +12,7 @@ import {
   posterThumb,
   rsvpFor,
 } from "@/lib/events";
-import { useNow } from "@/lib/useNow";
+import { useClockSettled, useNow } from "@/lib/useNow";
 import { cn } from "@/lib/utils";
 import { DISCORD_URL } from "@/lib/links";
 import {
@@ -46,6 +46,7 @@ export function NextUp({
   className,
 }: NextUpProps) {
   const now = useNow(15_000);
+  const settled = useClockSettled();
   const event = nextEvent(events, now);
   const Heading = headingLevel;
 
@@ -84,7 +85,7 @@ export function NextUp({
     );
   }
 
-  const status = eventStatus(event, now);
+  const status = eventStatus(event, now, { relative: settled });
   const live = status.phase === "live";
   const path = eventPath(event);
   const hasRsvp = rsvpFor(event, now) !== null;
@@ -168,7 +169,7 @@ export function NextUp({
       <EventMeta event={event} size="lg" weekdays className="mt-6" />
 
       {!live && status.startsIn < COUNTDOWN_WINDOW && (
-        <Countdown ms={status.startsIn} className="mt-6" />
+        <Countdown ms={settled ? status.startsIn : null} className="mt-6" />
       )}
 
       <div className="mt-7 flex flex-wrap gap-3">

@@ -26,7 +26,7 @@ import {
   upcomingEvents,
   seasonNow,
 } from "@/lib/events";
-import { useNow } from "@/lib/useNow";
+import { useLiveRegions, useNow } from "@/lib/useNow";
 import { cn } from "@/lib/utils";
 
 /** An event whose type is not decided yet; it shows under "All" only. */
@@ -133,6 +133,7 @@ function ArchiveRow({ event }: { event: ClubEvent }) {
 
 const EventsPage = () => {
   const now = useNow();
+  const live = useLiveRegions();
   const [selectedType, setSelectedType] = useState("All");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [onlyResources, setOnlyResources] = useState(false);
@@ -230,8 +231,12 @@ const EventsPage = () => {
               </Chip>
             ))}
           </div>
-          {/* Present from the start, so changes to it are announced. */}
-          <p role="status" className="label-mono text-muted-foreground">
+          {/* Present before any filter is used, so their changes to it are
+              announced, but not the clock's catch-up as the page loads. */}
+          <p
+            role={live ? "status" : undefined}
+            className="label-mono text-muted-foreground"
+          >
             {filtering
               ? `${countOf(past.length)} match`
               : `${countOf(past.length)}`}

@@ -2,15 +2,20 @@ const pad = (n: number) => String(n).padStart(2, "0");
 
 const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? "" : "s"}`;
 
-/** Days, hours and minutes to go, in the posters' mono boxes. */
+/**
+ * Days, hours and minutes to go, in the posters' mono boxes. `ms` is null
+ * while the page still shows the build's moment (useClockSettled): the boxes
+ * hold their place with dashes, rather than a count that was right when the
+ * page was built.
+ */
 export function Countdown({
   ms,
   className,
 }: {
-  ms: number;
+  ms: number | null;
   className?: string;
 }) {
-  const total = Math.max(0, Math.floor(ms / 60_000));
+  const total = Math.max(0, Math.floor((ms ?? 0) / 60_000));
   const days = Math.floor(total / 1440);
   const hours = Math.floor((total % 1440) / 60);
   const minutes = total % 60;
@@ -22,10 +27,12 @@ export function Countdown({
 
   return (
     <div className={className}>
-      <p className="sr-only">
-        Starts in {plural(days, "day")}, {plural(hours, "hour")} and{" "}
-        {plural(minutes, "minute")}
-      </p>
+      {ms !== null && (
+        <p className="sr-only">
+          Starts in {plural(days, "day")}, {plural(hours, "hour")} and{" "}
+          {plural(minutes, "minute")}
+        </p>
+      )}
       <div aria-hidden="true" className="flex gap-2">
         {units.map(({ value, label }) => (
           <div
@@ -33,7 +40,7 @@ export function Countdown({
             className="flex min-w-16 flex-col items-center rounded-xl border border-border bg-card px-3 py-2"
           >
             <span className="font-mono text-2xl font-medium tabular-nums">
-              {pad(value)}
+              {ms === null ? "--" : pad(value)}
             </span>
             <span className="label-mono text-[0.625rem] text-muted-foreground">
               {label}

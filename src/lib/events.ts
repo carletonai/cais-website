@@ -2,6 +2,7 @@ import eventsData from "@/data/events.json";
 import {
   CLUB_TIME_ZONE,
   eventWindow,
+  formatDateRange,
   formatEnd,
   formatEventDate,
   formatStart,
@@ -176,11 +177,24 @@ export interface EventStatus {
   startsIn: number;
 }
 
-/** Where an event stands relative to `now`, in words. */
+/**
+ * Where an event stands relative to `now`, in words. With `relative: false`
+ * an upcoming or live event's label is its date instead ("Fri, Nov 27"):
+ * what the prerendered page says, since "In 3 days" or "Happening now" in
+ * HTML built days ago would be wrong by the time anyone reads it.
+ */
 export const eventStatus = (
   event: ClubEvent,
   now: Date = new Date(),
+  { relative = true }: { relative?: boolean } = {},
 ): EventStatus => {
+  const status = relativeStatus(event, now);
+  return relative || status.phase === "past"
+    ? status
+    : { ...status, label: formatDateRange(event) };
+};
+
+const relativeStatus = (event: ClubEvent, now: Date): EventStatus => {
   const window = eventWindow(event);
   const startsIn = Math.max(0, window.start.getTime() - now.getTime());
   const start = formatStart(event);

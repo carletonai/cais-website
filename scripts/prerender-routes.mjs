@@ -13,7 +13,11 @@
 // This script also writes, for every event:
 //   /events/<slug>/index.html   its page, previewing with its poster
 //   /events/<slug>.ics          a calendar file with a reminder
-// plus /events.ics, the feed people subscribe to, and sitemap.xml.
+// plus /events.ics, the feed people subscribe to, sitemap.xml, and
+// /app-shell.html: the home page's head with an empty #root, which
+// vercel.json serves for old and id-only event links (/events/13). The app
+// renders those from scratch and settles on the event's current page; a
+// prerendered page there would show the home page until it did.
 import {
   readFileSync,
   writeFileSync,
@@ -345,7 +349,7 @@ const breadcrumbs = (event) => ({
 /**
  * The built HTML with this page's metadata in place of the placeholders.
  * @param {{ path: string, title: string, fullTitle?: string, ogTitle?: string,
- *   description: string, body: string,
+ *   description: string, body?: string,
  *   image?: { url: string, width: number, height: number, alt: string },
  *   head?: string[] }} page
  */
@@ -418,6 +422,7 @@ const render = ({
   // src/main.tsx adopts the HTML only on that path, starting from that time.
   const emptyRoot = '<div id="root"></div>';
   if (!html.includes(emptyRoot)) fail(`index.html has no ${emptyRoot}`);
+  if (body === undefined) return html;
   return html.replace(
     emptyRoot,
     () =>
@@ -431,6 +436,15 @@ const write = (path, html) => {
   mkdirSync(dir, { recursive: true });
   writeFileSync(join(dir, "index.html"), html);
 };
+
+writeFileSync(
+  join(dist, "app-shell.html"),
+  render({
+    path: "/",
+    ...seo.routes["/"],
+    head: [jsonLd(organization), jsonLd(website)],
+  }),
+);
 
 for (const route of routes) {
   write(

@@ -1356,11 +1356,11 @@ ${event.rsvpLink ? `\nRSVP Link: ${event.rsvpLink}` : ""}
           </p>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
+        {/* A CSS fade, not framer-motion's: the prerendered page would carry
+            its starting opacity:0, an empty box until the script runs. */}
+        <div
           className={cn(
+            "terminal-fade-in",
             "max-w-4xl mx-auto mt-8 p-4 rounded-lg",
             "bg-black/50 backdrop-blur-xs",
             "border border-primary/10",
@@ -1471,7 +1471,7 @@ ${event.rsvpLink ? `\nRSVP Link: ${event.rsvpLink}` : ""}
               )}
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );
