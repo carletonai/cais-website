@@ -862,6 +862,34 @@
       "posterHeight": 1080,
       "posterWidth": 1080,
       "tags": ["free-food", "networking", "social"]
+    },
+    {
+      "id": "70",
+      "title": "Intro to Reinforcement Learning",
+      "date": "2026-11-13",
+      "time": "5:00 PM - 6:00 PM",
+      "location": "CS Seminar Room, Herzberg 5345",
+      "description": "How machines learn by trial and error: agents, rewards and policies, and how an AI improves from its own mistakes over time.",
+      "type": "Workshop",
+      "poster": "/assets/events/intro-to-reinforcement-learning-2026.jpg",
+      "posterWidth": 608,
+      "posterHeight": 608,
+      "instagram": "https://www.instagram.com/reel/DflSLVHANXA/",
+      "tags": ["beginner-friendly", "technical"]
+    },
+    {
+      "id": "71",
+      "title": "Intro to Machine Learning",
+      "date": "2026-11-20",
+      "time": "5:00 PM - 6:00 PM",
+      "location": "CS Seminar Room, Herzberg 5345",
+      "description": "Explore how machines identify patterns, learn from data, and make intelligent decisions.",
+      "type": "Workshop",
+      "poster": "/assets/events/intro-to-machine-learning-2026.jpg",
+      "posterWidth": 1440,
+      "posterHeight": 1440,
+      "instagram": "https://www.instagram.com/reel/Df3eIIXO3Hn/",
+      "tags": ["beginner-friendly", "technical"]
     }
   ]
 }

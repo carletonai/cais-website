@@ -15,7 +15,11 @@
           "blurb": "Agents: models that plan, call tools and carry a task through, and what that means for how you build with them."
         },
         {
-          "title": "Machine learning",
+          "event": "70",
+          "blurb": "Agents that learn by trial and error: rewards, policies, and how a system gets better from its own mistakes."
+        },
+        {
+          "event": "71",
           "blurb": "Teaching a model a rule from data instead of writing the rule yourself: training, testing, and the metrics that tell you whether it worked."
         },
         {

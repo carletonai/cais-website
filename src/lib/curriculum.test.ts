@@ -78,13 +78,15 @@ describe("allSeries", () => {
 });
 
 describe("moduleState", () => {
-  const [intro, agentic, ml] = currentSeries.modules;
+  const [intro, agentic] = currentSeries.modules;
+  // The series' first session still to be announced, whichever it is.
+  const unannounced = currentSeries.modules.find((m) => !m.event)!;
 
   it("tells a session that ran from one on the calendar and one unscheduled", () => {
     const now = new Date("2026-10-05T12:00:00-04:00");
     expect(moduleState(intro, now)).toBe("done");
     expect(moduleState(agentic, now)).toBe("scheduled");
-    expect(moduleState(ml, now)).toBe("planned");
+    expect(moduleState(unannounced, now)).toBe("planned");
   });
 
   it("counts a session as done only once it is over", () => {
