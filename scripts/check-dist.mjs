@@ -42,7 +42,7 @@ const pages = [
     title: fullTitle(route),
     ogTitle: fullTitle(route),
     description: route.description,
-    jsonLd: path === "/" ? "Organization" : null,
+    jsonLd: path === "/" ? ["Organization", "WebSite"] : [],
   })),
   ...events.map((event) => {
     const page = eventPageMeta(event);
@@ -51,7 +51,9 @@ const pages = [
       title: fullTitle(page),
       ogTitle: page.ogTitle,
       description: page.description,
-      jsonLd: "Event",
+      // Google requires an Event's location, so an event without one has
+      // only its breadcrumb trail.
+      jsonLd: event.location ? ["Event", "BreadcrumbList"] : ["BreadcrumbList"],
       event,
     };
   }),
@@ -102,19 +104,25 @@ for (const page of pages) {
   const blocks = [
     ...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs),
   ].map((m) => m[1]);
-  if (page.jsonLd) {
-    check(blocks.length === 1, `${page.path}: ${blocks.length} JSON-LD blocks`);
+  const data = blocks.flatMap((block) => {
     try {
-      const data = JSON.parse(blocks[0] ?? "");
-      check(
-        data["@type"] === page.jsonLd,
-        `${page.path}: JSON-LD is ${data["@type"]}, expected ${page.jsonLd}`,
-      );
+      return [JSON.parse(block)];
     } catch {
       problems.push(`${page.path}: JSON-LD does not parse`);
+      return [];
     }
-  } else {
-    check(blocks.length === 0, `${page.path}: unexpected JSON-LD`);
+  });
+  const types = data.map((d) => d["@type"]).join(", ");
+  check(
+    types === page.jsonLd.join(", "),
+    `${page.path}: JSON-LD is [${types}], expected [${page.jsonLd.join(", ")}]`,
+  );
+  // Google's required Event properties; a missing one turns a rich result
+  // into an error in Search Console.
+  for (const event of data.filter((d) => d["@type"] === "Event")) {
+    for (const field of ["name", "startDate", "location"]) {
+      check(event[field], `${page.path}: Event JSON-LD has no ${field}`);
+    }
   }
 
   // Everything the head loads from this site must have been built.
