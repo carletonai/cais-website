@@ -9,6 +9,9 @@ import {
 } from "@/lib/shared/event-time.js";
 
 export {
+  DAYS,
+  LONG_MONTHS,
+  MONTHS,
   eventPath,
   eventSlug,
   eventWindow,
@@ -143,8 +146,14 @@ const CLUB_DATE = new Intl.DateTimeFormat("en-CA", {
   day: "2-digit",
 });
 
-/** Today's date in Ottawa, YYYY-MM-DD. */
-const clubToday = (now: Date) => CLUB_DATE.format(now);
+/** Today's date in Ottawa, YYYY-MM-DD. Built from the parts, not format():
+ *  some browsers' en-CA data has formatted dates as MM/DD/YYYY. */
+export const clubToday = (now: Date) => {
+  const part = Object.fromEntries(
+    CLUB_DATE.formatToParts(now).map(({ type, value }) => [type, value]),
+  );
+  return `${part.year}-${part.month}-${part.day}`;
+};
 
 /** The academic year it is now in Ottawa: "This year" on /events and the cards.
  *  Not the UTC date, which is already tomorrow for four hours each evening. */

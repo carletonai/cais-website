@@ -8,28 +8,35 @@ import svgr from "vite-plugin-svgr";
 // import.meta.dirname needs Node 20.11+; this form works on both.
 const projectRoot = fileURLToPath(new URL(".", import.meta.url));
 
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
   plugins: [svgr(), react()],
   base: "/",
-  build: {
-    // dist/.vite/manifest.json tells scripts/prerender-routes.mjs which chunk
-    // each lazy page is, so every route's HTML can preload its own.
-    manifest: true,
-    rolldownOptions: {
-      output: {
-        // Keep the framework in its own chunk: it changes far less often
-        // than the app, so repeat visitors keep it cached across deploys.
-        codeSplitting: {
-          groups: [
-            {
-              name: "react-vendor",
-              test: /[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/,
+  build: isSsrBuild
+    ? {
+        // "vite build --ssr src/entry-server.tsx --outDir dist-ssr": the
+        // renderer scripts/prerender-routes.mjs runs at build time. It is
+        // never deployed, so it needs neither public/ nor a manifest.
+        copyPublicDir: false,
+      }
+    : {
+        // dist/.vite/manifest.json tells scripts/prerender-routes.mjs which
+        // chunk each lazy page is, so every route's HTML can preload its own.
+        manifest: true,
+        rolldownOptions: {
+          output: {
+            // Keep the framework in its own chunk: it changes far less often
+            // than the app, so repeat visitors keep it cached across deploys.
+            codeSplitting: {
+              groups: [
+                {
+                  name: "react-vendor",
+                  test: /[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/,
+                },
+              ],
             },
-          ],
+          },
         },
       },
-    },
-  },
   css: {
     postcss: "./postcss.config.cjs",
   },
@@ -38,4 +45,4 @@ export default defineConfig({
       "@": path.resolve(projectRoot, "./src"),
     },
   },
-});
+}));

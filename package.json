@@ -9,7 +9,7 @@
   "scripts": {
     "serve": "vite preview",
     "dev": "vite",
-    "build": "vite build && node scripts/prerender-routes.mjs && node scripts/check-dist.mjs",
+    "build": "vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender-routes.mjs && node scripts/check-dist.mjs",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:contrast": "node scripts/a11y-contrast.mjs",

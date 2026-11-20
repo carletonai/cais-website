@@ -23,6 +23,8 @@ yarn.lock
 # production
 /build
 /dist
+# The build-time page renderer (vite build --ssr), not deployed.
+/dist-ssr
 
 # misc
 .DS_Store
