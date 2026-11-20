@@ -890,6 +890,16 @@
       "posterHeight": 1440,
       "instagram": "https://www.instagram.com/reel/Df3eIIXO3Hn/",
       "tags": ["beginner-friendly", "technical"]
+    },
+    {
+      "id": "72",
+      "title": "Intro to Deep Learning",
+      "date": "2026-11-27",
+      "time": "5:00 PM - 6:00 PM",
+      "location": "CS Seminar Room, Herzberg 5345",
+      "description": "Neural networks: how layers of simple units learn from images and text, and training your first one.",
+      "type": "Workshop",
+      "tags": ["technical"]
     }
   ]
 }
