@@ -28,7 +28,7 @@ import {
   upcomingEvents,
 } from "@/lib/events";
 import { holidaysInMonth } from "@/lib/holidays";
-import { useNow } from "@/lib/useNow";
+import { useLiveRegions, useNow, useOpenedAt } from "@/lib/useNow";
 
 const WEEKDAYS = [
   ["Sun", "Sunday"],
@@ -137,11 +137,14 @@ export function EventsCalendar({
   breaks = [],
 }: EventsCalendarProps) {
   const now = useNow();
-  // Until someone picks a month, follow the page's clock: the prerendered
-  // page opens where the build did, then moves on if an event has finished
-  // since.
+  // Until someone picks a month, the month as of when the page was opened:
+  // the prerendered page opens where the build did and moves on once, as it
+  // loads, if an event has finished since; it never moves under a reader.
+  const openedAt = useOpenedAt();
   const [picked, setMonth] = useState<Date | null>(null);
-  const month = picked ?? openingMonth(events, now);
+  const month = picked ?? openingMonth(events, openedAt);
+  // The heading announces months the reader moves to, not that catch-up.
+  const live = useLiveRegions();
   const [selected, setSelected] = useState<CalendarEntry | null>(null);
   const [detailsOpen, setDetailsOpen] = useState(false);
   const headingId = useId();
@@ -227,7 +230,7 @@ export function EventsCalendar({
         </Button>
         <h3
           id={headingId}
-          aria-live="polite"
+          aria-live={live ? "polite" : undefined}
           className="whitespace-nowrap text-lg font-semibold sm:text-2xl"
         >
           {monthName(month)}

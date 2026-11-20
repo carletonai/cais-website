@@ -257,6 +257,18 @@
     .live-pulse {
       animation: live-pulse 2s ease-in-out infinite;
     }
+
+    /* The /resources terminal, once the page is up. In CSS so that the
+       prerendered page shows it even when no script runs. */
+    .terminal-fade-in {
+      animation: fade-in 0.6s ease 0.2s both;
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
   }
 
   @keyframes ring-draw {

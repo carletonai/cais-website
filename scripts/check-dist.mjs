@@ -236,6 +236,24 @@ if (!existsSync(notFound)) {
   }
 }
 
+// Every rewrite in vercel.json lands on a file the build wrote. The event
+// one (old and id-only links) lands on the app shell, which must stay empty:
+// the app renders those URLs from scratch, and anything prerendered there
+// would show until it did.
+const vercel = readJson("vercel.json");
+for (const { source, destination } of vercel.rewrites ?? []) {
+  check(
+    existsSync(join(dist, destination)),
+    `vercel.json rewrites ${source} to ${destination}, which was not built`,
+  );
+}
+const shell = join(dist, "app-shell.html");
+check(
+  existsSync(shell) &&
+    readFileSync(shell, "utf8").includes('<div id="root"></div>'),
+  "app-shell.html was not built with an empty #root",
+);
+
 check(!existsSync(join(dist, ".vite")), "dist/.vite should not be deployed");
 
 if (problems.length > 0) {

@@ -9,6 +9,7 @@ import {
   eventStatus,
   seasonNow,
 } from "@/lib/events";
+import { useClockSettled } from "@/lib/useNow";
 import { cn } from "@/lib/utils";
 
 type EventCardProps = {
@@ -23,7 +24,8 @@ type EventCardProps = {
  * sit above that layer and stay separately clickable.
  */
 export function EventCard({ event, now, headingLevel = "h3" }: EventCardProps) {
-  const status = eventStatus(event, now);
+  const settled = useClockSettled();
+  const status = eventStatus(event, now, { relative: settled });
   const Heading = headingLevel;
   const live = status.phase === "live";
   const past = status.phase === "past";

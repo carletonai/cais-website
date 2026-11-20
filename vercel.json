@@ -15,7 +15,7 @@
   "rewrites": [
     {
       "source": "/events/:slug(\\d+[a-z0-9-]*)",
-      "destination": "/index.html"
+      "destination": "/app-shell.html"
     }
   ],
   "headers": [

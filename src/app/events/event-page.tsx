@@ -23,7 +23,7 @@ import {
   pastEvents,
   upcomingEvents,
 } from "@/lib/events";
-import { useNow } from "@/lib/useNow";
+import { useClockSettled, useNow } from "@/lib/useNow";
 import { cn } from "@/lib/utils";
 
 const COUNTDOWN_WINDOW = 21 * 24 * 60 * 60 * 1000;
@@ -32,6 +32,7 @@ const COUNTDOWN_WINDOW = 21 * 24 * 60 * 60 * 1000;
 const EventPage = () => {
   const { slug = "" } = useParams();
   const now = useNow(15_000);
+  const settled = useClockSettled();
   const event = findEventBySlug(slug);
 
   if (!event) return <Navigate to="/events" replace />;
@@ -40,7 +41,7 @@ const EventPage = () => {
     return <Navigate to={eventPath(event)} replace />;
   }
 
-  const status = eventStatus(event, now);
+  const status = eventStatus(event, now, { relative: settled });
   const live = status.phase === "live";
   const past = status.phase === "past";
   const others = past
@@ -99,7 +100,10 @@ const EventPage = () => {
               className="mt-8"
             />
             {!past && !live && status.startsIn < COUNTDOWN_WINDOW && (
-              <Countdown ms={status.startsIn} className="mt-8" />
+              <Countdown
+                ms={settled ? status.startsIn : null}
+                className="mt-8"
+              />
             )}
             <div className="mt-8 flex flex-wrap gap-3">
               <RsvpButton event={event} now={now} />
