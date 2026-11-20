@@ -49,8 +49,18 @@ test("lists hackathon winners apart from club projects", () => {
     name: "Built at CAIS hackathons",
   });
   expect(
-    within(hackathons).getByText("CAIS Hackathon 2.0 · 1st Place"),
+    within(hackathons).getByText(
+      (_, element) =>
+        element?.tagName === "SPAN" &&
+        element.textContent === "CAIS Hackathon 2.0 · 1st Place",
+    ),
   ).toBeInTheDocument();
+  // Each hackathon's name links its event page.
+  for (const link of within(hackathons).getAllByRole("link", {
+    name: "CAIS Hackathon 2.0",
+  })) {
+    expect(link).toHaveAttribute("href", "/events/62-cais-hackathon-2-0");
+  }
   expect(
     within(hackathons).queryByRole("heading", { name: "CuMind" }),
   ).not.toBeInTheDocument();

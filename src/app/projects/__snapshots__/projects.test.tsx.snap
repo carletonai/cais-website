@@ -537,7 +537,14 @@ exports[`renders ProjectsPage correctly 1`] = `
             <span
               class="text-primary"
             >
-              CAIS Hackathon 2.0 · 1st Place
+              <a
+                class="underline underline-offset-4 hover:text-foreground"
+                data-discover="true"
+                href="/events/62-cais-hackathon-2-0"
+              >
+                CAIS Hackathon 2.0
+              </a>
+               · 1st Place
             </span>
             <span
               aria-hidden="true"
@@ -583,7 +590,14 @@ exports[`renders ProjectsPage correctly 1`] = `
             <span
               class="text-primary"
             >
-              CAIS Hackathon 2.0 · 2nd Place
+              <a
+                class="underline underline-offset-4 hover:text-foreground"
+                data-discover="true"
+                href="/events/62-cais-hackathon-2-0"
+              >
+                CAIS Hackathon 2.0
+              </a>
+               · 2nd Place
             </span>
             <span
               aria-hidden="true"
@@ -629,7 +643,14 @@ exports[`renders ProjectsPage correctly 1`] = `
             <span
               class="text-primary"
             >
-              CAIS Hackathon 2.0 · 3rd Place
+              <a
+                class="underline underline-offset-4 hover:text-foreground"
+                data-discover="true"
+                href="/events/62-cais-hackathon-2-0"
+              >
+                CAIS Hackathon 2.0
+              </a>
+               · 3rd Place
             </span>
             <span
               aria-hidden="true"
@@ -675,7 +696,14 @@ exports[`renders ProjectsPage correctly 1`] = `
             <span
               class="text-primary"
             >
-              CAIS Hackathon 2023 · Best Application Project
+              <a
+                class="underline underline-offset-4 hover:text-foreground"
+                data-discover="true"
+                href="/events/57-cais-hackathon-2023"
+              >
+                CAIS Hackathon 2023
+              </a>
+               · Best Application Project
             </span>
             <span
               aria-hidden="true"
@@ -743,7 +771,14 @@ exports[`renders ProjectsPage correctly 1`] = `
             <span
               class="text-primary"
             >
-              CAIS Hackathon 2023 · Best Fundamental Project
+              <a
+                class="underline underline-offset-4 hover:text-foreground"
+                data-discover="true"
+                href="/events/57-cais-hackathon-2023"
+              >
+                CAIS Hackathon 2023
+              </a>
+               · Best Fundamental Project
             </span>
             <span
               aria-hidden="true"

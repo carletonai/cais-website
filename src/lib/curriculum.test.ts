@@ -5,9 +5,11 @@ import {
   currentSeries,
   curriculumEventIds,
   moduleState,
+  relatedEvents,
+  seriesOf,
   standaloneWorkshops,
 } from "./curriculum";
-import { allEvents } from "./events";
+import { allEvents, pastEvents } from "./events";
 
 const curriculum: { series: CurriculumSeries[] } = curriculumData;
 const ids = new Set(allEvents.map((event) => event.id));
@@ -97,5 +99,55 @@ describe("standaloneWorkshops", () => {
   it("runs newest first", () => {
     const dates = standaloneWorkshops.events.map((event) => event.date);
     expect(dates).toEqual([...dates].sort().reverse());
+  });
+});
+
+describe("seriesOf", () => {
+  it("finds an event's series and place, and where /workshops shows it", () => {
+    const place = seriesOf("45");
+    expect(place?.series.id).toBe("machine-learning-2021-22");
+    expect(place?.module.number).toBe(3);
+    expect(place?.href).toBe("/workshops#machine-learning-2021-22");
+  });
+
+  it("points a session of the current series at its heading", () => {
+    expect(seriesOf("66")?.href).toBe("/workshops#current-series-heading");
+  });
+
+  it("is undefined for an event outside every series", () => {
+    expect(seriesOf("19")).toBeUndefined();
+  });
+});
+
+describe("relatedEvents", () => {
+  const byId = (id: string) => allEvents.find((event) => event.id === id)!;
+  const past = pastEvents(allEvents, new Date("2027-01-01T00:00:00Z"));
+  const ids = (id: string) => relatedEvents(byId(id), past).map((e) => e.id);
+
+  it("suggests the nearest sessions of the same series first", () => {
+    // Session 3 of the 2021-22 series: sessions 2 and 4, then 1 and 5 tie.
+    expect(ids("45").slice(0, 2)).toEqual(["43", "47"]);
+    expect(ids("45")).toHaveLength(3);
+  });
+
+  it("fills up with events of the same type, nearest in date", () => {
+    // The 2019 inauguration: the next socials are the nearest ones.
+    const related = relatedEvents(byId("19"), past);
+    expect(related).toHaveLength(3);
+    expect(related.every((e) => e.type === "Social")).toBe(true);
+    expect(related.map((e) => e.id)).toContain("24");
+  });
+
+  it("gives old pages their own suggestions, not the newest three", () => {
+    expect(ids("43")).not.toEqual(ids("29"));
+    expect(ids("43")).not.toContain("68");
+  });
+
+  it("never suggests the event itself", () => {
+    for (const event of past) {
+      expect(relatedEvents(event, past).map((e) => e.id)).not.toContain(
+        event.id,
+      );
+    }
   });
 });
