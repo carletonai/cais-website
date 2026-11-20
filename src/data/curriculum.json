@@ -29,17 +29,23 @@
       ]
     },
     {
+      "id": "hackathons-2026",
+      "title": "Hackathon workshops",
+      "season": "2026",
+      "lede": "Workshops the club ran at Ottawa hackathons, for teams with a weekend to build something: using agentic AI to design and build neural networks at cuHacking 2026, and a practical introduction to machine learning at Hack the Hill III.",
+      "modules": [{ "event": "14" }, { "event": "63" }]
+    },
+    {
       "id": "ai-workshops-winter-2026",
       "title": "Building with AI",
-      "season": "Winter–summer 2026",
-      "lede": "Six sessions from first principles to working code: what today's models are, how to work with them, two hands-on builds with the code to take home, and a cuHacking session on using agentic AI to build neural networks.",
+      "season": "Winter 2026",
+      "lede": "Five sessions from first principles to working code: what today's models are, how to work with them, and two hands-on builds with the code to take home.",
       "modules": [
         { "event": "8" },
         { "event": "9" },
         { "event": "10" },
         { "event": "11" },
-        { "event": "12" },
-        { "event": "14" }
+        { "event": "12" }
       ]
     },
     {
@@ -90,6 +96,6 @@
   "standalone": {
     "title": "One-off workshops",
     "lede": "Sessions run at hackathons and on their own, outside a series.",
-    "events": ["63", "58", "4", "37", "22", "20"]
+    "events": ["58", "4", "37", "22", "20"]
   }
 }
