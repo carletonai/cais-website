@@ -71,13 +71,15 @@ test("drops the trailing slash a static host adds from the canonical URL", () =>
 test("retitles the document on a client-side navigation", async () => {
   const user = userEvent.setup();
   renderAt("/", "/team");
-  expect(document.title).toBe("Carleton AI Society");
+  expect(document.title).toBe(
+    "Carleton AI Society | AI Student Club at Carleton University",
+  );
   expect(canonical()).toBe("https://carletonai.com/");
 
   await user.click(screen.getByRole("button", { name: "go" }));
-  expect(document.title).toBe("Current Team | Carleton AI Society");
+  expect(document.title).toBe("Current Executive Team | Carleton AI Society");
   expect(content('meta[property="og:title"]')).toBe(
-    "Current Team | Carleton AI Society",
+    "Current Executive Team | Carleton AI Society",
   );
   expect(canonical()).toBe("https://carletonai.com/team");
 });

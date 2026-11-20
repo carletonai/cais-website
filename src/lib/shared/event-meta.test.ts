@@ -21,6 +21,13 @@ describe("eventPageMeta", () => {
     expect(meta.image).toBe("/assets/events/intro-to-agentic-ai-2026.jpg");
   });
 
+  it("does not add a second year to a name that has one", () => {
+    const expo = { ...event, title: "Expo Carleton 2021", date: "2021-02-03" };
+    expect(eventPageMeta(expo).title).toBe("Expo Carleton 2021");
+    const cais = { ...event, title: "CAIS X 2021–22", date: "2022-01-20" };
+    expect(eventPageMeta(cais).title).toBe("CAIS X 2021–22");
+  });
+
   it("leads the description with when and where, within a search snippet", () => {
     const { description } = eventPageMeta(event);
     expect(description).toMatch(

@@ -30,6 +30,7 @@ import {
   eventWindow,
 } from "../src/lib/shared/event-time.js";
 import { eventPageMeta } from "../src/lib/shared/event-meta.js";
+import { documentTitle } from "../src/lib/shared/title.js";
 import {
   FEED_PATH,
   feedEvents,
@@ -272,13 +273,21 @@ const eventData = (event, image) => {
 
 /**
  * The built HTML with this page's metadata in place of the placeholders.
- * @param {{ path: string, title: string, ogTitle?: string, description: string,
+ * @param {{ path: string, title: string, fullTitle?: string, ogTitle?: string,
+ *   description: string,
  *   image?: { url: string, width: number, height: number, alt: string },
  *   head?: string[] }} page
  */
-const render = ({ path, title, ogTitle, description, image, head = [] }) => {
-  const fullTitle =
-    title === seo.siteName ? title : `${title} | ${seo.siteName}`;
+const render = ({
+  path,
+  title,
+  fullTitle: whole,
+  ogTitle,
+  description,
+  image,
+  head = [],
+}) => {
+  const fullTitle = documentTitle({ title, fullTitle: whole }, seo.siteName);
   const url = absolute(path);
   const t = escape(fullTitle);
   const preview = escape(ogTitle ?? fullTitle);
