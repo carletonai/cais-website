@@ -14,35 +14,36 @@
   "routes": {
     "/": {
       "title": "Carleton AI Society",
+      "fullTitle": "Carleton AI Society | AI Student Club at Carleton University",
       "description": "A student club at Carleton University for anyone interested in artificial intelligence — workshops, projects, talks, and a community open to every skill level."
     },
     "/events": {
-      "title": "Events",
-      "description": "Workshops, socials, and hackathon sessions hosted by the Carleton AI Society. See what is coming up and browse past events."
+      "title": "Events: AI Workshops, Talks & Socials",
+      "description": "AI workshops, talks, socials and hackathons run by the Carleton AI Society at Carleton University in Ottawa. See what is coming up and browse every past event."
     },
     "/workshops": {
-      "title": "Workshop curriculum",
+      "title": "AI & Machine Learning Workshops",
       "description": "Every CAIS workshop series in the order to take it, from AI basics to machine learning and deep learning, with the slides, code and recordings that are online."
     },
     "/projects": {
-      "title": "Projects",
-      "description": "Innovative AI and machine learning projects built by CAIS members, taken from idea to working prototype."
+      "title": "Student AI & Machine Learning Projects",
+      "description": "AI and machine learning projects built by Carleton AI Society members at Carleton University, plus the winning entries from the hackathons we have hosted."
     },
     "/governance": {
-      "title": "Governance",
+      "title": "Governance & Constitution",
       "description": "How CAIS is structured: the responsibilities of each executive role, the club constitution, and our current and past teams."
     },
     "/team": {
-      "title": "Current Team",
-      "description": "Meet the executive team driving AI education at Carleton University this year."
+      "title": "Current Executive Team",
+      "description": "Meet this year's Carleton AI Society executive team: the students who run our workshops, events and projects at Carleton University in Ottawa."
     },
     "/team/past": {
-      "title": "Past Teams",
-      "description": "The executives who led the Carleton AI Society in previous years, team by team."
+      "title": "Past Executive Teams",
+      "description": "The students who led the Carleton AI Society at Carleton University in past years: every executive team and their roles, year by year since 2020."
     },
     "/contact": {
       "title": "Contact",
-      "description": "Reach the Carleton AI Society on Discord, Instagram, LinkedIn, YouTube, GitHub, or by email."
+      "description": "Contact the Carleton AI Society, the AI student club at Carleton University in Ottawa: join our Discord, follow us on Instagram and LinkedIn, or email us."
     },
     "/resources": {
       "title": "CAIS Terminal",

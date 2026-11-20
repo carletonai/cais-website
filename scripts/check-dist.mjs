@@ -10,6 +10,7 @@ import { fileURLToPath } from "node:url";
 import { eventPath } from "../src/lib/shared/event-time.js";
 import { eventPageMeta } from "../src/lib/shared/event-meta.js";
 import { FEED_PATH, feedEvents, icsPath } from "../src/lib/shared/ics.js";
+import { documentTitle } from "../src/lib/shared/title.js";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "dist");
@@ -29,8 +30,7 @@ const escape = (s) =>
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
-const fullTitle = (title) =>
-  title === seo.siteName ? title : `${title} | ${seo.siteName}`;
+const fullTitle = (meta) => documentTitle(meta, seo.siteName);
 const absolute = (path) => `${seo.siteUrl}${path === "/" ? "/" : path}`;
 const attribute = (html, pattern) => pattern.exec(html)?.[1];
 const meta = (html, name, by = "property") =>
@@ -39,8 +39,8 @@ const meta = (html, name, by = "property") =>
 const pages = [
   ...Object.entries(seo.routes).map(([path, route]) => ({
     path,
-    title: fullTitle(route.title),
-    ogTitle: fullTitle(route.title),
+    title: fullTitle(route),
+    ogTitle: fullTitle(route),
     description: route.description,
     jsonLd: path === "/" ? "Organization" : null,
   })),
@@ -48,7 +48,7 @@ const pages = [
     const page = eventPageMeta(event);
     return {
       path: eventPath(event),
-      title: fullTitle(page.title),
+      title: fullTitle(page),
       ogTitle: page.ogTitle,
       description: page.description,
       jsonLd: "Event",
