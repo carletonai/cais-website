@@ -71,16 +71,23 @@ describe("allSeries", () => {
     expect(intro.blurb).not.toBe(intro.event!.description);
   });
 
-  it("leads with the current series, which still has sessions to come", () => {
+  it("leads with this term's series: its latest session is the newest of any", () => {
+    const latest = (series: (typeof allSeries)[number]) =>
+      series.modules.reduce(
+        (d, m) => (m.event && m.event.date > d ? m.event.date : d),
+        "",
+      );
     expect(currentSeries).toBe(allSeries[0]);
-    expect(currentSeries.modules.some((m) => !m.event)).toBe(true);
+    for (const series of allSeries.slice(1)) {
+      expect(latest(currentSeries) > latest(series)).toBe(true);
+    }
   });
 });
 
 describe("moduleState", () => {
   const [intro, agentic] = currentSeries.modules;
-  // The series' first session still to be announced, whichever it is.
-  const unannounced = currentSeries.modules.find((m) => !m.event)!;
+  // A session still to be announced: a title, no event.
+  const unannounced = { number: 9, title: "Next topic", blurb: "" };
 
   it("tells a session that ran from one on the calendar and one unscheduled", () => {
     const now = new Date("2026-10-05T12:00:00-04:00");

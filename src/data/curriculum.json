@@ -23,7 +23,7 @@
           "blurb": "Teaching a model a rule from data instead of writing the rule yourself: training, testing, and the metrics that tell you whether it worked."
         },
         {
-          "title": "Deep learning",
+          "event": "72",
           "blurb": "Neural networks: how layers of simple units learn from images and text, and training your first one."
         }
       ]
