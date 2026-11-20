@@ -39,7 +39,7 @@ export const CLUB_TIME_ZONE = "America/Toronto";
  * @property {number | null} endMin
  */
 
-const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+export const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const LONG_DAYS = [
   "Sunday",
   "Monday",
@@ -51,7 +51,7 @@ const LONG_DAYS = [
 ];
 // Fixed English names: ICU builds disagree on abbreviations (en-CA has
 // shipped "Sept."), and the build and the browser must print the same text.
-const MONTHS = [
+export const MONTHS = [
   "Jan",
   "Feb",
   "Mar",
@@ -65,7 +65,7 @@ const MONTHS = [
   "Nov",
   "Dec",
 ];
-const LONG_MONTHS = [
+export const LONG_MONTHS = [
   "January",
   "February",
   "March",

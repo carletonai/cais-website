@@ -117,7 +117,9 @@ function TeamMenu({ item, pathname }: { item: NavItem; pathname: string }) {
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { pathname } = useLocation();
+  // "/events/" is served the "/events" page: match the links the same way,
+  // and the way the build rendered them.
+  const pathname = useLocation().pathname.replace(/\/+$/, "") || "/";
   const menuButton = useRef<HTMLButtonElement>(null);
 
   // Any navigation (a link, search, back) closes the menu.

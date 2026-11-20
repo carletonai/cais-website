@@ -1,6 +1,8 @@
 import { Link } from "react-router";
 import { SubscribeButton } from "@/components/events/CalendarActions";
+import { clubToday } from "@/lib/events";
 import { CONSTITUTION_URL, SOCIAL_LINKS } from "@/lib/links";
+import { useNow } from "@/lib/useNow";
 
 const COLUMNS = [
   {
@@ -28,6 +30,9 @@ const linkClass =
   "inline-flex min-h-11 items-center text-muted-foreground transition-colors hover:text-foreground sm:min-h-9";
 
 export default function Footer() {
+  // The year in Ottawa on the page's clock, so the prerendered footer and
+  // the browser's first render agree, whatever the visitor's time zone.
+  const year = clubToday(useNow()).slice(0, 4);
   return (
     <footer className="mt-auto bg-linear-to-b from-background to-card">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
@@ -92,10 +97,7 @@ export default function Footer() {
       </div>
       <div className="border-t border-border">
         <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-5 text-sm text-muted-foreground sm:px-6">
-          <p>
-            © {new Date().getFullYear()} Carleton Artificial Intelligence
-            Society
-          </p>
+          <p>© {year} Carleton Artificial Intelligence Society</p>
           <p className="hidden font-mono text-xs sm:block [@media(hover:none)]:hidden">
             Press <kbd className="rounded border border-border px-1.5">/</kbd>{" "}
             to search

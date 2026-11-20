@@ -1,16 +1,25 @@
-import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import {
-  BrowserRouter as Router,
+  type ReactNode,
+  lazy,
+  Suspense,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import {
+  BrowserRouter,
   Routes,
   Route,
   Navigate,
   useLocation,
   useNavigationType,
 } from "react-router";
+import { MotionConfig } from "framer-motion";
 import HomePage from "./home/home";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import RouteMeta from "../components/RouteMeta";
+import { NowProvider } from "@/lib/useNow";
 
 // The landing page stays in the main bundle — it is the most common entry and
 // shares most of its components with the shell. Every other page is split out,
@@ -94,8 +103,13 @@ const RouteChange = () => {
   );
 };
 
-/** ⌘K / Ctrl+K or "/" opens search; the palette's code loads on first use. */
-const useCommandPalette = () => {
+/**
+ * ⌘K / Ctrl+K or "/" opens search; the palette's code loads on first use.
+ * Its state lives here, beside the page rather than above it: an update above
+ * the page's Suspense while the page is still hydrating (search opened during
+ * load) would make React drop the prerendered page and show its fallback.
+ */
+const SearchPalette = () => {
   const [open, setOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
@@ -131,54 +145,76 @@ const useCommandPalette = () => {
     };
   }, []);
 
-  return { open, setOpen, loaded };
-};
-
-const App = () => {
-  const palette = useCommandPalette();
-
+  if (!loaded) return null;
   return (
-    <Router>
-      <RouteMeta />
-      <RouteChange />
-      <div className="flex min-h-screen flex-col bg-background text-foreground">
-        <a href="#main-content" className="skip-link">
-          Skip to main content
-        </a>
-        <Navbar />
-        <main
-          id="main-content"
-          tabIndex={-1}
-          className="w-full grow pt-16 focus:outline-none"
-        >
-          <Suspense fallback={<RouteFallback />}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/events" element={<Events />} />
-              <Route path="/events/:slug" element={<EventPage />} />
-              <Route path="/workshops" element={<Workshops />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/team" element={<Team />} />
-              <Route path="/team/past" element={<PastTeams />} />
-              <Route path="/governance" element={<Governance />} />
-              <Route path="/resources" element={<Resources />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </Suspense>
-        </main>
-        <Footer />
-        {palette.loaded && (
-          <Suspense fallback={null}>
-            <CommandPalette
-              open={palette.open}
-              onOpenChange={palette.setOpen}
-            />
-          </Suspense>
-        )}
-      </div>
-    </Router>
+    <Suspense fallback={null}>
+      <CommandPalette open={open} onOpenChange={setOpen} />
+    </Suspense>
   );
 };
+
+/**
+ * What wraps the app both in the browser (src/main.tsx) and when the build
+ * prerenders each page (src/entry-server.tsx): the motion settings and the
+ * page's clock, started at `now` so the browser's first render matches the
+ * prerendered HTML.
+ */
+export const AppProviders = ({
+  now,
+  children,
+}: {
+  now?: Date;
+  children: ReactNode;
+}) => (
+  // 2.3.3 Animation from Interactions — framer-motion drives these from JS,
+  // so the CSS prefers-reduced-motion block cannot reach them.
+  <MotionConfig reducedMotion="user">
+    <NowProvider initial={now}>{children}</NowProvider>
+  </MotionConfig>
+);
+
+/** The site inside a router: BrowserRouter in the browser, StaticRouter at
+ *  build time. */
+export const AppShell = () => (
+  <>
+    <RouteMeta />
+    <RouteChange />
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+      <Navbar />
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="w-full grow pt-16 focus:outline-none"
+      >
+        <Suspense fallback={<RouteFallback />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/events/:slug" element={<EventPage />} />
+            <Route path="/workshops" element={<Workshops />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/team" element={<Team />} />
+            <Route path="/team/past" element={<PastTeams />} />
+            <Route path="/governance" element={<Governance />} />
+            <Route path="/resources" element={<Resources />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </Suspense>
+      </main>
+      <Footer />
+      <SearchPalette />
+    </div>
+  </>
+);
+
+const App = () => (
+  <BrowserRouter>
+    <AppShell />
+  </BrowserRouter>
+);
 
 export default App;

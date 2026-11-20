@@ -1,5 +1,6 @@
 // Checks what the build wrote, after scripts/prerender-routes.mjs: every page
-// the site promises exists with its own <head>, every calendar file is there,
+// the site promises exists with its own <head> and its own prerendered
+// content, every calendar file is there,
 // the sitemap lists exactly those pages, and nothing in a page's <head> points
 // at a file that was not built. It fails the build otherwise, so a regression
 // in the prerender step cannot ship while CI stays green (og:image:alt once
@@ -30,6 +31,14 @@ const escape = (s) =>
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
+/** Text React escaped back to what it says, to compare with the data. */
+const decode = (s) =>
+  s
+    .replace(/&quot;/g, '"')
+    .replace(/&#x27;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&");
 const fullTitle = (meta) => documentTitle(meta, seo.siteName);
 const absolute = (path) => `${seo.siteUrl}${path === "/" ? "/" : path}`;
 const attribute = (html, pattern) => pattern.exec(html)?.[1];
@@ -100,6 +109,39 @@ for (const page of pages) {
     !html.includes('content=""'),
     `${page.path}: a placeholder was left empty`,
   );
+
+  // The page itself, prerendered into #root for crawlers and for anyone
+  // without JavaScript: its own content, written in place. A page that
+  // threw, or a Suspense boundary written as a spinner plus an inline script
+  // to swap it (which the CSP blocks), must not ship.
+  const rootAt = html.indexOf('<div id="root"');
+  const body = rootAt === -1 ? "" : html.slice(rootAt);
+  check(
+    body.startsWith(`<div id="root" data-path="${escape(page.path)}"`),
+    `${page.path}: #root is not marked as this page's prerender`,
+  );
+  const headings = [...body.matchAll(/<h1\b[^>]*>(.*?)<\/h1>/gs)].map((m) =>
+    decode(m[1].replace(/<[^>]*>/g, "")),
+  );
+  check(
+    headings.length === 1,
+    `${page.path}: ${headings.length} <h1> in the prerendered page`,
+  );
+  if (page.event) {
+    check(
+      headings[0] === page.event.title,
+      `${page.path}: <h1> is ${headings[0]}, expected ${page.event.title}`,
+    );
+  }
+  for (const [marker, what] of [
+    ["<script", "an inline script"],
+    ["<template", "a streaming placeholder"],
+    ["<!--$?-->", "a boundary still loading"],
+    ["<!--$!-->", "a boundary that failed to render"],
+    ["Loading page", "the loading spinner"],
+  ]) {
+    check(!body.includes(marker), `${page.path}: page body has ${what}`);
+  }
 
   const blocks = [
     ...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs),

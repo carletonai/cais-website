@@ -23,7 +23,7 @@ import {
   rmSync,
 } from "node:fs";
 import { dirname, join, posix, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import {
   eventPath,
   eventSlug,
@@ -53,6 +53,19 @@ const fail = (message) => {
 
 const index = join(dist, "index.html");
 if (!existsSync(index)) fail("dist/index.html missing — run the build first.");
+
+// The page bodies come from the app itself, rendered by src/entry-server.tsx
+// (built by "vite build --ssr" into dist-ssr/), so crawlers that run no
+// JavaScript get each page's content and links, not an empty #root. Every
+// page is rendered at one instant, which also dates the calendar files, and
+// the browser starts its clock there when it adopts the HTML.
+const renderer = join(root, "dist-ssr", "entry-server.js");
+if (!existsSync(renderer))
+  fail(
+    "dist-ssr/entry-server.js missing — run vite build --ssr src/entry-server.tsx --outDir dist-ssr first.",
+  );
+const { render: renderBody } = await import(pathToFileURL(renderer).href);
+const now = new Date();
 
 // Read the routes, and which page module each one loads, off the router
 // itself so this cannot drift from App.tsx. Routes with parameters
@@ -332,7 +345,7 @@ const breadcrumbs = (event) => ({
 /**
  * The built HTML with this page's metadata in place of the placeholders.
  * @param {{ path: string, title: string, fullTitle?: string, ogTitle?: string,
- *   description: string,
+ *   description: string, body: string,
  *   image?: { url: string, width: number, height: number, alt: string },
  *   head?: string[] }} page
  */
@@ -342,6 +355,7 @@ const render = ({
   fullTitle: whole,
   ogTitle,
   description,
+  body,
   image,
   head = [],
 }) => {
@@ -400,7 +414,15 @@ const render = ({
       () => `  ${extra.join("\n    ")}\n  </head>`,
     );
   }
-  return html;
+  // The page's content, with the path and the instant it was rendered for:
+  // src/main.tsx adopts the HTML only on that path, starting from that time.
+  const emptyRoot = '<div id="root"></div>';
+  if (!html.includes(emptyRoot)) fail(`index.html has no ${emptyRoot}`);
+  return html.replace(
+    emptyRoot,
+    () =>
+      `<div id="root" data-path="${escape(path)}" data-rendered-at="${now.toISOString()}">${body}</div>`,
+  );
 };
 
 const write = (path, html) => {
@@ -416,6 +438,7 @@ for (const route of routes) {
     render({
       path: route,
       ...seo.routes[route],
+      body: await renderBody(route, now),
       head: route === "/" ? [jsonLd(organization), jsonLd(website)] : [],
     }),
   );
@@ -426,7 +449,6 @@ for (const route of routes) {
 // else uses: anything else builds a page the app cannot look up.
 const ids = new Set();
 const slugs = new Set();
-const now = new Date();
 for (const event of events) {
   if (!/^\d+$/.test(event.id))
     fail(`event ${JSON.stringify(event.id)}: ids are whole numbers`);
@@ -472,6 +494,7 @@ for (const event of events) {
       title: meta.title,
       ogTitle: meta.ogTitle,
       description: meta.description,
+      body: await renderBody(eventPath(event), now),
       image,
       head: [eventData(event, image), breadcrumbs(event)]
         .filter(Boolean)

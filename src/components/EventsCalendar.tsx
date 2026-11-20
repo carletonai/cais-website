@@ -15,6 +15,10 @@ import {
   type Break,
   type ClubEvent,
   type Meeting,
+  DAYS,
+  LONG_MONTHS,
+  MONTHS,
+  clubToday,
   duringBreak,
   eventDate,
   formatDateRange,
@@ -24,6 +28,7 @@ import {
   upcomingEvents,
 } from "@/lib/events";
 import { holidaysInMonth } from "@/lib/holidays";
+import { useNow } from "@/lib/useNow";
 
 const WEEKDAYS = [
   ["Sun", "Sunday"],
@@ -35,22 +40,24 @@ const WEEKDAYS = [
   ["Sat", "Saturday"],
 ] as const;
 
-const monthName = new Intl.DateTimeFormat("en-CA", {
-  month: "long",
-  year: "numeric",
-});
-const shortMonth = new Intl.DateTimeFormat("en-CA", { month: "short" });
-const weekdayName = new Intl.DateTimeFormat("en-CA", { weekday: "short" });
-const shortDate = new Intl.DateTimeFormat("en-CA", {
-  weekday: "short",
-  month: "short",
-  day: "numeric",
-});
+// Fixed English names rather than Intl: the build prerenders this calendar,
+// and its text has to match what every browser renders from it.
+const monthName = (month: Date) =>
+  `${LONG_MONTHS[month.getMonth()]} ${month.getFullYear()}`;
 
-/** Opens on the next event's month, so the grid leads with something to attend. */
-const openingMonth = (events: readonly ClubEvent[]) => {
-  const next = upcomingEvents(events)[0];
-  const date = next ? eventDate(next) : new Date();
+/** A local-midnight grid date as YYYY-MM-DD, to compare with clubToday(). */
+const isoDay = (day: Date) =>
+  [
+    day.getFullYear(),
+    String(day.getMonth() + 1).padStart(2, "0"),
+    String(day.getDate()).padStart(2, "0"),
+  ].join("-");
+
+/** Opens on the next event's month, so the grid leads with something to
+ *  attend, or on this month in Ottawa when nothing is coming up. */
+const openingMonth = (events: readonly ClubEvent[], now: Date) => {
+  const next = upcomingEvents(events, now)[0];
+  const date = eventDate(next ?? { date: clubToday(now) });
   return new Date(date.getFullYear(), date.getMonth(), 1);
 };
 
@@ -129,7 +136,12 @@ export function EventsCalendar({
   meetings,
   breaks = [],
 }: EventsCalendarProps) {
-  const [month, setMonth] = useState(() => openingMonth(events));
+  const now = useNow();
+  // Until someone picks a month, follow the page's clock: the prerendered
+  // page opens where the build did, then moves on if an event has finished
+  // since.
+  const [picked, setMonth] = useState<Date | null>(null);
+  const month = picked ?? openingMonth(events, now);
   const [selected, setSelected] = useState<CalendarEntry | null>(null);
   const [detailsOpen, setDetailsOpen] = useState(false);
   const headingId = useId();
@@ -138,7 +150,8 @@ export function EventsCalendar({
   const year = month.getFullYear();
   const monthIndex = month.getMonth();
   const days = daysOf(month);
-  const today = new Date();
+  // Today in Ottawa, the same at build time and in any browser's time zone.
+  const today = clubToday(now);
 
   // Every event on any day of the month: a multi-day one (a hackathon, a
   // competition) runs from its first day through its last.
@@ -191,7 +204,7 @@ export function EventsCalendar({
       })),
   ];
 
-  const isToday = (day: Date) => day.toDateString() === today.toDateString();
+  const isToday = (day: Date) => isoDay(day) === today;
 
   const showMonth = (offset: number) =>
     setMonth(new Date(year, monthIndex + offset, 1));
@@ -217,7 +230,7 @@ export function EventsCalendar({
           aria-live="polite"
           className="whitespace-nowrap text-lg font-semibold sm:text-2xl"
         >
-          {monthName.format(month)}
+          {monthName(month)}
         </h3>
         <Button
           variant="ghost"
@@ -268,7 +281,7 @@ export function EventsCalendar({
                 onClick={() => setMonth(shortcut)}
                 className="gap-1.5 rounded-full px-3"
               >
-                {shortMonth.format(shortcut)}
+                {MONTHS[shortcut.getMonth()]}
                 <span className="sr-only"> {year},</span>
                 <span
                   className={cn(
@@ -391,7 +404,7 @@ export function EventsCalendar({
       <div className="mt-6 space-y-3">
         {monthEvents.length === 0 ? (
           <p className="text-center text-muted-foreground">
-            No events scheduled in {monthName.format(month)}.
+            No events scheduled in {monthName(month)}.
           </p>
         ) : (
           <ul className="space-y-3">
@@ -410,7 +423,7 @@ export function EventsCalendar({
                       className="flex w-12 shrink-0 flex-col items-center"
                     >
                       <span className="text-xs font-medium uppercase text-primary">
-                        {weekdayName.format(date)}
+                        {DAYS[date.getDay()]}
                       </span>
                       <span className="text-2xl font-bold leading-tight">
                         {date.getDate()}
@@ -458,7 +471,7 @@ export function EventsCalendar({
                   <span>
                     {meeting.weekly
                       ? `${WEEKDAYS[eventDate(meeting).getDay()][1]}s`
-                      : shortDate.format(eventDate(meeting))}
+                      : formatEventDate(meeting.date)}
                   </span>
                   <span className="inline-flex items-center gap-1">
                     <ClockIcon className="h-4 w-4" />

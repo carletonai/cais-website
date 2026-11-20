@@ -70,20 +70,30 @@ export async function fetchPresence(
   }
 }
 
-/** The server's counts: from this session's cache, else fetched once. */
+/** From this session's cache, else from Discord, kept for next time. */
+const lookUp = async (signal: AbortSignal) => {
+  const hit = cached();
+  if (hit) return hit;
+  const found = await fetchPresence(signal);
+  if (found) remember(found);
+  return found;
+};
+
+/**
+ * The server's counts, looked up after the first render, which has none:
+ * the prerendered page has none either, and reading the cache during render
+ * would make a reloaded page's first render differ from its HTML.
+ */
 export function useDiscordPresence() {
-  const [presence, setPresence] = useState<Presence | null>(cached);
+  const [presence, setPresence] = useState<Presence | null>(null);
 
   useEffect(() => {
-    if (presence) return;
     const controller = new AbortController();
-    void fetchPresence(controller.signal).then((found) => {
-      if (!found || controller.signal.aborted) return;
-      remember(found);
-      setPresence(found);
+    void lookUp(controller.signal).then((found) => {
+      if (found && !controller.signal.aborted) setPresence(found);
     });
     return () => controller.abort();
-  }, [presence]);
+  }, []);
 
   return presence;
 }

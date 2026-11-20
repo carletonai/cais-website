@@ -21,7 +21,7 @@ export default [
       "plugin:react/jsx-runtime",
       "plugin:react-hooks/recommended",
     ],
-    ignorePatterns: ["dist"],
+    ignorePatterns: ["dist", "dist-ssr"],
   }),
   {
     files: ["**/*.{js,mjs,cjs,jsx,ts,tsx}"],
