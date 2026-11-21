@@ -403,6 +403,46 @@ exports[`renders TeamPage correctly 1`] = `
             </span>
           </a>
         </li>
+        <li
+          class="flex flex-col items-center rounded-2xl border border-border bg-card p-6 text-center"
+        >
+          <div
+            aria-hidden="true"
+            class="size-24 rounded-full border-4 border-mark bg-background object-cover flex select-none items-center justify-center tracking-wide font-heading text-3xl font-bold text-foreground"
+          >
+            JP
+          </div>
+          <h3
+            class="mt-4 text-lg leading-snug"
+          >
+            Jesthan Pham
+          </h3>
+          <p
+            class="label-mono mt-2 text-primary"
+          >
+            Community Lead
+          </p>
+        </li>
+        <li
+          class="flex flex-col items-center rounded-2xl border border-border bg-card p-6 text-center"
+        >
+          <div
+            aria-hidden="true"
+            class="size-24 rounded-full border-4 border-mark bg-background object-cover flex select-none items-center justify-center tracking-wide font-heading text-3xl font-bold text-foreground"
+          >
+            AM
+          </div>
+          <h3
+            class="mt-4 text-lg leading-snug"
+          >
+            Angela Msocha
+          </h3>
+          <p
+            class="label-mono mt-2 text-primary"
+          >
+            Community Lead
+          </p>
+        </li>
       </ul>
     </div>
   </section>
