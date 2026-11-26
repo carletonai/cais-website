@@ -64,6 +64,9 @@ export interface ClubEvent {
   issue?: string;
   /** YYYY-MM-DD, the last day of an event that runs over several days. */
   endDate?: string;
+  /** The academic year it counts toward ("2026–27") when that is not the one
+   *  its date falls in: a summer event that belongs with the year it opens. */
+  season?: string;
 }
 
 export const allEvents: readonly ClubEvent[] = eventsData.events;
@@ -83,11 +86,13 @@ const FOUNDED = Math.min(
 );
 
 /**
- * The academic year an event falls in, September to August: "2025–26". The
- * club's first events, in the spring of its founding year, are simply that
- * year: there was no 2018–19 season, and the site says "since 2019".
+ * The academic year an event falls in, September to August: "2025–26", or
+ * the one its `season` names instead. The club's first events, in the spring
+ * of its founding year, are simply that year: there was no 2018–19 season,
+ * and the site says "since 2019".
  */
-export const academicYear = (event: Pick<ClubEvent, "date">) => {
+export const academicYear = (event: Pick<ClubEvent, "date" | "season">) => {
+  if (event.season) return event.season;
   const date = eventDate(event);
   const start =
     date.getMonth() >= 8 ? date.getFullYear() : date.getFullYear() - 1;

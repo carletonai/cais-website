@@ -188,6 +188,10 @@ Events live in `src/data/events.json`; the newest go at the end.
 - `endDate`: only for events that run over several days (a competition, a
   weekend hackathon): the last day, `YYYY-MM-DD`. The event then shows as a date
   range and spans those days in calendars.
+- `season`: only when an event counts toward another academic year than the
+  one its date falls in (September to August), such as a summer event that
+  belongs with the year it opens: `"2026–27"`, with an en dash. It may only be
+  the date's own year or the next one; the tests check.
 - `id`: never reuse or change one. Each event's page lives at
   `/events/<id>-<title>` (e.g. `/events/66-intro-to-agentic-ai`), and that link
   ends up in chats and calendars; the id is what keeps it working if the title

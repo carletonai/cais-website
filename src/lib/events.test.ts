@@ -124,6 +124,27 @@ describe("seasons", () => {
     expect(seasonNow(at("2026-09-01T04:00:00Z"))).toBe("2026–27");
   });
 
+  it("give an event the season it names, when it names one", () => {
+    expect(academicYear({ date: "2026-07-11", season: "2026–27" })).toBe(
+      "2026–27",
+    );
+    expect(academicYear({ date: "2026-07-11" })).toBe("2025–26");
+  });
+
+  it("let an event name only its own academic year or the next one", () => {
+    const named = allEvents.filter((event) => event.season);
+    for (const event of named) {
+      const own = academicYear({ date: event.date });
+      const start = Number(own.slice(0, 4));
+      const next = `${start + 1}–${String(start + 2).slice(2)}`;
+      expect([own, next]).toContain(event.season);
+    }
+  });
+
+  it("count the July 2026 cuHacking workshop toward 2026–27", () => {
+    expect(academicYear(findEventBySlug("14")!)).toBe("2026–27");
+  });
+
   it("call the founding spring by its year alone", () => {
     expect(academicYear({ date: "2019-03-06" })).toBe("2019");
     expect(academicYear({ date: "2019-09-10" })).toBe("2019–20");
