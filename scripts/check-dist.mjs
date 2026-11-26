@@ -257,6 +257,16 @@ for (const { source, destination } of vercel.rewrites ?? []) {
   );
 }
 
+// Every redirect (old addresses, from the club's previous site among them)
+// lands on a page the build wrote.
+for (const { source, destination } of vercel.redirects ?? []) {
+  const path = destination.split("#")[0].replace(/\/+$/, "") || "/";
+  check(
+    existsSync(join(dist, path, "index.html")),
+    `vercel.json redirects ${source} to ${destination}, which was not built`,
+  );
+}
+
 check(!existsSync(join(dist, ".vite")), "dist/.vite should not be deployed");
 
 if (problems.length > 0) {

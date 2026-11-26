@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": false,
   "redirects": [
     {
       "source": "/about{/}?",
@@ -9,6 +10,21 @@
     {
       "source": "/contribute{/}?",
       "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/our-team-:year(\\d{4}){/}?",
+      "destination": "/team/past",
+      "permanent": true
+    },
+    {
+      "source": "/our-team{/}?",
+      "destination": "/team",
+      "permanent": true
+    },
+    {
+      "source": "/event/:slug*",
+      "destination": "/events",
       "permanent": true
     }
   ],
