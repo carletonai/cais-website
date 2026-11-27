@@ -901,6 +901,20 @@
       "description": "Neural networks: how layers of simple units learn from images and text, and training your first one.",
       "type": "Workshop",
       "tags": ["technical"]
+    },
+    {
+      "id": "73",
+      "title": "Lose, learn, come back better Whether it's GTA 6 or a neural network, that's…",
+      "date": "2026-11-27",
+      "time": "",
+      "location": "",
+      "description": "Lose, learn, come back better Whether it's GTA 6 or a neural network, that's how you level up. Join us this Friday at HP5345 for our workshop",
+      "type": "Workshop",
+      "instagram": "https://www.instagram.com/reel/DgOaOsxO2qp/",
+      "poster": "/assets/events/lose-learn-come-back-better-whether-it-s-gta-6-o-2026.jpg",
+      "posterHeight": 960,
+      "posterWidth": 540,
+      "tags": ["networking", "technical"]
     }
   ]
 }
