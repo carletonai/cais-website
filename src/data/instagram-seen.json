@@ -48,6 +48,27 @@
       "decision": "event",
       "eventId": "71",
       "at": "2026-11-20"
+    },
+    {
+      "id": "18112298506900546",
+      "permalink": "https://www.instagram.com/p/DgJv66sDrtr/",
+      "decision": "skipped",
+      "reason": "no date in the caption",
+      "at": "2026-11-27"
+    },
+    {
+      "id": "18129996340858226",
+      "permalink": "https://www.instagram.com/p/DgJwmtIO-WV/",
+      "decision": "skipped",
+      "reason": "dated, but nothing says it is an event",
+      "at": "2026-11-27"
+    },
+    {
+      "id": "18019557542995455",
+      "permalink": "https://www.instagram.com/reel/DgOaOsxO2qp/",
+      "decision": "event",
+      "eventId": "73",
+      "at": "2026-11-27"
     }
   ]
 }
